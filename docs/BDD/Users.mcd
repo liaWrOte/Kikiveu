@@ -1,0 +1,14 @@
+link user to, 11 comments, 0N users
+comments : id, userId, title, body, eventId
+link event to, 11 comments, 0N events
+tags : id, name, picture
+
+users : id, firstname, lastname, pseudo, password, role,
+organized, 01 users, 11 events
+events : id, name, locate, tagsId, userId, maxParticipant, datetime, duration, description
+tagged, 0N tags, 11 events
+
+belongs, 1N users, 11 dogs
+dogs : id, avatar, moodId, userId, dogCondition
+Feels, 01 dogs, 0N moods
+moods : id, name, picture
