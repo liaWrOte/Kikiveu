@@ -5,8 +5,8 @@
 | log in | `/connexion` | landing-page (log in and sign in) |  |
 | sign in | `/inscription` | sign in form |  |
 | map | `/` | map and infos |  |
-| profile | `/user/:slug` | user profile | slug : user nickname|
-| ride | `/ride/:slug` | ride infos | slug : user nickname |
+| profile | `/:slug` | user profile | slug : user nickname|
+| ride | `/balade/:slug` | ride infos | slug : user nickname |
 | messages | `/messages/:slug` | list of the user's messages | slug : user nickname |
 | contact | `/contact` | contact the team of KikiVeu | |
 | CGU | `/cgu` | access to the CGU | |
