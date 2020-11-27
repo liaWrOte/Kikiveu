@@ -13,6 +13,7 @@
 | datetime | date | NOT NULL | date et heure de l'évènement | format d-m-Y h:i | Events |
 | duration | int | | durée de l'évènement | | Events |
 | description | text | | Description de l'évènement | | Events |
+| slug | varchar(255) | NOT NULL | Slug pour route event | | Events |
 | tagsId | int | | id d'un tag | permet de tagger un évènement | Events |
 | userId | int | NOT NULL | id d'un utilisateur | permet de lier un utilisateur à l'évènement | Events |
 | --- | ---- | ------ | ----------- | ----------- | ------ |
@@ -28,6 +29,7 @@
 | pseudo | varchar(50) | NOT NULL | Pseudonyme de l'utilisateur | | Users |
 | password | varchar(255) | NOT NULL | Mot de passe de l'utilisateur | | Users |
 | role | [json] | NOT NULL | Role de l'utilisateur sur le site | ROLE_ADMIN, ROLE_SUPERADMIN, ROLE_USER | Users |
+| slug | varchrar(255) | NOT NULL | Slug pour route utilisateur | | Users |
 | --- | ---- | ------ | ----------- | ----------- | ------ |
 | id | int | auto--increment, unsigned, PK | Id des chiens | | Dogs |
 | avatar | varchar(255) | DEFAULT (une image par defaut) | adresse de l'image | | Dogs |
@@ -44,14 +46,13 @@
 | picture | varchar(255) | NOT NULL | adresse de l'image | emoji représentant l'humeur du chien | Moods |
 | --- | ---- | ------ | ----------- | ----------- | ------ |
 | id | int | auto-increment, unsigned, PK | Id de la discussion | | Discussion |
-| userId | int | NOT NULL | Id d'un utilisateur | permet de lier un utilisateur à la discussion | Discussion |
-| privateCommentsId | int | NOT NULL | Id d'un  privateComments | permet de récupérer le privateComments | Discussion |
+| title | varchar(255) | NULL | Titre de la discussion | | Discussion |
 | --- | ---- | ------ | ----------- | ----------- | ------ |
-| id | int | auto-increment, unsigned, PK | Id du privateComments | | PrivateComments |
-| title | varchar(255) | NULL | Titre du privateComments | | PrivateComments |
-| body | text | NOT NULL | contenu du privateComments | | PrivateComments |
-| userId | int | NOT NULL | Id d'un utilisateur | auteur du privateComments | PrivateComments |
-| discussionId | int | NOT NULL | Id d'une discussion | relier le privateComments à la discussion | PrivateComments |
+| id | int | auto-increment, unsigned, PK | Id du message | | Message |
+| title | varchar(255) | NULL | Titre du message | | Message |
+| body | text | NOT NULL | contenu du message | | Message |
+| userId | int | NOT NULL | Id d'un utilisateur | auteur du message | Message |
+| discussionId | int | NOT NULL | Id d'une discussion | relier le message à la discussion | Message |
 | --- | ---- | ------ | ----------- | ----------- | ------ |
 |id | int | auto-increment, unsigned, PK |  Id du caractère | | character |
 | name | varchar(50) | NOT NULL | nom du caractère | | character |
