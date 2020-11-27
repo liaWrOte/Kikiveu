@@ -43,7 +43,7 @@
 | `/admin/mood/delete/{id}` | `DELETE` | `MoodController` | `admin_mood_delete` | Suppression d'un mood | {id}=> id du mood|
 | --- | ----------- | ---------- | ----------- | ------- | ------- |
 | `/admin/discussion` | `GET` | `DiscussionController` | `admin_discussion_browse` | Affiche toutes les discussions | |
-| `/admin/discussion/{id}` | `DiscussionController` | `admin_discussion_ read` | Permet de voir une discussion | {id} => id de la discussion |
+| `/admin/discussion/{id}` | `GET` | `DiscussionController` | `admin_discussion_ read` | Permet de voir une discussion | {id} => id de la discussion |
 | `/admin/discussion/edit/{id}` | `GET` `POST` | `DiscussionController` | `admin_discussion_edit` | formulaire d'édition d'une discussion |  {id} => id de la discussion |
 | `/admin/discussion/delete/{id}` | `DELETE` | `DiscussionController` | `admin_discussion_ delete` |supression d'un discussion | {id} => id de la discussion |
 
