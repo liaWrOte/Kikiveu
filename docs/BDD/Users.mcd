@@ -7,7 +7,7 @@ link event to, 11 comments, 0N events
 dogs : id, avatar, moodId, userId, dogCondition, sex, characterId, age, castrate, createdAt, updatedAt
 belongs, 1N users, 11 dogs
 users : id, firstname, lastname, pseudo, password, role, createdAt, updatedAt
-organized, 01 users, 11 events
+organized, 0N users, 11 events
 events : id, name, locate, tagsId, userId, maxParticipant, datetime, duration, description, createdAt, updatedAt
 
 is, 01 dogs, 0N character
