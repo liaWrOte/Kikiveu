@@ -47,8 +47,6 @@
 | `/admin/discussion/edit/{id}` | `GET` `POST` | `DiscussionController` | `admin_discussion_edit` | formulaire d'édition d'une discussion |  {id} => id de la discussion |
 | `/admin/discussion/delete/{id}` | `DELETE` | `DiscussionController` | `admin_discussion_ delete` |supression d'un discussion | {id} => id de la discussion |
 
-
-
 ## Route API
 
 | URL | HTTP Method | Controller | Name_Method | Contenu | Comment |
