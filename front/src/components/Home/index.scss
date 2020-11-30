@@ -1,0 +1,13 @@
+.home {
+  display: flex;
+  flex-direction: column;
+  &__item1 {
+    flex-grow: 1;
+  }
+  &__item1 {
+    flex-grow: 4;
+  }
+  &__item1 {
+    flex-grow: 2;
+  }
+}

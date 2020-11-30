@@ -8,11 +8,11 @@ import Info from './Info';
 import './index.scss';
 
 const Home = () => (
-  <>
-    <Header />
-    <Map />
-    <Info />
-  </>
+  <div className="home">
+    <Header className="home__item1" />
+    <Map className="home__item2" />
+    <Info className="home__item3" />
+  </div>
 );
 
 export default Home;
