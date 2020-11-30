@@ -1,9 +1,16 @@
 import React from 'react';
 
-const MainUserButton = () => (
-  <span className="MainUserButton">
-    <img src="../../../assets/image/dog_profile.jpg" alt="chien avec des lunettes" />
-  </span>
-);
+import './index.scss';
+
+import profileImage from '../../../assets/image/dog_profile.jpg';
+
+const MainUserButton = () => {
+  const sectionStyle = {
+    backgroundImage: `url(${profileImage})`,
+  };
+  return (
+    <div className="mainUserButton" style={sectionStyle} alt="chien avec des lunettes" />
+  );
+};
 
 export default MainUserButton;
