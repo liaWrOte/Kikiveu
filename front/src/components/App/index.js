@@ -18,11 +18,14 @@ import UserOnMap from '../microComponents/UserOnMap';
 // == Composant
 const App = () => (
   <div className="app">
+
+    //<img src={reactLogo} alt="react logo" />
     <h1>Composant : App</h1>
     <Emoji />
     <Input />
     <Cgu />
     <Toggle />
+
     <Header />
     <TextButton />
     <PreviousButton />
