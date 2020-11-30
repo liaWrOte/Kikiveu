@@ -4,14 +4,14 @@ import './index.scss';
 
 import profileImage from '../../../assets/images/dog_profile.jpg';
 
-const MainUserButton = () => {
+const UserOnMap = () => {
   const sectionStyle = {
     backgroundImage: `url(${profileImage})`,
   };
   return (
 
-    <div className="mainUserButton" style={sectionStyle} alt="chien avec des lunettes" />
+    <div className="userOnMap" style={sectionStyle} alt="chien avec des lunettes" />
   );
 };
 
-export default MainUserButton;
+export default UserOnMap;

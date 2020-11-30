@@ -7,6 +7,7 @@ import PreviousButton from '../microComponents/PreviousButton';
 import MainUserButton from '../microComponents/MainUserButton';
 import Map from '../microComponents/Map';
 import Header from '../microComponents/Header';
+import UserOnMap from '../microComponents/UserOnMap';
 
 // == Composant
 const App = () => (
@@ -16,6 +17,7 @@ const App = () => (
     <PreviousButton />
     <MainUserButton />
     <Map />
+    <UserOnMap />
   </div>
 );
 
