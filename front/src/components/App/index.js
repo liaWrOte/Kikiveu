@@ -2,14 +2,22 @@
 import React from 'react';
 
 // == Import
-import reactLogo from './react-logo.svg';
-import './styles.css';
+import TextButton from '../microComponents/TextButton';
+import PreviousButton from '../microComponents/PreviousButton';
+import MainUserButton from '../microComponents/MainUserButton';
+import Map from '../microComponents/Map';
+import Header from '../microComponents/Header';
+import UserOnMap from '../microComponents/UserOnMap';
 
 // == Composant
 const App = () => (
   <div className="app">
-    <img src={reactLogo} alt="react logo" />
-    <h1>Composant : App</h1>
+    <Header />
+    <TextButton />
+    <PreviousButton />
+    <MainUserButton />
+    <Map />
+    <UserOnMap />
   </div>
 );
 
