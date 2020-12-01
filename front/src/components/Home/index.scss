@@ -1,13 +1,24 @@
 .home {
   display: flex;
-  flex-direction: column;
+  height: 100vh;
+  -webkit-box-orient: vertical;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   &__item1 {
-    flex-grow: 1;
+    flex-grow: 1.5;
   }
-  &__item1 {
+  &__item2 {
     flex-grow: 4;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    height: 100%;
   }
-  &__item1 {
-    flex-grow: 2;
+  &__item3 {
+    flex-grow: 2.5;
   }
 }
