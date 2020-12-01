@@ -50,7 +50,8 @@ class EventController extends AbstractController
         $eventArray = json_decode($json, true);
         
         $form = $this->createForm(EventType::class, $events, ['csrf_protection' => false]);
-        $form->submit($eventArray);
+        // TODO voir cette histoire de DateTime quand le front sera connecté
+        // $form->submit($eventArray);
        
         if ($form->isValid()) {
             $events->setUpdatedAt(new \DateTime());
