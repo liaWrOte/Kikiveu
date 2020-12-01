@@ -2,12 +2,12 @@
 import React from 'react';
 
 // == Import
-import Home from '../Home';
+import Login from '../Login';
 
 // == Composant
 const App = () => (
   <div className="app">
-    <Home />
+    <Login />
   </div>
 );
 
