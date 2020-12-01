@@ -12,7 +12,7 @@ import './index.scss';
 
 const Map = () => (
   <div className="map">
-    <MapContainer className="map" center={[51.505, -0.09]} zoom={13} scrollWheelZoom={false}>
+    <MapContainer className="map__component" center={[51.505, -0.09]} zoom={13} scrollWheelZoom={false}>
       <TileLayer
         attribution='&copy; <a href="">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -23,7 +23,10 @@ const Map = () => (
         </Popup>
       </Marker>
     </MapContainer>
-    <SecondaryUserButton className="map__secondaryUserButton" />
+    <div className="map__users">
+      <SecondaryUserButton className="map__users__user" />
+      <SecondaryUserButton className="map__users__user" />
+    </div>
   </div>
 );
 
