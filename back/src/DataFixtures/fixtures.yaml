@@ -66,7 +66,7 @@ App\Entity\Messages:
         title: '<text(20)>'
         body: '<text(100)>'
         discussion: '@discussion_*'
-        user: '@users_*'
+        users: '@users_*'
         createdAt: '<dateTime()>'
 
 App\Entity\Discussions:
