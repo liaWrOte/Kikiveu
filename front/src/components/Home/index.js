@@ -8,6 +8,7 @@ import Info from './Info';
 import UserProfile from './UserProfile';
 import Login from '../Login';
 import SigninForm from '../SigninForm';
+import SeeOtherUserProfile from './SeeOtherUserProfile';
 
 import './index.scss';
 
@@ -29,7 +30,7 @@ const Home = () => (
               <Info className="" />
             </Route>
             <Route exact path="/1">
-              <UserProfile className="" />
+              <SeeOtherUserProfile className="" />
             </Route>
           </Switch>
         </div>
