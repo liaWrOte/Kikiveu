@@ -24,6 +24,7 @@
 | userId | int | NOT NULL | Id d'un utilisateur | auteur du commentaire | Comments |
 | --- | ---- | ------ | ----------- | ----------- | ------ |
 | id | int | auto-increment, unsigned, PK | Id de l'utilisateur | | Users |
+| email | varchar() | UNIQUE | Email de l'utilisateur | | Users
 | firstname | varchar(50) | NOT NULL | Prénom de l'utilisateur | | Users |
 | lastname | varchar (50) | NOT NULL | Nom de l'utilisateur | | Users |
 | pseudo | varchar(50) | NOT NULL | Pseudonyme de l'utilisateur | | Users |
