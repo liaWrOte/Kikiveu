@@ -43,6 +43,12 @@ class Messages
      */
     private $users;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Discussions::class, inversedBy="messages")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $discussion;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -104,6 +110,18 @@ class Messages
     public function setUsers(?Users $users): self
     {
         $this->users = $users;
+
+        return $this;
+    }
+
+    public function getDiscussion(): ?Discussions
+    {
+        return $this->discussion;
+    }
+
+    public function setDiscussion(?Discussions $discussion): self
+    {
+        $this->discussion = $discussion;
 
         return $this;
     }
