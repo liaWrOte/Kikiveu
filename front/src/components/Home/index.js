@@ -8,6 +8,9 @@ import Info from './Info';
 import UserProfile from './UserProfile';
 import Login from '../Login';
 import SigninForm from '../SigninForm';
+import SeeOtherUserProfile from './SeeOtherUserProfile';
+import Chat from './Chat';
+import KikiVeuContact from './Chat/KikiVeuContact';
 
 import './index.scss';
 
@@ -22,15 +25,24 @@ const Home = () => (
       </Route>
       <Route>
         <div className="home">
-          <Header className="home__item1" />
-          <Map className="home__item2" />
+          <div className=".item1">
+            <Header />
+          </div>
+          <div className=".item2">
+            <Map />
+          </div>
           <Switch>
             <Route exact path="/">
-              <Info className="" />
+              <div className=".item3">
+                <Info />
+              </div>
             </Route>
             <Route exact path="/1">
-              <UserProfile className="" />
+              <div className=".item3">
+                <KikiVeuContact />
+              </div>
             </Route>
+
           </Switch>
         </div>
       </Route>

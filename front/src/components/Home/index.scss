@@ -8,17 +8,15 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  &__item1 {
-    flex-grow: 1.5;
-  }
-  &__item2 {
-    flex-grow: 4;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    height: 100%;
-  }
-  &__item3 {
-    flex-grow: 2.5;
-  }
+}
+
+.item1 {
+  height: 10vh;
+}
+.item2 {
+  height: 60vh;
+}
+.item3 {
+  height: 20vh;
+  z-index:25;
 }

@@ -1,4 +1,4 @@
-.userProfile {
+.kikiVeuContact {
   position: fixed;
   height: 350px;
   bottom: 0;
@@ -8,13 +8,24 @@
   background-color: #FCDEB0;
   display : flex;
   justify-content: space-around;
-  align-items: center;
-  &__emoji {
+  &__wrapper {
     display: flex;
-    justify-content: space-evenly;
+    width: 100%;
+    margin-top: -60px;
+    height: 60px;
+    &__users {
+      height: 100%;
+      overflow-x: auto;
+      white-space: nowrap;
+    }
   }
   &__bottom {
     display: flex;
     justify-content: space-evenly;
   }
+}
+
+.mainUserButton {
+  margin-right: 35px;
+  display: inline-block;
 }
