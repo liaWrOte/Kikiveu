@@ -33,7 +33,7 @@ const UserProfile = () => (
     <div className="userProfile__bottom">
       <PreviousButton />
       <TextButton />
-      <div></div>
+      <div> </div>
     </div>
   </div>
 );
