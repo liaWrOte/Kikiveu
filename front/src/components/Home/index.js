@@ -25,15 +25,24 @@ const Home = () => (
       </Route>
       <Route>
         <div className="home">
-          <Header className="home__item1" />
-          <Map className="home__item2" />
+          <div className=".item1">
+            <Header />
+          </div>
+          <div className=".item2">
+            <Map />
+          </div>
           <Switch>
             <Route exact path="/">
-              <Info className="" />
+              <div className=".item3">
+                <Info className="" />
+              </div>
             </Route>
             <Route exact path="/1">
-              <KikiVeuContact className="" />
+              <div className=".item3">
+                <KikiVeuContact className="" />
+              </div>
             </Route>
+
           </Switch>
         </div>
       </Route>
