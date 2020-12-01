@@ -6,6 +6,8 @@ import {
   Popup,
 } from 'react-leaflet';
 
+import SecondaryUserButton from '../SecondaryUserButton/index';
+
 import './index.scss';
 
 const Map = () => (
@@ -21,6 +23,7 @@ const Map = () => (
         </Popup>
       </Marker>
     </MapContainer>
+    <SecondaryUserButton className="map__secondaryUserButton" />
   </div>
 );
 
