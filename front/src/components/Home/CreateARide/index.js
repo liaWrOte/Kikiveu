@@ -1,15 +1,11 @@
 import React from 'react';
-import { Calendar } from 'react-feather';
 
 // Import composants
 import PreviousButton from '../../microComponents/PreviousButton';
 import MainUserButton from '../../microComponents/MainUserButton';
 import Emoji from '../../microComponents/Emoji';
 import Toggle from '../../microComponents/Toggle';
-import Input from '../../microComponents/Input';
 import TextButton from '../../microComponents/TextButton';
-
-
 
 import './createARide.scss';
 
@@ -17,10 +13,10 @@ const CreateARide = () => (
   <div className="createARide">
     <MainUserButton className="mainUserButton" />
     <TextButton />
-      <label htmlFor="description">
-        Description de la balade
-      </label>
-      <textarea name="description" maxLength="200" rows="6" />
+    <label htmlFor="description">
+      Description de la balade :
+    </label>
+    <textarea name="description" maxLength="200" rows="6" />
     <div className="createARide__item">
       <label htmlFor="date">
         Date de la balade :
@@ -35,7 +31,7 @@ const CreateARide = () => (
     </div>
     <div className="createARide__item">
       <label htmlFor="time">
-        à
+        à :
       </label>
       <input
         type="time"
