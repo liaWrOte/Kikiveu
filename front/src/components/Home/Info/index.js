@@ -10,7 +10,7 @@ import './info.scss';
 const Info = () => (
   <div className="info">
     <PreviousButton />
-    <MainUserButton />
+    <MainUserButton className="mainUserButton" />
     <SecondaryUserButton />
   </div>
 );
