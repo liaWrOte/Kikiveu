@@ -18,7 +18,7 @@ const SigninForm = () => (
       <div className="signin__form__item">
         <label htmlFor="nbDogs">
           1. Combien de chiens avez-vous ?
-        </label>  
+        </label>
         <Input
           name="nbDogs"
         />

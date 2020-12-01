@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { Link } from 'react-router-dom';
+
 // Import composants
 import PreviousButton from '../../microComponents/PreviousButton';
 import MainUserButton from '../../microComponents/MainUserButton';
@@ -11,7 +13,7 @@ const Info = () => (
   <div className="info">
     <PreviousButton />
     <MainUserButton className="mainUserButton" />
-    <SecondaryUserButton />
+    <Link to="/1"><SecondaryUserButton /></Link>
   </div>
 );
 
