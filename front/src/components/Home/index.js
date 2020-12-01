@@ -9,6 +9,7 @@ import UserProfile from './UserProfile';
 import Login from '../Login';
 import SigninForm from '../SigninForm';
 import SeeOtherUserProfile from './SeeOtherUserProfile';
+import Chat from './Chat';
 
 import './index.scss';
 
@@ -30,7 +31,7 @@ const Home = () => (
               <Info className="" />
             </Route>
             <Route exact path="/1">
-              <SeeOtherUserProfile className="" />
+              <Chat className="" />
             </Route>
           </Switch>
         </div>
