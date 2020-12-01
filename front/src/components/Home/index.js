@@ -10,6 +10,7 @@ import Login from '../Login';
 import SigninForm from '../SigninForm';
 import SeeOtherUserProfile from './SeeOtherUserProfile';
 import Chat from './Chat';
+import KikiVeuContact from './Chat/KikiVeuContact';
 
 import './index.scss';
 
@@ -31,7 +32,7 @@ const Home = () => (
               <Info className="" />
             </Route>
             <Route exact path="/1">
-              <Chat className="" />
+              <KikiVeuContact className="" />
             </Route>
           </Switch>
         </div>

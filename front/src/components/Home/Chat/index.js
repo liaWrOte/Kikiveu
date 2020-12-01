@@ -3,7 +3,7 @@ import React from 'react';
 // Import composants
 import PreviousButton from '../../microComponents/PreviousButton';
 import MainUserButton from '../../microComponents/MainUserButton';
-import Input from '../../microComponents/Input';
+import TextButton from '../../microComponents/TextButton';
 import SecondaryUserButton from '../../microComponents/SecondaryUserButton';
 
 import './chat.scss';
@@ -27,7 +27,7 @@ const Chat = () => (
     </div>
     <div className="chat__bottom">
       <PreviousButton />
-      <Input />
+      <TextButton />
     </div>
   </div>
 );

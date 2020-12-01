@@ -1,35 +1,34 @@
 import React from 'react';
 
 // Import composants
-import PreviousButton from '../../microComponents/PreviousButton';
-import MainUserButton from '../../microComponents/MainUserButton';
-import Input from '../../microComponents/Input';
-import SecondaryUserButton from '../../microComponents/SecondaryUserButton';
+import PreviousButton from '../../../microComponents/PreviousButton';
+import MainUserButton from '../../../microComponents/MainUserButton';
+import Input from '../../../microComponents/Input';
+import TextButton from '../../../microComponents/TextButton';
 
-import './chat.scss';
+import './KikiVeuContact.scss';
 
-const Chat = () => (
-  <div className="chat">
-    <div className="chat__wrapper">
-      <div className="chat__wrapper__users">
-        <MainUserButton className="mainUserButton" />
-        <MainUserButton className="mainUserButton" />
-        <MainUserButton className="mainUserButton" />
-        <MainUserButton className="mainUserButton" />
-        <MainUserButton className="mainUserButton" />
+const KikiVeuContact = () => (
+  <div className="kikiVeuContact">
+    <div className="kikiVeuContact__wrapper">
+      <div className="kikiVeuContact__wrapper__users">
+        <MainUserButton />
+        <MainUserButton />
+        <MainUserButton />
+        <MainUserButton />
+        <MainUserButton />
       </div>
     </div>
-    <div className="chat__messages">
-      <div className="chat__messages__singleMessage">
-        <SecondaryUserButton className="chat__messages__singleMessage__item1" />
-        <p className="chat__messages__singleMessage__item2">Je suis dispo à partir de 14h avec Mango, ça te dit une balade dans le champ d'à côté ?</p>
-      </div>
+    <div>
+      <TextButton />
+      <Input />
+      <TextButton />
     </div>
     <div className="chat__bottom">
       <PreviousButton />
-      <Input />
+      <TextButton />
     </div>
   </div>
 );
 
-export default Chat;
+export default KikiVeuContact;
