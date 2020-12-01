@@ -27,9 +27,14 @@ class EventController extends AbstractController
     /**
      * @Route("/{id}", name="read", methods={"GET"})
      */
-    public function read(Events $events, EventsRepository $eventsRepository): Response
+    public function read(int $id, EventsRepository $eventsRepository): Response
     {
-        $oneEvent = $eventsRepository->findEventById($events);
+        $oneEvent = $eventsRepository->findEventById($id);
+        
+        if ($oneEvent === null) {
+            throw $this->createNotFoundException('L\'évènement demandé n\'existe plus');
+        }
+
         return $this->json($oneEvent);
     }
 }

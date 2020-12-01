@@ -72,7 +72,7 @@ class EventsRepository extends ServiceEntityRepository
             ->where('e.id = :id')
             ->setParameter('id', $id)
             ->getQuery()
-            ->getResult()
+            ->getOneOrNullResult()
         ;
     }
 
