@@ -7,6 +7,7 @@ import {
 } from 'react-leaflet';
 
 import SecondaryUserButton from '../SecondaryUserButton/index';
+import TextButton from '../TextButton/index';
 
 import './index.scss';
 
@@ -24,9 +25,21 @@ const Map = () => (
       </Marker>
     </MapContainer>
     <div className="map__users">
-      <SecondaryUserButton className="map__users__user" />
-      <SecondaryUserButton className="map__users__user" />
+      <div className="map__users__user">
+        <SecondaryUserButton className="map__users__user" />
+      </div>
+      <div className="map__users__user">
+        <SecondaryUserButton className="map__users__user" />
+      </div>
+      <div className="map__users__user">
+        <SecondaryUserButton className="map__users__user" />
+      </div>
+
     </div>
+    <div className="map__refresh">
+      <TextButton />
+    </div>
+    
   </div>
 );
 

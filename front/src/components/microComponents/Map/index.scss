@@ -23,9 +23,18 @@
 
     &__user { 
       border: solid 2px white;
-      margin-top: 20px;
+      border-radius: 50%;
+      margin-top: 15px;
     }
-  }   
+
+  } 
+  &__refresh {
+    position: absolute;
+    top: 70px;
+    z-index: 10;
+    left: 0;
+    right: 0;
+  } 
 }
 
 
