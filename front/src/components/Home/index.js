@@ -34,12 +34,12 @@ const Home = () => (
           <Switch>
             <Route exact path="/">
               <div className=".item3">
-                <Info className="" />
+                <Info />
               </div>
             </Route>
             <Route exact path="/1">
               <div className=".item3">
-                <KikiVeuContact className="" />
+                <KikiVeuContact />
               </div>
             </Route>
 
