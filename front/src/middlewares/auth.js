@@ -9,11 +9,23 @@ import {
 
 const auth = (store) => (next) => (action) => {
   switch (action.type) {
-    case LOG_IN: {
-      console.log('middleware : login');
-      const { email, password } = store.getState().auth;
-      console.log(email, password);
-    }
+    case LOG_IN:
+      const { auth } = store.getState();
+      axios.post('http://localhost:8000/api/v1/login', {
+        email: auth.email,
+        password: auth.password,
+      }, {
+        withCredentials: true,
+      })
+        .then((response) => {
+        // traitement si réponse est un succès
+          console.log('middleware : login');
+          console.log(response);
+        })
+        .catch((error) => {
+        // traitement si réponse est une erreur
+          console.log('erreur :', error);
+        });
 
       next(action);
       break;
