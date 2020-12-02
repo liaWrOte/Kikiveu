@@ -13,7 +13,7 @@ use Symfony\Component\Validator\Constraints\Email;
 class UserEditType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
-    {
+    {  // TODO checker les contraintes
         $builder
             ->add('email', EmailType::class, [
                 'constraints' => [

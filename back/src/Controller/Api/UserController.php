@@ -32,6 +32,11 @@ class UserController extends AbstractController
     public function read(UsersRepository $usersRepository, $id): Response
     {
         $user = $usersRepository->findById($id);
+
+        if ($user === null) {
+            throw $this->createNotFoundException('L\'utilisateur demandé n\'éxiste plus');
+        }
+
         return dd($this->json($user));
     }
 
@@ -67,7 +72,7 @@ class UserController extends AbstractController
      */
     public function editLocalisation()
     {
-
+        // TODO Faire la fonction LOCALISATION (sur event)
     }
 
     /**
@@ -75,6 +80,7 @@ class UserController extends AbstractController
      */
     public function delete()
     {
+        // TODO Faire la fonction DELETE
         $json = $request->getContent();
     }
 }
