@@ -17,18 +17,18 @@ class UserEditType extends AbstractType
         $builder
             ->add('email', EmailType::class, [
                 'constraints' => [
-                    new Email,
-                    new NotBlank,
+                    new Email(),
+                    new NotBlank(),
                 ],
             ])
             ->add('firstname', null, [
-                'constraints' => new NotBlank,
+                'constraints' => new NotBlank(),
             ])
             ->add('lastname', null, [
-                'constraints' => new NotBlank,
+                'constraints' => new NotBlank(),
             ])
             ->add('pseudo', null, [
-                'constraints' => new NotBlank,
+                'constraints' => new NotBlank(),
             ])
         ;
     }
