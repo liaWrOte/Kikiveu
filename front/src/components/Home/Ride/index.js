@@ -12,7 +12,7 @@ import './ride.scss';
 
 const Ride = () => (
   <div className="ride">
-    <MainUserButton className="mainUserButton" />
+    <MainUserButton className="ride__mainUserButton" />
     <p>
       Une balade folle entre chiots est prévue pour permettre à nos loulous de se défouler !
       Ramenez vos jouets !

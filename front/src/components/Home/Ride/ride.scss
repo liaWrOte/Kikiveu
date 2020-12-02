@@ -1,5 +1,6 @@
 .ride {
-  position: fixed;
+  position: absolute;
+  z-index: 25;
   height: 350px;
   bottom: 0;
   width: 100%;
@@ -18,8 +19,9 @@
     display: flex;
     justify-content: space-evenly;
   }
+
+  &__mainUserButton {
+    margin-top: -60px;
+  }
 }
 
-.mainUserButton {
-  margin-top: -60px;
-}
