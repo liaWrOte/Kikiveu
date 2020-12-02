@@ -38,23 +38,27 @@ class UserController extends AbstractController
     /**
      * @Route("/edit/{id}", name="edit", methods={"PUT"})
      */
-    public function edit(Request $request): Response
+    public function edit(Users $users, Request $request): Response
     {
         $json = $request->getContent();
+        
         $userArray = json_decode($json, true);
 
-        $user = $this->getUser();
+        $form = $this->createForm(UserEditType::class, $users, ['csrf_protection' => false]);
 
-        $form = $this->createForm(UserEditType::class, $user, ['csrf_protection' => false]);
+        $form->submit($request);
 
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
+        if ($form->isValid()) {
 
             $em = $this->getDoctrine()->getManager();
             $em->flush();
 
-            return $this->json($user, 201);
+            return $this->json(201);
+        } else {
+            return $this->json(
+                [
+                'errors' => (string) $form->getErrors(true, false),
+                ], 400);
         }
     }
 
