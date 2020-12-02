@@ -14,7 +14,7 @@ const CreateARide = () => {
   const saveText = 'Enregistrer';
   return (
     <div className="createARide">
-      <MainUserButton className="mainUserButton" />
+      <MainUserButton className="createARide__mainUserButton" />
       <TextButton text={placeCursor} />
       <label htmlFor="description">
         Description de la balade :

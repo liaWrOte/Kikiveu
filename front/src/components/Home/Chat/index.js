@@ -12,11 +12,11 @@ const Chat = () => (
   <div className="chat">
     <div className="chat__wrapper">
       <div className="chat__wrapper__users">
-        <MainUserButton className="mainUserButton" />
-        <MainUserButton className="mainUserButton" />
-        <MainUserButton className="mainUserButton" />
-        <MainUserButton className="mainUserButton" />
-        <MainUserButton className="mainUserButton" />
+        <MainUserButton className="chat__wrapper__users__mainUserButton" />
+        <MainUserButton className="chat__wrapper__users__mainUserButton" />
+        <MainUserButton className="chat__wrapper__users__mainUserButton" />
+        <MainUserButton className="chat__wrapper__users__mainUserButton" />
+        <MainUserButton className="chat__wrapper__users__mainUserButton" />
       </div>
     </div>
     <div className="chat__messages">

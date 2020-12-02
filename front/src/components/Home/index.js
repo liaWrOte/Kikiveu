@@ -60,7 +60,7 @@ const Home = () => (
               </div>
             </Route>
             <Route exact path="/1">
-              <div className=".item3">
+              <div className=".item4">
                 <UserProfile />
               </div>
             </Route>
