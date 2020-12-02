@@ -39,29 +39,56 @@ class UsersRepository extends ServiceEntityRepository implements PasswordUpgrade
     // /**
     //  * @return Users[] Returns an array of Users objects
     //  */
-    /*
-    public function findByExampleField($value)
+    
+    public function findUsersData()
     {
         return $this->createQueryBuilder('u')
-            ->andWhere('u.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('u.id', 'ASC')
-            ->setMaxResults(10)
+            ->select('u.id as userId')
+            ->addSelect('u.firstname as userFirstname')
+            ->addSelect('u.lastname as userLastname')
+            ->addSelect('u.pseudo as userPseudo')
+            ->addSelect('u.password as userPassword') 
+            ->leftjoin('u.dogs', 'd')
+            ->addSelect('d.id as dogId')
+            ->addSelect('d.name as dogName')
+            ->addSelect('d.sex as dogSex')
+            ->addSelect('d.age as dogAge')
+            ->addSelect('d.castrate as dogCastrate')
+            ->addSelect('d.dogCondition')
+            ->leftjoin('d.temperament', 't')
+            ->addSelect('t.id as temperamentId')
+            ->addSelect('t.name as temperamentName')
+            ->addSelect('t.picture as temperamentPicture')
             ->getQuery()
             ->getResult()
         ;
     }
-    */
 
-    /*
-    public function findOneBySomeField($value): ?Users
+
+    
+    public function findById(int $id) 
     {
         return $this->createQueryBuilder('u')
-            ->andWhere('u.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
+        ->select('u.id as userId')
+        ->addSelect('u.firstname as userFirstname')
+        ->addSelect('u.lastname as userLastname')
+        ->addSelect('u.pseudo as userPseudo')
+        ->addSelect('u.password as userPassword') 
+        ->leftjoin('u.dogs', 'd')
+        ->addSelect('d.id as dogId')
+        ->addSelect('d.name as dogName')
+        ->addSelect('d.sex as dogSex')
+        ->addSelect('d.age as dogAge')
+        ->addSelect('d.castrate as dogCastrate')
+        ->addSelect('d.dogCondition')
+        ->leftjoin('d.temperament', 't')
+        ->addSelect('t.id as temperamentId')
+        ->addSelect('t.name as temperamentName')
+        ->addSelect('t.picture as temperamentPicture')
+        ->where('u.id = ' .$id)
+        ->getQuery()
+        ->getResult()
         ;
     }
-    */
+    
 }
