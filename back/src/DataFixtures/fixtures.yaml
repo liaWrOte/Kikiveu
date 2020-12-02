@@ -40,7 +40,7 @@ App\Entity\Events:
         duration: '<numberbetween(1, 5)>'
         description: '<paragraph(5)>'
         slug: '<slug()>'
-        tags: '<numberBetween(1, 15)>x @tags_*'
+        tags: '1x @tags_*'
         users: '@users_*'
         createdAt: '<dateTime()>'
 
