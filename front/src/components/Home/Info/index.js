@@ -13,7 +13,7 @@ const Info = () => (
   <div className="info">
     <PreviousButton />
     <MainUserButton className="info__mainUserButton" />
-    <Link to="/1"><SecondaryUserButton /></Link>
+    <Link to="/creer-balade"><SecondaryUserButton /></Link>
   </div>
 );
 

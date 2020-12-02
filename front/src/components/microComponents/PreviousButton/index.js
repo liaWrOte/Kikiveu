@@ -3,10 +3,13 @@ import { useHistory } from 'react-router-dom';
 
 import './index.scss';
 
-const PreviousButton = () => (
-  <button type="button" onClick={useHistory.goBack} className="previousButton">
-    Back
-  </button>
-);
+const PreviousButton = () => {
+  const history = useHistory();
+  return (
+    <button type="button" onClick={history.goBack} className="previousButton">
+      Back
+    </button>
+  );
+};
 
 export default PreviousButton;

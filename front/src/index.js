@@ -24,3 +24,5 @@ const rootReactElement = (
 const target = document.getElementById('root');
 // 3. Déclenchement du rendu de React (virtuel) => DOM (page web)
 render(rootReactElement, target);
+
+//https://stackoverflow.com/questions/48349138/browserrouter-ignores-the-history-prop

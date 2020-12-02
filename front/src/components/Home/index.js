@@ -11,6 +11,8 @@ import SigninForm from '../SigninForm';
 import SeeOtherUserProfile from './SeeOtherUserProfile';
 import Chat from './Chat';
 import KikiVeuContact from './Chat/KikiVeuContact';
+import CreateARide from './CreateARide';
+import Ride from './Ride';
 
 import './index.scss';
 
@@ -37,9 +39,24 @@ const Home = () => (
                 <Info />
               </div>
             </Route>
-            <Route exact path="/1">
+            <Route exact path="/contact">
               <div className=".item3">
                 <KikiVeuContact />
+              </div>
+            </Route>
+            <Route exact path="/creer-balade">
+              <div className=".item3">
+                <CreateARide />
+              </div>
+            </Route>
+            <Route exact path="/balade/1">
+              <div className=".item3">
+                <Ride />
+              </div>
+            </Route>
+            <Route exact path="/messages/1">
+              <div className=".item3">
+                <Chat />
               </div>
             </Route>
 

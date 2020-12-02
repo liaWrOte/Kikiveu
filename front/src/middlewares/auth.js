@@ -10,10 +10,9 @@ import {
 const auth = (store) => (next) => (action) => {
   switch (action.type) {
     case LOG_IN: {
-        console.log('middleware : login');
-        const { email, password } = store.getState().auth;
-        console.log(email, password);
-
+      console.log('middleware : login');
+      const { email, password } = store.getState().auth;
+      console.log(email, password);
     }
 
       next(action);

@@ -24,6 +24,7 @@ const Login = ({
 
   const loginText = 'Connexion';
   const signInText = 'Je m\'inscris';
+  const mapText = 'Map';
 
   return (
     <div className="login">
@@ -53,6 +54,7 @@ const Login = ({
             Inscription
           </TextButton>
         </Link>
+        <Link to="/"><TextButton text={mapText} /></Link>
       </div>
       <div className="animation">
         <img src="" alt="dogAnimation" />
