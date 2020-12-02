@@ -11,8 +11,8 @@ const auth = (store) => (next) => (action) => {
   switch (action.type) {
     case LOG_IN:
       const { auth } = store.getState();
-      axios.post('http://localhost:8000/api/v1/login', {
-        email: auth.email,
+      axios.post('http://localhost:8000/api/v1/login_check', {
+        username: auth.email,
         password: auth.password,
       }, {
         withCredentials: true,
