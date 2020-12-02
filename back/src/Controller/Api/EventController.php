@@ -11,12 +11,12 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/api/v1/event", name="api_v1_event_", methods={"GET"})
+ * @Route("/api/v1/event", name="api_v1_event_")
  */
 class EventController extends AbstractController
 {
     /**
-     * @Route("/", name="browse")
+     * @Route("/", name="browse", methods={"GET"})
      */
     public function browse(EventsRepository $eventsRepository): Response
     {
