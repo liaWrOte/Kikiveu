@@ -2,13 +2,12 @@
 import React from 'react';
 
 // == Import
-// import Home from '../Home';
- import CreateARide from '../Home/CreateARide';
+import Home from '../Home';
 
 // == Composant
 const App = () => (
   <div className="app">
-    <CreateARide />
+    <Home />
   </div>
 );
 

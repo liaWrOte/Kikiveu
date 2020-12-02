@@ -6,7 +6,7 @@ import Header from '../microComponents/Header';
 import Map from '../microComponents/Map';
 import Info from './Info';
 import UserProfile from './UserProfile';
-import Login from '../Login';
+import Login from '../../containers/Login';
 import SigninForm from '../SigninForm';
 import SeeOtherUserProfile from './SeeOtherUserProfile';
 import Chat from './Chat';
