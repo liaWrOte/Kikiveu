@@ -5,7 +5,7 @@ import {
   LOG_OUT,
   CHECK_LOGGED,
   saveAuthInfo,
-} from 'src/actions/auth';
+} from '../actions/auth';
 
 const auth = (store) => (next) => (action) => {
   switch (action.type) {
