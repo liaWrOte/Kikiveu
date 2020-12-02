@@ -12,4 +12,10 @@ TextButton.propTypes = {
   handleClick: PropTypes.func.isRequired,
 };
 
+TextButton.defaultProps = {
+  text: 'Bouton',
+  handleClick: () => { 
+    return console.log('clic');},
+};
+
 export default TextButton;
