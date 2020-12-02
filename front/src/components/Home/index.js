@@ -54,9 +54,29 @@ const Home = () => (
                 <Ride />
               </div>
             </Route>
-            <Route exact path="/messages/1">
+            <Route exact path="/1/messages">
               <div className=".item3">
                 <Chat />
+              </div>
+            </Route>
+            <Route exact path="/1">
+              <div className=".item3">
+                <UserProfile />
+              </div>
+            </Route>
+            <Route exact path="/2">
+              <div className=".item3">
+                <SeeOtherUserProfile />
+              </div>
+            </Route>
+            <Route exact path="/1/messages/2">
+              <div className=".item3">
+                <Chat />
+              </div>
+            </Route>
+            <Route exact path="/1/messages/kikiveu-contact">
+              <div className=".item3">
+                <KikiVeuContact />
               </div>
             </Route>
 

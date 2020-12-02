@@ -6,6 +6,8 @@ import {
   Popup,
 } from 'react-leaflet';
 
+import { Link } from 'react-router-dom';
+
 import SecondaryUserButton from '../SecondaryUserButton/index';
 import TextButton from '../TextButton/index';
 
@@ -28,15 +30,14 @@ const Map = () => {
       </MapContainer>
       <div className="map__users">
         <div className="map__users__user">
-          <SecondaryUserButton className="map__users__user" />
+          <Link to="/2"><SecondaryUserButton className="map__users__user" /></Link>
         </div>
         <div className="map__users__user">
-          <SecondaryUserButton className="map__users__user" />
+          <Link to="/2"><SecondaryUserButton className="map__users__user" /></Link>
         </div>
         <div className="map__users__user">
-          <SecondaryUserButton className="map__users__user" />
+          <Link to="/2"><SecondaryUserButton className="map__users__user" /></Link>
         </div>
-  
       </div>
       <div className="map__refresh">
         <TextButton text={refresh} />

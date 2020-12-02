@@ -33,7 +33,7 @@ const SeeOtherUserProfile = () => (
     </div>
     <div className="userProfile__bottom">
       <PreviousButton />
-      <TextButton />
+      <Link to="1/messages/2"><TextButton /></Link>
       <div> </div>
     </div>
   </div>
