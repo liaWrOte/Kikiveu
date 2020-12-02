@@ -11,6 +11,7 @@ class EventType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        // TODO Ajouter les contraintes de validation
         $builder
             ->add('name')
             ->add('locate')
