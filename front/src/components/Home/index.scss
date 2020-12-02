@@ -1,0 +1,22 @@
+.home {
+  display: flex;
+  height: 100vh;
+  -webkit-box-orient: vertical;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.item1 {
+  height: 10vh;
+}
+.item2 {
+  height: 60vh;
+}
+.item3 {
+  height: 20vh;
+  z-index:25;
+}

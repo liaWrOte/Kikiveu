@@ -1,0 +1,25 @@
+.ride {
+  position: fixed;
+  height: 350px;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: #FCDEB0;
+  display : flex;
+  justify-content: space-around;
+  align-items: center;
+  &__emoji {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+  }
+  &__bottom {
+    display: flex;
+    justify-content: space-evenly;
+  }
+}
+
+.mainUserButton {
+  margin-top: -60px;
+}
