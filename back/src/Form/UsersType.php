@@ -12,14 +12,12 @@ class UsersType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        // TODO Contrainte Validation
         $builder
             ->add('email')
-            ->add('firstname')
-            ->add('lastname')
             ->add('pseudo')
             ->add('slug')
             ->add('password')
-
         ;
     }
 
