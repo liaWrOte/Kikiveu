@@ -1,0 +1,36 @@
+.signin {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+
+  &__form {
+    width: 100%;
+    margin-top: 2em;
+    text-align: center;
+
+    &__title {
+      text-align: center;
+      font-weight: bold;
+    }
+    &__item {
+      display: flex;
+      flex-direction: column;
+      margin-top: 1em;
+      text-align: center;
+
+      &__label {
+        display: flex;
+        justify-content: center;
+        margin-top: 1em;
+        flex-wrap: wrap;
+      }
+    }
+
+  }
+  .cgu{
+    margin: auto;
+  }
+
+  
+}

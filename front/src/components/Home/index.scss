@@ -1,0 +1,25 @@
+.home {
+
+  height: 100vh;
+}
+
+.item1 {
+  height: 10vh;
+}
+.item2 {
+  height: 60vh;
+}
+.item3 {
+  display: block;
+  width: 100%;
+  position: absolute;
+  height: 20vh;
+  bottom: 0;
+  z-index: 25;
+  margin-top : -20vh;
+}
+
+.item4 {
+  height: 20vh;
+  z-index:25;
+}

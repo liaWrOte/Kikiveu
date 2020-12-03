@@ -1,0 +1,24 @@
+Feels, 01 dogs, 0N moods
+moods : id, name, picture, createdAt, updatedAt
+link user to, 11 comments, 0N users
+comments : id, userId, title, body, eventId, createdAt, updatedAt
+link event to, 11 comments, 0N events
+
+dogs : id, avatar, moodId, userId, dogCondition, sex, characterId, age, castrate, createdAt, updatedAt
+belongs, 1N users, 11 dogs
+users : id, firstname, lastname, pseudo, password, role, slug, createdAt, updatedAt
+organized, 0N users, 11 events
+events : id, name, locate, tagsId, userId, maxParticipant, datetime, duration, description, slug, createdAt, updatedAt
+
+is, 01 dogs, 0N character
+post, 11 message, 0N users
+participate, 1N discussion, 0N users
+discussion: id, title, createdAt
+
+tagged, 0N tags, 1N events
+
+character: id, name, picture
+message: id, title, body, userId, discussionID, createdAt, updatedAt
+belongs to, 1N discussion, 11 message
+:
+tags : id, name, picture, createdAt, updatedAt
