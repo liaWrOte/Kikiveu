@@ -30,6 +30,7 @@ class UserEditType extends AbstractType
             ->add('pseudo', null, [
                 'constraints' => new NotBlank(),
             ])
+            ->add('password')
         ;
     }
 

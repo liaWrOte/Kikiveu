@@ -16,7 +16,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class UserController extends AbstractController
 {
     /**
-     * @Route("", name="browse", methods={"GET"})
+     * @Route("", name="user_browse", methods={"GET"})
      */
     public function browse(UsersRepository $usersRepository): Response
     {
@@ -27,7 +27,7 @@ class UserController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="read", methods={"GET"})
+     * @Route("/{id}", name="user_read", methods={"GET"})
      */
     public function read(UsersRepository $usersRepository, $id): Response
     {
@@ -41,7 +41,7 @@ class UserController extends AbstractController
     }
 
     /**
-     * @Route("/edit/{id}", name="edit", methods={"PUT"})
+     * @Route("/edit/{id}", name="user_edit", methods={"PUT"})
      */
     public function edit(Users $users, Request $request): Response
     {
@@ -70,17 +70,22 @@ class UserController extends AbstractController
     /**
      * @Route("/edit/{id}", name="localisation_edit", methods={"PATCH"})
      */
-    public function editLocalisation()
+    /* public function editLocalisation()
     {
-        // TODO Faire la fonction LOCALISATION (sur event)
-    }
+        TODO Faire la fonction LOCALISATION (sur event)
+    } */
 
     /**
-     * @Route("/delete/{id}", name="DELETE", methods={"DELETE"})
+     * @Route("/delete/{id}", name="user_delete", methods={"DELETE"})
      */
-    public function delete()
+    public function delete(Request $request, Users $users)
     {
+        
         // TODO Faire la fonction DELETE
-        $json = $request->getContent();
+        if ($this->isCsrfTokenValid('delete'.$users->getId(), $request->request->get('_token'))) {
+            $em = $this->getDoctrine()->getManager();
+            $em->remove($users);
+            $em->flush();
+        }
     }
 }
