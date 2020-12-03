@@ -21,10 +21,25 @@ const auth = (store) => (next) => (action) => {
         // traitement si réponse est un succès
           console.log('middleware : login');
           console.log(response);
-        })
-        .catch((error) => {
-        // traitement si réponse est une erreur
-          console.log('erreur :', error);
+        // axios.defaults.headers.common = { Authorization: `Bearer ${response.data.token}` }
+          const config = {
+            headers: { Authorization: `Bearer ${response.data.token}` },
+          };
+
+          axios.get(
+            'http://localhost:8000/api/v1/event',
+            config,
+          )
+            .catch((error) => {
+              console.log(error);
+            })
+            .then((tokenResponse) => {
+              console.log('token');
+              console.log(tokenResponse);
+            })
+            .catch((error) => {
+              console.log(error);
+            });
         });
 
       next(action);
@@ -35,4 +50,5 @@ const auth = (store) => (next) => (action) => {
       next(action);
   }
 };
+       
 export default auth;
