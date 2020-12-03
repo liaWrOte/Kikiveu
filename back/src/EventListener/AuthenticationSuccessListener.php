@@ -13,7 +13,7 @@ class AuthenticationSuccessListener
      */
     public function onAuthenticationSuccessResponse(AuthenticationSuccessEvent $event)
     {
-        // dd($event->getData());
+        // dd($event->getResponse());
         $data = $event->getData(); //token
         $user = $event->getUser(); // récupère les infos de l'utilisateur
         if (!$user instanceof Users) {
