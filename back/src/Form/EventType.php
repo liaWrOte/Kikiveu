@@ -33,8 +33,11 @@ class EventType extends AbstractType
                 'format' => 'dd/MM/yyyy HH:mm',
                 'html5' => false,
             ])
-            // TODO Finir les contraintes
-            ->add('duration')
+            ->add('duration', IntegerType::class, [
+                'constraints' => [
+                    new PositiveOrZero(),
+                ]
+            ])
             ->add('description')
             ->add('slug')
             ->add('tags')
