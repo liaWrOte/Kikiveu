@@ -11,23 +11,23 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/api/v1/user", name="api_v1_")
+ * @Route("/api/v1/user", name="api_v1_user_")
  */
 class UserController extends AbstractController
 {
     /**
-     * @Route("", name="user_browse", methods={"GET"})
+     * @Route("", name="browse", methods={"GET"})
      */
     public function browse(UsersRepository $usersRepository): Response
     {
         
         $users = $usersRepository->findUsersData();
         
-        return dd($this->json($users));
+        return $this->json($users);
     }
 
     /**
-     * @Route("/{id}", name="user_read", methods={"GET"})
+     * @Route("/{id}", name="read", methods={"GET"}, requirements={"id" = "\d+"})
      */
     public function read(UsersRepository $usersRepository, $id): Response
     {
@@ -37,11 +37,11 @@ class UserController extends AbstractController
             throw $this->createNotFoundException('L\'utilisateur demandé n\'éxiste plus');
         }
 
-        return dd($this->json($user));
+        return $this->json($user);
     }
 
     /**
-     * @Route("/edit/{id}", name="user_edit", methods={"PUT"})
+     * @Route("/edit/{id}", name="edit", methods={"POST"}, requirements={"id" = "\d+"})
      */
     public function edit(Users $users, Request $request): Response
     {
@@ -51,14 +51,14 @@ class UserController extends AbstractController
 
         $form = $this->createForm(UserEditType::class, $users, ['csrf_protection' => false]);
 
-        $form->submit($request);
+        $form->submit($userArray);
 
         if ($form->isValid()) {
-
+            $users->setUpdatedAt(new \DateTime());
             $em = $this->getDoctrine()->getManager();
             $em->flush();
 
-            return $this->json(201);
+            return $this->json($users, 200);
         } else {
             return $this->json(
                 [
@@ -68,24 +68,15 @@ class UserController extends AbstractController
     }
 
     /**
-     * @Route("/edit/{id}", name="localisation_edit", methods={"PATCH"})
+     * @Route("/delete/{id}", name="delete", methods={"DELETE"}, requirements={"id" = "\d+"})
      */
-    /* public function editLocalisation()
+    public function delete(Request $request, Users $users): Response
     {
-        TODO Faire la fonction LOCALISATION (sur event)
-    } */
-
-    /**
-     * @Route("/delete/{id}", name="user_delete", methods={"DELETE"})
-     */
-    public function delete(Request $request, Users $users)
-    {
-        
+        // dd($request);
         // TODO Faire la fonction DELETE
-        if ($this->isCsrfTokenValid('delete'.$users->getId(), $request->request->get('_token'))) {
-            $em = $this->getDoctrine()->getManager();
-            $em->remove($users);
-            $em->flush();
-        }
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($users);
+        $em->flush();
+        return $this->json(200);
     }
 }
