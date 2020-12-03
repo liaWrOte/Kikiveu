@@ -15,6 +15,7 @@ import './index.scss';
 
 const Map = () => {
   const refresh = 'Rafraîchir la carte';
+
   return (
     <div className="map">
       <MapContainer className="map__component" center={[51.505, -0.09]} zoom={13} scrollWheelZoom={false}>
