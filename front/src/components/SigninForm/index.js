@@ -25,6 +25,12 @@ const SigninForm = ({
   changeField,
   handleSignin,
 }) => {
+  const checkSelect = (event) => {
+    const target = event.target;
+    const value = target.type === 'checkbox' ? target.checked : target.value;
+    const name = target.name;
+  };
+
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log('signin');
@@ -66,20 +72,22 @@ const SigninForm = ({
           <label htmlFor="dogSex">
             3. Est-ce un mâle ou une femelle ?
             <div className="signin__form__item__label">
-              <label htmlFor="male">
+              <label htmlFor={sex}>
                 <Emoji />
                 <input
                   type="checkbox"
+                  onChange={changeField}
+                  value={sex}
                   name="male"
-                  id="male"
                 />
               </label>
-              <label htmlFor="female">
+              <label htmlFor={sex}>
                 <Emoji />
                 <input
                   type="checkbox"
+                  onChange={changeField}
+                  value={sex}
                   name="female"
-                  id="female"
                 />
 
               </label>
