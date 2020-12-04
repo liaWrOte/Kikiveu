@@ -3,13 +3,16 @@
 namespace App\Form;
 
 use App\Entity\Events;
+use App\Form\TagsType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints\PositiveOrZero;
+use Symfony\Component\Validator\Constraints\Regex;
 
 class EventType extends AbstractType
 {
@@ -39,8 +42,15 @@ class EventType extends AbstractType
                 ]
             ])
             ->add('description')
-            ->add('slug')
-            ->add('tags')
+            ->add('slug', null, [
+                'constraints' => [
+                    // new Regex("^[a-z]+-?[a-z]+"),
+                ]
+            ])
+            ->add('tags', CollectionType::class, [
+                'entry_type' => TagsType::class,
+                'entry_options' => ['label' => false],
+            ])
         ;
     }
 
