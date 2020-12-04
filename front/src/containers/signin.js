@@ -1,22 +1,22 @@
 import { connect } from 'react-redux';
 
-import SignInForm from '../../components/Login';
+import SigninForm from '../components/SigninForm';
 
-import { updateAuthField, logIn, logOut } from '../../actions/auth';
+import { updateAuthField, logIn, logOut } from '../actions/signin';
 
 const mapStateToProps = (state) => ({
   // nom de la prop à remplir: donnée à récupérer dans le state
-  dogsNumber: state.SignInForm.dogsNumber,
-  dogName: state.SignInForm.dogName,
-  sex: state.SignInForm.sex,
-  age: state.SignInForm.age,
-  castrate: state.SignInForm.castrate,
-  dogCondition: state.SignInForm.dogCondition,
-  character: state.SignInForm.character,
-  username: state.SignInForm.pseudo,
-  avatar: state.SignInForm.avatar,
-  email: state.SignInForm.email,
-  password: state.SignInForm.password,
+  dogsNumber: state.signinReducer.dogsNumber,
+  dogName: state.signinReducer.dogName,
+  sex: state.signinReducer.sex,
+  age: state.signinReducer.age,
+  castrate: state.signinReducer.castrate,
+  dogCondition: state.signinReducer.dogCondition,
+  character: state.signinReducer.character,
+  username: state.signinReducer.pseudo,
+  avatar: state.signinReducer.avatar,
+  email: state.signinReducer.email,
+  password: state.signinReducer.password,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -37,4 +37,4 @@ const mapDispatchToProps = (dispatch) => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(SignInForm);
+)(SigninForm);

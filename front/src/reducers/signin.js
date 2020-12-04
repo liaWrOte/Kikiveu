@@ -5,25 +5,25 @@ import {
 } from '../actions/signin';
 
 const initialState = {
-  dogsNumber: 0,
-  dogName: '',
+  dogsNumber: 1,
+  dogName: 'Marla',
   sex: '',
   age: '',
   castrate: '',
   dogCondition: '',
   character: {
-    dominant: '',
-    timide: '',
-    peureux: '',
-    player: '',
-    independant: '',
-    sociable: '',
-    aboyeur: '',
-    possessif: '',
-    curieux: '',
-    enApprentissage: '',
-    equilibre: '',
-    distrait: '',
+    dominant: 0,
+    timide: 0,
+    peureux: 0,
+    player: 0,
+    independant: 0,
+    sociable: 0,
+    aboyeur: 0,
+    possessif: 0,
+    curieux: 0,
+    enApprentissage: 0,
+    equilibre: 0,
+    distrait: 0,
   },
   username: '',
   avatar: '/front/src/assets/imagesdog_profile.jpg/',
@@ -31,7 +31,7 @@ const initialState = {
   password: '',
 };
 
-const signin = (state = initialState, action = {}) => {
+const signinReducer = (state = initialState, action = {}) => {
   switch (action.type) {
     case UPDATE_AUTH_FIELD:
       console.log(`Action reçue, nouvelle valeur ${action.value} pour le champ ${action.name}`);
@@ -71,4 +71,4 @@ const signin = (state = initialState, action = {}) => {
   }
 };
 
-export default signin;
+export default signinReducer;

@@ -16,32 +16,26 @@ const SigninForm = ({
   age,
   castrate,
   dogCondition,
-  character = {
-    dominant,
-    timide,
-    peureux,
-    player,
-    independant,
-    sociable,
-    aboyeur,
-    possessif,
-    curieux,
-    enApprentissage,
-    equilibre,
-    distrait,
-  },
+  character,
   username,
   avatar,
   email,
   password,
+  changeField,
+
 }) => {
-  const a = a;
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log('signin');
+    console.log(dogsNumber);
+    console.log(dogName);
+  };
 
   return (
     <div className="signin">
       <div className="signin__img"><img src="" alt="screenshotApp" /></div>
 
-      <form autoComplete="off" className="signin__form">
+      <form autoComplete="off" className="signin__form" onSubmit={handleSubmit}>
         <h2 className="signin__form__title">Rejoindre KikiVeu</h2>
         <div className="signin__form__item">
           <label htmlFor="nbDogs">
@@ -49,6 +43,8 @@ const SigninForm = ({
 
             <Input
               name="nbDogs"
+              onChange={changeField}
+              value={dogsNumber}
             />
           </label>
         </div>
@@ -348,6 +344,7 @@ const SigninForm = ({
         <TextButton
           type="submit"
           className="login-form-button"
+          onClick={handleSubmit}
         >
           Je m'inscris
         </TextButton>

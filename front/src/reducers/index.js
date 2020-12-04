@@ -9,7 +9,7 @@ import signinReducer from './signin';
 // chaque reducer
 const rootReducer = combineReducers({
   auth: authReducer,
-  signin: signinReducer,
+  signinReducer,
   // etc
 });
 export default rootReducer;
