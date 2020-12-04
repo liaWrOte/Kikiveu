@@ -5,6 +5,7 @@ namespace App\Controller\Api;
 use App\Entity\Events;
 use App\Form\EventType;
 use App\Repository\EventsRepository;
+use App\Repository\TagsRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
@@ -64,6 +65,34 @@ class EventController extends AbstractController
                 ],
                 400
             );
+        }
+    }
+
+    /**
+     * @Route("/add", name="add", methods={"POST"})
+     */
+    public function add(Request $request, TagsRepository $tagsRepository): Response
+    {
+        $json = $request->getContent();
+        $eventArray = json_decode($json, true);
+
+        $event = new Events();
+        $tagsArray = $eventArray['tags'];
+        foreach ($tagsArray as $tagArray) {
+            foreach ($tagArray as $tagId) {
+                $tag = $tagsRepository->find($tagId);
+                $event->addTag($tag);
+            }
+        }
+        
+        $form = $this->createForm(EventType::class, $event, ['csrf_protection' => false]);
+        $form->submit($eventArray);
+        
+        if ($form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($event);
+            $em->flush();
+            return $this->json($event);
         }
     }
 }

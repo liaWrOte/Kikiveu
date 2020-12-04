@@ -28,7 +28,6 @@ class MainController extends AbstractController
         $form = $this->createForm(UsersType::class, $user, ['csrf_protection' => false]);
         $form->submit($newUserArray);
         // TODO Voir pour le slug !!!
-        // TODO Voir contrainte pour le form
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $password = $form->get('password')->getData();
