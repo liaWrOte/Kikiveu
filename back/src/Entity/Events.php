@@ -241,6 +241,12 @@ class Events
         return $this;
     }
 
+    public function addTags(Tags $tags): self
+    {
+        $this->tags->add($tags);
+        return $this;
+    }
+
     /**
      * @return Collection|Tags[]
      */

@@ -44,11 +44,13 @@ class EventType extends AbstractType
             ->add('description')
             ->add('slug', null, [
                 'constraints' => [
-                    // new Regex("^[a-z]+-?[a-z]+"),
+                    new Regex("#^[a-z]+-?[a-z]+$#"),
                 ]
             ])
             ->add('tags', CollectionType::class, [
                 'entry_type' => TagsType::class,
+                'allow_add' => true,
+                'by_reference' => false,
             ])
         ;
     }
