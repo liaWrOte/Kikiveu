@@ -46,9 +46,9 @@ const auth = (state = initialState, action = {}) => {
       };
 
     case LOG_OUT:
-      // on vide les recettes préférées
       return {
         ...state,
+        isLogged: false,
       };
 
     default: return { ...state };
