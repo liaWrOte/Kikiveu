@@ -1,5 +1,5 @@
 // ici on stocke notre apiURL
 
-const apiUrl = process.env.REACT_APP_API_URL;
+const apiUrl = 'http://ec2-54-90-26-216.compute-1.amazonaws.com/api';
 
 export default apiUrl;

@@ -7,14 +7,13 @@ import {
   saveAuthInfo,
 } from '../actions/auth';
 
-//import apiUrl from './env';
-const apiUrl = `${process.env.REACT_APP_API_URL}api/v1`;
+// import apiUrl from './env';
 
 const auth = (store) => (next) => (action) => {
   switch (action.type) {
     case LOG_IN:
       const { auth } = store.getState();
-      axios.post(`'${apiUrl}/login_check'`, {
+      axios.post('http://localhost:8000/api/v1/login_check', {
         username: auth.email,
         password: auth.password,
       }, {
@@ -24,7 +23,7 @@ const auth = (store) => (next) => (action) => {
         // traitement si réponse est un succès
           console.log('middleware : login');
           console.log(response);
-        // axios.defaults.headers.common = { Authorization: `Bearer ${response.data.token}` }
+          // axios.defaults.headers.common = { Authorization: `Bearer ${response.data.token}` }
           const config = {
             headers: { Authorization: `Bearer ${response.data.token}` },
           };
