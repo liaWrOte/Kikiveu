@@ -13,7 +13,7 @@ const mapStateToProps = (state) => ({
   castrate: state.signinReducer.castrate,
   dogCondition: state.signinReducer.dogCondition,
   character: state.signinReducer.character,
-  username: state.signinReducer.pseudo,
+  username: state.signinReducer.username,
   avatar: state.signinReducer.avatar,
   email: state.signinReducer.email,
   password: state.signinReducer.password,

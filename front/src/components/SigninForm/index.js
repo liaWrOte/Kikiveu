@@ -29,6 +29,7 @@ const SigninForm = ({
     console.log('signin');
     console.log(dogsNumber);
     console.log(dogName);
+    handleSignin();
   };
 
   return (
@@ -364,20 +365,7 @@ SigninForm.propTypes = {
   castrate: PropTypes.bool.isRequired,
   dogCondition: PropTypes.number.isRequired,
   character: PropTypes.arrayOf(
-    PropTypes.shape({
-      dominant: PropTypes.bool.isRequired,
-      timide: PropTypes.bool.isRequired,
-      peureux: PropTypes.bool.isRequired,
-      player: PropTypes.bool.isRequired,
-      independant: PropTypes.bool.isRequired,
-      sociable: PropTypes.bool.isRequired,
-      aboyeur: PropTypes.bool.isRequired,
-      possessif: PropTypes.bool.isRequired,
-      curieux: PropTypes.bool.isRequired,
-      enApprentissage: PropTypes.bool.isRequired,
-      equilibre: PropTypes.bool.isRequired,
-      distrait: PropTypes.bool.isRequired,
-    }).isRequired,
+    PropTypes.number.isRequired,
   ).isRequired,
   username: PropTypes.string.isRequired,
   avatar: PropTypes.string.isRequired,
