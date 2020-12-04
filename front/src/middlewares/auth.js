@@ -7,13 +7,13 @@ import {
   saveAuthInfo,
 } from '../actions/auth';
 
-// import apiUrl from './env';
+import apiUrl from './env';
 
 const auth = (store) => (next) => (action) => {
   switch (action.type) {
     case LOG_IN:
       const { auth } = store.getState();
-      axios.post('http://localhost:8000/api/v1/login_check', {
+      axios.post(`${apiUrl}/login_check`, {
         username: auth.email,
         password: auth.password,
       }, {
@@ -31,7 +31,7 @@ const auth = (store) => (next) => (action) => {
           };
 
           axios.get(
-            'http://localhost:8000/api/v1/event',
+            `${apiUrl}/event`,
             config,
           )
             .catch((error) => {
