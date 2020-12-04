@@ -5,30 +5,30 @@ import {
 } from '../actions/auth';
 
 const initialState = {
-  id: '1',
-  username: '',
-  password: '',
-  dogs: {
-    '': {
-      sex: '',
-      age: '',
-      castrate: '',
-      dogCondition: '',
-    },
-    character: [
-      '',
-      '',
-      '',
-      '',
-      '',
-      '',
-      '',
-      '',
-      '',
-      '',
-      '',
-    ],
+  dogsNumber: '',
+  dogName: '',
+  sex: '',
+  age: '',
+  castrate: '',
+  dogCondition: '',
+  character: {
+    dominant: '',
+    timide: '',
+    peureux: '',
+    player: '',
+    independant: '',
+    sociable: '',
+    aboyeur: '',
+    possessif: '',
+    curieux: '',
+    enApprentissage: '',
+    equilibre: '',
+    distrait: '',
   },
+  pseudo: '',
+  avatar: '',
+  email: '',
+  password: '',
 };
 
 const auth = (state = initialState, action = {}) => {
