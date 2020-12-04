@@ -49,7 +49,6 @@ class EventType extends AbstractType
             ])
             ->add('tags', CollectionType::class, [
                 'entry_type' => TagsType::class,
-                'entry_options' => ['label' => false],
             ])
         ;
     }

@@ -87,6 +87,7 @@ class EventController extends AbstractController
         
         $form = $this->createForm(EventType::class, $event, ['csrf_protection' => false]);
         $form->submit($eventArray);
+        dd($event);
         
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
