@@ -18,19 +18,7 @@ const initialState = {
 const auth = (state = initialState, action = {}) => {
   switch (action.type) {
     case UPDATE_AUTH_FIELD:
-      console.log(`Action reçue, nouvelle valeur ${action.value} pour le champ ${action.name}`);
-
-      /* si action.name vaut 'email' alors
-        return {
-          ...state,
-          email: action.value
-        };
-      si action.name vaut 'password' alors
-        return {
-          ...state,
-          password: action.value
-        };
-      */
+      // console.log(`Action reçue, nouvelle valeur ${action.value} pour le champ ${action.name}`);
       return {
         ...state,
         // je veux prendre le contenu de action.name et utiliser ça comme nom
