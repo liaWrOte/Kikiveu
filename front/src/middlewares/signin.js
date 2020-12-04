@@ -2,18 +2,18 @@ import {
   UPDATE_AUTH_FIELD,
   SAVE_AUTH_INFO,
   LOG_OUT,
-} from '../../src/actions/auth';
+} from '../actions/auth';
 
 const initialState = {
   id: '1',
-  username: 'Marla',
-  password: 'marla',
+  username: '',
+  password: '',
   dogs: {
     '': {
-      sex: '1',
-      age: '6 mois',
-      castrate: '1',
-      dogCondition: '1',
+      sex: '',
+      age: '',
+      castrate: '',
+      dogCondition: '',
     },
     character: [
       '',
