@@ -20,9 +20,10 @@ const SigninForm = ({
   username,
   avatar,
   email,
-  password,
+  password1,
+  password2,
   changeField,
-
+  handleSignin,
 }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -55,7 +56,9 @@ const SigninForm = ({
 
             <Input
               name="dogName"
+              onChange={changeField}
               id="dogName"
+              value={dogName}
             />
           </label>
         </div>
@@ -90,6 +93,8 @@ const SigninForm = ({
               type="text"
               name="age"
               id="age"
+              value={age}
+              onChange={changeField}
             />
           </label>
         </div>
@@ -298,7 +303,9 @@ const SigninForm = ({
           </label>
           <Input
             name="pseudo"
+            onChange={changeField}
             id="username"
+            value={username}
           />
         </div>
         <div className="signin__form__item">
@@ -320,25 +327,30 @@ const SigninForm = ({
           </label>
           <Input
             name="email"
+            onChange={changeField}
             id="email"
           />
         </div>
         <div className="signin__form__item">
-          <label htmlFor="password">
+          <label htmlFor="password1">
             12. Veuillez choisir un mot de passe
           </label>
           <Input
-            name="password"
-            id="password"
+            name="password1"
+            onChange={changeField}
+            id="password1"
+            value={password1}
           />
         </div>
         <div className="signin__form__item">
-          <label htmlFor="password">
+          <label htmlFor="password2">
             13. Veuillez confirmer votre mot de passe
           </label>
           <Input
-            name="password"
-            id="password"
+            name="password2"
+            onChange={changeField}
+            id="password2"
+            value={password2}
           />
         </div>
         <p>Vous allez recevoir un email de confirmation d'inscription. Veuillez l'accepter.</p>
@@ -357,20 +369,36 @@ const SigninForm = ({
 
 // PropTypes
 
-SigninForm.propTypes = {
-  dogsNumber: PropTypes.number.isRequired,
-  dogName: PropTypes.string.isRequired,
-  sex: PropTypes.number.isRequired,
-  age: PropTypes.number.isRequired,
-  castrate: PropTypes.bool.isRequired,
-  dogCondition: PropTypes.number.isRequired,
+SigninForm.defaultProps = {
+  dogsNumber: null,
+  dogName: '',
+  sex: null,
+  age: null,
+  castrate: null,
+  dogCondition: null,
   character: PropTypes.arrayOf(
-    PropTypes.number.isRequired,
-  ).isRequired,
-  username: PropTypes.string.isRequired,
-  avatar: PropTypes.string.isRequired,
-  email: PropTypes.string.isRequired,
-  password: PropTypes.string.isRequired,
+    null,
+  ),
+  username: '',
+  avatar: '',
+  email: '',
+  password: '',
+};
+
+SigninForm.propTypes = {
+  dogsNumber: PropTypes.number,
+  dogName: PropTypes.string,
+  sex: PropTypes.number,
+  age: PropTypes.number,
+  castrate: PropTypes.bool,
+  dogCondition: PropTypes.number,
+  character: PropTypes.arrayOf(
+    PropTypes.number,
+  ),
+  username: PropTypes.string,
+  avatar: PropTypes.string,
+  email: PropTypes.string,
+  password: PropTypes.string,
 };
 
 export default SigninForm;

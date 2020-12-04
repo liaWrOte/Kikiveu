@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 
 import SigninForm from '../components/SigninForm';
 
-import { updateAuthField, logIn, logOut } from '../actions/signin';
+import { updateAuthField, signin, logOut } from '../actions/signin';
 
 const mapStateToProps = (state) => ({
   // nom de la prop à remplir: donnée à récupérer dans le state
@@ -16,7 +16,8 @@ const mapStateToProps = (state) => ({
   username: state.signinReducer.username,
   avatar: state.signinReducer.avatar,
   email: state.signinReducer.email,
-  password: state.signinReducer.password,
+  password1: state.signinReducer.password1,
+  password2: state.signinReducer.password2,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -25,9 +26,9 @@ const mapDispatchToProps = (dispatch) => ({
     // console.log(`Nouvelle valeur ${newValue} pour le champ ${name}`);
     dispatch(updateAuthField(newValue, name));
   },
-  handleLogin: () => {
+  handleSignIn: () => {
     // console.log('handleLogin');
-    dispatch(logIn());
+    dispatch(signin());
   },
   handleLogout: () => {
     dispatch(logOut());

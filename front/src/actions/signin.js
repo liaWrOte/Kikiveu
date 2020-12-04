@@ -1,5 +1,5 @@
 export const UPDATE_AUTH_FIELD = 'UPDATE_AUTH_FIELD';
-export const LOG_IN = 'LOG_IN';
+export const SIGN_IN = 'SIGN_IN';
 export const LOG_OUT = 'LOG_OUT';
 export const SAVE_AUTH_INFO = 'SAVE_AUTH_INFO';
 export const CHECK_LOGGED = 'CHECK_LOGGED';
@@ -10,8 +10,9 @@ export const updateAuthField = (value, name) => ({
   name,
 });
 
-export const logIn = () => ({
-  type: LOG_IN,
+export const signin = (value) => ({
+  type: SIGN_IN,
+  value,
 });
 
 export const logOut = () => ({

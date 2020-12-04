@@ -2,11 +2,12 @@ import {
   UPDATE_AUTH_FIELD,
   SAVE_AUTH_INFO,
   LOG_OUT,
+  SIGN_IN,
 } from '../actions/signin';
 
 const initialState = {
   dogsNumber: null,
-  dogName: 'Marla',
+  dogName: '',
   sex: 0,
   age: 0,
   castrate: false,
@@ -14,10 +15,12 @@ const initialState = {
   character: [
     0, 0, 0, 0, 0,
   ],
-  username: 'Kiki',
+  username: '',
   avatar: '/front/src/assets/imagesdog_profile.jpg/',
   email: '',
-  password: '',
+  password1: '',
+  password2: '',
+  signedIn: false,
 };
 
 const signinReducer = (state = initialState, action = {}) => {
@@ -48,6 +51,13 @@ const signinReducer = (state = initialState, action = {}) => {
         ...state,
         isLogged: action.isLogged,
         nickname: action.nickname,
+      };
+
+    case SIGN_IN:
+      // on vide les recettes préférées
+      return {
+        ...state,
+        signedIn: action.value,
       };
 
     case LOG_OUT:
