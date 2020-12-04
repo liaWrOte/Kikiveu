@@ -1,74 +1,38 @@
+import axios from 'axios';
+
 import {
-  UPDATE_AUTH_FIELD,
-  SAVE_AUTH_INFO,
+  LOG_IN,
   LOG_OUT,
+  CHECK_LOGGED,
+  saveAuthInfo,
 } from '../actions/auth';
 
-const initialState = {
-  dogsNumber: '',
-  dogName: '',
-  sex: '',
-  age: '',
-  castrate: '',
-  dogCondition: '',
-  character: {
-    dominant: '',
-    timide: '',
-    peureux: '',
-    player: '',
-    independant: '',
-    sociable: '',
-    aboyeur: '',
-    possessif: '',
-    curieux: '',
-    enApprentissage: '',
-    equilibre: '',
-    distrait: '',
-  },
-  pseudo: '',
-  avatar: '',
-  email: '',
-  password: '',
-};
-
-const auth = (state = initialState, action = {}) => {
+const auth = (store) => (next) => (action) => {
   switch (action.type) {
-    case UPDATE_AUTH_FIELD:
-      console.log(`Action reçue, nouvelle valeur ${action.value} pour le champ ${action.name}`);
+    case LOG_IN:
+      const { auth } = store.getState();
+      axios.post('http://localhost:8000/api/v1/login_check', {
+        username: auth.email,
+        password: auth.password,
+      }, {
+        withCredentials: true,
+      })
+        .then((response) => {
+        // traitement si réponse est un succès
+          console.log('middleware : login');
+          console.log(response);
+        })
+        .catch((error) => {
+        // traitement si réponse est une erreur
+          console.log('erreur :', error);
+        });
 
-      /* si action.name vaut 'email' alors
-        return {
-          ...state,
-          email: action.value
-        };
-      si action.name vaut 'password' alors
-        return {
-          ...state,
-          password: action.value
-        };
-      */
-      return {
-        ...state,
-        // je veux prendre le contenu de action.name et utiliser ça comme nom
-        // de propriété
-        [action.name]: action.value,
-      };
+      next(action);
+      break;
 
-    case SAVE_AUTH_INFO:
-      return {
-        ...state,
-        isLogged: action.isLogged,
-        nickname: action.nickname,
-      };
-
-    case LOG_OUT:
-      // on vide les recettes préférées
-      return {
-        ...state,
-      };
-
-    default: return { ...state };
+    default:
+      // on passe l'action au suivant (middleware suivant ou reducer)
+      next(action);
   }
 };
-
 export default auth;

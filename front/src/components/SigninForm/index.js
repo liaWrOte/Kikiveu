@@ -30,7 +30,7 @@ const SigninForm = ({
     equilibre,
     distrait,
   },
-  pseudo,
+  username,
   avatar,
   email,
   password,
@@ -46,19 +46,21 @@ const SigninForm = ({
         <div className="signin__form__item">
           <label htmlFor="nbDogs">
             1. Combien de chiens avez-vous ?
+
+            <Input
+              name="nbDogs"
+            />
           </label>
-          <Input
-            name="nbDogs"
-          />
         </div>
         <div className="signin__form__item">
           <label htmlFor="dogName">
             2. Comment s'appelle votre chien ?
+
+            <Input
+              name="dogName"
+              id="dogName"
+            />
           </label>
-          <Input
-            name="dogName"
-            id="dogName"
-          />
         </div>
         <div className="signin__form__item">
           <label htmlFor="dogSex">
@@ -85,13 +87,14 @@ const SigninForm = ({
           </label>
         </div>
         <div className="signin__form__item">
-          <label htmlFor="dogAge">
+          <label htmlFor="age">
             4. Quel âge a-t-il ?
+            <Input
+              type="text"
+              name="age"
+              id="age"
+            />
           </label>
-          <Input
-            name="dogAge"
-            id="dogAge"
-          />
         </div>
         <div className="signin__form__item">
           <label htmlFor="dogCastrated">
@@ -122,12 +125,12 @@ const SigninForm = ({
           <label htmlFor="dogShape">
             6. Comment décrirez-vous son état de santé général ?
             <div className="signin__form__item__label">
-              <label htmlFor="badShape">
+              <label htmlFor="goodShape">
                 <Emoji />
                 <input
                   type="checkbox"
-                  name="badShape"
-                  id="badShape"
+                  name="goodShape"
+                  id="goodShape"
                 />
                 Mauvaise condition physique
               </label>
@@ -140,12 +143,12 @@ const SigninForm = ({
                 />
                 Condition physique moyenne
               </label>
-              <label htmlFor="goodShape">
+              <label htmlFor="badShape">
                 <Emoji />
                 <input
                   type="checkbox"
-                  name="goodShape"
-                  id="goodShape"
+                  name="badShape"
+                  id="badShape"
                 />
                 Bonne condition physique
               </label>
@@ -293,12 +296,12 @@ const SigninForm = ({
           </label>
         </div>
         <div className="signin__form__item">
-          <label htmlFor="pseudo">
+          <label htmlFor="username">
             9. Veuillez entrer un pseudo
           </label>
           <Input
             name="pseudo"
-            id="pseudo"
+            id="username"
           />
         </div>
         <div className="signin__form__item">
@@ -379,7 +382,7 @@ SigninForm.propTypes = {
       distrait: PropTypes.bool.isRequired,
     }).isRequired,
   ).isRequired,
-  pseudo: PropTypes.string.isRequired,
+  username: PropTypes.string.isRequired,
   avatar: PropTypes.string.isRequired,
   email: PropTypes.string.isRequired,
   password: PropTypes.string.isRequired,

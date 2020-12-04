@@ -6,17 +6,17 @@ import { updateAuthField, logIn, logOut } from '../../actions/auth';
 
 const mapStateToProps = (state) => ({
   // nom de la prop à remplir: donnée à récupérer dans le state
-  dogsNumber : state.SignInForm.dogsNumber,
-  dogName : state.SignInForm.dogName,
-  sex : state.SignInForm.sex,
-  age : state.SignInForm.age,
-  castrate : state.SignInForm.castrate,
-  dogCondition : state.SignInForm.dogCondition,
-  character : state.SignInForm.character,
-  pseudo : state.SignInForm.pseudo,
-  avatar : state.SignInForm.avatar,
-  email : state.SignInForm.email,
-  password : state.SignInForm.password,
+  dogsNumber: state.SignInForm.dogsNumber,
+  dogName: state.SignInForm.dogName,
+  sex: state.SignInForm.sex,
+  age: state.SignInForm.age,
+  castrate: state.SignInForm.castrate,
+  dogCondition: state.SignInForm.dogCondition,
+  character: state.SignInForm.character,
+  username: state.SignInForm.pseudo,
+  avatar: state.SignInForm.avatar,
+  email: state.SignInForm.email,
+  password: state.SignInForm.password,
 });
 
 const mapDispatchToProps = (dispatch) => ({
