@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 
 import Input from '../microComponents/Input';
 import TextButton from '../microComponents/TextButton';
+import logo from '../../assets/images/logo.png';
 
 import './index.scss';
 
@@ -21,13 +22,15 @@ const Login = ({
     handleLogin();
   };
 
+
   const loginText = 'Connexion';
   const signInText = 'Je m\'inscris';
   const mapText = 'Map';
 
   return (
     <div className="login">
-      <div className="login__img"><img src="" alt="logoKikiVeu" /></div>
+      <div className="login__img"><img src={logo} alt="logoKikiVeu" /></div>
+      <h2>Les balades canines près de chez vous</h2>
       <form autoComplete="off" className="login__form" onSubmit={handleSubmit}>
         <Input
           name="email"
