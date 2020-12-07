@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Redirect } from 'react';
 // import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
@@ -14,7 +14,6 @@ const Login = ({
   password,
   changeField,
   handleLogin,
-  handleLogout,
   isLogged,
 }) => {
   const handleSubmit = (event) => {
