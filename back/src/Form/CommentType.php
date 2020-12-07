@@ -24,18 +24,18 @@ class CommentType extends AbstractType
             ->add('body', TextareaType::class, [
                 'constraints' => new NotBlank()
             ])
-            ->add('users', CollectionType::class, [
+            ->add('userId', CollectionType::class, [
                 'entry_type' => EntityType::class,
                 'entry options' => ['class' => Users::class],
                 'allow add' => true,
                 'by_reference' => false,
             ])
-            ->add('events', CollectionType::class, [
+           /*  ->add('eventId', CollectionType::class, [
                 'entry_type' => EntityType::class,
                 'entry options' => ['class' => Events::class],
                 'allow add' => true,
                 'by_reference' => false,
-            ])
+            ]) */
         ;
     }
 

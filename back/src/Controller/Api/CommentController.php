@@ -3,6 +3,7 @@
 namespace App\Controller\Api;
 
 use App\Entity\Comments;
+use App\Form\CommentType;
 use App\Repository\CommentsRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -41,8 +42,9 @@ class CommentController extends AbstractController
 
         $comment = new Comments();
 
-        $form = $this->createForm(CommentsType::class, $comment, ['csrf_protection' => false]);
+        $form = $this->createForm(CommentType::class, $comment, ['csrf_protection' => false]);
         $form->submit($commentArray);
+        dd($form);
         
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
