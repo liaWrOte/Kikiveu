@@ -14,9 +14,9 @@ import female from '../../assets/images/sex/female_sex.png';
 import male from '../../assets/images/sex/male_sex.png';
 
 // shapes
-import smallShape from '../../assets/images/shape/small_shape_health.png';
-import mediumShape from '../../assets/images/shape/medium_shape_health.png';
-import goodShape from '../../assets/images/shape/good_shape_health.png';
+import smallShape from '../../assets/images/shape/small_shape.png';
+import mediumShape from '../../assets/images/shape/medium_shape.png';
+import goodShape from '../../assets/images/shape/good_shape.png';
 
 // characters
 import balanced from '../../assets/images/character/balanced_character.png';
