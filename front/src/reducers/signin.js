@@ -10,7 +10,7 @@ const initialState = {
   dogName: '',
   sex: 0,
   age: 0,
-  castrate: false,
+  castrate: 0,
   dogCondition: 0,
   character: [
     0, 0, 0, 0, 0,

@@ -26,9 +26,9 @@ const SigninForm = ({
   handleSignin,
 }) => {
   const checkSelect = (event) => {
-    const target = event.target;
+    const { target } = event;
     const value = target.type === 'checkbox' ? target.checked : target.value;
-    const name = target.name;
+    const { name } = target;
   };
 
   const handleSubmit = (event) => {
@@ -69,30 +69,31 @@ const SigninForm = ({
           </label>
         </div>
         <div className="signin__form__item">
-          <label htmlFor="dogSex">
-            3. Est-ce un mâle ou une femelle ?
-            <div className="signin__form__item__label">
-              <label htmlFor={sex}>
-                <Emoji />
-                <input
-                  type="checkbox"
-                  onChange={changeField}
-                  value={sex}
-                  name="male"
-                />
-              </label>
-              <label htmlFor={sex}>
-                <Emoji />
-                <input
-                  type="checkbox"
-                  onChange={changeField}
-                  value={sex}
-                  name="female"
-                />
 
-              </label>
-            </div>
-          </label>
+          3. Est-ce un mâle ou une femelle ?
+          <div className="signin__form__item__label">
+            <Emoji />
+            <Input
+              type="radio"
+              onChange={changeField}
+              value="1"
+              id="male"
+              name="sex"
+              checked
+            />
+            <label htmlFor="sex">Mâle</label>
+
+            <Emoji />
+            <Input
+              type="radio"
+              onChange={changeField}
+              value="0"
+              id="female"
+              name="sex"
+            />
+            <label htmlFor="sex">Female</label>
+          </div>
+
         </div>
         <div className="signin__form__item">
           <label htmlFor="age">
@@ -107,29 +108,28 @@ const SigninForm = ({
           </label>
         </div>
         <div className="signin__form__item">
-          <label htmlFor="dogCastrated">
             5. Est-il castré ?
             <div className="signin__form__item__label">
-              <label htmlFor="castrated">
-                <Emoji />
-                <input
-                  type="checkbox"
-                  name="castrated"
-                  id="castrated"
-                />
-                Oui
-              </label>
-              <label htmlFor="noCastrated">
-                <Emoji />
-                <input
-                  type="checkbox"
-                  name="noCastrated"
-                  id="noCastrated"
-                />
-                Non
-              </label>
+              <Emoji />
+              <Input
+                type="radio"
+                onChange={changeField}
+                name="castrate"
+                id="castrate"
+                value="1"
+                checked
+              />
+              <label htmlFor="castrate">Oui</label>
+              <Emoji />
+              <Input
+                type="radio"
+                onChange={changeField}
+                name="castrate"
+                id="noCastrate"
+                value="0"
+              />
+              <label htmlFor="castrate">Non</label>
             </div>
-          </label>
         </div>
         <div className="signin__form__item">
           <label htmlFor="dogShape">
@@ -332,12 +332,12 @@ const SigninForm = ({
         <div className="signin__form__item">
           <label htmlFor="email">
             11. Veuillez entrer votre email
+            <Input
+              name="email"
+              onChange={changeField}
+              id="email"
+            />
           </label>
-          <Input
-            name="email"
-            onChange={changeField}
-            id="email"
-          />
         </div>
         <div className="signin__form__item">
           <label htmlFor="password1">
@@ -398,7 +398,7 @@ SigninForm.propTypes = {
   dogName: PropTypes.string,
   sex: PropTypes.number,
   age: PropTypes.number,
-  castrate: PropTypes.bool,
+  castrate: PropTypes.number,
   dogCondition: PropTypes.number,
   character: PropTypes.arrayOf(
     PropTypes.number,

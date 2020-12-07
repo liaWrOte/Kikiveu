@@ -2,7 +2,7 @@
 import React from 'react';
 // import PropTypes from 'prop-types';
 
-import emojiTest from '../../../assets/images/emoji1.png';
+import emojiTest from '../../../assets/images/character/curious_character.png';
 // == Import SCSS
 
 import './index.scss';
