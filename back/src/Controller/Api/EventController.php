@@ -11,6 +11,9 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Serializer\SerializerInterface;
+use Symfony\Component\Serializer\Serializer;
+use Symfony\Component\Serializer\Normalizer\GetSetMethodNormalizer;
+use Symfony\Component\Serializer\Encoder\JsonEncoder;
 
 /**
  * @Route("/api/v1/event", name="api_v1_event_")
@@ -72,7 +75,7 @@ class EventController extends AbstractController
     /**
      * @Route("/add", name="add", methods={"POST"})
      */
-    public function add(Request $request, TagsRepository $tagsRepository, SerializerInterface $serializer): Response
+    public function add(Request $request, SerializerInterface $serializer): Response
     {
         $json = $request->getContent();
         $eventArray = json_decode($json, true);
@@ -88,7 +91,13 @@ class EventController extends AbstractController
             $em->persist($event);
             $em->flush();
 
-            return $this->json($event, 200);
+            $json = $serializer->serialize(
+                $event,
+                'json',
+                ['groups' => 'show_add_event']
+            );
+
+            return $this->json($json, 200);
         } else {
             return $this->json(
                 [
@@ -97,5 +106,17 @@ class EventController extends AbstractController
                 400
             );
         }
+    }
+
+    /**
+     * @Route("/delete/{id}", name="delete", requirements={"id"="\d+"}, methods={"DELETE"})
+     */
+    public function delete(Events $event): Response
+    {
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($event);
+        $em->flush();
+
+        return $this->json(200);
     }
 }

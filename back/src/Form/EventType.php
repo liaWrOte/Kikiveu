@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Events;
 use App\Entity\Tags;
+use App\Entity\Users;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -54,7 +55,7 @@ class EventType extends AbstractType
                 'allow_add' => true,
                 'by_reference' => false,
             ])
-            ->add('user', EntityType::class, [
+            ->add('users', EntityType::class, [
                 'class' => Users::class,
             ])
         ;
