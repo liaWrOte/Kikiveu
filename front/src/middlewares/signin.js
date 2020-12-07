@@ -11,19 +11,10 @@ const signin = (store) => (next) => (action) => {
     case SIGN_IN:
       const { signin } = store.getState();
       axios.post('http://localhost:8000/api/v1/signin', {
-        dogsNumber: signin.dogsNumber,
-        dogName: signin.dogsName,
-        sex: signin.sex,
-        age: signin.age,
-        castrate: signin.castrate,
-        dogCondition: signin.dogCondition,
-        character: signin.character,
-        picture: signin.picture,
-        username: signin.username,
-        avatar: '/front/src/assets/imagesdog_profile.jpg/',
+        slug: signin.username,
+        pseudo: signin.username,
         email: signin.email,
-        password1: signin.password1,
-        password2: signin.password2,
+        password: signin.password1,
       }, {
         withCredentials: true,
       })

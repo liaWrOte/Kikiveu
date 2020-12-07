@@ -11,9 +11,8 @@ const mapStateToProps = (state) => ({
   sex: state.signin.sex,
   age: state.signin.age,
   castrate: state.signin.castrate,
-  dogCondition: state.signin.dogCondition,
+  dogConditionId: state.signin.dogCondition,
   character: state.signin.character,
-  picture: state.signin.picture,
   username: state.signin.username,
   avatar: state.signin.avatar,
   email: state.signin.email,
@@ -23,7 +22,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   // nom de la prop à remplir: callback qui contient un appel à dispatch
-  changeField: (newValue, name, srcValue) => {
+  changeField: (newValue, name) => {
     // console.log(`Nouvelle valeur ${newValue} pour le champ ${name}`);
     dispatch(updateSigninField(newValue, name));
     // dispatch(updateSrc(srcValue));

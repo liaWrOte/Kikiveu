@@ -4,19 +4,11 @@ export const SAVE_SIGNIN_INFO = 'SAVE_SIGNIN_INFO';
 export const CHECK_LOGGED = 'CHECK_LOGGED';
 export const UPDATE_SRC = 'UPDATE_SRC';
 
-export const updateSigninField = (value, name, srcValue) => ({
+export const updateSigninField = (value, name) => ({
   type: UPDATE_SIGNIN_FIELD,
   value,
   name,
-  srcValue,
 });
-
-/*
-export const updateSrc = (value) => ({
-  type: UPDATE_SRC,
-  value,
-});
-*/
 
 export const signin = (value) => ({
   type: SIGN_IN,
