@@ -2,7 +2,6 @@
 
 namespace App\Controller\Api;
 
-use App\Entity\Tags;
 use App\Repository\TagsRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
