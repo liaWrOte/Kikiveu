@@ -5,10 +5,15 @@ namespace App\Controller\Api;
 use App\Entity\Events;
 use App\Form\EventType;
 use App\Repository\EventsRepository;
+use App\Repository\TagsRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Serializer\SerializerInterface;
+use Symfony\Component\Serializer\Serializer;
+use Symfony\Component\Serializer\Normalizer\GetSetMethodNormalizer;
+use Symfony\Component\Serializer\Encoder\JsonEncoder;
 
 /**
  * @Route("/api/v1/event", name="api_v1_event_")
@@ -65,5 +70,53 @@ class EventController extends AbstractController
                 400
             );
         }
+    }
+
+    /**
+     * @Route("/add", name="add", methods={"POST"})
+     */
+    public function add(Request $request, SerializerInterface $serializer): Response
+    {
+        $json = $request->getContent();
+        $eventArray = json_decode($json, true);
+
+        $event = new Events();
+
+        $form = $this->createForm(EventType::class, $event, ['csrf_protection' => false]);
+        $form->submit($eventArray);
+        
+        if ($form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $event->setCreatedAt(new \DateTime());
+            $em->persist($event);
+            $em->flush();
+
+            $json = $serializer->serialize(
+                $event,
+                'json',
+                ['groups' => 'show_add_event']
+            );
+
+            return $this->json($json, 200);
+        } else {
+            return $this->json(
+                [
+                    'errors' => (string) $form->getErrors(true, false)
+                ],
+                400
+            );
+        }
+    }
+
+    /**
+     * @Route("/delete/{id}", name="delete", requirements={"id"="\d+"}, methods={"DELETE"})
+     */
+    public function delete(Events $event): Response
+    {
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($event);
+        $em->flush();
+
+        return $this->json(200);
     }
 }
