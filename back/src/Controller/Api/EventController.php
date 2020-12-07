@@ -81,20 +81,14 @@ class EventController extends AbstractController
 
         $form = $this->createForm(EventType::class, $event, ['csrf_protection' => false]);
         $form->submit($eventArray);
-        // dd($event);
-        foreach ($event->getTags() as $tagId) {
-            dd($tagId);
-            $tag = $tagsRepository->find($tagId);
-            $event->addTag($tag);
-        }
-
         
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            $event->setCreatedAt(new \DateTime());
             $em->persist($event);
             $em->flush();
 
-            return $this->json(200);
+            return $this->json($event, 200);
         } else {
             return $this->json(
                 [

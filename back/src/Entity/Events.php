@@ -241,12 +241,6 @@ class Events
         return $this;
     }
 
-    public function addTags(Tags $tags): self
-    {
-        $this->tags->add($tags);
-        return $this;
-    }
-
     /**
      * @return Collection|Tags[]
      */
@@ -259,6 +253,7 @@ class Events
     {
         if (!$this->tags->contains($tag)) {
             $this->tags[] = $tag;
+            $tag->addEvent($this);
         }
 
         return $this;

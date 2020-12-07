@@ -3,9 +3,10 @@
 namespace App\Form;
 
 use App\Entity\Events;
-use App\Form\TagsType;
+use App\Entity\Tags;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -48,9 +49,13 @@ class EventType extends AbstractType
                 ]
             ])
             ->add('tags', CollectionType::class, [
-                'entry_type' => TagsType::class,
+                'entry_type' => EntityType::class,
+                'entry_options' => ['class' => Tags::class],
                 'allow_add' => true,
                 'by_reference' => false,
+            ])
+            ->add('user', EntityType::class, [
+                'class' => Users::class,
             ])
         ;
     }
