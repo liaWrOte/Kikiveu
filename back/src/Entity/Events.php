@@ -6,6 +6,8 @@ use App\Repository\EventsRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Serializer\Annotation\MaxDepth;
 
 /**
  * @ORM\Entity(repositoryClass=EventsRepository::class)
@@ -16,46 +18,55 @@ class Events
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups({"show_add_event"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"show_add_event"})
      */
     private $name;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"show_add_event"})
      */
     private $locate;
 
     /**
      * @ORM\Column(type="smallint", options={"default"=0})
+     * @Groups({"show_add_event"})
      */
     private $maxParticipant;
 
     /**
      * @ORM\Column(type="datetime")
+     * @Groups({"show_add_event"})
      */
     private $datetime;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
+     * @Groups({"show_add_event"})
      */
     private $duration;
 
     /**
      * @ORM\Column(type="text", nullable=true)
+     * @Groups({"show_add_event"})
      */
     private $description;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"show_add_event"})
      */
     private $slug;
 
     /**
      * @ORM\Column(type="datetime")
+     * @Groups({"show_add_event"})
      */
     private $createdAt;
 
@@ -67,6 +78,7 @@ class Events
     /**
      * @ORM\ManyToOne(targetEntity=Users::class, inversedBy="events")
      * @ORM\JoinColumn(nullable=false)
+     * @Groups({"show_add_event"})
      */
     private $users;
 
@@ -77,6 +89,7 @@ class Events
 
     /**
      * @ORM\ManyToMany(targetEntity=Tags::class, inversedBy="events")
+     * @Groups({"show_add_event"})
      */
     private $tags;
 
@@ -243,6 +256,7 @@ class Events
 
     /**
      * @return Collection|Tags[]
+     * @Groups({"show_add_event"})
      */
     public function getTags(): Collection
     {
@@ -253,6 +267,7 @@ class Events
     {
         if (!$this->tags->contains($tag)) {
             $this->tags[] = $tag;
+            $tag->addEvent($this);
         }
 
         return $this;

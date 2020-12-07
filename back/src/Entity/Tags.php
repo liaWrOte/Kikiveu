@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=TagsRepository::class)
@@ -23,13 +24,13 @@ class Tags
 
     /**
      * @ORM\Column(type="string", length=50)
-     * @Groups({"show_tag"})
+     * @Groups({"show_add_event", "show_tag"})
      */
     private $name;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"show_tag"})
+     * @Groups({"show_add_event", "show_tag"})
      */
     private $picture;
 
