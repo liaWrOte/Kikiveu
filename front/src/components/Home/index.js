@@ -26,7 +26,6 @@ const Home = ({ isLogged }) => (
       <Route exact path="/inscription">
         <SigninForm />
       </Route>
-      {isLogged && (
       <Route>
         <div className="home">
           <div className=".item1">
@@ -84,12 +83,6 @@ const Home = ({ isLogged }) => (
           </Switch>
         </div>
       </Route>
-      )}
-      {!isLogged && (
-        <>
-          <div>Merci de vous connecter ou de créer un compte pour accéder à la carte</div>
-          <PreviousButton />
-        </>
       )}
     </Switch>
   </>
