@@ -1,8 +1,8 @@
 import {
-  UPDATE_AUTH_FIELD,
-  SAVE_AUTH_INFO,
-  LOG_OUT,
+  UPDATE_SIGNIN_FIELD,
+  SAVE_SIGNIN_INFO,
   SIGN_IN,
+  UPDATE_SRC,
 } from '../actions/signin';
 
 const initialState = {
@@ -13,6 +13,7 @@ const initialState = {
   castrate: 0,
   dogCondition: 2,
   character: '',
+  picture: '',
   username: '',
   avatar: '/front/src/assets/imagesdog_profile.jpg/',
   email: '',
@@ -23,7 +24,7 @@ const initialState = {
 
 const signinReducer = (state = initialState, action = {}) => {
   switch (action.type) {
-    case UPDATE_AUTH_FIELD:
+    case UPDATE_SIGNIN_FIELD:
       console.log(`Action reçue, nouvelle valeur ${action.value} pour le champ ${action.name}`);
 
       /* si action.name vaut 'email' alors
@@ -42,9 +43,10 @@ const signinReducer = (state = initialState, action = {}) => {
         // je veux prendre le contenu de action.name et utiliser ça comme nom
         // de propriété
         [action.name]: action.value,
+        picture: action.srcValue,
       };
 
-    case SAVE_AUTH_INFO:
+    case SAVE_SIGNIN_INFO:
       return {
         ...state,
         isLogged: action.isLogged,
@@ -55,13 +57,13 @@ const signinReducer = (state = initialState, action = {}) => {
       // on vide les recettes préférées
       return {
         ...state,
-        signedIn: action.value,
       };
 
-    case LOG_OUT:
-      // on vide les recettes préférées
+    case UPDATE_SRC:
+      console.log(`Action reçue, nouvelle valeur ${action.value} pour la propriété picture`);
       return {
         ...state,
+        picture: action.value,
       };
 
     default: return { ...state };

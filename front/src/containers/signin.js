@@ -2,36 +2,40 @@ import { connect } from 'react-redux';
 
 import SigninForm from '../components/SigninForm';
 
-import { updateAuthField, signin, logOut } from '../actions/signin';
+import { updateSigninField, signin } from '../actions/signin';
 
 const mapStateToProps = (state) => ({
   // nom de la prop à remplir: donnée à récupérer dans le state
-  dogsNumber: state.signinReducer.dogsNumber,
-  dogName: state.signinReducer.dogName,
-  sex: state.signinReducer.sex,
-  age: state.signinReducer.age,
-  castrate: state.signinReducer.castrate,
-  dogCondition: state.signinReducer.dogCondition,
-  character: state.signinReducer.character,
-  username: state.signinReducer.username,
-  avatar: state.signinReducer.avatar,
-  email: state.signinReducer.email,
-  password1: state.signinReducer.password1,
-  password2: state.signinReducer.password2,
+  dogsNumber: state.signin.dogsNumber,
+  dogName: state.signin.dogName,
+  sex: state.signin.sex,
+  age: state.signin.age,
+  castrate: state.signin.castrate,
+  dogCondition: state.signin.dogCondition,
+  character: state.signin.character,
+  picture: state.signin.picture,
+  username: state.signin.username,
+  avatar: state.signin.avatar,
+  email: state.signin.email,
+  password1: state.signin.password1,
+  password2: state.signin.password2,
 });
 
 const mapDispatchToProps = (dispatch) => ({
   // nom de la prop à remplir: callback qui contient un appel à dispatch
-  changeField: (newValue, name) => {
+  changeField: (newValue, name, srcValue) => {
     // console.log(`Nouvelle valeur ${newValue} pour le champ ${name}`);
-    dispatch(updateAuthField(newValue, name));
+    dispatch(updateSigninField(newValue, name));
+    // dispatch(updateSrc(srcValue));
   },
+  /*
+  updateSrcImage: (value) => {
+    dispatch(updateSrc(value));
+  },
+  */
   handleSignIn: () => {
     // console.log('handleLogin');
     dispatch(signin());
-  },
-  handleLogout: () => {
-    dispatch(logOut());
   },
 });
 

@@ -1,25 +1,35 @@
 import axios from 'axios';
 
 import {
-  LOG_IN,
-  LOG_OUT,
+  SIGN_IN,
   CHECK_LOGGED,
-  saveAuthInfo,
-} from '../actions/auth';
+  saveSigninInfo,
+} from '../actions/signin';
 
-const auth = (store) => (next) => (action) => {
+const signin = (store) => (next) => (action) => {
   switch (action.type) {
-    case LOG_IN:
-      const { auth } = store.getState();
-      axios.post('http://localhost:8000/api/v1/login_check', {
-        username: auth.email,
-        password: auth.password,
+    case SIGN_IN:
+      const { signin } = store.getState();
+      axios.post('http://localhost:8000/api/v1/signin', {
+        dogsNumber: signin.dogsNumber,
+        dogName: signin.dogsName,
+        sex: signin.sex,
+        age: signin.age,
+        castrate: signin.castrate,
+        dogCondition: signin.dogCondition,
+        character: signin.character,
+        picture: signin.picture,
+        username: signin.username,
+        avatar: '/front/src/assets/imagesdog_profile.jpg/',
+        email: signin.email,
+        password1: signin.password1,
+        password2: signin.password2,
       }, {
         withCredentials: true,
       })
         .then((response) => {
         // traitement si réponse est un succès
-          console.log('middleware : login');
+          console.log('middleware : signin');
           console.log(response);
         })
         .catch((error) => {
@@ -35,4 +45,4 @@ const auth = (store) => (next) => (action) => {
       next(action);
   }
 };
-export default auth;
+export default signin;

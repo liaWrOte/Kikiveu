@@ -1,11 +1,35 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+// import composants
 import Input from '../microComponents/Input';
 import TextButton from '../microComponents/TextButton';
 import Cgu from '../microComponents/Cgu';
 import Emoji from '../microComponents/Emoji';
 import PreviousButton from '../microComponents/PreviousButton';
+
+// import emoji
+// sex
+import female from '../../assets/images/sex/female_sex.png';
+import male from '../../assets/images/sex/male_sex.png';
+
+// shapes
+import smallShape from '../../assets/images/shape/small_shape_health.png';
+import mediumShape from '../../assets/images/shape/medium_shape_health.png';
+import goodShape from '../../assets/images/shape/good_shape_health.png';
+
+// characters
+import balanced from '../../assets/images/character/balanced_character.png';
+import barker from '../../assets/images/character/barker_character.png';
+import curious from '../../assets/images/character/curious_character.png';
+import dominant from '../../assets/images/character/dominant_character.png';
+import fearful from '../../assets/images/character/fearful_character.png';
+import independent from '../../assets/images/character/independent_character.png';
+import learning from '../../assets/images/character/learning_character.png';
+import player from '../../assets/images/character/player_character.png';
+import possessive from '../../assets/images/character/possessive_character.png';
+import shy from '../../assets/images/character/shy_character.png';
+import sociable from '../../assets/images/character/sociable_character.png';
 
 import './index.scss';
 
@@ -17,26 +41,20 @@ const SigninForm = ({
   castrate,
   dogCondition,
   character,
+  picture,
   username,
   avatar,
   email,
   password1,
   password2,
   changeField,
-  handleSignin,
-}) => {
-  const checkSelect = (event) => {
-    const { target } = event;
-    const value = target.type === 'checkbox' ? target.checked : target.value;
-    const { name } = target;
-  };
+  handleSignIn,
 
+}) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log('signin');
-    console.log(dogsNumber);
-    console.log(dogName);
-    handleSignin();
+    handleSignIn();
   };
 
   return (
@@ -72,18 +90,19 @@ const SigninForm = ({
 
           3. Est-ce un mâle ou une femelle ?
           <div className="signin__form__item__label">
-            <Emoji />
-            <Input
-              type="radio"
-              onChange={changeField}
-              value={1}
-              id="male"
-              name="sex"
-              checked
-            />
-            <label htmlFor="sex">Mâle</label>
+            <label htmlFor="sex">Mâle
+              <Emoji src={male} />
+              <Input
+                type="radio"
+                onChange={changeField}
+                value={1}
+                id="male"
+                name="sex"
+                checked
+              />
+            </label>
 
-            <Emoji />
+            <Emoji src={female} />
             <Input
               type="radio"
               onChange={changeField}
@@ -134,35 +153,35 @@ const SigninForm = ({
             6. Comment décrirez-vous son état de santé général ?
             <div className="signin__form__item__label">
               <label htmlFor="dogCondition">
-                <Emoji />
+                <Emoji src={smallShape} />
                 <Input
                   type="radio"
                   onChange={changeField}
                   name="dogCondition"
-                  id="badShape"
-                  value={2}
+                  id="smallShape"
+                  value={0}
                 />
                 Mauvaise condition physique
               </label>
               <label htmlFor="dogCondition">
-                <Emoji />
+                <Emoji src={mediumShape} />
                 <Input
                   type="radio"
                   onChange={changeField}
                   name="dogCondition"
-                  id="middleShape"
+                  id="mediumShape"
                   value={1}
                 />
                 Condition physique moyenne
               </label>
               <label htmlFor="dogCondition">
-                <Emoji />
+                <Emoji src={goodShape} />
                 <Input
                   type="radio"
                   onChange={changeField}
                   name="dogCondition"
                   id="goodShape"
-                  value={0}
+                  value={2}
                   checked
                 />
                 Bonne condition physique
@@ -175,7 +194,7 @@ const SigninForm = ({
             7. Votre chien est plutôt ? (1 choix possible)
             <div className="signin__form__item__label">
               <label htmlFor="character">
-                <Emoji />
+                <Emoji src={dominant} />
                 <Input
                   type="radio"
                   onChange={changeField}
@@ -186,7 +205,7 @@ const SigninForm = ({
                 Dominant
               </label>
               <label htmlFor="character">
-                <Emoji />
+                <Emoji src={shy} />
                 <Input
                   type="radio"
                   onChange={changeField}
@@ -197,7 +216,7 @@ const SigninForm = ({
                 Timide/Sensible
               </label>
               <label htmlFor="character">
-                <Emoji />
+                <Emoji src={fearful} />
                 <Input
                   type="radio"
                   onChange={changeField}
@@ -208,7 +227,7 @@ const SigninForm = ({
                 Peureux
               </label>
               <label htmlFor="character">
-                <Emoji />
+                <Emoji src={player} />
                 <Input
                   type="radio"
                   onChange={changeField}
@@ -219,7 +238,7 @@ const SigninForm = ({
                 Joueur
               </label>
               <label htmlFor="character">
-                <Emoji />
+                <Emoji src={independent} />
                 <Input
                   type="radio"
                   onChange={changeField}
@@ -230,7 +249,7 @@ const SigninForm = ({
                 Indépendant
               </label>
               <label htmlFor="character">
-                <Emoji />
+                <Emoji src={sociable} />
                 <Input
                   type="radio"
                   onChange={changeField}
@@ -241,7 +260,7 @@ const SigninForm = ({
                 Sociable
               </label>
               <label htmlFor="character">
-                <Emoji />
+                <Emoji src={barker} />
                 <Input
                   type="radio"
                   onChange={changeField}
@@ -252,7 +271,7 @@ const SigninForm = ({
                 Aboyeur
               </label>
               <label htmlFor="character">
-                <Emoji />
+                <Emoji src={possessive} />
                 <Input
                   type="radio"
                   onChange={changeField}
@@ -263,7 +282,7 @@ const SigninForm = ({
                 Possessif
               </label>
               <label htmlFor="character">
-                <Emoji />
+                <Emoji src={curious} />
                 <Input
                   type="radio"
                   onChange={changeField}
@@ -274,7 +293,7 @@ const SigninForm = ({
                 Curieux
               </label>
               <label htmlFor="character">
-                <Emoji />
+                <Emoji src={learning} />
                 <Input
                   type="radio"
                   onChange={changeField}
@@ -285,7 +304,7 @@ const SigninForm = ({
                 En apprentissage
               </label>
               <label htmlFor="character">
-                <Emoji />
+                <Emoji src={balanced} />
                 <Input
                   type="radio"
                   onChange={changeField}
@@ -404,6 +423,7 @@ SigninForm.propTypes = {
   castrate: PropTypes.number.isRequired,
   dogCondition: PropTypes.number.isRequired,
   character: PropTypes.string.isRequired,
+  picture: PropTypes.string.isRequired,
   username: PropTypes.string.isRequired,
   avatar: PropTypes.string.isRequired,
   email: PropTypes.string.isRequired,
