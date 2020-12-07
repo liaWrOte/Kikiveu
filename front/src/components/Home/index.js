@@ -1,8 +1,8 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
-
+import PropTypes from 'prop-types';
 // Import composants
-import Header from '../microComponents/Header';
+import Header from '../../containers/Header';
 import Map from '../microComponents/Map';
 import Info from './Info';
 import UserProfile from './UserProfile';
@@ -13,10 +13,11 @@ import Chat from './Chat';
 import KikiVeuContact from './Chat/KikiVeuContact';
 import CreateARide from './CreateARide';
 import Ride from './Ride';
+import PreviousButton from '../microComponents/PreviousButton';
 
 import './index.scss';
 
-const Home = () => (
+const Home = ({ isLogged }) => (
   <>
     <Switch>
       <Route exact path="/connexion">
@@ -25,6 +26,7 @@ const Home = () => (
       <Route exact path="/inscription">
         <SigninForm />
       </Route>
+      {isLogged && (
       <Route>
         <div className="home">
           <div className=".item1">
@@ -79,12 +81,23 @@ const Home = () => (
                 <KikiVeuContact />
               </div>
             </Route>
-
           </Switch>
         </div>
       </Route>
+      )}
+      {!isLogged && (
+        <>
+          <div>Merci de vous connecter ou de créer un compte pour accéder à la carte</div>
+          <PreviousButton />
+        </>
+      )}
     </Switch>
   </>
 );
+
+// PropTypes
+Home.propTypes = {
+  isLogged: PropTypes.bool.isRequired,
+};
 
 export default Home;
