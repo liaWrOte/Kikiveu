@@ -10,7 +10,8 @@ import Login from '../../containers/login';
 import SigninForm from '../../containers/signin';
 import SeeOtherUserProfile from './SeeOtherUserProfile';
 import Chat from './Chat';
-import KikiVeuContact from './Chat/KikiVeuContact';
+import KikiVeuContact from './KikiVeuContact';
+import Cgu from '../microComponents/Cgu';
 import CreateARide from './CreateARide';
 import Ride from './Ride';
 import PreviousButton from '../microComponents/PreviousButton';
@@ -25,6 +26,10 @@ const Home = ({ isLogged }) => (
       </Route>
       <Route exact path="/inscription">
         <SigninForm />
+      </Route>
+      <Route exact path="/cgu">
+        <Cgu />
+        <PreviousButton />
       </Route>
       <Route>
         <div className="home">
