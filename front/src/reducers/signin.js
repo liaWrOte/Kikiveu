@@ -6,15 +6,13 @@ import {
 } from '../actions/signin';
 
 const initialState = {
-  dogsNumber: null,
+  dogsNumber: 1,
   dogName: '',
   sex: 0,
   age: 0,
   castrate: 0,
-  dogCondition: 0,
-  character: [
-    0, 0, 0, 0, 0,
-  ],
+  dogCondition: 2,
+  character: '',
   username: '',
   avatar: '/front/src/assets/imagesdog_profile.jpg/',
   email: '',
