@@ -42,8 +42,8 @@ class CommentsRepository extends ServiceEntityRepository
     }
     
 
-    /*
-    public function findOneBySomeField($value): ?Comments
+    
+    /* public function find()
     {
         return $this->createQueryBuilder('c')
             ->andWhere('c.exampleField = :val')
@@ -51,6 +51,6 @@ class CommentsRepository extends ServiceEntityRepository
             ->getQuery()
             ->getOneOrNullResult()
         ;
-    }
-    */
+    } */
+    
 }

@@ -15,44 +15,44 @@ class Comments
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
-     * @Groups({"show_comment"})
+     * @Groups({"show_add_comment"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"show_comment"})
+     * @Groups({"show_add_comment"})
      */
     private $title;
 
     /**
      * @ORM\Column(type="text")
-     * @Groups({"show_comment"})
+     * @Groups({"show_add_comment"})
      */
     private $body;
 
     /**
      * @ORM\Column(type="datetime")
-     * @Groups({"show_comment"})
+     * @Groups({"show_add_comment"})
      */
     private $createdAt;
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
-     * @Groups({"show_comment"})
      */
     private $updatedAt;
 
     /**
      * @ORM\ManyToOne(targetEntity=Users::class, inversedBy="comments")
      * @ORM\JoinColumn(nullable=false)
-     * @Groups({"show_comment"})
+     * @Groups({"show_add_comment"})
      */
     private $users;
 
     /**
      * @ORM\ManyToOne(targetEntity=Events::class, inversedBy="comments")
      * @ORM\JoinColumn(nullable=false)
+     * @Groups({"show_add_comment"})
      */
     private $events;
 

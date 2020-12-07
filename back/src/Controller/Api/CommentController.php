@@ -11,6 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Serializer\SerializerInterface;
 
+
 /**
  * @Route("/api/v1/comment", name="api_v1_comment_")
 */
@@ -34,7 +35,7 @@ class CommentController extends AbstractController
     /**
      * @Route("/add", name="add", methods={"POST"},)
      */
-    public function add(Request $request): Response
+    public function add(Request $request, SerializerInterface $serializer): Response
     {
         $json = $request->getContent(); 
 
@@ -44,13 +45,28 @@ class CommentController extends AbstractController
 
         $form = $this->createForm(CommentType::class, $comment, ['csrf_protection' => false]);
         $form->submit($commentArray);
-        dd($form);
+        
         
         if ($form->isValid()) {
+            $comment->setCreatedAt(new \DateTime());
             $em = $this->getDoctrine()->getManager();
             $em->persist($comment);
             $em->flush();
-            return $this->json($comment);
+            //dd($comment);
+            $json = $serializer->serialize(
+                $comment,
+                'json',
+                ['groups' => 'show_add_comment']
+            );
+
+            return $this->json($json, 200);
+        } else {
+            return $this->json(
+                [
+                'error' => (string) $form->getErrors(true, false)
+                ],
+                400
+            );
         }
 
     }
