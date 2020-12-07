@@ -33,6 +33,8 @@ class CommentsRepository extends ServiceEntityRepository
             ->addSelect('c.updatedAt as commentUpdatedAt')
             ->leftJoin('c.users', 'u')
             ->addSelect('u.id as userId')
+            ->leftJoin('c.events', 'e')
+            ->addSelect('e.id as eventId')
             ->where('c.id = ' .$id)
             ->getQuery()
             ->getResult()
