@@ -54,8 +54,8 @@ const UserProfile = () => {
           </label>
 
           <label htmlFor="mood">Joueur
-          <Emoji src={player} />
-          <Input
+            <Emoji src={player} />
+            <Input
               type="radio"
               value={3}
               id="player"
@@ -64,8 +64,8 @@ const UserProfile = () => {
           </label>
 
           <label htmlFor="mood">Energique
-          <Emoji src={rough} />
-          <Input
+            <Emoji src={rough} />
+            <Input
               type="radio"
               value={4}
               id="rough"
@@ -74,8 +74,8 @@ const UserProfile = () => {
           </label>
 
           <label htmlFor="mood">Fatigué
-          <Emoji src={tired} />
-          <Input
+            <Emoji src={tired} />
+            <Input
               type="radio"
               value={5}
               id="tired"
@@ -86,9 +86,9 @@ const UserProfile = () => {
         </div>
         <p>L'état de santé de Kiki a changé ?</p>
         <div className="userProfile__form__emoji">
-        <label htmlFor="shape">Petite forme
-          <Emoji src={small} />
-          <Input
+          <label htmlFor="shape">Petite forme
+            <Emoji src={small} />
+            <Input
               type="radio"
               value={0}
               id="small"
@@ -97,18 +97,18 @@ const UserProfile = () => {
           </label>
 
           <label htmlFor="shape">Forme moyenne
-          <Input
+            <Input
               type="radio"
               value={1}
               id="medium"
               name="shape"
             />
-          <Emoji src={medium} />
+            <Emoji src={medium} />
           </label>
 
           <label htmlFor="shape">Excellente forme
-          <Emoji src={good} />
-          <Input
+            <Emoji src={good} />
+            <Input
               type="radio"
               value={2}
               id="good"
