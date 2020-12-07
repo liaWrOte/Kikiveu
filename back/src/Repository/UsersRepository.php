@@ -90,5 +90,16 @@ class UsersRepository extends ServiceEntityRepository implements PasswordUpgrade
         ->getResult()
         ;
     }
+
+    public function findForComment($id)
+    {
+        return $this->createQueryBuilder('u')
+        ->select('u.id')
+        ->addSelect('u.pseudo')
+        //->where('u.id = ' .$id)
+        ->getQuery()
+        ->getResult()
+        ;
+    }
     
 }

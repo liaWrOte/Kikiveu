@@ -18,7 +18,7 @@ class Users implements UserInterface
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
-     * @Groups({"show_add_event"})
+     * @Groups({"show_add_event", "show_add_comment"})
      */
     private $id;
 
@@ -42,7 +42,7 @@ class Users implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=50)
-     * @Groups({"show_add_event"})
+     * @Groups({"show_add_event", "show_add_comment"})
      */
     private $pseudo;
 

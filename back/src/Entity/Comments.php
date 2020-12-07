@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\CommentsRepository;
+use Symfony\Component\Serializer\Annotation\Groups;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -14,21 +15,25 @@ class Comments
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups({"show_add_comment"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"show_add_comment"})
      */
     private $title;
 
     /**
      * @ORM\Column(type="text")
+     * @Groups({"show_add_comment"})
      */
     private $body;
 
     /**
      * @ORM\Column(type="datetime")
+     * @Groups({"show_add_comment"})
      */
     private $createdAt;
 
@@ -40,12 +45,14 @@ class Comments
     /**
      * @ORM\ManyToOne(targetEntity=Users::class, inversedBy="comments")
      * @ORM\JoinColumn(nullable=false)
+     * @Groups({"show_add_comment"})
      */
     private $users;
 
     /**
      * @ORM\ManyToOne(targetEntity=Events::class, inversedBy="comments")
      * @ORM\JoinColumn(nullable=false)
+     * @Groups({"show_add_comment"})
      */
     private $events;
 
