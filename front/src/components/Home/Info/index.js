@@ -9,12 +9,26 @@ import SecondaryUserButton from '../../microComponents/SecondaryUserButton';
 
 import './info.scss';
 
-const Info = () => (
-  <div className="info">
-    <div><Toggle />En ligne</div>
-    <Link to="/1"><MainUserButton className="info__mainUserButton" /></Link>
-    <Link to="/creer-balade"><SecondaryUserButton /></Link>
-  </div>
-);
+const Info = (
+  changeField,
+) => {
+  return (
+    <div className="info">
+      <div>
+        <label htmlFor="status">En ligne
+          <Toggle
+            onChange={changeField}
+            id="status"
+            name="status"
+          />
+        </label>
+      </div>
+      <Link to="/1"><MainUserButton className="info__mainUserButton" /></Link>
+      <Link to="/creer-balade"><SecondaryUserButton /></Link>
+    </div>
+  );
+}
+
+
 
 export default Info;
