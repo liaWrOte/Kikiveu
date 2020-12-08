@@ -1,13 +1,13 @@
 import axios from 'axios';
 
 import {
-  HANDLE_UPDATE_USER_PROFILE,
+  CHANGE_STATUS,
 
 } from '../../actions/Home/info';
 
 const info = (store) => (next) => (action) => {
   switch (action.type) {
-    case HANDLE_UPDATE_USER_PROFILE:
+    case CHANGE_STATUS:
       /*const { signin } = store.getState();
       axios.post('http://localhost:8000/api/v1/signin', {
         slug: signin.username,

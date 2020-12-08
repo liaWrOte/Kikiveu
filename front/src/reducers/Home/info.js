@@ -1,32 +1,23 @@
 import {
-  UPDATE_USER_PROFILE_FIELD,
-  HANDLE_UPDATE_USER_PROFILE,
+  CHANGE_STATUS,
 } from '../../actions/Home/info';
 
 const initialState = {
   avatar: '/front/src/assets/imagesdog_profile.jpg/',
-  mood: 1,
-  shape: 1,
-  username: '',
-  signedIn: true,
   status: false,
+  ride: 0,
   coords: '',
 };
 
 const infoReducer = (state = initialState, action = {}) => {
   switch (action.type) {
-    case UPDATE_USER_PROFILE_FIELD:
+    case CHANGE_STATUS:
       console.log(`Action reçue, nouvelle valeur ${action.value} pour le champ ${action.name}`);
       return {
         ...state,
         // je veux prendre le contenu de action.name et utiliser ça comme nom
         // de propriété
         [action.name]: action.value,
-      };
-
-    case HANDLE_UPDATE_USER_PROFILE:
-      return {
-        ...state,
       };
 
     default: return { ...state };

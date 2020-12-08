@@ -1,6 +1,6 @@
 // == Import : npm
 import React from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 // == Import : local
 import './index.scss';
@@ -8,6 +8,7 @@ import './index.scss';
 // == Composant
 const Toggle = ({
   onChange,
+
 }) => {
   const handleChange = (evt) => {
     const { target } = evt;
@@ -30,6 +31,9 @@ const Toggle = ({
 };
 
 // PropTypes
+Toggle.propTypes = {
+  onChange: PropTypes.func.isRequired,
+};
 
 // == Export
 export default Toggle;

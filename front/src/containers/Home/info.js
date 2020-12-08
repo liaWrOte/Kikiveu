@@ -3,27 +3,20 @@ import { connect } from 'react-redux';
 import Info from '../../components/Home/Info';
 
 import {
-  updateUserProfileField,
-  handleUpdateUserProfile,
+  changeStatus,
 } from '../../actions/Home/info';
 
 const mapStateToProps = (state) => ({
   // nom de la prop à remplir: donnée à récupérer dans le state
   avatar: state.info.avatar,
-  mood: state.info.mood,
-  shape: state.info.mood,
-  username: state.info.username,
-  signedIn: state.info.signedIn,
   status: state.info.status,
+  ride: state.info.ride,
   coords: state.info.coords,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  changeField: (newValue, name) => {
-    dispatch(updateUserProfileField(newValue, name));
-  },
-  handleUpdateUserProfile: () => {
-    dispatch(handleUpdateUserProfile());
+  changeStatus: (newValue, name) => {
+    dispatch(changeStatus(newValue, name));
   },
 });
 

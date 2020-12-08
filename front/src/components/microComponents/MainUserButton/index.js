@@ -2,11 +2,11 @@ import React from 'react';
 
 import './index.scss';
 
-import profileImage from '../../../assets/images/dog_profile.jpg';
-
-const MainUserButton = () => {
+const MainUserButton = (
+  avatar,
+) => {
   const sectionStyle = {
-    backgroundImage: `url(${profileImage})`,
+    backgroundImage: `url(${avatar})`,
   };
   return (
 
