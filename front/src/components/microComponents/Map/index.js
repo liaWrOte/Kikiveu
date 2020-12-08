@@ -5,6 +5,7 @@ import {
   Marker,
   Popup,
   MapControl,
+  useMapEvents,
 } from 'react-leaflet';
 
 import LocateControl from 'react-leaflet-locate-control';
@@ -25,7 +26,6 @@ const Map = () => {
 
   const success = (position) => {
     const coord = position.coords;
-
     setLat(position.coords.latitude);
     setLng(position.coords.longitude);
     console.log(coord.latitude);
@@ -37,19 +37,33 @@ const Map = () => {
     navigator.geolocation.getCurrentPosition(success);
   }, []);
 
+  function AddMarkerToClick() {
+    const [markerLat, setMarkerLat] = useState(0);
+    const [markerLng, setMarkerLng] = useState(0);
+    useMapEvents({
+      click(e) {
+        const newMarkerLat = e.latlng.lat;
+        const newMarkerLng = e.latlng.lng;
+        setMarkerLat(newMarkerLat);
+        setMarkerLng(newMarkerLng);
+      },
+    });
+    return (
+      <Marker position={[markerLat, markerLng]}>
+        <Popup>Coordonnées de votre balade (lat,lng) : {[markerLat, markerLng]}</Popup>
+      </Marker>
+    );
+  }
+
   return (
     <div className="map">
       {lat !== null && lng !== null && (
       <MapContainer className="map__component" center={[lat, lng]} zoom={13} scrollWheelZoom={false}>
+        <AddMarkerToClick />
         <TileLayer
           attribution='&copy; <a href="">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        <Marker position={[lat, lng]}>
-          <Popup>
-            A pretty CSS3 popup. <br /> Easily customizable.
-          </Popup>
-        </Marker>
       </MapContainer>
       ) }
 

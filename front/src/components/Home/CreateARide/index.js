@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 
 // Import composants
 import PreviousButton from '../../microComponents/PreviousButton';
@@ -29,10 +30,17 @@ const CreateARide = ({
   duration,
   maxParticipant,
   changeField,
-  handleUpdateCreateARide}) => {
-
+  handleUpdateCreateARide
+}) => {
+  const [marker, setMarker] = useState(0, 0);
   const placeCursor = 'Je positionne ma balade sur la carte';
   const saveText = 'Enregistrer';
+
+  const addMarker = (e) => {
+    const newMarker = marker.push(e.latlng);
+    setMarker(newMarker);
+  };
+
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log('update Create A Ride');
@@ -192,8 +200,24 @@ const CreateARide = ({
         <PreviousButton />
       </div>
     </div>
-    );
+  );
+};
 
+// PropTypes
+CreateARide.propTypes = {
+  locate: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+  date: PropTypes.string,
+  time: PropTypes.string,
+  duration: PropTypes.string.isRequired,
+  maxParticipant: PropTypes.string.isRequired,
+  changeField: PropTypes.func.isRequired,
+  handleUpdateCreateARide: PropTypes.func.isRequired,
+};
+
+CreateARide.defaultProps = {
+  date: '',
+  time: '',
 };
 
 export default CreateARide;
