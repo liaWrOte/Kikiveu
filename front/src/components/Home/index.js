@@ -14,6 +14,7 @@ import KikiVeuContact from './KikiVeuContact';
 import Cgu from '../microComponents/Cgu';
 import CreateARide from './CreateARide';
 import Ride from './Ride';
+import PreviousButton from '../microComponents/PreviousButton';
 
 import './index.scss';
 
