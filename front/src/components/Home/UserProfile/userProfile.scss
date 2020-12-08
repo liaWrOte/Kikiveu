@@ -1,7 +1,7 @@
 .userProfile {
   position: absolute;
   z-index: 25;
-  height: 300px;
+  height: 400px;
   bottom: 0;
   width: 100%;
   display: flex;
@@ -10,12 +10,15 @@
   display : flex;
   justify-content: space-around;
   align-items: center;
-  &__emoji {
-    display: flex;
-    justify-content: space-evenly;
+  &__form {
+    &__emoji {
+      display: flex;
+      justify-content: space-evenly;
+    }
+    &__bottom {
+      display: flex;
+      justify-content: space-evenly;
+    }
   }
-  &__bottom {
-    display: flex;
-    justify-content: space-evenly;
-  }
+  
 }

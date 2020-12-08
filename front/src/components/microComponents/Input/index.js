@@ -35,10 +35,13 @@ const Input = ({
 
 // PropTypes
 Input.propTypes = {
-  value: PropTypes.string,
+  value: PropTypes.oneOfType([
+    PropTypes.string.isRequired,
+    PropTypes.number.isRequired,
+  ]),
   type: PropTypes.string,
   name: PropTypes.string.isRequired,
-  placeholder: PropTypes.string.isRequired,
+  placeholder: PropTypes.string,
   onChange: PropTypes.func.isRequired,
 };
 
@@ -46,6 +49,7 @@ Input.propTypes = {
 Input.defaultProps = {
   value: '',
   type: 'text',
+  placeholder: '',
 };
 
 // == Export

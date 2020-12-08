@@ -1,21 +1,22 @@
 // == Import
 import React from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
-import emojiTest from '../../../assets/images/emojiTest.png';
 // == Import SCSS
 
 import './index.scss';
 
 // == Composant Emoji
 // utilisé pour les traits de caractères sur le profil + état de santé + humeur du jour
-const Emoji = ({}) => (
-  <div className="emoji">
-    <img src={emojiTest} alt="emoji" className="emoji__image" />
-  </div>
+const Emoji = ({ src }) => (
+  <img src={src} alt="emoji" className="emoji__image" />
 );
 
+
 // Validation des props
+Emoji.propTypes = {
+  src: PropTypes.string.isRequired,
+};
 
 // == Export
 export default Emoji;

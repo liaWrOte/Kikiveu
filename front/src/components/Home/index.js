@@ -4,16 +4,16 @@ import PropTypes from 'prop-types';
 // Import composants
 import Header from '../../containers/Header';
 import Map from '../microComponents/Map';
-import Info from './Info';
-import UserProfile from './UserProfile';
-import Login from '../../containers/Login';
-import SigninForm from '../SigninForm';
+import Info from '../Home/Info';
+import UserProfile from '../../containers/Home/userProfile';
+import Login from '../../containers/login';
+import SigninForm from '../../containers/signin';
 import SeeOtherUserProfile from './SeeOtherUserProfile';
 import Chat from './Chat';
-import KikiVeuContact from './Chat/KikiVeuContact';
+import KikiVeuContact from './KikiVeuContact';
+import Cgu from '../microComponents/Cgu';
 import CreateARide from './CreateARide';
 import Ride from './Ride';
-import PreviousButton from '../microComponents/PreviousButton';
 
 import './index.scss';
 
@@ -26,7 +26,10 @@ const Home = ({ isLogged }) => (
       <Route exact path="/inscription">
         <SigninForm />
       </Route>
-      {isLogged && (
+      <Route exact path="/cgu">
+        <Cgu />
+        <PreviousButton />
+      </Route>
       <Route>
         <div className="home">
           <div className=".item1">
@@ -84,12 +87,6 @@ const Home = ({ isLogged }) => (
           </Switch>
         </div>
       </Route>
-      )}
-      {!isLogged && (
-        <>
-          <div>Merci de vous connecter ou de créer un compte pour accéder à la carte</div>
-          <PreviousButton />
-        </>
       )}
     </Switch>
   </>

@@ -30,11 +30,9 @@ class UsersType extends AbstractType
                     new NotBlank(),
                 ]
             ])
-            ->add('slug', null, [
-                'constraints' => [
-                    new Regex("#^[a-z]+-?[a-z]+#"),
-                ]
-            ])
+
+            ->add('slug')
+          
             ->add('password', PasswordType::class)
         ;
     }
