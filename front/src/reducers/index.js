@@ -3,6 +3,7 @@ import { combineReducers } from 'redux';
 import authReducer from './auth';
 import signinReducer from './signin';
 import userProfileReducer from './Home/userProfile';
+import createARideReducer from './Home/createARide';
 
 // etc
 // le reducer principal, qui regroupe les autres
@@ -12,6 +13,7 @@ const rootReducer = combineReducers({
   auth: authReducer,
   signin: signinReducer,
   userProfile: userProfileReducer,
+  createARide: createARideReducer,
   // etc
 });
 export default rootReducer;

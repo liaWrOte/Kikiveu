@@ -12,7 +12,7 @@ import SeeOtherUserProfile from './SeeOtherUserProfile';
 import Chat from './Chat';
 import KikiVeuContact from './KikiVeuContact';
 import Cgu from '../microComponents/Cgu';
-import CreateARide from './CreateARide';
+import CreateARide from '../../containers/Home/CreateARide';
 import Ride from './Ride';
 import PreviousButton from '../microComponents/PreviousButton';
 
@@ -88,7 +88,6 @@ const Home = ({ isLogged }) => (
           </Switch>
         </div>
       </Route>
-      )}
     </Switch>
   </>
 );
