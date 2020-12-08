@@ -4,8 +4,8 @@ import PropTypes from 'prop-types';
 // Import composants
 import Header from '../../containers/Header';
 import Map from '../microComponents/Map';
-import Info from './Info';
-import UserProfile from './UserProfile';
+import Info from '../Home/Info';
+import UserProfile from '../../containers/Home/userProfile';
 import Login from '../../containers/login';
 import SigninForm from '../../containers/signin';
 import SeeOtherUserProfile from './SeeOtherUserProfile';
@@ -13,7 +13,6 @@ import Chat from './Chat';
 import KikiVeuContact from './Chat/KikiVeuContact';
 import CreateARide from './CreateARide';
 import Ride from './Ride';
-import PreviousButton from '../microComponents/PreviousButton';
 
 import './index.scss';
 

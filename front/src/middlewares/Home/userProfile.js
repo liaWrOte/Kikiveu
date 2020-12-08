@@ -1,15 +1,14 @@
 import axios from 'axios';
 
 import {
-  SIGN_IN,
-  CHECK_LOGGED,
-  saveSigninInfo,
-} from '../actions/signin';
+  HANDLE_UPDATE_USER_PROFILE,
 
-const signin = (store) => (next) => (action) => {
+} from '../../actions/Home/userProfile';
+
+const userProfile = (store) => (next) => (action) => {
   switch (action.type) {
-    case SIGN_IN:
-      const { signin } = store.getState();
+    case HANDLE_UPDATE_USER_PROFILE:
+      /*const { signin } = store.getState();
       axios.post('http://localhost:8000/api/v1/signin', {
         slug: signin.username,
         pseudo: signin.username,
@@ -26,7 +25,7 @@ const signin = (store) => (next) => (action) => {
         .catch((error) => {
         // traitement si réponse est une erreur
           console.log('erreur :', error);
-        });
+        });*/
 
       next(action);
       break;
@@ -36,4 +35,4 @@ const signin = (store) => (next) => (action) => {
       next(action);
   }
 };
-export default signin;
+export default userProfile;

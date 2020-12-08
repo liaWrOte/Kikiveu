@@ -20,4 +20,3 @@ export const saveSigninInfo = (isLogged, nickname) => ({
   isLogged,
   nickname,
 });
-

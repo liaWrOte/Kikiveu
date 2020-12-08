@@ -69,6 +69,7 @@ const SigninForm = ({
 
             <Input
               name="nbDogs"
+              type="text"
               onChange={changeField}
               value={dogsNumber}
             />
@@ -80,6 +81,7 @@ const SigninForm = ({
 
             <Input
               name="dogName"
+              type="text"
               onChange={changeField}
               id="dogName"
               value={dogName}
