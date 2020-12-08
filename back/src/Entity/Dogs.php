@@ -73,6 +73,12 @@ class Dogs
      */
     private $temperament;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=States::class, inversedBy="dogs")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $state;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -206,6 +212,18 @@ class Dogs
     public function setTemperament(?Temperaments $temperament): self
     {
         $this->temperament = $temperament;
+
+        return $this;
+    }
+
+    public function getState(): ?States
+    {
+        return $this->state;
+    }
+
+    public function setState(?States $state): self
+    {
+        $this->state = $state;
 
         return $this;
     }
