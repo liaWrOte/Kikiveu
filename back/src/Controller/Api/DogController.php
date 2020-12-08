@@ -31,7 +31,7 @@ class DogController extends AbstractController
     }
 
     /**
-     * @Route("/add", name="add")
+     * @Route("/add", name="add", methods={"POST"})
      */
     public function add(Request $request): Response
     {
