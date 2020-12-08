@@ -2,6 +2,7 @@ import { createStore, applyMiddleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import authMiddleware from '../middlewares/auth';
 import signinMiddleware from '../middlewares/signin';
+import userProfileMiddleware from '../middlewares/Home/userProfile';
 
 import rootReducer from '../reducers';
 
@@ -10,6 +11,7 @@ const enhancers = composeWithDevTools(
   applyMiddleware(
     authMiddleware,
     signinMiddleware,
+    userProfileMiddleware,
     // ... d'autres middlewares
   ),
 );
