@@ -19,6 +19,7 @@ class AuthenticationSuccessListener
         if (!$user instanceof Users) {
             return;
         }
+        $data['id'] = $user->getId();
         $data['email'] = $user->getEmail();
         $data['pseudo'] = $user->getPseudo();
         $data['logged'] = true;
