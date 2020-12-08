@@ -40,8 +40,26 @@ class DiscussionController extends AbstractController
     public function read(Discussions $discussions, DiscussionsRepository $discussionsRepository)
     {
         $messagesByDiscussion = $discussionsRepository->findMessageByDiscussionsId($discussions);
-        dd($messagesByDiscussion);
 
-        return $this->json();
+        return $this->json($messagesByDiscussion);
+    }
+
+    /**
+     * @Route("/add", name="add", methods={"POST"})
+     */
+    public function add(Request $request, UsersRepository $usersRepository): Response
+    {
+        $json = $request->getContent();
+        $jsonArray = json_decode($json, true);
+        $user = $usersRepository->find($jsonArray['users']);
+        $discussion = new Discussions();
+        $discussion->addUser($user);
+        $discussion->setCreatedAt(new \DateTime());
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($discussion);
+        $em->flush();
+
+        return $this->json($discussion);
+
     }
 }
