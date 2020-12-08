@@ -26,12 +26,6 @@ class Events
      * @ORM\Column(type="string", length=255)
      * @Groups({"show_add_event"})
      */
-    private $name;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     * @Groups({"show_add_event"})
-     */
     private $locate;
 
     /**
@@ -102,18 +96,6 @@ class Events
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getName(): ?string
-    {
-        return $this->name;
-    }
-
-    public function setName(string $name): self
-    {
-        $this->name = $name;
-
-        return $this;
     }
 
     public function getLocate(): ?string

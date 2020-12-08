@@ -20,12 +20,6 @@ class Comments
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     * @Groups({"show_add_comment"})
-     */
-    private $title;
-
-    /**
      * @ORM\Column(type="text")
      * @Groups({"show_add_comment"})
      */
@@ -59,18 +53,6 @@ class Comments
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getTitle(): ?string
-    {
-        return $this->title;
-    }
-
-    public function setTitle(string $title): self
-    {
-        $this->title = $title;
-
-        return $this;
     }
 
     public function getBody(): ?string

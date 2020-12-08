@@ -28,12 +28,6 @@ class Tags
     private $name;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     * @Groups({"show_add_event", "show_tag"})
-     */
-    private $picture;
-
-    /**
      * @ORM\Column(type="datetime")
      * @Groups({"show_tag"})
      */
@@ -68,18 +62,6 @@ class Tags
     public function setName(string $name): self
     {
         $this->name = $name;
-
-        return $this;
-    }
-
-    public function getPicture(): ?string
-    {
-        return $this->picture;
-    }
-
-    public function setPicture(string $picture): self
-    {
-        $this->picture = $picture;
 
         return $this;
     }
