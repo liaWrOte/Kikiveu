@@ -16,7 +16,6 @@ import TextButton from '../TextButton/index';
 import './index.scss';
 
 const Map = () => {
-  // Déclare une nouvelle variable d'état, que l'on va appeler « count »
   const [lat, setLat] = useState(null);
   const [lng, setLng] = useState(null);
 
@@ -54,7 +53,6 @@ const Map = () => {
       </>
     );
   }
-
 
   return (
     <div className="map">
