@@ -40,7 +40,7 @@ class MainController extends AbstractController
             $em->persist($user);
             $em->flush();
 
-            return $this->json($user);
+            return $this->json($user, 200, ['signin' => true]);
         } else {
             return $this->json(
                 [
