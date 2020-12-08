@@ -4,11 +4,9 @@ import {
   TileLayer,
   Marker,
   Popup,
-  MapControl,
   useMapEvents,
 } from 'react-leaflet';
 
-import LocateControl from 'react-leaflet-locate-control';
 
 import { Link } from 'react-router-dom';
 
@@ -49,11 +47,14 @@ const Map = () => {
       },
     });
     return (
-      <Marker position={[markerLat, markerLng]}>
-        <Popup>Coordonnées de votre balade (lat,lng) : {[markerLat, markerLng]}</Popup>
-      </Marker>
+      <>
+        <Marker position={[markerLat, markerLng]}>
+          <Popup>Coordonnées de votre balade (lat,lng) : {[markerLat, markerLng]}</Popup>
+        </Marker>
+      </>
     );
   }
+
 
   return (
     <div className="map">

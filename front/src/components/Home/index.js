@@ -50,14 +50,14 @@ const Home = ({ isLogged }) => (
                 <KikiVeuContact />
               </div>
             </Route>
-            <Route exact path="/creer-balade">
-              <div className=".item3">
-                <CreateARide />
-              </div>
-            </Route>
             <Route exact path="/balade/1">
               <div className=".item3">
                 <Ride />
+              </div>
+            </Route>
+            <Route exact path="/creer-balade">
+              <div className=".item3">
+                <CreateARide />
               </div>
             </Route>
             <Route exact path="/1/messages">

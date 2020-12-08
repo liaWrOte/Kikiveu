@@ -1,4 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
+import {
+  Marker,
+  Popup,
+  useMapEvents,
+} from 'react-leaflet';
+
 import PropTypes from 'prop-types';
 
 // Import composants
@@ -32,20 +38,17 @@ const CreateARide = ({
   changeField,
   handleUpdateCreateARide
 }) => {
-  const [marker, setMarker] = useState(0, 0);
-  const placeCursor = 'Je positionne ma balade sur la carte';
+  const placeCursor = 'Cliquer sur la carte pour positionner un marqueur indiquant la localisation de la balade';
   const saveText = 'Enregistrer';
-
-  const addMarker = (e) => {
-    const newMarker = marker.push(e.latlng);
-    setMarker(newMarker);
-  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log('update Create A Ride');
     handleUpdateCreateARide();
   };
+
+
+
   return (
     <div className="createARide">
       <MainUserButton className="createARide__mainUserButton" />
@@ -59,6 +62,16 @@ const CreateARide = ({
           value={description}
         />
       </label>
+      <div className="createARide__item">
+        <label htmlFor="locate">
+          Localisation de la balade :
+          <Input
+            type="text"
+            id="locate"
+            name="locate"
+          />
+        </label>
+      </div>
       <div className="createARide__item">
         <label htmlFor="date">
           Date de la balade :
