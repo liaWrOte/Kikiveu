@@ -45,6 +45,24 @@ class DiscussionsRepository extends ServiceEntityRepository
         ;
     }
 
+    public function findMessageByDiscussionsId($id)
+    {
+        return $this->createQueryBuilder('d')
+            ->select('d.id as discussionsId')
+            ->leftJoin('d.messages', 'm')
+            ->addSelect('m.id as messageId')
+            ->addSelect('m.body as messagesBody')
+            ->addSelect('m.createdAt as messagesCreatedAt')
+            ->leftJoin('m.users', 'u')
+            ->addSelect('u.id as usersId')
+            ->addSelect('u.pseudo as usersPseudo')
+            ->where('m.discussion = :id')
+            ->setParameter('id', $id)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
     /*
     public function findOneBySomeField($value): ?Discussions
     {

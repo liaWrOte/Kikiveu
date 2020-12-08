@@ -3,6 +3,7 @@
 namespace App\Controller\Api;
 
 use App\Entity\Users;
+use App\Entity\Discussions;
 use App\Repository\UsersRepository;
 use App\Repository\DiscussionsRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -34,6 +35,13 @@ class DiscussionController extends AbstractController
     }
 
     /**
-     * @Route("/)
+     * @Route("/messages/{id}", name="read", requirements={"id" = "\d+"}, methods={"GET"})
      */
+    public function read(Discussions $discussions, DiscussionsRepository $discussionsRepository)
+    {
+        $messagesByDiscussion = $discussionsRepository->findMessageByDiscussionsId($discussions);
+        dd($messagesByDiscussion);
+
+        return $this->json();
+    }
 }
