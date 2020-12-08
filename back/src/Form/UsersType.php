@@ -36,6 +36,8 @@ class UsersType extends AbstractType
                 ]
             ])
             ->add('password', PasswordType::class)
+            ->add('status')
+            ->add('locate')
         ;
     }
 

@@ -22,19 +22,23 @@ class DogsRepository extends ServiceEntityRepository
     // /**
     //  * @return Dogs[] Returns an array of Dogs objects
     //  */
-    /*
-    public function findByExampleField($value)
+    public function findById($id)
     {
         return $this->createQueryBuilder('d')
-            ->andWhere('d.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('d.id', 'ASC')
-            ->setMaxResults(10)
+            ->select("d.id as dogId")
+            ->addSelect("d.avatar")
+            ->addSelect("d.castrate")
+            ->leftjoin('d.mood', 'm')
+            ->addSelect("m.id as moodId")
+            ->leftjoin('d.state', 's')
+            ->addSelect("s.id as stateId")
+            ->leftjoin('d.users', 'u')
+            ->addSelect('u.pseudo')
+            ->where('d.id = ' .$id)
             ->getQuery()
             ->getResult()
         ;
     }
-    */
 
     /*
     public function findOneBySomeField($value): ?Dogs
