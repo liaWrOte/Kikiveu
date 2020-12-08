@@ -85,7 +85,7 @@ class UsersRepository extends ServiceEntityRepository implements PasswordUpgrade
         ->addSelect('t.id as temperamentId')
         ->addSelect('t.name as temperamentName')
         ->addSelect('t.picture as temperamentPicture')
-        ->where('u.id = ' .$id)
+        ->where('u.id = ' . $id)
         ->getQuery()
         ->getResult()
         ;
@@ -99,6 +99,20 @@ class UsersRepository extends ServiceEntityRepository implements PasswordUpgrade
         //->where('u.id = ' .$id)
         ->getQuery()
         ->getResult()
+        ;
+    }
+
+    public function findDiscussions($id)
+    {
+        return $this->createQueryBuilder('u')
+            ->select('u.id as usersId')
+            ->addSelect('u.pseudo as usersPseudo')
+            ->leftJoin('u.discussions', 'd')
+            ->addSelect('d.id as discussionsId')
+            ->where('u.id = :id')
+            ->setParameter('id', $id)
+            ->getQuery()
+            ->getResult()
         ;
     }
     
