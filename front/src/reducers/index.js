@@ -4,6 +4,7 @@ import authReducer from './auth';
 import signinReducer from './signin';
 import userProfileReducer from './Home/userProfile';
 import createARideReducer from './Home/createARide';
+import mapReducer from './Map/map';
 
 // etc
 // le reducer principal, qui regroupe les autres
@@ -14,6 +15,7 @@ const rootReducer = combineReducers({
   signin: signinReducer,
   userProfile: userProfileReducer,
   createARide: createARideReducer,
+  map: mapReducer,
   // etc
 });
 export default rootReducer;

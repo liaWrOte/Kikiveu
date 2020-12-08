@@ -3,7 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 import PropTypes from 'prop-types';
 // Import composants
 import Header from '../../containers/Header';
-import Map from '../microComponents/Map';
+import Map from '../../containers/Map';
 import Info from '../Home/Info';
 import UserProfile from '../../containers/Home/userProfile';
 import Login from '../../containers/login';

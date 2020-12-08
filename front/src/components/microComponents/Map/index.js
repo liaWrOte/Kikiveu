@@ -15,7 +15,7 @@ import TextButton from '../TextButton/index';
 
 import './index.scss';
 
-const Map = () => {
+const Map = ({ changeLat, changeLng, changeMarkerLat, changeMarkerLng }) => {
   const [lat, setLat] = useState(null);
   const [lng, setLng] = useState(null);
 
