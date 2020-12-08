@@ -9,6 +9,8 @@ const initialState = {
   shape: 1,
   username: '',
   signedIn: true,
+  status: false,
+  coords: '',
 };
 
 const userProfileReducer = (state = initialState, action = {}) => {

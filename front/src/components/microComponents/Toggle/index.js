@@ -6,12 +6,28 @@ import React from 'react';
 import './index.scss';
 
 // == Composant
-const Toggle = () => (
-  <label className="switch" htmlFor="toggleButton">
-    <input id="toggleButton" type="checkbox" />
-    <span className="slider round"/>
-  </label>
-);
+const Toggle = ({
+  onChange,
+}) => {
+  const handleChange = (evt) => {
+    const { target } = evt;
+    const value = target.type === 'checkbox' ? target.checked : target.value;
+    const { name } = target;
+    onChange(value, name);
+  };
+
+  return (
+    <label className="switch" htmlFor="toggleButton">
+      <input
+        id="toggleButton"
+        type="checkbox"
+        onChange={handleChange}
+        name="status"
+      />
+      <span className="slider round" />
+    </label>
+  );
+};
 
 // PropTypes
 

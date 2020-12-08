@@ -30,6 +30,8 @@ const UserProfile = ({
   shape,
   username,
   signedIn,
+  status,
+  coords,
   changeField,
   handleUpdateUserProfile,
 }) => {
@@ -141,7 +143,14 @@ const UserProfile = ({
               name="shape"
             />
           </label>
-          <Toggle />
+          <label htmlFor="status">En ligne
+            <Toggle
+              onChange={changeField}
+              //value={1}
+              id="status"
+              name="status"
+            />
+          </label>
         </div>
         <label htmlFor="username">Votre nouveau pseudo
           <Input
