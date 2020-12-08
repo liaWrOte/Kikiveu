@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { useFormik, Formik, Form, Field, ErrorMessage } from 'formik';
 
 // import composants
 import Input from '../microComponents/Input';
@@ -57,27 +58,22 @@ const SigninForm = ({
     handleSignIn();
   };
 
+  const formik = useFormik({
+    initialValues: { email: "" },
+    onSubmit: values => {
+      alert(JSON.stringify(values, null, 2));
+    }
+  });
+
   return (
     <div className="signin">
       <div className="signin__img"><img src="" alt="screenshotApp" /></div>
 
-      <form autoComplete="off" className="signin__form" onSubmit={handleSubmit}>
+      <form autoComplete="off" className="signin__form" onSubmit={formik.handleSubmit}>
         <h2 className="signin__form__title">Rejoindre KikiVeu</h2>
         <div className="signin__form__item">
-          <label htmlFor="nbDogs">
-            1. Combien de chiens avez-vous ?
-
-            <Input
-              name="nbDogs"
-              type="text"
-              onChange={changeField}
-              value={dogsNumber}
-            />
-          </label>
-        </div>
-        <div className="signin__form__item">
           <label htmlFor="dogName">
-            2. Comment s'appelle votre chien ?
+            1. Comment s'appelle votre chien ?
 
             <Input
               name="dogName"
@@ -90,7 +86,7 @@ const SigninForm = ({
         </div>
         <div className="signin__form__item">
 
-          3. Est-ce un mâle ou une femelle ?
+          2. Est-ce un mâle ou une femelle ?
           <div className="signin__form__item__label">
             <label htmlFor="sex">Mâle
               <Emoji src={male} />
@@ -118,7 +114,7 @@ const SigninForm = ({
         </div>
         <div className="signin__form__item">
           <label htmlFor="age">
-            4. Quel âge a-t-il ?
+            3. Quel âge a-t-il ?
             <Input
               type="text"
               name="age"
@@ -129,7 +125,7 @@ const SigninForm = ({
           </label>
         </div>
         <div className="signin__form__item">
-          5. Est-il castré ?
+          4. Est-il castré ?
           <div className="signin__form__item__label">
             <Input
               type="radio"
@@ -152,7 +148,7 @@ const SigninForm = ({
         </div>
         <div className="signin__form__item">
           <label htmlFor="dogShape">
-            6. Comment décrirez-vous son état de santé général ?
+            5. Comment décrirez-vous son état de santé général ?
             <div className="signin__form__item__label">
               <label htmlFor="dogCondition">
                 <Emoji src={smallShape} />
@@ -193,7 +189,7 @@ const SigninForm = ({
         </div>
         <div className="signin__form__item">
           <label htmlFor="dogShape">
-            7. Votre chien est plutôt ? (1 choix possible)
+            6. Votre chien est plutôt ? (1 choix possible)
             <div className="signin__form__item__label">
               <label htmlFor="character">
                 <Emoji src={dominant} />
@@ -321,7 +317,7 @@ const SigninForm = ({
         </div>
         <div className="signin__form__item">
           <label htmlFor="dogShape">
-            8. KikiVeu est une application bienveillante, merci d'accepter la charte de KikiVeu et les CGU
+            7. KikiVeu est une application bienveillante, merci d'accepter la charte de KikiVeu et les CGU
             <div>
               <p>La charte</p>
               <Cgu className="cgu" />
@@ -346,7 +342,7 @@ const SigninForm = ({
         </div>
         <div className="signin__form__item">
           <label htmlFor="username">
-            9. Veuillez entrer un pseudo
+            8. Veuillez entrer un pseudo
           </label>
           <Input
             name="username"
@@ -358,7 +354,7 @@ const SigninForm = ({
         <div className="signin__form__item">
           <div className="signin__form__item__label">
             <label htmlFor="profileImage">
-              10. Veuillez choisir une photo de profil
+              9. Veuillez choisir une photo de profil
             </label>
             <input
               name="profileImage"
@@ -370,18 +366,18 @@ const SigninForm = ({
         </div>
         <div className="signin__form__item">
           <label htmlFor="email">
-            11. Veuillez entrer votre email
+            10. Veuillez entrer votre email
             <Input
               name="email"
-              onChange={changeField}
+              onChange={formik.changeField}
               id="email"
-              value={email}
+              value={formik.email}
             />
           </label>
         </div>
         <div className="signin__form__item">
           <label htmlFor="password1">
-            12. Veuillez choisir un mot de passe
+            11. Veuillez choisir un mot de passe
           </label>
           <Input
             name="password1"
