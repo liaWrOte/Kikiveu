@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
+import PropTypes from 'prop-types';
 import {
   MapContainer,
   TileLayer,
@@ -15,18 +16,24 @@ import TextButton from '../TextButton/index';
 
 import './index.scss';
 
-const Map = ({ changeLat, changeLng, changeMarkerLat, changeMarkerLng }) => {
-  const [lat, setLat] = useState(null);
-  const [lng, setLng] = useState(null);
-
+const Map = ({
+  lat,
+  lng,
+  markerLat,
+  markerLng,
+  changeLat,
+  changeLng,
+  changeMarkerLat,
+  changeMarkerLng,
+}) => {
   const refresh = 'Rafraîchir la carte';
 
   const success = (position) => {
-    const coord = position.coords;
-    setLat(position.coords.latitude);
-    setLng(position.coords.longitude);
-    console.log(coord.latitude);
-    console.log(coord.longitude);
+    // const coord = position.coords;
+    changeLat(position.coords.latitude);
+    changeLng(position.coords.longitude);
+    // console.log(coord.latitude);
+    // console.log(coord.longitude);
   };
   // gérer l'erreur avec un setLat et setLng sur Paris par exemple
   useEffect(() => {
@@ -35,14 +42,12 @@ const Map = ({ changeLat, changeLng, changeMarkerLat, changeMarkerLng }) => {
   }, []);
 
   function AddMarkerToClick() {
-    const [markerLat, setMarkerLat] = useState(0);
-    const [markerLng, setMarkerLng] = useState(0);
     useMapEvents({
       click(e) {
         const newMarkerLat = e.latlng.lat;
         const newMarkerLng = e.latlng.lng;
-        setMarkerLat(newMarkerLat);
-        setMarkerLng(newMarkerLng);
+        changeMarkerLat(newMarkerLat);
+        changeMarkerLng(newMarkerLng);
       },
     });
     return (
@@ -57,7 +62,7 @@ const Map = ({ changeLat, changeLng, changeMarkerLat, changeMarkerLng }) => {
   return (
     <div className="map">
       {lat !== null && lng !== null && (
-      <MapContainer className="map__component" center={[lat, lng]} zoom={13} scrollWheelZoom={false}>
+      <MapContainer className="map__component" center={[lat, lng]} zoom={13}>
         <AddMarkerToClick />
         <TileLayer
           attribution='&copy; <a href="">OpenStreetMap</a> contributors'
@@ -83,5 +88,26 @@ const Map = ({ changeLat, changeLng, changeMarkerLat, changeMarkerLng }) => {
     </div>
   );
 };
+
+// PropTypes
+Map.propTypes = {
+  lat: PropTypes.number,
+  lng: PropTypes.number,
+  markerLat: PropTypes.number,
+  markerLng: PropTypes.number,
+  changeLat: PropTypes.func.isRequired,
+  changeLng: PropTypes.func.isRequired,
+  changeMarkerLat: PropTypes.func.isRequired,
+  changeMarkerLng: PropTypes.func.isRequired,
+};
+
+
+Map.defaultProps = {
+  lat: null,
+  lng: null,
+  markerLat: 0,
+  markerLng: 0,
+};
+
 
 export default Map;

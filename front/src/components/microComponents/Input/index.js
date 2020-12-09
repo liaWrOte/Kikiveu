@@ -42,7 +42,7 @@ Input.propTypes = {
   type: PropTypes.string,
   name: PropTypes.string.isRequired,
   placeholder: PropTypes.string,
-  onChange: PropTypes.func.isRequired,
+  onChange: PropTypes.func,
 };
 
 // Valeurs par défaut pour les props
@@ -50,6 +50,8 @@ Input.defaultProps = {
   value: '',
   type: 'text',
   placeholder: '',
+  onChange: () => {
+  },
 };
 
 // == Export

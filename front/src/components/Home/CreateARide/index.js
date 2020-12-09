@@ -1,9 +1,4 @@
-import React, { useState } from 'react';
-import {
-  Marker,
-  Popup,
-  useMapEvents,
-} from 'react-leaflet';
+import React from 'react';
 
 import PropTypes from 'prop-types';
 
@@ -29,7 +24,8 @@ import water from '../../../assets/images/ride/water_ride.png';
 import './createARide.scss';
 
 const CreateARide = ({
-  locate,
+  markerLat,
+  markerLng,
   description,
   date,
   time,
@@ -47,8 +43,6 @@ const CreateARide = ({
     handleUpdateCreateARide();
   };
 
-
-
   return (
     <div className="createARide">
       <MainUserButton className="createARide__mainUserButton" />
@@ -62,20 +56,32 @@ const CreateARide = ({
           value={description}
         />
       </label>
-      <div className="createARide__item">
-        <label htmlFor="locate">
-          Localisation de la balade :
+      <div className="createARide__locate">
+        Localisation de la balade :
+        <label htmlFor="markerLat">
+          Latitude :
           <Input
             type="text"
-            id="locate"
-            name="locate"
+            id="markerLat"
+            name="markerLat"
+            value={markerLat}
+          />
+        </label>
+        <label htmlFor="markerLng">
+          Longitude :
+          <Input
+            type="text"
+            id="markerLng"
+            name="markerLng"
+            value={markerLng}
           />
         </label>
       </div>
       <div className="createARide__item">
         <label htmlFor="date">
-          Date de la balade :
+          Date de la balade : 
           <Input
+            placeholder="JJ/MM/YYYY"
             type="date"
             id="date"
             name="date"
@@ -218,7 +224,8 @@ const CreateARide = ({
 
 // PropTypes
 CreateARide.propTypes = {
-  locate: PropTypes.string.isRequired,
+  markerLat: PropTypes.number.isRequired,
+  markerLng: PropTypes.number.isRequired,
   description: PropTypes.string.isRequired,
   date: PropTypes.string,
   time: PropTypes.string,

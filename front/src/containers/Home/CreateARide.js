@@ -6,7 +6,8 @@ import { updateCreateARideField, handleUpdateCreateARide } from '../../actions/H
 
 const mapStateToProps = (state) => ({
   // nom de la prop à remplir: donnée à récupérer dans le state
-  locate: state.createARide.locate,
+  markerLat: state.map.markerLat,
+  markerLng: state.map.markerLng,
   description: state.createARide.description,
   datetime: state.createARide.datetime,
   duration: state.createARide.duration,

@@ -6,8 +6,10 @@ import Map from '../../components/microComponents/Map';
 
 const mapStateToProps = (state) => ({
   // nom de la prop à remplir: donnée à récupérer dans le state
-  locate: state.map.locate,
-  marker: state.map.marker,
+  lat: state.map.lat,
+  lng: state.map.lng,
+  markerLat: state.map.markerLat,
+  markerLng: state.map.markerLng,
 });
 
 const mapDispatchToProps = (dispatch) => ({

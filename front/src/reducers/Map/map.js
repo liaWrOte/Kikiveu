@@ -6,28 +6,43 @@ import {
 } from '../../actions/Map/map';
 
 const initialState = {
-  lat: '',
-  lng: '',
-  markerLat: '',
-  markerLng: '',
+  lat: null,
+  lng: null,
+  markerLat: 0,
+  markerLng: 0,
 };
 
 const mapReducer = (state = initialState, action = {}) => {
   switch (action.type) {
-    /*case UPDATE_LOCATE:
+    case UPDATE_LAT:
       console.log(`Action reçue, nouvelle valeur ${action.value} pour le champ locate`);
       return {
         ...state,
         // je veux prendre le contenu de action.name et utiliser ça comme nom
         // de propriété
-        locate: action.value,
+        lat: action.value,
       };
 
-    case UPDATE_MARKER:
+    case UPDATE_LNG:
+      console.log(`Action reçue, nouvelle valeur ${action.value} pour le champ locate`);
       return {
         ...state,
-        marker: action.value,
-      };*/
+        // je veux prendre le contenu de action.name et utiliser ça comme nom
+        // de propriété
+        lng: action.value,
+      };
+
+    case UPDATE_MARKERLAT:
+      return {
+        ...state,
+        markerLat: action.value,
+      };
+
+    case UPDATE_MARKERLNG:
+      return {
+        ...state,
+        markerLng: action.value,
+      };
 
     default: return { ...state };
   }
