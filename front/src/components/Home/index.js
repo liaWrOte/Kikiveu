@@ -3,7 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 import PropTypes from 'prop-types';
 // Import composants
 import Header from '../../containers/Header';
-import Map from '../microComponents/Map';
+import Map from '../../containers/Map';
 import Info from '../../containers/Home/info';
 import UserProfile from '../../containers/Home/userProfile';
 import Login from '../../containers/login';
@@ -12,7 +12,7 @@ import SeeOtherUserProfile from './SeeOtherUserProfile';
 import Chat from './Chat';
 import KikiVeuContact from './KikiVeuContact';
 import Cgu from '../microComponents/Cgu';
-import CreateARide from './CreateARide';
+import CreateARide from '../../containers/Home/CreateARide';
 import Ride from './Ride';
 import PreviousButton from '../microComponents/PreviousButton';
 
@@ -50,14 +50,14 @@ const Home = ({ isLogged }) => (
                 <KikiVeuContact />
               </div>
             </Route>
-            <Route exact path="/creer-balade">
-              <div className=".item3">
-                <CreateARide />
-              </div>
-            </Route>
             <Route exact path="/balade/1">
               <div className=".item3">
                 <Ride />
+              </div>
+            </Route>
+            <Route exact path="/creer-balade">
+              <div className=".item3">
+                <CreateARide />
               </div>
             </Route>
             <Route exact path="/1/messages">
@@ -88,7 +88,6 @@ const Home = ({ isLogged }) => (
           </Switch>
         </div>
       </Route>
-      )}
     </Switch>
   </>
 );

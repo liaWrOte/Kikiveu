@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
+import PropTypes from 'prop-types';
 import {
   MapContainer,
   TileLayer,
   Marker,
   Popup,
-  MapControl,
+  useMapEvents,
 } from 'react-leaflet';
 
-import LocateControl from 'react-leaflet-locate-control';
 
 import { Link } from 'react-router-dom';
 
@@ -16,20 +16,24 @@ import TextButton from '../TextButton/index';
 
 import './index.scss';
 
-const Map = () => {
-  // Déclare une nouvelle variable d'état, que l'on va appeler « count »
-  const [lat, setLat] = useState(null);
-  const [lng, setLng] = useState(null);
-
+const Map = ({
+  lat,
+  lng,
+  markerLat,
+  markerLng,
+  changeLat,
+  changeLng,
+  changeMarkerLat,
+  changeMarkerLng,
+}) => {
   const refresh = 'Rafraîchir la carte';
 
   const success = (position) => {
-    const coord = position.coords;
-
-    setLat(position.coords.latitude);
-    setLng(position.coords.longitude);
-    console.log(coord.latitude);
-    console.log(coord.longitude);
+    // const coord = position.coords;
+    changeLat(position.coords.latitude);
+    changeLng(position.coords.longitude);
+    // console.log(coord.latitude);
+    // console.log(coord.longitude);
   };
   // gérer l'erreur avec un setLat et setLng sur Paris par exemple
   useEffect(() => {
@@ -37,19 +41,33 @@ const Map = () => {
     navigator.geolocation.getCurrentPosition(success);
   }, []);
 
+  function AddMarkerToClick() {
+    useMapEvents({
+      click(e) {
+        const newMarkerLat = e.latlng.lat;
+        const newMarkerLng = e.latlng.lng;
+        changeMarkerLat(newMarkerLat);
+        changeMarkerLng(newMarkerLng);
+      },
+    });
+    return (
+      <>
+        <Marker position={[markerLat, markerLng]}>
+          <Popup>Coordonnées de votre balade (lat,lng) : {[markerLat, markerLng]}</Popup>
+        </Marker>
+      </>
+    );
+  }
+
   return (
     <div className="map">
       {lat !== null && lng !== null && (
-      <MapContainer className="map__component" center={[lat, lng]} zoom={13} scrollWheelZoom={false}>
+      <MapContainer className="map__component" center={[lat, lng]} zoom={13}>
+        <AddMarkerToClick />
         <TileLayer
           attribution='&copy; <a href="">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        <Marker position={[lat, lng]}>
-          <Popup>
-            A pretty CSS3 popup. <br /> Easily customizable.
-          </Popup>
-        </Marker>
       </MapContainer>
       ) }
 
@@ -70,5 +88,26 @@ const Map = () => {
     </div>
   );
 };
+
+// PropTypes
+Map.propTypes = {
+  lat: PropTypes.number,
+  lng: PropTypes.number,
+  markerLat: PropTypes.number,
+  markerLng: PropTypes.number,
+  changeLat: PropTypes.func.isRequired,
+  changeLng: PropTypes.func.isRequired,
+  changeMarkerLat: PropTypes.func.isRequired,
+  changeMarkerLng: PropTypes.func.isRequired,
+};
+
+
+Map.defaultProps = {
+  lat: null,
+  lng: null,
+  markerLat: 0,
+  markerLng: 0,
+};
+
 
 export default Map;

@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import './index.scss';
 
 // == Composant
-const Input = ({
+const TextArea = ({
   value,
   type,
   name,
@@ -17,24 +17,26 @@ const Input = ({
     onChange(evt.target.value, name);
   };
 
-  const inputId = `input-${name}`;
+  const textareaId = `input-${name}`;
 
   return (
-    <input
+    <textarea
     // infos de base
-      id={inputId}
+      id={textareaId}
       value={value}
       onChange={handleChange}
-      className="input"
+      type={type}
+      className="textarea"
       name={name}
       placeholder={placeholder}
-      type={type}
+      rows="6"
+      cols="20"
     />
   );
 };
 
 // PropTypes
-Input.propTypes = {
+TextArea.propTypes = {
   value: PropTypes.oneOfType([
     PropTypes.string.isRequired,
     PropTypes.number.isRequired,
@@ -42,17 +44,15 @@ Input.propTypes = {
   type: PropTypes.string,
   name: PropTypes.string.isRequired,
   placeholder: PropTypes.string,
-  onChange: PropTypes.func,
+  onChange: PropTypes.func.isRequired,
 };
 
 // Valeurs par défaut pour les props
-Input.defaultProps = {
+TextArea.defaultProps = {
   value: '',
   type: 'text',
   placeholder: '',
-  onChange: () => {
-  },
 };
 
 // == Export
-export default Input;
+export default TextArea;
