@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { useFormik, Formik, Form, Field, ErrorMessage } from 'formik';
 
 // import composants
 import Input from '../microComponents/Input';
@@ -58,18 +57,11 @@ const SigninForm = ({
     handleSignIn();
   };
 
-  const formik = useFormik({
-    initialValues: { email: "" },
-    onSubmit: values => {
-      alert(JSON.stringify(values, null, 2));
-    }
-  });
-
   return (
     <div className="signin">
       <div className="signin__img"><img src="" alt="screenshotApp" /></div>
 
-      <form autoComplete="off" className="signin__form" onSubmit={formik.handleSubmit}>
+      <form autoComplete="off" className="signin__form" onSubmit={handleSubmit}>
         <h2 className="signin__form__title">Rejoindre KikiVeu</h2>
         <div className="signin__form__item">
           <label htmlFor="dogName">
@@ -368,10 +360,11 @@ const SigninForm = ({
           <label htmlFor="email">
             10. Veuillez entrer votre email
             <Input
+              type="email"
               name="email"
-              onChange={formik.changeField}
+              onChange={changeField}
               id="email"
-              value={formik.email}
+              value={email}
             />
           </label>
         </div>
@@ -380,6 +373,7 @@ const SigninForm = ({
             11. Veuillez choisir un mot de passe
           </label>
           <Input
+            type="password"
             name="password1"
             onChange={changeField}
             id="password1"
@@ -391,6 +385,7 @@ const SigninForm = ({
             13. Veuillez confirmer votre mot de passe
           </label>
           <Input
+            type="password"
             name="password2"
             onChange={changeField}
             id="password2"
