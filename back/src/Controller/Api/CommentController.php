@@ -11,7 +11,6 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Serializer\SerializerInterface;
 
-
 /**
  * @Route("/api/v1/comment", name="api_v1_comment_")
 */
@@ -31,13 +30,13 @@ class CommentController extends AbstractController
     /**
      * @Route("/{id}", name="read", methods={"GET"}, requirements={"id" = "\d+"})
      */
-    public function read( CommentsRepository $commentsRepository, $id): Response
+    public function read(CommentsRepository $commentsRepository, $id): Response
     {
         $comment = $commentsRepository->findCommentById($id);
 
         if ($comment === null) {
-        throw $this->createNotFoundException('Le commentaire demandé n\'éxiste plus');
-        } 
+            throw $this->createNotFoundException('Le commentaire demandé n\'éxiste plus');
+        }
         
         return $this->json($comment);
     }
@@ -48,7 +47,7 @@ class CommentController extends AbstractController
      */
     public function add(Request $request, SerializerInterface $serializer): Response
     {
-        $json = $request->getContent(); 
+        $json = $request->getContent();
 
         $commentArray = json_decode($json, true);
 

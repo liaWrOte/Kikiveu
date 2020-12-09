@@ -30,6 +30,10 @@ security:
             pattern: ^/api/v1/signin
             anonymous: true
 
+        dogAdd:
+            pattern: ^/api/v1/dog/add
+            anonymous: true
+
         api:
             pattern:   ^/api
             stateless: true

@@ -85,7 +85,9 @@ class DogController extends AbstractController
             return $this->json(
                 [
                 'errors' => (string) $form->getErrors(true, false),
-                ], 400);
+                ],
+                400
+            );
         }
     }
 }
