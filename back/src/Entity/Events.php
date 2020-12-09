@@ -41,7 +41,7 @@ class Events
     private $datetime;
 
     /**
-     * @ORM\Column(type="integer", nullable=true)
+     * @ORM\Column(type="string", nullable=true)
      * @Groups({"show_add_event"})
      */
     private $duration;
