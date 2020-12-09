@@ -64,7 +64,10 @@
 | --- | ----------- | ---------- | ----------- | ------- | ------- |
 | `/event` | `GET` | `Api\EventController` | `api_v1_browse` | Données pour afficher tous les évènements | réponse Api: tous les évènements |
 | `/event/{id}` | `GET` | `Api\EventController` | `api_v1_read` | Données pour un évènement | {id} => id de l'évènement; réponse Api: les infos d'un évènement |
-| `/event/edit/{id}` | `POST` | `Api\EventController` | `api_v1_edit` | Envoi de données pour modifier un évènement | {id} => id de l'événement Réponse Api: code HTTP 201 |
+| `/event/add` | `POST` | `Api\EventController` | `api_v1_add` | Creaton d'un évènement | |
+
+| `/event/edit/{id}` | `PUT` | `Api\EventController` | `api_v1_edit` | Envoi de données pour modifier un évènement | {id} => id de l'événement Réponse Api: code HTTP 201 |
+| `/event/delete/{id}` | `DELETE` | `Api\EnventController` | `api_v1_delete` | Suppression d'un évènement | {id} => id de l'évènement |
 | --- | ----------- | ---------- | ----------- | ------- | ------- |
 | `/tag` | `GET` | `Api\TagController` | `api_v1_browse` | Données pour afficher tous les tags | réponse Api: tous les tags |
 | --- | ----------- | ---------- | ----------- | ------- | ------- |

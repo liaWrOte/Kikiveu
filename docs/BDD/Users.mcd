@@ -1,24 +1,26 @@
-Feels, 01 dogs, 0N moods
-moods : id, name, picture, createdAt, updatedAt
-link user to, 11 comments, 0N users
-comments : id, userId, title, body, eventId, createdAt, updatedAt
-link event to, 11 comments, 0N events
-
-dogs : id, avatar, moodId, userId, dogCondition, sex, characterId, age, castrate, createdAt, updatedAt
-belongs, 1N users, 11 dogs
-users : id, firstname, lastname, pseudo, password, role, slug, createdAt, updatedAt
-organized, 0N users, 11 events
-events : id, name, locate, tagsId, userId, maxParticipant, datetime, duration, description, slug, createdAt, updatedAt
-
-is, 01 dogs, 0N character
-post, 11 message, 0N users
-participate, 1N discussion, 0N users
-discussion: id, title, createdAt
-
 tagged, 0N tags, 1N events
-
-character: id, name, picture
-message: id, title, body, userId, discussionID, createdAt, updatedAt
+tags : id, name, createdAt, updatedAt
+participate, 1N discussion, 0N users
+discussion: id, createdAt, updatedAt
 belongs to, 1N discussion, 11 message
+
+events : id, locate, tagsId, userId, maxParticipant, datetime, duration, description, slug, createdAt, updatedAt
+organized, 0N users, 11 events
+users : id, pseudo, locate, password, status, role, slug, createdAt, updatedAt
+post, 11 message, 0N users
+message: id, body, userId, discussionID, createdAt, updatedAt
+
+link event to, 11 comments, 0N events
+comments : id, userId, body, eventId, createdAt, updatedAt
+link user to, 11 comments, 0N users
+belongs, 1N users, 11 dogs
+temperament: id, name, createdAt, updatedAt
+
 :
-tags : id, name, picture, createdAt, updatedAt
+moods : id, name, createdAt, updatedAt
+Feels, 01 dogs, 0N moods
+dogs : id, name, avatar, moodId, userId, sex, stateId, temperamentId, age, castrate, createdAt, updatedAt
+is, 01 dogs, 0N temperament
+
+state : id, name, createdAt, updatedAt
+is1, 11 dogs, 0N state
