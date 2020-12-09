@@ -89,7 +89,7 @@ class Users implements UserInterface
     private $discussions;
 
     /**
-     * @ORM\Column(type="boolean")
+     * @ORM\Column(type="boolean", nullable=true, options={"default"=1})
      */
     private $status;
 
