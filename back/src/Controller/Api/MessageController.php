@@ -2,8 +2,12 @@
 
 namespace App\Controller\Api;
 
+use App\Entity\Discussions;
 use App\Entity\Messages;
+use App\Form\DiscussionType;
 use App\Form\MessageType;
+use App\Repository\DiscussionsRepository;
+use App\Repository\UsersRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
@@ -32,7 +36,7 @@ class MessageController extends AbstractController
             $message->setCreatedAt(new \DateTime());
             $em->persist($message);
             $em->flush();
-
+            
             return $this->json(200);
         } else {
             return $this->json(

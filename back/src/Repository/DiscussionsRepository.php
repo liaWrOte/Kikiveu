@@ -19,22 +19,49 @@ class DiscussionsRepository extends ServiceEntityRepository
         parent::__construct($registry, Discussions::class);
     }
 
-    // /**
-    //  * @return Discussions[] Returns an array of Discussions objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    public function findDiscussionsByUserId($id)
     {
         return $this->createQueryBuilder('d')
-            ->andWhere('d.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('d.id', 'ASC')
-            ->setMaxResults(10)
+            ->select('d.id as discussionsId')
+            ->leftJoin('d.users', 'u')
+            ->where('u.id = :id')
+            ->setParameter('id', $id)
             ->getQuery()
             ->getResult()
         ;
     }
-    */
+
+    public function findDiscussionsWithParticipant($id)
+    {
+        return $this->createQueryBuilder('d')
+            ->select('d.id as discussionsId')
+            ->leftJoin('d.users', 'u')
+            ->addSelect('u.id as usersId')
+            ->addSelect('u.pseudo as usersPseudo')
+            ->where('d.id = :id')
+            ->setParameter('id', $id)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+    public function findMessageByDiscussionsId($id)
+    {
+        return $this->createQueryBuilder('d')
+            ->select('d.id as discussionsId')
+            ->leftJoin('d.messages', 'm')
+            ->addSelect('m.id as messageId')
+            ->addSelect('m.body as messagesBody')
+            ->addSelect('m.createdAt as messagesCreatedAt')
+            ->leftJoin('m.users', 'u')
+            ->addSelect('u.id as usersId')
+            ->addSelect('u.pseudo as usersPseudo')
+            ->where('m.discussion = :id')
+            ->setParameter('id', $id)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
 
     /*
     public function findOneBySomeField($value): ?Discussions
