@@ -94,7 +94,7 @@ class Users implements UserInterface
     private $status;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $locate;
 
