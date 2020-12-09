@@ -14,7 +14,7 @@ const mapStateToProps = (state) => ({
   shape: state.userProfile.mood,
   username: state.userProfile.username,
   signedIn: state.userProfile.signedIn,
-  status: state.userProfile.status,
+  castrate: state.userProfile.castrate,
   coords: state.userProfile.coords,
 });
 

@@ -8,6 +8,7 @@ import './index.scss';
 // == Composant
 const Toggle = ({
   onChange,
+  name,
 }) => {
   const handleChange = (evt) => {
     const { target } = evt;
@@ -22,7 +23,7 @@ const Toggle = ({
         id="toggleButton"
         type="checkbox"
         onChange={handleChange}
-        name="status"
+        name={name}
       />
       <span className="slider round" />
     </label>
@@ -32,6 +33,7 @@ const Toggle = ({
 // PropTypes
 Toggle.propTypes = {
   onChange: PropTypes.func.isRequired,
+  name: PropTypes.string.isRequired,
 };
 
 // == Export
