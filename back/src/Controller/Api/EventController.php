@@ -46,7 +46,7 @@ class EventController extends AbstractController
     }
 
     /**
-     * @Route("/edit/{id}", name="edit", methods={"POST"}, requirements={"id" = "\d+"})
+     * @Route("/edit/{id}", name="edit", methods={"PUT"}, requirements={"id" = "\d+"})
      */
     public function edit(Events $events, Request $request): Response
     {
