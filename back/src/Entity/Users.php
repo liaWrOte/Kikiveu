@@ -47,7 +47,7 @@ class Users implements UserInterface
     private $pseudo;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      * @Groups({"show_add_event"})
      */
     private $slug;
@@ -106,6 +106,11 @@ class Users implements UserInterface
         $this->dogs = new ArrayCollection();
         $this->discussions = new ArrayCollection();
     }
+
+    // public function __toString()
+    // {
+    //     return (string) $this->roles;
+    // }
 
     public function getId(): ?int
     {
