@@ -1,5 +1,5 @@
 export const UPDATE_CREATE_A_RIDE_FIELD = 'UPDATE_CREATE_A_RIDE_FIELD';
-export const HANDLE_UPDATE_CREATE_A_RIDE= 'HANDLE_UPDATE_CREATE_A_RIDE';
+export const HANDLE_CREATE_A_RIDE = 'HANDLE_CREATE_A_RIDE';
 
 export const updateCreateARideField = (value, name) => ({
   type: UPDATE_CREATE_A_RIDE_FIELD,
@@ -7,7 +7,7 @@ export const updateCreateARideField = (value, name) => ({
   name,
 });
 
-export const handleUpdateCreateARide = (value) => ({
-  type: HANDLE_UPDATE_CREATE_A_RIDE,
+export const handleCreateARide = (value) => ({
+  type: HANDLE_CREATE_A_RIDE,
   value,
 });

@@ -1,6 +1,6 @@
 import {
   UPDATE_CREATE_A_RIDE_FIELD,
-  HANDLE_UPDATE_CREATE_A_RIDE,
+  HANDLE_CREATE_A_RIDE,
 } from '../../actions/Home/createARide';
 
 import {
@@ -11,12 +11,13 @@ import {
 const initialState = {
   markerLat: 0,
   markerLng: 0,
-  description: '',
-  tagId: 0,
-  date: '',
-  time: '',
-  duration: '',
-  maxParticipant: '',
+  description: 'balade',
+  tagId: 2,
+  date: '09/12/2020',
+  time: '14:30',
+  duration: '01:30',
+  maxParticipant: 6,
+  slug: 'balade',
 };
 
 const createARideReducer = (state = initialState, action = {}) => {
@@ -42,7 +43,7 @@ const createARideReducer = (state = initialState, action = {}) => {
         [action.name]: action.value,
       };
 
-    case HANDLE_UPDATE_CREATE_A_RIDE:
+    case HANDLE_CREATE_A_RIDE:
       return {
         ...state,
       };

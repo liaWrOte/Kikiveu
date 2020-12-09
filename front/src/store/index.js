@@ -3,6 +3,7 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import authMiddleware from '../middlewares/auth';
 import signinMiddleware from '../middlewares/signin';
 import userProfileMiddleware from '../middlewares/Home/userProfile';
+import createARideMiddleware from '../middlewares/Home/createARide';
 
 import rootReducer from '../reducers';
 
@@ -12,6 +13,7 @@ const enhancers = composeWithDevTools(
     authMiddleware,
     signinMiddleware,
     userProfileMiddleware,
+    createARideMiddleware,
     // ... d'autres middlewares
   ),
 );

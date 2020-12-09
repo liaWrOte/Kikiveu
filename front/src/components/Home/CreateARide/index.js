@@ -32,20 +32,21 @@ const CreateARide = ({
   duration,
   maxParticipant,
   changeField,
-  handleUpdateCreateARide
+  handleCreateARide,
 }) => {
   const placeCursor = 'Cliquer sur la carte pour positionner un marqueur indiquant la localisation de la balade';
   const saveText = 'Enregistrer';
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log('update Create A Ride');
-    handleUpdateCreateARide();
+    console.log('handle Create A Ride');
+    handleCreateARide();
   };
 
   return (
     <div className="createARide">
       <MainUserButton className="createARide__mainUserButton" />
+      <form autoComplete="off" className="createARide__form" onSubmit={handleSubmit}>
       <TextButton text={placeCursor} />
       <label htmlFor="description">
         Description de la balade :
@@ -210,11 +211,13 @@ const CreateARide = ({
       </label>
 
       </div>
-      <div className="createARide__item">
-        <Toggle />
-        Je souhaite recevoir des notifications à chaque commentaire
-      </div>
-      <TextButton text={saveText} />
+        <div className="createARide__item">
+          <Toggle />
+          Je souhaite recevoir des notifications à chaque commentaire
+        </div>
+        <TextButton text={saveText} />
+      </form>
+
       <div className="createARide__bottom">
         <PreviousButton />
       </div>
@@ -232,7 +235,7 @@ CreateARide.propTypes = {
   duration: PropTypes.string.isRequired,
   maxParticipant: PropTypes.string.isRequired,
   changeField: PropTypes.func.isRequired,
-  handleUpdateCreateARide: PropTypes.func.isRequired,
+  handleCreateARide: PropTypes.func.isRequired,
 };
 
 CreateARide.defaultProps = {

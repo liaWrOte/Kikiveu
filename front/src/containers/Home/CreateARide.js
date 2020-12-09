@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 
 import CreateARide from '../../components/Home/CreateARide';
 
-import { updateCreateARideField, handleUpdateCreateARide } from '../../actions/Home/createARide';
+import { updateCreateARideField, handleCreateARide } from '../../actions/Home/createARide';
 
 const mapStateToProps = (state) => ({
   // nom de la prop à remplir: donnée à récupérer dans le state
@@ -19,8 +19,8 @@ const mapDispatchToProps = (dispatch) => ({
   changeField: (newValue, name) => {
     dispatch(updateCreateARideField(newValue, name));
   },
-  handleUpdateCreateARide: () => {
-    dispatch(handleUpdateCreateARide());
+  handleCreateARide: () => {
+    dispatch(handleCreateARide());
   },
 });
 

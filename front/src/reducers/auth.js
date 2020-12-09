@@ -13,6 +13,7 @@ const initialState = {
   isLogged: false,
   // pseudo de l'utilisateur (si loggué)
   nickname: '',
+  userId: '',
 };
 
 const auth = (state = initialState, action = {}) => {
@@ -31,6 +32,7 @@ const auth = (state = initialState, action = {}) => {
         ...state,
         isLogged: action.isLogged,
         nickname: action.nickname,
+        userId: action.userId,
       };
 
     case LOG_OUT:
