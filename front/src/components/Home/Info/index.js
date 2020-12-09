@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 import Toggle from '../../microComponents/Toggle';
 import MainUserButton from '../../microComponents/MainUserButton';
 import SecondaryUserButton from '../../microComponents/SecondaryUserButton';
+import Message from '../../microComponents/Message';
 
 import './info.scss';
 
@@ -16,19 +17,25 @@ const Info = ({
   coords,
   changeStatus,
 }) => (
-  <div className="info">
-    <div>
-      <label htmlFor="status">En ligne
-        <Toggle
-          onChange={changeStatus}
-          id="status"
-          name="status"
-        />
-      </label>
+  <>
+    <div className="info">
+      <div>
+        <label htmlFor="status">En ligne
+          <Toggle
+            onChange={changeStatus}
+            id="status"
+            name="status"
+          />
+        </label>
+      </div>
+      <Link to="/1"><MainUserButton avatar={avatar} /></Link>
+      <Link to="/creer-balade"><SecondaryUserButton /></Link>
     </div>
-    <Link to="/1"><MainUserButton className="info__mainUserButton" avatar={avatar} /></Link>
-    <Link to="/creer-balade"><SecondaryUserButton /></Link>
-  </div>
+    <div className="message">
+      <Message />
+    </div>
+    
+  </>
 );
 
 Info.propTypes = {

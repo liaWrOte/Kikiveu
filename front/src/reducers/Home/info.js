@@ -3,7 +3,7 @@ import {
 } from '../../actions/Home/info';
 
 const initialState = {
-  avatar: '/front/src/assets/imagesdog_profile.jpg/',
+  avatar: '/front/src/assets/images/dog_profile.jpg',
   status: false,
   ride: 0,
   coords: '',
