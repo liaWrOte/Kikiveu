@@ -1,13 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import avatarExemple from '../../../assets/images/dog_profile.jpg';
+
 import './index.scss';
 
 const MainUserButton = ({
   avatar,
 }) => {
   const sectionStyle = {
-    backgroundImage: `url(${avatar})`,
+    backgroundImage: `url(${avatarExemple})`,
   };
   return (
 
