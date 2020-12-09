@@ -25,7 +25,7 @@ class CommentType extends AbstractType
                 'class' => Users::class,
             ])
            ->add('events', EntityType::class, [
-            'class' => Events::class,
+                'class' => Events::class,
             ])
         ;
     }

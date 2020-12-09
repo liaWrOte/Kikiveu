@@ -18,6 +18,17 @@ use Symfony\Component\Serializer\SerializerInterface;
 class CommentController extends AbstractController
 {
     /**
+     * @Route("/{id}", name="browse", methods={"GET"})
+     */
+    public function browse(CommentsRepository $commentsRepository, $id): Response
+    {
+        
+        $comments = $commentsRepository->findAllByEventId($id);
+        
+        return $this->json($comments);
+    }
+
+    /**
      * @Route("/{id}", name="read", methods={"GET"}, requirements={"id" = "\d+"})
      */
     public function read( CommentsRepository $commentsRepository, $id): Response
