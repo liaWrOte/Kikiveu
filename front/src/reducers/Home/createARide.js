@@ -14,7 +14,7 @@ const initialState = {
   markerLat: '',
   markerLng: '',
   description: '',
-  tags: [''],
+  tags: [],
   date: '10-12-2020',
   time: '',
   duration: '',
