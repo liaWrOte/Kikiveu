@@ -9,12 +9,12 @@ import {
 } from '../../actions/Map/map';
 
 const initialState = {
-  markerLat: 0,
-  markerLng: 0,
+  markerLat: '6',
+  markerLng: '6',
   description: 'balade',
-  tagId: 2,
-  date: '09/12/2020',
-  time: '14:30',
+  tags: [2, 3],
+  date: '12-12-2020',
+  time: '02:30',
   duration: '01:30',
   maxParticipant: 6,
   slug: 'balade',

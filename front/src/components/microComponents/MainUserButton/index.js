@@ -18,7 +18,12 @@ const MainUserButton = ({
 };
 
 MainUserButton.propTypes = {
-  avatar: PropTypes.string.isRequired,
+  avatar: PropTypes.string,
+};
+
+// Valeurs par défaut pour les props
+MainUserButton.defaultProps = {
+  avatar: '',
 };
 
 export default MainUserButton;

@@ -24,8 +24,9 @@ const createARide = (store) => (next) => (action) => {
           maxParticipant: createARide.maxParticipant,
           duration: createARide.duration,
           datetime: `${createARide.date} ${createARide.time}`,
-          locate: `${createARide.markerLat},${createARide.markerLng}`,
-          userId: auth.userId,
+          locate: `${createARide.markerLat} ${createARide.markerLng}`,
+          users: auth.userId,
+          tags: createARide.tags,
         },
         config,
       )

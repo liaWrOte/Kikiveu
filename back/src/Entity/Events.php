@@ -134,12 +134,12 @@ class Events
         return $this;
     }
 
-    public function getDuration(): ?int
+    public function getDuration() 
     {
         return $this->duration;
     }
 
-    public function setDuration(?int $duration): self
+    public function setDuration($duration): self
     {
         $this->duration = $duration;
 

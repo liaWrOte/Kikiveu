@@ -233,7 +233,7 @@ CreateARide.propTypes = {
   date: PropTypes.string,
   time: PropTypes.string,
   duration: PropTypes.string.isRequired,
-  maxParticipant: PropTypes.string.isRequired,
+  maxParticipant: PropTypes.number.isRequired,
   changeField: PropTypes.func.isRequired,
   handleCreateARide: PropTypes.func.isRequired,
 };

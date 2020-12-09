@@ -32,8 +32,15 @@ const Toggle = ({
 
 // PropTypes
 Toggle.propTypes = {
-  onChange: PropTypes.func.isRequired,
-  name: PropTypes.string.isRequired,
+  onChange: PropTypes.func,
+  name: PropTypes.string,
+};
+
+// Valeurs par défaut pour les props
+Toggle.defaultProps = {
+  name: '',
+  onChange: () => {
+  },
 };
 
 // == Export

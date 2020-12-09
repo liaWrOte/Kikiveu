@@ -37,11 +37,7 @@ class EventType extends AbstractType
             ])
             ->add('duration')
             ->add('description')
-            ->add('slug', null, [
-                'constraints' => [
-                    new Regex("#^[a-z]+-?[a-z]+$#"),
-                ]
-            ])
+            ->add('slug')
             ->add('tags', CollectionType::class, [
                 'entry_type' => EntityType::class,
                 'entry_options' => ['class' => Tags::class],
