@@ -5,6 +5,7 @@ namespace App\Form;
 use App\Entity\Discussions;
 use App\Entity\Users;
 use App\Entity\Messages;
+use App\Repository\DiscussionsRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;

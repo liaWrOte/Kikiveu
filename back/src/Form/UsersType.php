@@ -5,12 +5,14 @@ namespace App\Form;
 use App\Entity\Users;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\Email;
 use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Validator\Constraints\Range;
 use Symfony\Component\Validator\Constraints\Regex;
 
 class UsersType extends AbstractType
@@ -24,6 +26,19 @@ class UsersType extends AbstractType
                     new Email(),
                     new NotBlank(),
                 ],
+            ])
+            ->add('locate', null, [
+                'constraints' => [
+                    new NotBlank(),
+                ]
+            ])
+            ->add('status', IntegerType::class, [
+                'constraints' => [
+                    new Range([
+                        'min' => 0,
+                        'max' => 1,
+                    ])
+                ]
             ])
             ->add('pseudo', null, [
                 'constraints' => [
