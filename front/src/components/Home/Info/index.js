@@ -9,13 +9,13 @@ import SecondaryUserButton from '../../microComponents/SecondaryUserButton';
 
 import './info.scss';
 
-const Info = (
+const Info = ({
   avatar,
   status,
   ride,
   coords,
   changeStatus,
-) => (
+}) => (
   <div className="info">
     <div>
       <label htmlFor="status">En ligne
