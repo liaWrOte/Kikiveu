@@ -18,9 +18,6 @@ class CommentType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('title', null, [
-                'constraints' => new NotBlank()
-            ])
             ->add('body', TextareaType::class, [
                 'constraints' => new NotBlank()
             ])
@@ -28,7 +25,7 @@ class CommentType extends AbstractType
                 'class' => Users::class,
             ])
            ->add('events', EntityType::class, [
-            'class' => Events::class,
+                'class' => Events::class,
             ])
         ;
     }

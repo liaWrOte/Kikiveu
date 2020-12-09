@@ -22,19 +22,17 @@ class MoodsRepository extends ServiceEntityRepository
     // /**
     //  * @return Moods[] Returns an array of Moods objects
     //  */
-    /*
-    public function findByExampleField($value)
+    
+    public function findAllMoods()
     {
         return $this->createQueryBuilder('m')
-            ->andWhere('m.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('m.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
+        ->select('m.id')
+        ->addSelect('m.name')
+        ->getQuery()
+        ->getResult()
         ;
     }
-    */
+    
 
     /*
     public function findOneBySomeField($value): ?Moods

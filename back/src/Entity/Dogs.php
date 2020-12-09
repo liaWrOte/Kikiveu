@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\DogsRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=DogsRepository::class)
@@ -72,6 +73,12 @@ class Dogs
      * @ORM\ManyToOne(targetEntity=Temperaments::class, inversedBy="dogs")
      */
     private $temperament;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=States::class, inversedBy="dogs")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $state;
 
     public function getId(): ?int
     {
@@ -206,6 +213,18 @@ class Dogs
     public function setTemperament(?Temperaments $temperament): self
     {
         $this->temperament = $temperament;
+
+        return $this;
+    }
+
+    public function getState(): ?States
+    {
+        return $this->state;
+    }
+
+    public function setState(?States $state): self
+    {
+        $this->state = $state;
 
         return $this;
     }

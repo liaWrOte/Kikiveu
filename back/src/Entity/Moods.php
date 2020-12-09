@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
+
 /**
  * @ORM\Entity(repositoryClass=MoodsRepository::class)
  */
@@ -23,11 +24,6 @@ class Moods
      * @ORM\Column(type="string", length=50)
      */
     private $name;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $picture;
 
     /**
      * @ORM\Column(type="datetime")
@@ -62,18 +58,6 @@ class Moods
     public function setName(string $name): self
     {
         $this->name = $name;
-
-        return $this;
-    }
-
-    public function getPicture(): ?string
-    {
-        return $this->picture;
-    }
-
-    public function setPicture(string $picture): self
-    {
-        $this->picture = $picture;
 
         return $this;
     }

@@ -1,6 +1,5 @@
 App\Entity\Comments:
     comments_{1..10}:
-        title: '<text(20)>'
         body: '<text(100)>'
         createdAt: '<dateTime()>'
         users: '@users_*'
@@ -18,22 +17,20 @@ App\Entity\Dogs:
         mood: '@moods_*'
         temperament: '@temperament_*'
         users: '@users_*'
+        state: '@states_*'
         
 App\Entity\Temperaments:
     temperament_{1..15}:
         name: '<word()>'
-        picture: '<imageUrl()>'
         createdAt: '<dateTime()>'
 
 App\Entity\Moods:
     moods_{1..15}:
         name: '<word()>'
-        picture: '<imageUrl()>'
         createdAt: '<dateTime()>'
 
 App\Entity\Events:
     events_{1..10}:
-        name: '<word()>'
         locate: '<latitude(-90, 90)>'
         maxParticipant: '<numberbetween(1, 5)>'
         datetime: '<dateTime()>'
@@ -47,23 +44,21 @@ App\Entity\Events:
 App\Entity\Tags:
     tags_{1..10}:
         name: '<word()>'
-        picture: '<imageUrl()>'
         createdAt: '<dateTime()>'
 
 App\Entity\Users:
     users_{1..15}:
         email: '<email()>'
-        firstname: '<firstName()>'
-        lastname: '<lastName()>'
         pseudo: '<word()>'
         password: '<password()>'
+        locate: '<latitude(-90, 90)>'
+        status: '<numberBetween(0, 1)>'
         discussions: '<numberBetween(1, 15)>x @discussion_*'
         slug: '<slug()>'
         createdAt: '<dateTime()>'
 
 App\Entity\Messages:
     messages_{1..30}:
-        title: '<text(20)>'
         body: '<text(100)>'
         discussion: '@discussion_*'
         users: '@users_*'
@@ -71,5 +66,9 @@ App\Entity\Messages:
 
 App\Entity\Discussions:
     discussion_{1..15}:
-        title: '<text(20)>'
+        createdAt: '<dateTime()>'
+
+App\Entity\States:
+    states_{1..3}:
+        name: '<word()>'
         createdAt: '<dateTime()>'

@@ -27,7 +27,6 @@ class CommentsRepository extends ServiceEntityRepository
     {
         return $this->createQueryBuilder('c')
             ->select('c.id as commentId')
-            ->addSelect('c.title as commentTitle')
             ->addSelect('c.body as commentBody')
             ->addSelect('c.createdAt as commentCreatedAt')
             ->addSelect('c.updatedAt as commentUpdatedAt')
@@ -41,7 +40,21 @@ class CommentsRepository extends ServiceEntityRepository
         ;
     }
     
-
+    public function findAllByEventId($id)
+    {
+        return $this->createQueryBuilder('c')
+            ->select('c.id as commentId')
+            ->addSelect('c.body')
+            ->addSelect('c.createdAt')
+            ->leftJoin('c.users', 'u')
+            ->addSelect('u.id as userId')
+            ->leftJoin('c.events', 'e')
+            ->addSelect('e.id as eventId')
+            ->where('e.id = ' .$id)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
     
     /* public function find()
     {

@@ -3,13 +3,12 @@
 namespace App\Controller\Api;
 
 use App\Entity\Users;
-use App\Form\UserEditType;
+use App\Form\UsersType;
 use App\Repository\UsersRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-
 
 /**
  * @Route("/api/v1/user", name="api_v1_user_")
@@ -42,7 +41,7 @@ class UserController extends AbstractController
     }
 
     /**
-     * @Route("/edit/{id}", name="edit", methods={"POST"}, requirements={"id" = "\d+"})
+     * @Route("/edit/{id}", name="edit", methods={"PUT"}, requirements={"id" = "\d+"})
      */
     public function edit(Users $users, Request $request): Response
     {
@@ -50,7 +49,7 @@ class UserController extends AbstractController
         
         $userArray = json_decode($json, true);
 
-        $form = $this->createForm(UserEditType::class, $users, ['csrf_protection' => false]);
+        $form = $this->createForm(UsersType::class, $users, ['csrf_protection' => false]);
 
         $form->submit($userArray);
 
@@ -63,8 +62,10 @@ class UserController extends AbstractController
         } else {
             return $this->json(
                 [
-                'errors' => (string) $form->getErrors(true, false),
-                ], 400);
+                    'errors' => (string) $form->getErrors(true, false),
+                ],
+                400
+            );
         }
     }
 
