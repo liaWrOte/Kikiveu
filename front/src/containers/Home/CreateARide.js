@@ -2,14 +2,15 @@ import { connect } from 'react-redux';
 
 import CreateARide from '../../components/Home/CreateARide';
 
-import { updateCreateARideField, handleCreateARide } from '../../actions/Home/createARide';
+import { updateCreateARideField, handleCreateARide, updateTagsField } from '../../actions/Home/createARide';
 
 const mapStateToProps = (state) => ({
   // nom de la prop à remplir: donnée à récupérer dans le state
   markerLat: state.map.markerLat,
   markerLng: state.map.markerLng,
   description: state.createARide.description,
-  datetime: state.createARide.datetime,
+  date: state.createARide.date,
+  time: state.createARide.time,
   duration: state.createARide.duration,
   maxParticipant: state.createARide.maxParticipant,
   userId: state.auth.userId,
@@ -21,6 +22,10 @@ const mapDispatchToProps = (dispatch) => ({
   },
   handleCreateARide: () => {
     dispatch(handleCreateARide());
+  },
+  updateTagRide: (newValue, name) => {
+    console.log('update');
+    dispatch(updateTagsField(newValue, name));
   },
 });
 

@@ -1,6 +1,8 @@
 import {
   UPDATE_CREATE_A_RIDE_FIELD,
+  UPDATE_TAGS_FIELD,
   HANDLE_CREATE_A_RIDE,
+
 } from '../../actions/Home/createARide';
 
 import {
@@ -9,15 +11,14 @@ import {
 } from '../../actions/Map/map';
 
 const initialState = {
-  markerLat: '6',
-  markerLng: '6',
-  description: 'balade',
-  tags: [2, 3],
-  date: '12-12-2020',
-  time: '02:30',
-  duration: '01:30',
-  maxParticipant: 6,
-  slug: 'balade',
+  markerLat: '',
+  markerLng: '',
+  description: '',
+  tags: [''],
+  date: '10-12-2020',
+  time: '',
+  duration: '',
+  maxParticipant: 0,
 };
 
 const createARideReducer = (state = initialState, action = {}) => {
@@ -41,6 +42,15 @@ const createARideReducer = (state = initialState, action = {}) => {
         // je veux prendre le contenu de action.name et utiliser ça comme nom
         // de propriété
         [action.name]: action.value,
+      };
+
+    case UPDATE_TAGS_FIELD:
+      console.log(`Action reçue, nouvelle valeur ${action.value} pour le champ ${action.name}`);
+      return {
+        ...state,
+        // je veux prendre le contenu de action.name et utiliser ça comme nom
+        // de propriété
+        [action.name]: [action.value],
       };
 
     case HANDLE_CREATE_A_RIDE:

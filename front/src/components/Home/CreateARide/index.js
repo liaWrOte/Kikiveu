@@ -1,5 +1,4 @@
 import React from 'react';
-
 import PropTypes from 'prop-types';
 
 // Import composants
@@ -28,10 +27,12 @@ const CreateARide = ({
   markerLng,
   description,
   date,
+  tags,
   time,
   duration,
   maxParticipant,
   changeField,
+  updateTagRide,
   handleCreateARide,
 }) => {
   const placeCursor = 'Cliquer sur la carte pour positionner un marqueur indiquant la localisation de la balade';
@@ -80,10 +81,9 @@ const CreateARide = ({
       </div>
       <div className="createARide__item">
         <label htmlFor="date">
-          Date de la balade : 
+          Date de la balade :
           <Input
-            placeholder="JJ/MM/YYYY"
-            type="date"
+            type="text"
             id="date"
             name="date"
             onChange={changeField}
@@ -132,81 +132,81 @@ const CreateARide = ({
         Je choisis le type de la balade :
       </p>
       <div className="createARide__divLabel">
-        <label htmlFor="tagId" className="createARide__emoji">
+        <label htmlFor="tags" className="createARide__emoji">
           Sportive
           <Emoji src={athletic} />
           <Input
             type="radio"
-            onChange={changeField}
-            value={0}
+            onChange={updateTagRide}
+            value="11"
             id="athletic"
-            name="tagId"
+            name="tags"
           />
         </label>
-      <label htmlFor="tagId" className="createARide__emoji">
+      <label htmlFor="tags" className="createARide__emoji">
         Educative
         <Emoji src={learning} />
         <Input
           type="radio"
-          onChange={changeField}
-          value={1}
+          onChange={updateTagRide}
+          value="12"
           id="learning"
-          name="tagId"
+          name="tags"
         />
       </label>
-      <label htmlFor="tagId" className="createARide__emoji">
+      <label htmlFor="tags" className="createARide__emoji">
         Nature
         <Emoji src={nature} />
         <Input
           type="radio"
-          onChange={changeField}
-          value={2}
+          onChange={updateTagRide}
+          value="13"
           id="nature"
-          name="tagId"
+          name="tags"
         />
       </label>
-      <label htmlFor="tagId" className="createARide__emoji">
+      <label htmlFor="tags" className="createARide__emoji">
         Détente
         <Emoji src={peaceful} />
         <Input
           type="radio"
-          onChange={changeField}
-          value={3}
+          onChange={updateTagRide}
+          value="14"
           id="peaceful"
-          name="tagId"
+          name="tags"
         />
       </label>
-      <label htmlFor="tagId" className="createARide__emoji">
+      <label htmlFor="tags" className="createARide__emoji">
         Joueuse
         <Emoji src={player} />
         <Input
           type="radio"
-          onChange={changeField}
-          value={4}
+          onChange={updateTagRide}
+          value="15"
           id="player"
-          name="tagId"
+          name="tags"
         />
       </label>
-      <label htmlFor="tagId" className="createARide__emoji">
+      <label htmlFor="tags" className="createARide__emoji">
         Urbaine
         <Emoji src={urban} />
         <Input
           type="radio"
-          onChange={changeField}
-          value={5}
+          onChange={updateTagRide}
+          value="16"
           id="urban"
-          name="tagId"
+          name="tags"
         />
       </label>
-      <label htmlFor="tagId" className="createARide__emoji">
+      <label htmlFor="tags" className="createARide__emoji">
         Aquatique
         <Emoji src={water} />
         <Input
           type="radio"
-          onChange={changeField}
-          value={6}
+          onChange={updateTagRide}
+          value="17"
           id="water"
-          name="tagId"
+          name="tags"
         />
       </label>
 
