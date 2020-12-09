@@ -9,9 +9,6 @@ import {
 const mapStateToProps = (state) => ({
   // nom de la prop à remplir: donnée à récupérer dans le state
   avatar: state.info.avatar,
-  status: state.info.status,
-  ride: state.info.ride,
-  coords: state.info.coords,
 });
 
 const mapDispatchToProps = (dispatch) => ({

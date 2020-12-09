@@ -4,9 +4,6 @@ import {
 
 const initialState = {
   avatar: '/front/src/assets/images/dog_profile.jpg',
-  status: false,
-  ride: 0,
-  coords: '',
 };
 
 const infoReducer = (state = initialState, action = {}) => {

@@ -6,7 +6,6 @@ import './index.scss';
 
 const Header = ({handleLogout }) => (
   <header className="header">
-    <Link to="/1/messages"><p>Messages</p></Link>
     <Link to="/"><img alt="logo KikiVeu" /></Link>
     <Link to="/connexion"><button type="button" onClick={handleLogout}>Déconnexion</button></Link>
   </header>

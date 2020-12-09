@@ -1,5 +1,5 @@
 // == Import : npm
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
 // == Import : local
@@ -8,7 +8,6 @@ import './index.scss';
 // == Composant
 const Toggle = ({
   onChange,
-
 }) => {
   const handleChange = (evt) => {
     const { target } = evt;
