@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 // Import composants
 import Header from '../../containers/Header';
 import Map from '../microComponents/Map';
-import Info from '../Home/Info';
+import Info from '../../containers/Home/info';
 import UserProfile from '../../containers/Home/userProfile';
 import Login from '../../containers/login';
 import SigninForm from '../../containers/signin';

@@ -1,6 +1,6 @@
 // == Import : npm
-import React from 'react';
-// import PropTypes from 'prop-types';
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 
 // == Import : local
 import './index.scss';
@@ -30,6 +30,9 @@ const Toggle = ({
 };
 
 // PropTypes
+Toggle.propTypes = {
+  onChange: PropTypes.func.isRequired,
+};
 
 // == Export
 export default Toggle;
