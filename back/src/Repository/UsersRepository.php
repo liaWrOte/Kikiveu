@@ -77,5 +77,19 @@ class UsersRepository extends ServiceEntityRepository implements PasswordUpgrade
         ->getResult()
         ;
     }
+
+    public function findDiscussions($id)
+    {
+        return $this->createQueryBuilder('u')
+            ->select('u.id as usersId')
+            ->addSelect('u.pseudo as usersPseudo')
+            ->leftJoin('u.discussions', 'd')
+            ->addSelect('d.id as discussionsId')
+            ->where('u.id = :id')
+            ->setParameter('id', $id)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
     
 }

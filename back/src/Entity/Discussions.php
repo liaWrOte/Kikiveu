@@ -6,6 +6,7 @@ use App\Repository\DiscussionsRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=DiscussionsRepository::class)
@@ -16,6 +17,7 @@ class Discussions
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups({"add_discussion"})
      */
     private $id;
 
@@ -26,6 +28,7 @@ class Discussions
 
     /**
      * @ORM\Column(type="datetime")
+     * @Groups({"add_discussion"})
      */
     private $createdAt;
 

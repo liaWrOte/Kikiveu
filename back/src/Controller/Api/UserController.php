@@ -10,7 +10,6 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-
 /**
  * @Route("/api/v1/user", name="api_v1_user_")
  */
@@ -63,8 +62,10 @@ class UserController extends AbstractController
         } else {
             return $this->json(
                 [
-                'errors' => (string) $form->getErrors(true, false),
-                ], 400);
+                    'errors' => (string) $form->getErrors(true, false),
+                ],
+                400
+            );
         }
     }
 
