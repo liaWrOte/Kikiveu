@@ -132,15 +132,7 @@ class Events
         return $this;
     }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-    public function getDuration() 
-=======
     public function getDuration()
->>>>>>> develop
-=======
-    public function getDuration()
->>>>>>> 6597702abde4db47cd900c7f7c099bc74244c7b9
     {
         return $this->duration;
     }
