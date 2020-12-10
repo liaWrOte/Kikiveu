@@ -64,20 +64,8 @@ const SigninForm = ({
       <form autoComplete="off" className="signin__form" onSubmit={handleSubmit}>
         <h2 className="signin__form__title">Rejoindre KikiVeu</h2>
         <div className="signin__form__item">
-          <label htmlFor="nbDogs">
-            1. Combien de chiens avez-vous ?
-
-            <Input
-              name="nbDogs"
-              type="text"
-              onChange={changeField}
-              value={dogsNumber}
-            />
-          </label>
-        </div>
-        <div className="signin__form__item">
           <label htmlFor="dogName">
-            2. Comment s'appelle votre chien ?
+            1. Comment s'appelle votre chien ?
 
             <Input
               name="dogName"
@@ -90,7 +78,7 @@ const SigninForm = ({
         </div>
         <div className="signin__form__item">
 
-          3. Est-ce un mâle ou une femelle ?
+          2. Est-ce un mâle ou une femelle ?
           <div className="signin__form__item__label">
             <label htmlFor="sex">Mâle
               <Emoji src={male} />
@@ -118,7 +106,7 @@ const SigninForm = ({
         </div>
         <div className="signin__form__item">
           <label htmlFor="age">
-            4. Quel âge a-t-il ?
+            3. Quel âge a-t-il ?
             <Input
               type="text"
               name="age"
@@ -129,30 +117,34 @@ const SigninForm = ({
           </label>
         </div>
         <div className="signin__form__item">
-          5. Est-il castré ?
+          4. Est-il castré ?
           <div className="signin__form__item__label">
+          <label htmlFor="castrate">
             <Input
               type="radio"
               onChange={changeField}
               name="castrate"
-              id="castrate"
               value={1}
+              key="castrate"
               checked
             />
-            <label htmlFor="castrate">Oui</label>
+            Oui
+          </label>
+          <label htmlFor="castrate">
             <Input
               type="radio"
               onChange={changeField}
               name="castrate"
-              id="noCastrate"
               value={0}
+              key="noCastrate"
             />
-            <label htmlFor="castrate">Non</label>
+            Non
+          </label>
           </div>
         </div>
         <div className="signin__form__item">
           <label htmlFor="dogShape">
-            6. Comment décrirez-vous son état de santé général ?
+            5. Comment décrirez-vous son état de santé général ?
             <div className="signin__form__item__label">
               <label htmlFor="dogCondition">
                 <Emoji src={smallShape} />
@@ -161,7 +153,7 @@ const SigninForm = ({
                   onChange={changeField}
                   name="dogCondition"
                   id="smallShape"
-                  value={0}
+                  value={1}
                 />
                 Mauvaise condition physique
               </label>
@@ -172,7 +164,7 @@ const SigninForm = ({
                   onChange={changeField}
                   name="dogCondition"
                   id="mediumShape"
-                  value={1}
+                  value={2}
                 />
                 Condition physique moyenne
               </label>
@@ -183,7 +175,7 @@ const SigninForm = ({
                   onChange={changeField}
                   name="dogCondition"
                   id="goodShape"
-                  value={2}
+                  value={3}
                   checked
                 />
                 Bonne condition physique
@@ -192,8 +184,7 @@ const SigninForm = ({
           </label>
         </div>
         <div className="signin__form__item">
-          <label htmlFor="dogShape">
-            7. Votre chien est plutôt ? (1 choix possible)
+            6. Votre chien est plutôt ? (1 choix possible)
             <div className="signin__form__item__label">
               <label htmlFor="character">
                 <Emoji src={dominant} />
@@ -202,7 +193,7 @@ const SigninForm = ({
                   onChange={changeField}
                   name="character"
                   id="dominant"
-                  value="dominant"
+                  value={1}
                 />
                 Dominant
               </label>
@@ -213,7 +204,7 @@ const SigninForm = ({
                   onChange={changeField}
                   name="character"
                   id="sensitive"
-                  value="sensitive"
+                  value={2}
                 />
                 Timide/Sensible
               </label>
@@ -224,7 +215,7 @@ const SigninForm = ({
                   onChange={changeField}
                   name="character"
                   id="fearful"
-                  value="fearful"
+                  value={3}
                 />
                 Peureux
               </label>
@@ -235,7 +226,7 @@ const SigninForm = ({
                   onChange={changeField}
                   name="character"
                   id="playful"
-                  value="playful"
+                  value={4}
                 />
                 Joueur
               </label>
@@ -246,7 +237,7 @@ const SigninForm = ({
                   onChange={changeField}
                   name="character"
                   id="independent"
-                  value="independent"
+                  value={5}
                 />
                 Indépendant
               </label>
@@ -257,7 +248,7 @@ const SigninForm = ({
                   onChange={changeField}
                   name="character"
                   id="sociable"
-                  value="sociable"
+                  value={6}
                 />
                 Sociable
               </label>
@@ -268,7 +259,7 @@ const SigninForm = ({
                   onChange={changeField}
                   name="character"
                   id="barker"
-                  value="barker"
+                  value={7}
                 />
                 Aboyeur
               </label>
@@ -279,7 +270,7 @@ const SigninForm = ({
                   onChange={changeField}
                   name="character"
                   id="possessive"
-                  value="possessive"
+                  value={8}
                 />
                 Possessif
               </label>
@@ -290,7 +281,7 @@ const SigninForm = ({
                   onChange={changeField}
                   name="character"
                   id="curious"
-                  value="curious"
+                  value={9}
                 />
                 Curieux
               </label>
@@ -301,7 +292,7 @@ const SigninForm = ({
                   onChange={changeField}
                   name="character"
                   id="apprentice"
-                  value="apprentice"
+                  value={10}
                 />
                 En apprentissage
               </label>
@@ -312,16 +303,15 @@ const SigninForm = ({
                   onChange={changeField}
                   name="character"
                   id="stable"
-                  value="stable"
+                  value={11}
                 />
                 Equilibré
               </label>
             </div>
-          </label>
         </div>
         <div className="signin__form__item">
           <label htmlFor="dogShape">
-            8. KikiVeu est une application bienveillante, merci d'accepter la charte de KikiVeu et les CGU
+            7. KikiVeu est une application bienveillante, merci d'accepter la charte de KikiVeu et les CGU
             <div>
               <p>La charte</p>
               <Cgu className="cgu" />
@@ -346,7 +336,7 @@ const SigninForm = ({
         </div>
         <div className="signin__form__item">
           <label htmlFor="username">
-            9. Veuillez entrer un pseudo
+            8. Veuillez entrer un pseudo
           </label>
           <Input
             name="username"
@@ -358,7 +348,7 @@ const SigninForm = ({
         <div className="signin__form__item">
           <div className="signin__form__item__label">
             <label htmlFor="profileImage">
-              10. Veuillez choisir une photo de profil
+              9. Veuillez choisir une photo de profil
             </label>
             <input
               name="profileImage"
@@ -370,8 +360,9 @@ const SigninForm = ({
         </div>
         <div className="signin__form__item">
           <label htmlFor="email">
-            11. Veuillez entrer votre email
+            10. Veuillez entrer votre email
             <Input
+              type="email"
               name="email"
               onChange={changeField}
               id="email"
@@ -381,9 +372,10 @@ const SigninForm = ({
         </div>
         <div className="signin__form__item">
           <label htmlFor="password1">
-            12. Veuillez choisir un mot de passe
+            11. Veuillez choisir un mot de passe
           </label>
           <Input
+            type="password"
             name="password1"
             onChange={changeField}
             id="password1"
@@ -395,6 +387,7 @@ const SigninForm = ({
             13. Veuillez confirmer votre mot de passe
           </label>
           <Input
+            type="password"
             name="password2"
             onChange={changeField}
             id="password2"
@@ -417,15 +410,21 @@ const SigninForm = ({
 
 // PropTypes
 
+SigninForm.defaultProps = {
+  picture: '',
+  dogCondition: 2,
+  character: 1,
+};
+
 SigninForm.propTypes = {
   dogsNumber: PropTypes.number.isRequired,
   dogName: PropTypes.string.isRequired,
   sex: PropTypes.number.isRequired,
   age: PropTypes.number.isRequired,
   castrate: PropTypes.number.isRequired,
-  dogCondition: PropTypes.number.isRequired,
-  character: PropTypes.string.isRequired,
-  picture: PropTypes.string.isRequired,
+  dogCondition: PropTypes.number,
+  character: PropTypes.number,
+  picture: PropTypes.string,
   username: PropTypes.string.isRequired,
   avatar: PropTypes.string.isRequired,
   email: PropTypes.string.isRequired,

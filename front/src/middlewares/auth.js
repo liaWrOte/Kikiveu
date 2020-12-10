@@ -14,7 +14,7 @@ const authMiddleware = (store) => (next) => (action) => {
     case LOG_IN:
       // je récupère les données qui m'intéressent : email et mdp
       const { auth } = store.getState();
-      axios.post(`${apiUrl}/login_check`, {
+      axios.post('http://localhost:8000/api/v1/login_check', {
         username: auth.email,
         password: auth.password,
       })
@@ -23,7 +23,7 @@ const authMiddleware = (store) => (next) => (action) => {
           console.log('middleware : login');
           console.log(response);
           // on envoie les nouvelles infos dans notre state
-          store.dispatch(saveAuthInfo(response.data.logged, response.data.pseudo));
+          store.dispatch(saveAuthInfo(response.data.logged, response.data.pseudo, response.data.id));
           // je stocke mon token dans le localStorage
           localStorage.setItem('token', response.data.token);
           // console.log(localStorage.getItem('token'));

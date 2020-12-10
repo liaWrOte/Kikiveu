@@ -9,7 +9,7 @@ const initialState = {
   shape: 1,
   username: '',
   signedIn: true,
-  status: false,
+  castrate: false,
   coords: '',
 };
 

@@ -1,6 +1,6 @@
 // == Import : npm
-import React from 'react';
-// import PropTypes from 'prop-types';
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 
 // == Import : local
 import './index.scss';
@@ -8,6 +8,7 @@ import './index.scss';
 // == Composant
 const Toggle = ({
   onChange,
+  name,
 }) => {
   const handleChange = (evt) => {
     const { target } = evt;
@@ -22,7 +23,7 @@ const Toggle = ({
         id="toggleButton"
         type="checkbox"
         onChange={handleChange}
-        name="status"
+        name={name}
       />
       <span className="slider round" />
     </label>
@@ -30,6 +31,17 @@ const Toggle = ({
 };
 
 // PropTypes
+Toggle.propTypes = {
+  onChange: PropTypes.func,
+  name: PropTypes.string,
+};
+
+// Valeurs par défaut pour les props
+Toggle.defaultProps = {
+  name: '',
+  onChange: () => {
+  },
+};
 
 // == Export
 export default Toggle;

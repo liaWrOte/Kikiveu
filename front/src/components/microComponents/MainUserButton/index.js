@@ -1,17 +1,29 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
+import avatarExemple from '../../../assets/images/dog_profile.jpg';
 
 import './index.scss';
 
-import profileImage from '../../../assets/images/dog_profile.jpg';
-
-const MainUserButton = () => {
+const MainUserButton = ({
+  avatar,
+}) => {
   const sectionStyle = {
-    backgroundImage: `url(${profileImage})`,
+    backgroundImage: `url(${avatarExemple})`,
   };
   return (
 
     <div className="mainUserButton" style={sectionStyle} alt="chien avec des lunettes" />
   );
+};
+
+MainUserButton.propTypes = {
+  avatar: PropTypes.string,
+};
+
+// Valeurs par défaut pour les props
+MainUserButton.defaultProps = {
+  avatar: '',
 };
 
 export default MainUserButton;

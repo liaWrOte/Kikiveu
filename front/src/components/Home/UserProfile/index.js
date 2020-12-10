@@ -30,7 +30,7 @@ const UserProfile = ({
   shape,
   username,
   signedIn,
-  status,
+  castrate,
   coords,
   changeField,
   handleUpdateUserProfile,
@@ -143,12 +143,11 @@ const UserProfile = ({
               name="shape"
             />
           </label>
-          <label htmlFor="status">En ligne
+          <label htmlFor="castrate">Castré
             <Toggle
               onChange={changeField}
-              //value={1}
-              id="status"
-              name="status"
+              id="castrate"
+              name="castrate"
             />
           </label>
         </div>

@@ -7,10 +7,9 @@ import logo from '../../../assets/images/logo.png';
 
 import './index.scss';
 
-const Header = ({handleLogout }) => (
+const Header = ({ handleLogout }) => (
   <header className="header">
     <div>
-      <Link to="/1/messages"><Mail className="header__icone" /></Link>
       <Link to="/contact"><HelpCircle className="header__icone" /></Link>
     </div>
     <div>
