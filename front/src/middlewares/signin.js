@@ -38,6 +38,9 @@ const signin = (store) => (next) => (action) => {
             .then((response2) => {
               console.log(response2);
               store.dispatch(saveSigninInfo(response.data.logged, response.data.pseudo));
+              if (response.status === 200) {
+                window.location = '/connexion';
+              }
             })
             .catch((error) => {
             // traitement si réponse est une erreur
