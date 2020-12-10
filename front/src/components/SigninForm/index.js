@@ -119,23 +119,27 @@ const SigninForm = ({
         <div className="signin__form__item">
           4. Est-il castré ?
           <div className="signin__form__item__label">
+          <label htmlFor="castrate">
             <Input
               type="radio"
               onChange={changeField}
               name="castrate"
-              id="castrate"
               value={1}
+              key="castrate"
               checked
             />
-            <label htmlFor="castrate">Oui</label>
+            Oui
+          </label>
+          <label htmlFor="castrate">
             <Input
               type="radio"
               onChange={changeField}
               name="castrate"
-              id="noCastrate"
               value={0}
+              key="noCastrate"
             />
-            <label htmlFor="castrate">Non</label>
+            Non
+          </label>
           </div>
         </div>
         <div className="signin__form__item">
@@ -149,7 +153,7 @@ const SigninForm = ({
                   onChange={changeField}
                   name="dogCondition"
                   id="smallShape"
-                  value={0}
+                  value={1}
                 />
                 Mauvaise condition physique
               </label>
@@ -160,7 +164,7 @@ const SigninForm = ({
                   onChange={changeField}
                   name="dogCondition"
                   id="mediumShape"
-                  value={1}
+                  value={2}
                 />
                 Condition physique moyenne
               </label>
@@ -171,7 +175,7 @@ const SigninForm = ({
                   onChange={changeField}
                   name="dogCondition"
                   id="goodShape"
-                  value={2}
+                  value={3}
                   checked
                 />
                 Bonne condition physique
@@ -180,7 +184,6 @@ const SigninForm = ({
           </label>
         </div>
         <div className="signin__form__item">
-          <label htmlFor="dogShape">
             6. Votre chien est plutôt ? (1 choix possible)
             <div className="signin__form__item__label">
               <label htmlFor="character">
@@ -190,7 +193,7 @@ const SigninForm = ({
                   onChange={changeField}
                   name="character"
                   id="dominant"
-                  value="dominant"
+                  value={1}
                 />
                 Dominant
               </label>
@@ -201,7 +204,7 @@ const SigninForm = ({
                   onChange={changeField}
                   name="character"
                   id="sensitive"
-                  value="sensitive"
+                  value={2}
                 />
                 Timide/Sensible
               </label>
@@ -212,7 +215,7 @@ const SigninForm = ({
                   onChange={changeField}
                   name="character"
                   id="fearful"
-                  value="fearful"
+                  value={3}
                 />
                 Peureux
               </label>
@@ -223,7 +226,7 @@ const SigninForm = ({
                   onChange={changeField}
                   name="character"
                   id="playful"
-                  value="playful"
+                  value={4}
                 />
                 Joueur
               </label>
@@ -234,7 +237,7 @@ const SigninForm = ({
                   onChange={changeField}
                   name="character"
                   id="independent"
-                  value="independent"
+                  value={5}
                 />
                 Indépendant
               </label>
@@ -245,7 +248,7 @@ const SigninForm = ({
                   onChange={changeField}
                   name="character"
                   id="sociable"
-                  value="sociable"
+                  value={6}
                 />
                 Sociable
               </label>
@@ -256,7 +259,7 @@ const SigninForm = ({
                   onChange={changeField}
                   name="character"
                   id="barker"
-                  value="barker"
+                  value={7}
                 />
                 Aboyeur
               </label>
@@ -267,7 +270,7 @@ const SigninForm = ({
                   onChange={changeField}
                   name="character"
                   id="possessive"
-                  value="possessive"
+                  value={8}
                 />
                 Possessif
               </label>
@@ -278,7 +281,7 @@ const SigninForm = ({
                   onChange={changeField}
                   name="character"
                   id="curious"
-                  value="curious"
+                  value={9}
                 />
                 Curieux
               </label>
@@ -289,7 +292,7 @@ const SigninForm = ({
                   onChange={changeField}
                   name="character"
                   id="apprentice"
-                  value="apprentice"
+                  value={10}
                 />
                 En apprentissage
               </label>
@@ -300,12 +303,11 @@ const SigninForm = ({
                   onChange={changeField}
                   name="character"
                   id="stable"
-                  value="stable"
+                  value={11}
                 />
                 Equilibré
               </label>
             </div>
-          </label>
         </div>
         <div className="signin__form__item">
           <label htmlFor="dogShape">
@@ -408,15 +410,21 @@ const SigninForm = ({
 
 // PropTypes
 
+SigninForm.defaultProps = {
+  picture: '',
+  dogCondition: 2,
+  character: 1,
+};
+
 SigninForm.propTypes = {
   dogsNumber: PropTypes.number.isRequired,
   dogName: PropTypes.string.isRequired,
   sex: PropTypes.number.isRequired,
   age: PropTypes.number.isRequired,
   castrate: PropTypes.number.isRequired,
-  dogCondition: PropTypes.number.isRequired,
-  character: PropTypes.string.isRequired,
-  picture: PropTypes.string.isRequired,
+  dogCondition: PropTypes.number,
+  character: PropTypes.number,
+  picture: PropTypes.string,
   username: PropTypes.string.isRequired,
   avatar: PropTypes.string.isRequired,
   email: PropTypes.string.isRequired,
