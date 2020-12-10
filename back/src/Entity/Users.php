@@ -94,11 +94,6 @@ class Users implements UserInterface
      */
     private $status;
 
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $locate;
-
     public function __construct()
     {
         $this->events = new ArrayCollection();
@@ -403,18 +398,6 @@ class Users implements UserInterface
     public function setStatus(bool $status): self
     {
         $this->status = $status;
-
-        return $this;
-    }
-
-    public function getLocate(): ?string
-    {
-        return $this->locate;
-    }
-
-    public function setLocate(string $locate): self
-    {
-        $this->locate = $locate;
 
         return $this;
     }

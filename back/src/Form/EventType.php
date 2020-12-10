@@ -21,9 +21,6 @@ class EventType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('locate', null, [
-                'constraints' => new NotBlank()
-            ])
             ->add('maxParticipant', IntegerType::class, [
                 'constraints' => [
                     new NotBlank(),

@@ -27,11 +27,6 @@ class UsersType extends AbstractType
                     new NotBlank(),
                 ],
             ])
-            ->add('locate', null, [
-                'constraints' => [
-                    new NotBlank(),
-                ]
-            ])
             ->add('status', IntegerType::class, [
                 'constraints' => [
                     new Range([
