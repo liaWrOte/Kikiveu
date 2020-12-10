@@ -2,6 +2,15 @@
 
 namespace App\Controller\Admin;
 
+use App\Entity\Comments;
+use App\Entity\Discussions;
+use App\Entity\Dogs;
+use App\Entity\Events;
+use App\Entity\Messages;
+use App\Entity\Moods;
+use App\Entity\States;
+use App\Entity\Tags;
+use App\Entity\Temperaments;
 use App\Entity\Users;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
@@ -33,22 +42,18 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Users', 'fa fa-users', Users::class);
 
         yield MenuItem::section('Events');
-
-        yield MenuItem::section('Temperaments');
-
-        yield MenuItem::section('Tags');
-
-        yield MenuItem::section('States');
-
-        yield MenuItem::section('Moods');
-
-        yield MenuItem::section('Messages');
+        yield MenuItem::linkToCrud('Events', 'fa fa-calendar-o', Events::class);
+        yield MenuItem::linkToCrud('Comments', 'fa fa-comments-o', Comments::class);
+        yield MenuItem::linkToCrud('Tags', 'fas fa-tag', Tags::class);
 
         yield MenuItem::section('Dogs');
+        yield MenuItem::linkToCrud('Dogs', 'fas fa-dog', Dogs::class);
+        yield MenuItem::linkToCrud('Temperaments', 'fas fa-brain', Temperaments::class);
+        yield MenuItem::linkToCrud('Moods', 'far fa-grin', Moods::class);
+        yield MenuItem::linkToCrud('States', 'fas fa-heartbeat', States::class);
 
-        yield MenuItem::section('Discussions');
-
-        yield MenuItem::section('Comments');
-        // yield MenuItem::linkToCrud('The Label', 'fas fa-list', EntityClass::class);
+        yield MenuItem::section('Users discussions');
+        yield MenuItem::linkToCrud('Messages', 'fas fa-envelope-open-text', Messages::class);
+        yield MenuItem::linkToCrud('Discussions', 'fa fa-comments-o', Discussions::class);
     }
 }
