@@ -138,7 +138,7 @@ const CreateARide = ({
           <Input
             type="radio"
             onChange={updateTagRide}
-            value={11}
+            value={1}
             id="athletic"
             name="tags"
           />
@@ -149,7 +149,7 @@ const CreateARide = ({
         <Input
           type="radio"
           onChange={updateTagRide}
-          value={12}
+          value={2}
           id="learning"
           name="tags"
         />
@@ -160,7 +160,7 @@ const CreateARide = ({
         <Input
           type="radio"
           onChange={updateTagRide}
-          value={13}
+          value={3}
           id="nature"
           name="tags"
         />
@@ -171,7 +171,7 @@ const CreateARide = ({
         <Input
           type="radio"
           onChange={updateTagRide}
-          value={14}
+          value={4}
           id="peaceful"
           name="tags"
         />
@@ -182,7 +182,7 @@ const CreateARide = ({
         <Input
           type="radio"
           onChange={updateTagRide}
-          value={15}
+          value={5}
           id="player"
           name="tags"
         />
@@ -193,7 +193,7 @@ const CreateARide = ({
         <Input
           type="radio"
           onChange={updateTagRide}
-          value={16}
+          value={6}
           id="urban"
           name="tags"
         />
@@ -204,7 +204,7 @@ const CreateARide = ({
         <Input
           type="radio"
           onChange={updateTagRide}
-          value={17}
+          value={7}
           id="water"
           name="tags"
         />

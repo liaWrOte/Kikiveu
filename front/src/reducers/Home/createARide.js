@@ -16,7 +16,7 @@ const initialState = {
   description: '',
   tags: [],
   date: '10-12-2020',
-  time: '',
+  time: '23:30',
   duration: '',
   maxParticipant: 0,
 };
