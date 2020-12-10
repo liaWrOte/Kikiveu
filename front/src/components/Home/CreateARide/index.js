@@ -86,6 +86,7 @@ const CreateARide = ({
             type="text"
             id="date"
             name="date"
+            placeholder="JJ-MM-AAAA"
             onChange={changeField}
             value={date}
           />

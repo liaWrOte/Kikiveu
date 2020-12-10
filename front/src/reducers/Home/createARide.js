@@ -15,8 +15,8 @@ const initialState = {
   markerLng: '',
   description: '',
   tags: [],
-  date: '10-12-2020',
-  time: '23:30',
+  date: '',
+  time: '',
   duration: '',
   maxParticipant: 0,
 };
