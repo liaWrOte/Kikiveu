@@ -64,25 +64,12 @@ const createARideReducer = (state = initialState, action = {}) => {
             tags: myArray,
           };
         }
-        } else {
+      }
+      else {
         return {
           tags: [...newState.tags, action.value],
         };
       }
-
-      /* var index = myArray.indexOf(action.value);
-      if (index !== -1) {
-      myArray.splice(index, 1);
-      } 
-
-      const unique = [...new Set(finalArray)];
-      console.log(unique);
-
-      return {
-        // je veux prendre le contenu de action.name et utiliser ça comme nom
-        // de propriété
-        tags: unique,
-      };*/
 
     case HANDLE_CREATE_A_RIDE:
       return {
