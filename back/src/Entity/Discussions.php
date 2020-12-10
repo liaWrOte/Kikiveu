@@ -51,6 +51,12 @@ class Discussions
     {
         $this->users = new ArrayCollection();
         $this->messages = new ArrayCollection();
+        $this->createdAt = new \DateTime();
+    }
+
+    public function __toString()
+    {
+        return (string) $this->id;
     }
 
     public function getId(): ?int

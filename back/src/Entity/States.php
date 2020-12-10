@@ -43,6 +43,12 @@ class States
     public function __construct()
     {
         $this->dogs = new ArrayCollection();
+        $this->createdAt = new \DateTime();
+    }
+
+    public function __toString()
+    {
+        return (string) $this->name;
     }
 
     public function getId(): ?int
