@@ -91,6 +91,12 @@ class Events
     {
         $this->comments = new ArrayCollection();
         $this->tags = new ArrayCollection();
+        $this->createdAt = new \DateTime();
+    }
+
+    public function __toString()
+    {
+        return (string) $this->locate;
     }
 
     public function getId(): ?int

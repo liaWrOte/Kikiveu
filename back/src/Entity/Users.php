@@ -39,6 +39,7 @@ class Users implements UserInterface
      */
     private $password;
 
+    private $plainPassword;
 
     /**
      * @ORM\Column(type="string", length=50)
@@ -47,7 +48,7 @@ class Users implements UserInterface
     private $pseudo;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      * @Groups({"show_add_event"})
      */
     private $slug;
@@ -105,6 +106,12 @@ class Users implements UserInterface
         $this->messages = new ArrayCollection();
         $this->dogs = new ArrayCollection();
         $this->discussions = new ArrayCollection();
+        $this->createdAt = new \DateTime();
+    }
+
+    public function __toString()
+    {
+        return (string) $this->pseudo;
     }
 
     public function getId(): ?int
@@ -165,6 +172,17 @@ class Users implements UserInterface
     {
         $this->password = $password;
 
+        return $this;
+    }
+
+    public function getPlainPassword()
+    {
+        return $this->plainPassword;
+    }
+
+    public function setPlainPassword(string $plainPassword)
+    {
+        $this->plainPassword = $plainPassword;
         return $this;
     }
 
