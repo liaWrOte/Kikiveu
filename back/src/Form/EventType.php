@@ -5,12 +5,13 @@ namespace App\Form;
 use App\Entity\Events;
 use App\Entity\Tags;
 use App\Entity\Users;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints\PositiveOrZero;
@@ -27,6 +28,8 @@ class EventType extends AbstractType
                     new PositiveOrZero(),
                 ],
             ])
+            ->add('eventLat', NumberType::class)
+            ->add('eventLong', NumberType::class)
             ->add('datetime', DateTimeType::class, [
                 'widget' => 'single_text',
                 'format' => 'dd/MM/yyyy HH:mm',
@@ -34,11 +37,7 @@ class EventType extends AbstractType
             ])
             ->add('duration')
             ->add('description')
-            ->add('slug', null, [
-                'constraints' => [
-                    new Regex("#^[a-z]+-?[a-z]+$#"),
-                ]
-            ])
+            ->add('slug')
             ->add('tags', CollectionType::class, [
                 'entry_type' => EntityType::class,
                 'entry_options' => ['class' => Tags::class],

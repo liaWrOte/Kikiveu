@@ -6,6 +6,7 @@ use App\Entity\Users;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -19,7 +20,6 @@ class UsersType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        // TODO Voir pour le slug et le password 
         $builder
             ->add('email', EmailType::class, [
                 'constraints' => [
@@ -45,7 +45,12 @@ class UsersType extends AbstractType
           
             ->add('password', PasswordType::class)
             ->add('status')
-            ->add('locate')
+            ->add('userLat', NumberType::class)
+            ->add('userLong', NumberType::class)
+            ->add('swLat', NumberType::class)
+            ->add('swLong', NumberType::class)
+            ->add('neLat', NumberType::class)
+            ->add('neLong', NumberType::class)
         ;
     }
 
