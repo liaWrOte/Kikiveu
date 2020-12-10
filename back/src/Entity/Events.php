@@ -81,6 +81,16 @@ class Events
      */
     private $tags;
 
+    /**
+     * @ORM\Column(type="float", nullable=true)
+     */
+    private $eventLat;
+
+    /**
+     * @ORM\Column(type="float", nullable=true)
+     */
+    private $eventLong;
+
     public function __construct()
     {
         $this->comments = new ArrayCollection();
@@ -246,6 +256,30 @@ class Events
     public function removeTag(Tags $tag): self
     {
         $this->tags->removeElement($tag);
+
+        return $this;
+    }
+
+    public function getEventLat(): ?float
+    {
+        return $this->eventLat;
+    }
+
+    public function setEventLat(?float $eventLat): self
+    {
+        $this->eventLat = $eventLat;
+
+        return $this;
+    }
+
+    public function getEventLong(): ?float
+    {
+        return $this->eventLong;
+    }
+
+    public function setEventLong(?float $eventLong): self
+    {
+        $this->eventLong = $eventLong;
 
         return $this;
     }

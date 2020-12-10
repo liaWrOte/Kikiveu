@@ -94,6 +94,36 @@ class Users implements UserInterface
      */
     private $status;
 
+    /**
+     * @ORM\Column(type="float", nullable=true)
+     */
+    private $userLat;
+
+    /**
+     * @ORM\Column(type="float", nullable=true)
+     */
+    private $userLong;
+
+    /**
+     * @ORM\Column(type="float", nullable=true)
+     */
+    private $swLat;
+
+    /**
+     * @ORM\Column(type="float", nullable=true)
+     */
+    private $swLong;
+
+    /**
+     * @ORM\Column(type="float", nullable=true)
+     */
+    private $neLat;
+
+    /**
+     * @ORM\Column(type="float", nullable=true)
+     */
+    private $neLong;
+
     public function __construct()
     {
         $this->events = new ArrayCollection();
@@ -113,7 +143,7 @@ class Users implements UserInterface
     {
         return $this->id;
     }
-
+    
     public function getEmail(): ?string
     {
         return $this->email;
@@ -398,6 +428,78 @@ class Users implements UserInterface
     public function setStatus(bool $status): self
     {
         $this->status = $status;
+
+        return $this;
+    }
+
+    public function getUserLat(): ?float
+    {
+        return $this->userLat;
+    }
+
+    public function setUserLat(?float $userLat): self
+    {
+        $this->userLat = $userLat;
+
+        return $this;
+    }
+
+    public function getUserLong(): ?float
+    {
+        return $this->userLong;
+    }
+
+    public function setUserLong(?float $userLong): self
+    {
+        $this->userLong = $userLong;
+
+        return $this;
+    }
+
+    public function getSwLat(): ?float
+    {
+        return $this->swLat;
+    }
+
+    public function setSwLat(?float $swLat): self
+    {
+        $this->swLat = $swLat;
+
+        return $this;
+    }
+
+    public function getSwLong(): ?float
+    {
+        return $this->swLong;
+    }
+
+    public function setSwLong(?float $swLong): self
+    {
+        $this->swLong = $swLong;
+
+        return $this;
+    }
+
+    public function getNeLat(): ?float
+    {
+        return $this->neLat;
+    }
+
+    public function setNeLat(?float $neLat): self
+    {
+        $this->neLat = $neLat;
+
+        return $this;
+    }
+
+    public function getNeLong(): ?float
+    {
+        return $this->neLong;
+    }
+
+    public function setNeLong(?float $neLong): self
+    {
+        $this->neLong = $neLong;
 
         return $this;
     }

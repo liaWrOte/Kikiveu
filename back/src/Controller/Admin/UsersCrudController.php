@@ -34,7 +34,6 @@ class UsersCrudController extends AbstractCrudController
             IdField::new('id')->onlyOnIndex(),
             TextField::new('pseudo'),
             EmailField::new('email'),
-            TextField::new('locate'),
             ChoiceField::new('roles')
                 ->setChoices([
                     'Membre' => 'ROLE_USER',
@@ -65,5 +64,4 @@ class UsersCrudController extends AbstractCrudController
         $entityInstance->setPassword($encodedPassword);
         parent::persistEntity($entityManager, $entityInstance);
     }
-    
 }
