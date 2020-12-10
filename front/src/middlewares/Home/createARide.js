@@ -32,9 +32,10 @@ const createARide = (store) => (next) => (action) => {
           slug: auth.nickname,
           users: auth.userId,*/
 
-          locate: `${createARide.markerLat} ${createARide.markerLng}`,
+          lat: createARide.markerLat,
+          long: createARide.markerLng,
           description: createARide.description,
-          tags: createARide.tags, // problème ici
+          tags: createARide.tags,
           datetime: `${createARide.date} ${createARide.time}`,
           duration: createARide.duration,
           maxParticipant: createARide.maxParticipant, // problème ici
