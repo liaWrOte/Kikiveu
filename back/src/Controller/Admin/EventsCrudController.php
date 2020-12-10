@@ -26,7 +26,6 @@ class EventsCrudController extends AbstractCrudController
         return [
             IdField::new('id')->onlyOnIndex(),
             AssociationField::new('users'),
-            TextField::new('locate'),
             IntegerField::new('maxParticipant'),
             TextEditorField::new('description'),
             DateTimeField::new('datetime'),

@@ -23,12 +23,6 @@ class Events
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     * @Groups({"show_add_event"})
-     */
-    private $locate;
-
-    /**
      * @ORM\Column(type="smallint", options={"default"=0})
      * @Groups({"show_add_event"})
      */
@@ -87,6 +81,16 @@ class Events
      */
     private $tags;
 
+    /**
+     * @ORM\Column(type="float", nullable=true)
+     */
+    private $eventLat;
+
+    /**
+     * @ORM\Column(type="float", nullable=true)
+     */
+    private $eventLong;
+
     public function __construct()
     {
         $this->comments = new ArrayCollection();
@@ -102,18 +106,6 @@ class Events
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getLocate(): ?string
-    {
-        return $this->locate;
-    }
-
-    public function setLocate(string $locate): self
-    {
-        $this->locate = $locate;
-
-        return $this;
     }
 
     public function getMaxParticipant(): ?int
@@ -264,6 +256,30 @@ class Events
     public function removeTag(Tags $tag): self
     {
         $this->tags->removeElement($tag);
+
+        return $this;
+    }
+
+    public function getEventLat(): ?float
+    {
+        return $this->eventLat;
+    }
+
+    public function setEventLat(?float $eventLat): self
+    {
+        $this->eventLat = $eventLat;
+
+        return $this;
+    }
+
+    public function getEventLong(): ?float
+    {
+        return $this->eventLong;
+    }
+
+    public function setEventLong(?float $eventLong): self
+    {
+        $this->eventLong = $eventLong;
 
         return $this;
     }
