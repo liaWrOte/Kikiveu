@@ -19,7 +19,7 @@ const createARide = (store) => (next) => (action) => {
       const { auth } = store.getState();
 
       console.log(`'${createARide.markerLat} ${createARide.markerLng}'`);
-      console.log(`${createARide.tags}`);
+      console.log(createARide.tags);
       axios.post(
         'http://localhost:8000/api/v1/event/add',
         {
@@ -34,7 +34,7 @@ const createARide = (store) => (next) => (action) => {
 
           locate: '44.65876331712623 6.129169464111329',
           description: createARide.description,
-          tags: [2, 3], // problème ici
+          tags: createARide.tags, // problème ici
           datetime: `${createARide.date} ${createARide.time}`,
           duration: createARide.duration,
           maxParticipant: 6, // problème ici

@@ -49,8 +49,8 @@ const createARideReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         // je veux prendre le contenu de action.name et utiliser ça comme nom
-        // de propriété
-        [action.name]: [action.value],
+        // de propriété arr:[...state.arr, action.newItem]
+        [action.name]: [...state.tags, action.value],
       };
 
     case HANDLE_CREATE_A_RIDE:
