@@ -73,8 +73,7 @@ const Map = ({
   return (
     <div className="map">
       {lat !== null && lng !== null && (
-      <MapContainer className="map__component" center={[lat, lng]} zoom={13}
-      >
+      <MapContainer className="map__component" center={[lat, lng]} zoom={13}>
         <AddMarkerToClick />
         <MapBounds />
         <TileLayer
