@@ -11,8 +11,8 @@ const initialState = {
   sex: 0,
   age: 0,
   castrate: 0,
-  dogCondition: 2,
-  character: '',
+  dogCondition: '',
+  character: 1,
   picture: '',
   username: '',
   avatar: '/front/src/assets/imagesdog_profile.jpg/',
@@ -26,18 +26,6 @@ const signinReducer = (state = initialState, action = {}) => {
   switch (action.type) {
     case UPDATE_SIGNIN_FIELD:
       console.log(`Action reçue, nouvelle valeur ${action.value} pour le champ ${action.name}`);
-
-      /* si action.name vaut 'email' alors
-        return {
-          ...state,
-          email: action.value
-        };
-      si action.name vaut 'password' alors
-        return {
-          ...state,
-          password: action.value
-        };
-      */
       return {
         ...state,
         // je veux prendre le contenu de action.name et utiliser ça comme nom

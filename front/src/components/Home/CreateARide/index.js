@@ -137,7 +137,7 @@ const CreateARide = ({
           Sportive
           <Emoji src={athletic} />
           <Input
-            type="radio"
+            type="checkbox"
             onChange={updateTagRide}
             value={1}
             id="athletic"
@@ -148,7 +148,7 @@ const CreateARide = ({
         Educative
         <Emoji src={learning} />
         <Input
-          type="radio"
+          type="checkbox"
           onChange={updateTagRide}
           value={2}
           id="learning"
@@ -159,7 +159,7 @@ const CreateARide = ({
         Nature
         <Emoji src={nature} />
         <Input
-          type="radio"
+          type="checkbox"
           onChange={updateTagRide}
           value={3}
           id="nature"
@@ -170,7 +170,7 @@ const CreateARide = ({
         Détente
         <Emoji src={peaceful} />
         <Input
-          type="radio"
+          type="checkbox"
           onChange={updateTagRide}
           value={4}
           id="peaceful"
@@ -181,7 +181,7 @@ const CreateARide = ({
         Joueuse
         <Emoji src={player} />
         <Input
-          type="radio"
+          type="checkbox"
           onChange={updateTagRide}
           value={5}
           id="player"
@@ -192,7 +192,7 @@ const CreateARide = ({
         Urbaine
         <Emoji src={urban} />
         <Input
-          type="radio"
+          type="checkbox"
           onChange={updateTagRide}
           value={6}
           id="urban"
@@ -203,7 +203,7 @@ const CreateARide = ({
         Aquatique
         <Emoji src={water} />
         <Input
-          type="radio"
+          type="checkbox"
           onChange={updateTagRide}
           value={7}
           id="water"
