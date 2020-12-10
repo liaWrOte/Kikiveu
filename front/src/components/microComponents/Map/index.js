@@ -6,8 +6,10 @@ import {
   Marker,
   Popup,
   useMapEvents,
+  useMap,
+  latLngBounds,
 } from 'react-leaflet';
-
+import L, { Leaflet } from 'leaflet';
 
 import { Link } from 'react-router-dom';
 
@@ -27,6 +29,12 @@ const Map = ({
   changeMarkerLng,
 }) => {
   const refresh = 'Rafraîchir la carte';
+
+  function MapBounds() {
+    const map = useMap();
+    console.log(map.getBounds());
+    return null;
+  };
 
   const success = (position) => {
     // const coord = position.coords;
@@ -50,6 +58,9 @@ const Map = ({
         changeMarkerLng(newMarkerLng);
       },
     });
+
+    //const bounds = Leaflet.latLngBounds([position, position2]);
+
     return (
       <>
         <Marker position={[markerLat, markerLng]}>
@@ -62,8 +73,10 @@ const Map = ({
   return (
     <div className="map">
       {lat !== null && lng !== null && (
-      <MapContainer className="map__component" center={[lat, lng]} zoom={13}>
+      <MapContainer className="map__component" center={[lat, lng]} zoom={13}
+      >
         <AddMarkerToClick />
+        <MapBounds />
         <TileLayer
           attribution='&copy; <a href="">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
