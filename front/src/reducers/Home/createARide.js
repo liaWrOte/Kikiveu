@@ -18,7 +18,7 @@ const initialState = {
   date: '',
   time: '',
   duration: '',
-  maxParticipant: 0,
+  maxParticipant: 1,
 };
 
 const createARideReducer = (state = initialState, action = {}) => {
@@ -46,12 +46,43 @@ const createARideReducer = (state = initialState, action = {}) => {
 
     case UPDATE_TAGS_FIELD:
       console.log(`Action reçue, nouvelle valeur ${action.value} pour le champ ${action.name}`);
+
+      const newState = { ...state };
+      /* if (newState.tags.includes(action.value)) {
+        newState.tags = newState.tags.remove(action.value);
+      } */
+
+      var myArray = newState.tags;
+
+      if (myArray.includes(action.value)) {
+        const index = myArray.indexOf(action.value);
+        if (index > -1) {
+          console.log(myArray.splice(index, 1));
+          myArray.splice(index, 1);
+          console.log(myArray);
+          return {
+            tags: myArray,
+          };
+        }
+        } else {
+        return {
+          tags: [...newState.tags, action.value],
+        };
+      }
+
+      /* var index = myArray.indexOf(action.value);
+      if (index !== -1) {
+      myArray.splice(index, 1);
+      } 
+
+      const unique = [...new Set(finalArray)];
+      console.log(unique);
+
       return {
-        ...state,
         // je veux prendre le contenu de action.name et utiliser ça comme nom
-        // de propriété arr:[...state.arr, action.newItem]
-        [action.name]: [...state.tags, action.value],
-      };
+        // de propriété
+        tags: unique,
+      };*/
 
     case HANDLE_CREATE_A_RIDE:
       return {
