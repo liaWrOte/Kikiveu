@@ -35,5 +35,5 @@ class MessagesCrudController extends AbstractCrudController
         $entityInstance->setUpdatedAt(new \DateTime());
         parent::updateEntity($entityManager, $entityInstance);
     }
-    
 }
+
