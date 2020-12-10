@@ -21,13 +21,21 @@ use Symfony\Component\Serializer\Encoder\JsonEncoder;
 class EventController extends AbstractController
 {
     /**
-     * @Route("/", name="browse", methods={"GET"})
+     * @Route("", name="browse", methods={"POST"})
      */
-    public function browse(EventsRepository $eventsRepository): Response
+    public function browse(EventsRepository $eventsRepository, Request $request): Response
     {
-        
+        $json = $request->getContent();
+        $localisationArray = json_decode($json, true);
+        $eventsByLocalisation = $eventsRepository->findEventByLocalisation(
+            $localisationArray['swLat'],
+            $localisationArray['swLong'],
+            $localisationArray['neLat'],
+            $localisationArray['neLong']
+        );
+
         return $this->json([
-            'events' => $eventsRepository->findEvents(),
+            'events' => $eventsByLocalisation,
         ]);
     }
 

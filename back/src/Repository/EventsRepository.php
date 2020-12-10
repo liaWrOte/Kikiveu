@@ -5,6 +5,7 @@ namespace App\Repository;
 use App\Entity\Events;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Doctrine\ORM\EntityManagerInterface;
 
 /**
  * @method Events|null find($id, $lockMode = null, $lockVersion = null)
@@ -14,9 +15,12 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class EventsRepository extends ServiceEntityRepository
 {
-    public function __construct(ManagerRegistry $registry)
+    private $em;
+
+    public function __construct(ManagerRegistry $registry, EntityManagerInterface $em)
     {
         parent::__construct($registry, Events::class);
+        $this->em = $em;
     }
 
     /**
@@ -26,8 +30,6 @@ class EventsRepository extends ServiceEntityRepository
     {
         return $this->createQueryBuilder('e')
             ->select('e.id as eventId')
-            ->addSelect('e.name as eventName')
-            ->addSelect('e.locate as eventLocation')
             ->addSelect('e.maxParticipant as eventMaxParticipant')
             ->addSelect('e.datetime as eventDatetime')
             ->addSelect('e.duration as eventDuration')
@@ -42,7 +44,6 @@ class EventsRepository extends ServiceEntityRepository
             ->leftJoin('e.tags', 't')
             ->addSelect('t.id as tagsId')
             ->addSelect('t.name as tagsName')
-            ->addSelect('t.picture as tagsPicture')
             ->getQuery()
             ->getResult()
         ;
@@ -74,6 +75,63 @@ class EventsRepository extends ServiceEntityRepository
             ->getQuery()
             ->getOneOrNullResult()
         ;
+    }
+
+    public function findEventByLocalisation(float $swLat, float $swLong, float $neLat, float $neLong)
+    {
+        return $this->createQueryBuilder('e')
+            ->select('e.id as eventId')
+            ->addSelect('e.description as eventDescription')
+            ->addSelect('e.slug as eventSlug')
+            ->leftJoin('e.users', 'u')
+            ->addSelect('u.id as userId')
+            ->leftJoin('u.dogs', 'd')
+            ->addSelect('d.avatar as dogAvatar')
+            ->where('e.eventLat BETWEEN :swLat AND :neLat')
+            ->andWhere('e.eventLong BETWEEN :swLong AND :neLong')
+            ->setParameters(array(
+                'swLat' => $swLat,
+                'neLat' => $neLat,
+                'swLong' => $swLong,
+                'neLong' => $neLong
+            ))
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+    public function testSql(float $swLat, float $swLong, float $neLat, float $neLong)
+    {
+        $query = $this->em->createQuery("
+            SELECT 
+                events.id as eventId,
+                max_participant,
+                description,
+                duration,
+                events.slug as eventSlug,
+                events.createdAt,
+                events_lat as eventLat,
+                events_long as eventLong,
+        
+                GROUP_CONCAT(tags.id) as tag_concat_id,
+                GROUP_CONCAT(tags.name) as tag_concat_name
+            FROM events
+            LEFT JOIN events_tags ON events.id = events_tags.events_id
+            LEFT JOIN tags ON events_tags.tags_id = tags.id
+            WHERE event.lat BETWEEN :swLat AND :neLat
+            AND
+            WHERE event.long BETWEEN :swLong AND :neLong
+            GROUP BY events.id
+        ")
+        ->setParameters(array(
+            'swLat' => $swLat,
+            'neLat' => $neLat,
+            'swLong' => $swLong,
+            'neLong' => $neLong
+        ))
+        ;
+        
+        return $query->getResult();
     }
 
     /*

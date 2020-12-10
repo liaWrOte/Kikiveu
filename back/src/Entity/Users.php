@@ -39,6 +39,7 @@ class Users implements UserInterface
      */
     private $password;
 
+    private $plainPassword;
 
     /**
      * @ORM\Column(type="string", length=50)
@@ -47,7 +48,7 @@ class Users implements UserInterface
     private $pseudo;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      * @Groups({"show_add_event"})
      */
     private $slug;
@@ -94,9 +95,34 @@ class Users implements UserInterface
     private $status;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="float", nullable=true)
      */
-    private $locate;
+    private $userLat;
+
+    /**
+     * @ORM\Column(type="float", nullable=true)
+     */
+    private $userLong;
+
+    /**
+     * @ORM\Column(type="float", nullable=true)
+     */
+    private $swLat;
+
+    /**
+     * @ORM\Column(type="float", nullable=true)
+     */
+    private $swLong;
+
+    /**
+     * @ORM\Column(type="float", nullable=true)
+     */
+    private $neLat;
+
+    /**
+     * @ORM\Column(type="float", nullable=true)
+     */
+    private $neLong;
 
     public function __construct()
     {
@@ -105,13 +131,19 @@ class Users implements UserInterface
         $this->messages = new ArrayCollection();
         $this->dogs = new ArrayCollection();
         $this->discussions = new ArrayCollection();
+        $this->createdAt = new \DateTime();
+    }
+
+    public function __toString()
+    {
+        return (string) $this->pseudo;
     }
 
     public function getId(): ?int
     {
         return $this->id;
     }
-
+    
     public function getEmail(): ?string
     {
         return $this->email;
@@ -165,6 +197,17 @@ class Users implements UserInterface
     {
         $this->password = $password;
 
+        return $this;
+    }
+
+    public function getPlainPassword()
+    {
+        return $this->plainPassword;
+    }
+
+    public function setPlainPassword(string $plainPassword)
+    {
+        $this->plainPassword = $plainPassword;
         return $this;
     }
 
@@ -389,14 +432,74 @@ class Users implements UserInterface
         return $this;
     }
 
-    public function getLocate(): ?string
+    public function getUserLat(): ?float
     {
-        return $this->locate;
+        return $this->userLat;
     }
 
-    public function setLocate(string $locate): self
+    public function setUserLat(?float $userLat): self
     {
-        $this->locate = $locate;
+        $this->userLat = $userLat;
+
+        return $this;
+    }
+
+    public function getUserLong(): ?float
+    {
+        return $this->userLong;
+    }
+
+    public function setUserLong(?float $userLong): self
+    {
+        $this->userLong = $userLong;
+
+        return $this;
+    }
+
+    public function getSwLat(): ?float
+    {
+        return $this->swLat;
+    }
+
+    public function setSwLat(?float $swLat): self
+    {
+        $this->swLat = $swLat;
+
+        return $this;
+    }
+
+    public function getSwLong(): ?float
+    {
+        return $this->swLong;
+    }
+
+    public function setSwLong(?float $swLong): self
+    {
+        $this->swLong = $swLong;
+
+        return $this;
+    }
+
+    public function getNeLat(): ?float
+    {
+        return $this->neLat;
+    }
+
+    public function setNeLat(?float $neLat): self
+    {
+        $this->neLat = $neLat;
+
+        return $this;
+    }
+
+    public function getNeLong(): ?float
+    {
+        return $this->neLong;
+    }
+
+    public function setNeLong(?float $neLong): self
+    {
+        $this->neLong = $neLong;
 
         return $this;
     }

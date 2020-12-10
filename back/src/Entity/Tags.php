@@ -47,6 +47,7 @@ class Tags
     public function __construct()
     {
         $this->events = new ArrayCollection();
+        $this->createdAt = new \DateTime();
     }
 
     public function getId(): ?int
