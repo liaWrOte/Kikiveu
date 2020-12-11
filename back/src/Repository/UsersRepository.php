@@ -91,5 +91,26 @@ class UsersRepository extends ServiceEntityRepository implements PasswordUpgrade
             ->getResult()
         ;
     }
+
+    public function findUserByLocalisation(float $swLat, float $swLong, float $neLat, float $neLong)
+    {
+        return $this->createQueryBuilder('u')
+            ->select('u.id as userId')
+            ->addSelect('u.pseudo as userPseudo')
+            ->addSelect('u.slug as userSlug')
+            ->leftJoin('u.dogs', 'd')
+            ->addSelect('d.avatar as dogAvatar')
+            ->where('u.userLat BETWEEN :swLat AND :neLat')
+            ->andWhere('u.userLong BETWEEN :swLong AND :neLong')
+            ->setParameters(array(
+                'swLat' => $swLat,
+                'neLat' => $neLat,
+                'swLong' => $swLong,
+                'neLong' => $neLong
+            ))
+            ->getQuery()
+            ->getResult()
+        ;
+    }
     
 }
