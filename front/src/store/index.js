@@ -5,6 +5,7 @@ import signinMiddleware from '../middlewares/signin';
 import userProfileMiddleware from '../middlewares/Home/userProfile';
 import createARideMiddleware from '../middlewares/Home/createARide';
 import infoMiddleware from '../middlewares/Home/info';
+import mapMiddleware from '../middlewares/Home/map';
 
 import rootReducer from '../reducers';
 
@@ -16,6 +17,7 @@ const enhancers = composeWithDevTools(
     userProfileMiddleware,
     createARideMiddleware,
     infoMiddleware,
+    mapMiddleware,
     // ... d'autres middlewares
   ),
 );
