@@ -61,12 +61,14 @@ const createARideReducer = (state = initialState, action = {}) => {
           myArray.splice(index, 1);
           console.log(myArray);
           return {
+            ...state,
             tags: myArray,
           };
         }
       }
       else {
         return {
+          ...state,
           tags: [...newState.tags, action.value],
         };
       }

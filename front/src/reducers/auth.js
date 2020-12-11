@@ -6,9 +6,9 @@ import {
 
 const initialState = {
   // contenu de l'input pour l'adresse e-mail
-  email: '',
+  email: 'kiki@veu.fr',
   // contenu de l'input pour le mot de passe
-  password: '',
+  password: 'kikiveu',
   // indique si l'utilisateur est loggué
   isLogged: false,
   // pseudo de l'utilisateur (si loggué)

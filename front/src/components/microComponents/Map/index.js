@@ -111,7 +111,7 @@ const Map = ({
         </div>
       </div>
       <div className="map__refresh">
-        <TextButton text={refresh} onClick={refreshRideEvents} />
+        <TextButton text={refresh} handleClick={refreshRideEvents} />
       </div>
     </div>
   );

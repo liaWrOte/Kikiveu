@@ -31,8 +31,8 @@ const createARide = (store) => (next) => (action) => {
           slug: auth.nickname,
           users: auth.userId, */
 
-          lat: createARide.markerLat,
-          long: createARide.markerLng,
+          eventLat: createARide.markerLat,
+          eventLong: createARide.markerLng,
           description: createARide.description,
           tags: createARide.tags,
           datetime: `${createARide.date} ${createARide.time}`,
