@@ -26,7 +26,7 @@ class DogsCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         return [
-            IdField::new('id'),
+            IdField::new('id')->onlyOnIndex(),
             AssociationField::new('users'),
             TextField::new('name'),
             TextField::new('avatar'),
