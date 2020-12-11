@@ -32,6 +32,18 @@ class MoodsRepository extends ServiceEntityRepository
         ->getResult()
         ;
     }
+
+    public function findMoodById($id)
+    {
+        return $this->createQueryBuilder('m')
+            ->select('m.id')
+            ->addSelect('m.name')
+            ->where('m.id = :id')
+            ->setParameter('id', $id)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
     
 
     /*
