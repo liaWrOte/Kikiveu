@@ -12,17 +12,16 @@ const Input = ({
   name,
   placeholder,
   onChange,
+  id,
 }) => {
   const handleChange = (evt) => {
     onChange(evt.target.value, name);
   };
 
-  const inputId = `input-${name}`;
-
   return (
     <input
     // infos de base
-      id={inputId}
+      id={id}
       value={value}
       onChange={handleChange}
       className="input"
@@ -43,10 +42,12 @@ Input.propTypes = {
   name: PropTypes.string.isRequired,
   placeholder: PropTypes.string,
   onChange: PropTypes.func,
+  id: PropTypes.string,
 };
 
 // Valeurs par défaut pour les props
 Input.defaultProps = {
+  id: '',
   value: '',
   type: 'text',
   placeholder: '',

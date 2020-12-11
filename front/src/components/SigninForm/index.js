@@ -100,7 +100,7 @@ const SigninForm = ({
               id="female"
               name="sex"
             />
-            <label htmlFor="sex">Female</label>
+            <label htmlFor="sex">Femelle</label>
           </div>
 
         </div>
@@ -125,7 +125,6 @@ const SigninForm = ({
               onChange={changeField}
               name="castrate"
               value={1}
-              key="castrate"
               checked
             />
             Oui
