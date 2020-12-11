@@ -100,7 +100,7 @@ class Events
 
     public function __toString()
     {
-        return (string) $this->locate;
+        return (string) $this->duration;
     }
 
     public function getId(): ?int
