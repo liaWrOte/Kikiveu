@@ -2,14 +2,13 @@ import {
   UPDATE_CREATE_A_RIDE_FIELD,
   UPDATE_TAGS_FIELD,
   HANDLE_CREATE_A_RIDE,
-  REFRESH_RIDE_EVENTS,
 
 } from '../../actions/Home/createARide';
 
 import {
   UPDATE_MARKERLAT,
   UPDATE_MARKERLNG,
-} from '../../actions/Map/map';
+} from '../../actions/Map';
 
 const initialState = {
   markerLat: '',
@@ -20,7 +19,6 @@ const initialState = {
   time: '',
   duration: '',
   maxParticipant: 1,
-  rideEvents: [],
 };
 
 const createARideReducer = (state = initialState, action = {}) => {
@@ -78,12 +76,6 @@ const createARideReducer = (state = initialState, action = {}) => {
     case HANDLE_CREATE_A_RIDE:
       return {
         ...state,
-      };
-
-    case REFRESH_RIDE_EVENTS:
-      return {
-        ...state,
-        rideEvents: action.value,
       };
 
     default: return { ...state };

@@ -3,6 +3,7 @@ export const UPDATE_LNG = 'UPDATE_LNG';
 export const UPDATE_MARKERLAT = 'UPDATE_MARKERLAT';
 export const UPDATE_MARKERLNG = 'UPDATE_MARKERLNG';
 export const REFRESH_RIDE_EVENTS = 'REFRESH_RIDE_EVENTS';
+export const REFRESH_MAP_COORDS = 'REFRESH_MAP_COORDS';
 
 export const updateLat = (value) => ({
   type: UPDATE_LAT,
@@ -26,5 +27,10 @@ export const updateMarkerLng = (value) => ({
 
 export const refreshRideEvents = (value) => ({
   type: REFRESH_RIDE_EVENTS,
+  value,
+});
+
+export const refreshMapCoords = (value) => ({
+  type: REFRESH_MAP_COORDS,
   value,
 });

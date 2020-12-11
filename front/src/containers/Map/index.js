@@ -1,6 +1,13 @@
 import { connect } from 'react-redux';
 
-import { updateLat, updateLng, updateMarkerLat, updateMarkerLng } from '../../actions/Map/map';
+import {
+  updateLat,
+  updateLng,
+  updateMarkerLat,
+  updateMarkerLng,
+  refreshRideEvents,
+  refreshMapCoords,
+} from '../../actions/Map';
 
 import Map from '../../components/microComponents/Map';
 
@@ -10,6 +17,11 @@ const mapStateToProps = (state) => ({
   lng: state.map.lng,
   markerLat: state.map.markerLat,
   markerLng: state.map.markerLng,
+  rideEvents: state.map.rideEvents,
+  swLatMap: state.map.swLatMap,
+  swLongMap: state.map.swLongMap,
+  neLatMap: state.map.neLatMap,
+  neLongMap: state.map.neLongMap,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -28,6 +40,13 @@ const mapDispatchToProps = (dispatch) => ({
   changeMarkerLng: (newValue) => {
     // console.log(`Nouvelle valeur ${newValue} pour le champ ${name}`);
     dispatch(updateMarkerLng(newValue));
+  },
+  refreshRideEvents: (newValue) => {
+    console.log('refresh');
+    dispatch(refreshRideEvents(newValue));
+  },
+  refreshMapCoords: (name, value) => {
+    dispatch(refreshMapCoords(name, value));
   },
 });
 

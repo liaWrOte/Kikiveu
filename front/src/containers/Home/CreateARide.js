@@ -6,7 +6,6 @@ import {
   updateCreateARideField,
   handleCreateARide,
   updateTagsField,
-  refreshRideEvents,
 } from '../../actions/Home/createARide';
 
 const mapStateToProps = (state) => ({
@@ -19,7 +18,6 @@ const mapStateToProps = (state) => ({
   duration: state.createARide.duration,
   maxParticipant: state.createARide.maxParticipant,
   userId: state.auth.userId,
-  rideEvents: state.createARide.rideEvents,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -32,10 +30,6 @@ const mapDispatchToProps = (dispatch) => ({
   updateTagRide: (newValue, name) => {
     console.log('update');
     dispatch(updateTagsField(newValue, name));
-  },
-  refreshRideEvents: (newValue) => {
-    console.log('refresh');
-    dispatch(refreshRideEvents(newValue));
   },
 });
 

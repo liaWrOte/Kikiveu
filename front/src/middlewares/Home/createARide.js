@@ -2,8 +2,6 @@ import axios from 'axios';
 
 import {
   HANDLE_CREATE_A_RIDE,
-  REFRESH_RIDE_EVENTS,
-  refreshRideEvents,
 } from '../../actions/Home/createARide';
 
 import apiUrl from '../env';
@@ -64,28 +62,6 @@ const createARide = (store) => (next) => (action) => {
         .catch((error) => {
         // traitement si réponse est une erreur
           console.log('erreur :', error);
-        });
-
-      next(action);
-      break;
-
-    case REFRESH_RIDE_EVENTS:
-      console.log('dans middleware refresh ride events');
-      const { createARide } = store.getState();
-      axios.get(
-        'http://localhost:8000/api/v1/event/add',
-        {
-          id: 'id,',
-        },
-        config,
-      )
-        .then((response) => {
-          console.log(response);
-          store.dispatch(saveAuthInfo(response.data.logged, response.data.pseudo, response.data.id));
-
-        })
-        .catch((error) => {
-          console.log(error);
         });
 
       next(action);

@@ -7,7 +7,6 @@ import {
   Popup,
   useMapEvents,
   useMap,
-  latLngBounds,
 } from 'react-leaflet';
 import L, { Leaflet } from 'leaflet';
 
@@ -28,6 +27,11 @@ const Map = ({
   changeMarkerLat,
   changeMarkerLng,
   refreshRideEvents,
+  refreshMapCoords,
+  swLatMap,
+  swLongMap,
+  neLatMap,
+  neLongMap,
   rideEvents,
 }) => {
   const refresh = 'Rafraîchir la carte';
@@ -35,8 +39,9 @@ const Map = ({
   function MapBounds() {
     const map = useMap();
     console.log(map.getBounds());
+    refreshMapCoords(map.getBounds());
     return null;
-  };
+  }
 
   const success = (position) => {
     // const coord = position.coords;
@@ -50,6 +55,7 @@ const Map = ({
     // Met à jour le titre du document via l’API du navigateur
     navigator.geolocation.getCurrentPosition(success);
   }, []);
+
 
   function AddMarkerToClick() {
     useMapEvents({
@@ -73,23 +79,22 @@ const Map = ({
   }
 
   // map on all rideEvents
-  function MapEvents() {
-    const allEvents = rideEvents.map(
-      <Marker position={[rideEvents.lat, rideEvents.long]} />
-    );
-  }
+  /*function MapEvents({ rideEvents }) {
+    rideEvents.map((rideEvent) => (
+      <Marker position={[rideEvent.lat, rideEvent.long]} />
+    ));
+  }*/
 
   return (
     <div className="map">
       {lat !== null && lng !== null && (
-      <MapContainer className="map__component" center={[lat, lng]} zoom={13}>
+      <MapContainer className="map__component" center={[lat, lng]} zoom={13} >
         <AddMarkerToClick />
         <MapBounds />
         <TileLayer
           attribution='&copy; <a href="">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        <MapEvents />
 
       </MapContainer>
       ) }
@@ -113,6 +118,11 @@ const Map = ({
 };
 
 // PropTypes
+
+Map.defaultProps = {
+  rideEvents: [],
+};
+
 Map.propTypes = {
   lat: PropTypes.number,
   lng: PropTypes.number,
@@ -122,8 +132,8 @@ Map.propTypes = {
   changeLng: PropTypes.func.isRequired,
   changeMarkerLat: PropTypes.func.isRequired,
   changeMarkerLng: PropTypes.func.isRequired,
-  refreshRideEvents: PropTypes.func.isRequired,
-  rideEvents: PropTypes.array.isRequired,
+  refreshRideEvents: PropTypes.func,
+  rideEvents: PropTypes.array,
 };
 
 
