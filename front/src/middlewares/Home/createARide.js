@@ -2,6 +2,8 @@ import axios from 'axios';
 
 import {
   HANDLE_CREATE_A_RIDE,
+  REFRESH_RIDE_EVENTS,
+  refreshRideEvents,
 } from '../../actions/Home/createARide';
 
 import apiUrl from '../env';
@@ -9,8 +11,7 @@ import apiUrl from '../env';
 const createARide = (store) => (next) => (action) => {
   const tokenValue = localStorage.getItem('token');
   const config = {
-    headers: { Authorization: `Bearer ${tokenValue}`
-    },
+    headers: { Authorization: `Bearer ${tokenValue}` },
   };
   switch (action.type) {
     case HANDLE_CREATE_A_RIDE:
@@ -23,14 +24,14 @@ const createARide = (store) => (next) => (action) => {
       axios.post(
         'http://localhost:8000/api/v1/event/add',
         {
-          /*locate: '44.65876331712623 6.129169464111329',
+          /* locate: '44.65876331712623 6.129169464111329',
           description: 'balade',
           tags: `${createARide.tags}`,
           datetime: `${createARide.date} ${createARide.time}`,
           duration: createARide.duration,
           maxParticipant: createARide.maxParticipant,
           slug: auth.nickname,
-          users: auth.userId,*/
+          users: auth.userId, */
 
           lat: createARide.markerLat,
           long: createARide.markerLng,
@@ -41,8 +42,8 @@ const createARide = (store) => (next) => (action) => {
           maxParticipant: createARide.maxParticipant, // problème ici
           slug: auth.nickname,
           users: auth.userId,
-          
-         /* Données qui fonctionnent dans insomnia
+
+          /* Données qui fonctionnent dans insomnia
           locate: '44.65876331712623 6.129169464111329',
           description: 'balade',
           tags: [2, 3],
@@ -63,6 +64,28 @@ const createARide = (store) => (next) => (action) => {
         .catch((error) => {
         // traitement si réponse est une erreur
           console.log('erreur :', error);
+        });
+
+      next(action);
+      break;
+
+    case REFRESH_RIDE_EVENTS:
+      console.log('dans middleware refresh ride events');
+      const { createARide } = store.getState();
+      axios.get(
+        'http://localhost:8000/api/v1/event/add',
+        {
+          id: 'id,',
+        },
+        config,
+      )
+        .then((response) => {
+          console.log(response);
+          store.dispatch(saveAuthInfo(response.data.logged, response.data.pseudo, response.data.id));
+
+        })
+        .catch((error) => {
+          console.log(error);
         });
 
       next(action);

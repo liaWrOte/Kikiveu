@@ -27,6 +27,8 @@ const Map = ({
   changeLng,
   changeMarkerLat,
   changeMarkerLng,
+  refreshRideEvents,
+  rideEvents,
 }) => {
   const refresh = 'Rafraîchir la carte';
 
@@ -70,6 +72,13 @@ const Map = ({
     );
   }
 
+  // map on all rideEvents
+  function MapEvents() {
+    const allEvents = rideEvents.map(
+      <Marker position={[rideEvents.lat, rideEvents.long]} />
+    );
+  }
+
   return (
     <div className="map">
       {lat !== null && lng !== null && (
@@ -80,6 +89,8 @@ const Map = ({
           attribution='&copy; <a href="">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
+        <MapEvents />
+
       </MapContainer>
       ) }
 
@@ -95,7 +106,7 @@ const Map = ({
         </div>
       </div>
       <div className="map__refresh">
-        <TextButton text={refresh} />
+        <TextButton text={refresh} onClick={refreshRideEvents} />
       </div>
     </div>
   );
@@ -111,6 +122,8 @@ Map.propTypes = {
   changeLng: PropTypes.func.isRequired,
   changeMarkerLat: PropTypes.func.isRequired,
   changeMarkerLng: PropTypes.func.isRequired,
+  refreshRideEvents: PropTypes.func.isRequired,
+  rideEvents: PropTypes.array.isRequired,
 };
 
 
