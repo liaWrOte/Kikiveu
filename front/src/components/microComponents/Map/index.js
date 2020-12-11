@@ -28,11 +28,13 @@ const Map = ({
   changeMarkerLng,
   refreshRideEvents,
   refreshMapCoords,
+  sendMapCoords,
   swLatMap,
   swLongMap,
   neLatMap,
   neLongMap,
   rideEvents,
+  haveEventsLocation,
 }) => {
   const refresh = 'Rafraîchir la carte';
 
@@ -56,7 +58,6 @@ const Map = ({
     navigator.geolocation.getCurrentPosition(success);
   }, []);
 
-
   function AddMarkerToClick() {
     useMapEvents({
       click(e) {
@@ -67,7 +68,7 @@ const Map = ({
       },
     });
 
-    //const bounds = Leaflet.latLngBounds([position, position2]);
+    // const bounds = Leaflet.latLngBounds([position, position2]);
 
     return (
       <>
@@ -79,23 +80,25 @@ const Map = ({
   }
 
   // map on all rideEvents
-  /*function MapEvents({ rideEvents }) {
-    rideEvents.map((rideEvent) => (
-      <Marker position={[rideEvent.lat, rideEvent.long]} />
-    ));
-  }*/
+  function MapEvents() {
+    console.log('mapEvents');
+    const markertest = <Marker position={[lat, lng]} />;
+    return markertest;
+  }
 
   return (
     <div className="map">
       {lat !== null && lng !== null && (
-      <MapContainer className="map__component" center={[lat, lng]} zoom={13} >
+      <MapContainer className="map__component" center={[lat, lng]} zoom={13}>
         <AddMarkerToClick />
         <MapBounds />
+        {(haveEventsLocation) && (
+          <MapEvents />
+        )}
         <TileLayer
           attribution='&copy; <a href="">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-
       </MapContainer>
       ) }
 
@@ -111,7 +114,7 @@ const Map = ({
         </div>
       </div>
       <div className="map__refresh">
-        <TextButton text={refresh} handleClick={refreshRideEvents} />
+        <TextButton text={refresh} handleClick={sendMapCoords} />
       </div>
     </div>
   );
@@ -132,10 +135,11 @@ Map.propTypes = {
   changeLng: PropTypes.func.isRequired,
   changeMarkerLat: PropTypes.func.isRequired,
   changeMarkerLng: PropTypes.func.isRequired,
-  refreshRideEvents: PropTypes.func,
+  refreshRideEvents: PropTypes.func.isRequired,
   rideEvents: PropTypes.array,
+  haveEventsLocation: PropTypes.func.isRequired,
+  refreshMapCoords: PropTypes.func.isRequired,
 };
-
 
 Map.defaultProps = {
   lat: null,
@@ -143,6 +147,5 @@ Map.defaultProps = {
   markerLat: 0,
   markerLng: 0,
 };
-
 
 export default Map;

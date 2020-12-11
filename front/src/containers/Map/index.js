@@ -6,6 +6,8 @@ import {
   updateMarkerLat,
   updateMarkerLng,
   refreshRideEvents,
+  sendMapCoords,
+  checkEventsLocation,
   refreshMapCoords,
 } from '../../actions/Map';
 
@@ -22,6 +24,7 @@ const mapStateToProps = (state) => ({
   swLongMap: state.map.swLongMap,
   neLatMap: state.map.neLatMap,
   neLongMap: state.map.neLongMap,
+  haveEventsLocation: state.map.haveEventsLocation,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -42,11 +45,18 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(updateMarkerLng(newValue));
   },
   refreshRideEvents: (newValue) => {
-    console.log('refresh');
+    console.log('refresh ride Events');
     dispatch(refreshRideEvents(newValue));
   },
-  refreshMapCoords: (name, value) => {
-    dispatch(refreshMapCoords(name, value));
+  refreshMapCoords: (newValue) => {
+    console.log('refresh map coords');
+    dispatch(refreshMapCoords(newValue));
+  },
+  sendMapCoords: (value) => {
+    dispatch(sendMapCoords(value));
+  },
+  checkEventsLocation: (value) => {
+    dispatch(checkEventsLocation(value));
   },
 });
 

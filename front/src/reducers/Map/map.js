@@ -4,6 +4,8 @@ import {
   UPDATE_MARKERLAT,
   UPDATE_MARKERLNG,
   REFRESH_RIDE_EVENTS,
+  SEND_MAP_COORDS,
+  CHECK_EVENTS_LOCATION,
   REFRESH_MAP_COORDS,
 } from '../../actions/Map';
 
@@ -18,6 +20,7 @@ const initialState = {
   neLatMap: 0,
   neLongMap: 0,
   mapCoords: [],
+  haveEventsLocation: false,
 };
 
 const mapReducer = (state = initialState, action = {}) => {
@@ -62,6 +65,18 @@ const mapReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         mapCoords: action.value,
+      };
+/*
+    case SEND_MAP_COORDS:
+      return {
+        ...state,
+        
+      };*/
+
+    case CHECK_EVENTS_LOCATION:
+      return {
+        ...state,
+        haveEventsLocation: action.value,
       };
 
     default: return { ...state };
