@@ -2,7 +2,11 @@ import { connect } from 'react-redux';
 
 import CreateARide from '../../components/Home/CreateARide';
 
-import { updateCreateARideField, handleCreateARide, updateTagsField } from '../../actions/Home/createARide';
+import {
+  updateCreateARideField,
+  handleCreateARide,
+  updateTagsField,
+} from '../../actions/Home/createARide';
 
 const mapStateToProps = (state) => ({
   // nom de la prop à remplir: donnée à récupérer dans le state
