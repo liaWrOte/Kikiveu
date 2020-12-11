@@ -9,6 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Serializer\SerializerInterface;
 
 /**
  * @Route("/api/v1/dog", name="api_v1_dog_")
@@ -33,7 +34,7 @@ class DogController extends AbstractController
     /**
      * @Route("/add", name="add", methods={"POST"})
      */
-    public function add(Request $request): Response
+    public function add(Request $request,  SerializerInterface $serializer): Response
     {
         $json = $request->getContent();
         $dogArray = json_decode($json, true);
@@ -49,7 +50,13 @@ class DogController extends AbstractController
             $em->persist($dog);
             $em->flush();
 
-            return $this->json(200);
+            $json = $serializer->serialize(
+                $dog,
+                'json',
+                ['groups' => 'add_dogs']
+            );
+
+            return $this->json($json, 200);
         } else {
             return $this->json(
                 [
