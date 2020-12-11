@@ -53,7 +53,8 @@ class EventsRepository extends ServiceEntityRepository
     {
         return $this->createQueryBuilder('e')
             ->select('e.id as eventId')
-            ->addSelect('e.locate as eventLocation')
+            ->addSelect('e.eventLat')
+            ->addSelect('e.eventLong')
             ->addSelect('e.maxParticipant as eventMaxParticipant')
             ->addSelect('e.datetime as eventDatetime')
             ->addSelect('e.duration as eventDuration')
@@ -68,11 +69,10 @@ class EventsRepository extends ServiceEntityRepository
             ->leftJoin('e.tags', 't')
             ->addSelect('t.id as tagsId')
             ->addSelect('t.name as tagsName')
-            ->addSelect('t.picture as tagsPicture')
             ->where('e.id = :id')
             ->setParameter('id', $id)
             ->getQuery()
-            ->getOneOrNullResult()
+            ->getResult()
         ;
     }
 
