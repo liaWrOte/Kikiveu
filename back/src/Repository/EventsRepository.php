@@ -53,7 +53,6 @@ class EventsRepository extends ServiceEntityRepository
     {
         return $this->createQueryBuilder('e')
             ->select('e.id as eventId')
-            ->addSelect('e.name as eventName')
             ->addSelect('e.locate as eventLocation')
             ->addSelect('e.maxParticipant as eventMaxParticipant')
             ->addSelect('e.datetime as eventDatetime')

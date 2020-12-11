@@ -34,7 +34,7 @@ class DogsRepository extends ServiceEntityRepository
             ->addSelect("s.id as stateId")
             ->leftjoin('d.users', 'u')
             ->addSelect('u.pseudo')
-            ->where('d.id = ' .$id)
+            ->where('d.users = ' .$id)
             ->getQuery()
             ->getResult()
         ;

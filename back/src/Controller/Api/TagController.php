@@ -18,14 +18,9 @@ class TagController extends AbstractController
      */
     public function browse(SerializerInterface $serializer, TagsRepository $tagsRepository): Response
     {
-        $tags = $tagsRepository->findAll();
 
-        $json = $serializer->serialize(
-            $tags,
-            'json',
-            ['groups' => 'show_tag']
-        );
-        
-        return $this->json($json);
+        $tags = $tagsRepository->findAllTags();
+
+        return $this->json($tags);
     }
 }
