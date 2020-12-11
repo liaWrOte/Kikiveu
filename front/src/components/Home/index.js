@@ -50,7 +50,7 @@ const Home = ({ isLogged }) => (
                 <KikiVeuContact />
               </div>
             </Route>
-            <Route exact path="/balade/1">
+            <Route exact path="/balade/2">
               <div className=".item3">
                 <Ride />
               </div>

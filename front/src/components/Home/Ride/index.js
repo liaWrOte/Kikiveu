@@ -33,6 +33,7 @@ const Ride = () => (
       <Emoji />
       <Emoji />
     </div>
+    <p>Commentaires</p>
     <p>Laisser un commentaire :
       <Input />
       <TextButton />
