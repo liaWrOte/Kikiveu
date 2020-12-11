@@ -80,11 +80,26 @@ const Map = ({
   }
 
   // map on all rideEvents
-  function MapEvents() {
+  /*function MapEvents() {
     console.log('mapEvents');
-    const markertest = <Marker position={[lat, lng]} />;
-    return markertest;
-  }
+    console.log('rides :', rideEvents);
+    const markerEvents = rideEvents.map((rideEvent) => {
+      console.log(ride.eventLat);
+      <Marker position={[rideEvent.eventLat, rideEvent.eventLng]} />;
+    });
+    return markerEvents;
+  }*/
+
+  const MapEvents = () => (
+    //console.log('mapEvents')
+    //console.log('rides :', rideEvents)
+    rideEvents.map((rideEvent) => (
+     // console.log(ride.eventLat);
+      <Marker key={rideEvent.eventId} position={[rideEvent.eventLat, rideEvent.eventLong]} />
+    ))
+  );
+
+  
 
   return (
     <div className="map">
