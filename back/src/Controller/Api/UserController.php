@@ -16,14 +16,22 @@ use Symfony\Component\Routing\Annotation\Route;
 class UserController extends AbstractController
 {
     /**
-     * @Route("", name="browse", methods={"GET"})
+     * @Route("", name="browse", methods={"POST"})
      */
-    public function browse(UsersRepository $usersRepository): Response
+    public function browse(UsersRepository $usersRepository, Request $request): Response
     {
+        $json = $request->getContent();
+        $localisationArray = json_decode($json, true);
+        $usersByLocalisation = $usersRepository->findUserByLocalisation(
+            $localisationArray['swLat'],
+            $localisationArray['swLong'],
+            $localisationArray['neLat'],
+            $localisationArray['neLong']
+        );
         
-        $users = $usersRepository->findUsersData();
-        
-        return $this->json($users);
+        return $this->json([
+            'users' => $usersByLocalisation
+        ]);
     }
 
     /**

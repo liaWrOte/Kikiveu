@@ -26,7 +26,7 @@ class DogsCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         return [
-            IdField::new('id'),
+            IdField::new('id')->onlyOnIndex(),
             AssociationField::new('users'),
             TextField::new('name'),
             TextField::new('avatar'),
@@ -55,5 +55,11 @@ class DogsCrudController extends AbstractCrudController
     {
         $entityInstance->setUpdatedAt(new \DateTime());
         parent::updateEntity($entityManager, $entityInstance);
+    }
+
+    public function persistEntity(EntityManagerInterface $entityManager, $entityInstance): void
+    {
+        $entityInstance->setCreatedAt(new \DateTime());
+        parent::persistEntity($entityManager, $entityInstance);
     }
 }
