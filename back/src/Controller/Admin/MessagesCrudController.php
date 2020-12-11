@@ -35,5 +35,10 @@ class MessagesCrudController extends AbstractCrudController
         $entityInstance->setUpdatedAt(new \DateTime());
         parent::updateEntity($entityManager, $entityInstance);
     }
-}
 
+    public function persistEntity(EntityManagerInterface $entityManager, $entityInstance): void
+    {
+        $entityInstance->setCreatedAt(new \DateTime());
+        parent::persistEntity($entityManager, $entityInstance);
+    }
+}
