@@ -3,7 +3,6 @@ import axios from 'axios';
 import {
   LOG_IN,
   LOG_OUT,
-  logOut,
   saveAuthInfo,
 } from '../actions/auth';
 
@@ -40,7 +39,6 @@ const authMiddleware = (store) => (next) => (action) => {
       next(action);
       break;
     }
-
     default:
       // on passe l'action au suivant (middleware suivant ou reducer)
       next(action);
