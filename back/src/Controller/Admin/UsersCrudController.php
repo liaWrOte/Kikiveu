@@ -9,6 +9,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\ChoiceField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\EmailField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\NumberField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\SlugField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
@@ -43,6 +44,12 @@ class UsersCrudController extends AbstractCrudController
             ,
             SlugField::new('slug')->onlyOnForms()->setTargetFieldName('pseudo'),
             TextField::new('plainPassword')->onlyOnForms(),
+            NumberField::new('userLat'),
+            NumberField::new('userLong'),
+            NumberField::new('swLat')->onlyOnForms(),
+            NumberField::new('swLong')->onlyOnForms(),
+            NumberField::new('neLat')->onlyOnForms(),
+            NumberField::new('neLong')->onlyOnForms(),
             DateTimeField::new('createdAt')->onlyOnIndex(),
             DateTimeField::new('updatedAt')->onlyOnIndex(),
         ];
@@ -62,6 +69,7 @@ class UsersCrudController extends AbstractCrudController
     {
         $encodedPassword = $this->passwordEncoder->encodePassword($entityInstance, $entityInstance->getPlainPassword());
         $entityInstance->setPassword($encodedPassword);
+        $entityInstance->setCreatedAt(new \DateTime());
         parent::persistEntity($entityManager, $entityInstance);
     }
 }

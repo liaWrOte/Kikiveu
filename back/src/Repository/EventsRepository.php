@@ -83,6 +83,8 @@ class EventsRepository extends ServiceEntityRepository
             ->select('e.id as eventId')
             ->addSelect('e.description as eventDescription')
             ->addSelect('e.slug as eventSlug')
+            ->addSelect('e.eventLat')
+            ->addSelect('e.eventLong')
             ->leftJoin('e.users', 'u')
             ->addSelect('u.id as userId')
             ->leftJoin('u.dogs', 'd')

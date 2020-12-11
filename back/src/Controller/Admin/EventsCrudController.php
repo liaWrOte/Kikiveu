@@ -9,9 +9,9 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\NumberField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\NumberField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\SlugField;
 
 class EventsCrudController extends AbstractCrudController
@@ -30,7 +30,9 @@ class EventsCrudController extends AbstractCrudController
             TextEditorField::new('description'),
             DateTimeField::new('datetime'),
             NumberField::new('duration'),
-            SlugField::new('slug')->onlyOnForms()->setTargetFieldName('locate'),
+            NumberField::new('eventLat'),
+            NumberField::new('eventLong'),
+            SlugField::new('slug')->onlyOnForms()->setTargetFieldName('description'),
             DateTimeField::new('createdAt')->onlyOnIndex(),
             DateTimeField::new('updatedAt')->onlyOnIndex(),
         ];
@@ -40,5 +42,11 @@ class EventsCrudController extends AbstractCrudController
     {
         $entityInstance->setUpdatedAt(new \DateTime());
         parent::updateEntity($entityManager, $entityInstance);
+    }
+
+    public function persistEntity(EntityManagerInterface $entityManager, $entityInstance): void
+    {
+        $entityInstance->setCreatedAt(new \DateTime());
+        parent::persistEntity($entityManager, $entityInstance);
     }
 }
