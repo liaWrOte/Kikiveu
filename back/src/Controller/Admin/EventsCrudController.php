@@ -30,7 +30,9 @@ class EventsCrudController extends AbstractCrudController
             TextEditorField::new('description'),
             DateTimeField::new('datetime'),
             NumberField::new('duration'),
-            SlugField::new('slug')->onlyOnForms()->setTargetFieldName('locate'),
+            NumberField::new('eventLat'),
+            NumberField::new('eventLong'),
+            SlugField::new('slug')->onlyOnForms()->setTargetFieldName('description'),
             DateTimeField::new('createdAt')->onlyOnIndex(),
             DateTimeField::new('updatedAt')->onlyOnIndex(),
         ];
