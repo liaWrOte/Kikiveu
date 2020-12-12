@@ -11,7 +11,7 @@ import {
 import L, { Leaflet } from 'leaflet';
 
 import { Link } from 'react-router-dom';
-import userIcon from './icons';
+import rideUrl from '../../../assets/images/ride_icon.png';
 
 import SecondaryUserButton from '../SecondaryUserButton/index';
 import TextButton from '../TextButton/index';
@@ -91,18 +91,35 @@ const Map = ({
     return markerEvents;
   } */
 
+  const rideIcon = new L.Icon({
+    iconUrl: rideUrl,
+    iconRetinaUrl: rideUrl,
+    iconAnchor: null,
+    popupAnchor: null,
+    shadowUrl: null,
+    shadowSize: null,
+    shadowAnchor: null,
+    iconSize: new L.Point(40, 40),
+    className: 'leaflet-div-icon',
+  });
+
   const MapEvents = () => (
     // console.log('mapEvents')
     // console.log('rides :', rideEvents)
     rideEvents.map((rideEvent) => (
       // console.log(ride.eventLat);
-      <Marker key={rideEvent.eventId} position={[rideEvent.eventLat, rideEvent.eventLong]} />
+      <Marker
+        key={rideEvent.eventId}
+        position={[rideEvent.eventLat,
+          rideEvent.eventLong]}
+        icon={rideIcon}
+      />
     ))
   );
 
   function UserPointer() {
     return (
-      <Marker position={[lat, lng]} icon={userIcon} />
+      <Marker position={[lat, lng]} />
     );
   }
   return (
