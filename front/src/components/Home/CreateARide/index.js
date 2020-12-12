@@ -40,7 +40,9 @@ const CreateARide = ({
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log('handle Create A Ride');
-    handleCreateARide();
+    console.log(putRideMarker);
+    putRideMarker();
+    handleCreateARide(); 
   };
 
   return (

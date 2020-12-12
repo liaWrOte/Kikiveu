@@ -83,10 +83,22 @@ const createARideReducer = (state = initialState, action = {}) => {
 
     case PUT_RIDE_MARKER:
       console.log('reducer put ride marker');
+      const rideState = { ...state };
+
+      var markerStatus = rideState.canPutRideMarker;
+      if (markerStatus) {
+        return {
+          ...state,
+          canPutRideMarker: false,
+        };
+      }
+
       return {
         ...state,
         canPutRideMarker: true,
       };
+
+      // canPutRideMarker: !createARideReducer.canPutRideMarker,
 
     default: return { ...state };
   }
