@@ -41,6 +41,7 @@ const Map = ({
 
   function MapBounds() {
     const map = useMap();
+    console.log(canPutRideMarker);
     console.log(map.getBounds());
     refreshMapCoords(map.getBounds());
     return null;
