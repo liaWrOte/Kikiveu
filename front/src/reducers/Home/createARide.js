@@ -2,7 +2,7 @@ import {
   UPDATE_CREATE_A_RIDE_FIELD,
   UPDATE_TAGS_FIELD,
   HANDLE_CREATE_A_RIDE,
-
+  PUT_RIDE_MARKER,
 } from '../../actions/Home/createARide';
 
 import {
@@ -19,6 +19,7 @@ const initialState = {
   time: '',
   duration: '',
   maxParticipant: 1,
+  canPutRideMarker: false,
 };
 
 const createARideReducer = (state = initialState, action = {}) => {
@@ -79,6 +80,25 @@ const createARideReducer = (state = initialState, action = {}) => {
       return {
         ...state,
       };
+
+    case PUT_RIDE_MARKER:
+      console.log('reducer put ride marker');
+      const rideState = { ...state };
+
+      var markerStatus = rideState.canPutRideMarker;
+      if (markerStatus) {
+        return {
+          ...state,
+          canPutRideMarker: false,
+        };
+      }
+
+      return {
+        ...state,
+        canPutRideMarker: true,
+      };
+
+      // canPutRideMarker: !createARideReducer.canPutRideMarker,
 
     default: return { ...state };
   }

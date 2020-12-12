@@ -32,7 +32,7 @@ const CreateARide = ({
   maxParticipant,
   changeField,
   updateTagRide,
-  handleCreateARide,
+  putRideMarker,
 }) => {
   const placeCursor = 'Je positionne ma balade sur la carte';
   const saveText = 'Enregistrer';
@@ -40,15 +40,19 @@ const CreateARide = ({
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log('handle Create A Ride');
-    handleCreateARide();
+    console.log(putRideMarker);
+    putRideMarker();
+    handleCreateARide(); 
   };
 
   return (
     <div className="createARide">
       <MainUserButton className="createARide__mainUserButton" />
+      <TextButton text={placeCursor} handleClick={putRideMarker} />
       <form autoComplete="off" className="createARide__form" onSubmit={handleSubmit}>
         <TextButton text={placeCursor} buttonClass="button_small"/>
         <div className="twoColumns">
+
         <label htmlFor="description">
           Description de la balade :
           <TextArea
@@ -56,6 +60,7 @@ const CreateARide = ({
             maxLength="200"
             onChange={changeField}
             value={description}
+
             inputClass="input_small"
           />
         </label>
@@ -71,6 +76,7 @@ const CreateARide = ({
         <div className="createARide__item">
           <label htmlFor="date">
             Date:
+
             <Input
               type="text"
               id="date"
@@ -79,6 +85,7 @@ const CreateARide = ({
               onChange={changeField}
               value={date}
               inputClass="input_small"
+
             />
           </label>
         </div>
@@ -100,6 +107,7 @@ const CreateARide = ({
         <div className="createARide__item">
           <label htmlFor="duration">
             Durée :
+
             <Input
               type="time"
               id="duration"
@@ -212,7 +220,7 @@ const CreateARide = ({
           <Toggle />
           Je souhaite recevoir des notifications à chaque commentaire
         </div>
-        <TextButton text={saveText} />
+        <Input value="Enregistrer sur la carte" type="submit" />
       </form>
 
       <div className="createARide__bottom">
@@ -241,6 +249,7 @@ CreateARide.propTypes = {
   maxParticipant: PropTypes.number,
   changeField: PropTypes.func.isRequired,
   handleCreateARide: PropTypes.func.isRequired,
+  putRideMarker: PropTypes.func.isRequired,
 };
 
 export default CreateARide;
