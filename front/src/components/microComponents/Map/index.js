@@ -11,6 +11,7 @@ import {
 import L, { Leaflet } from 'leaflet';
 
 import { Link } from 'react-router-dom';
+import userIcon from './icons';
 
 import SecondaryUserButton from '../SecondaryUserButton/index';
 import TextButton from '../TextButton/index';
@@ -80,7 +81,7 @@ const Map = ({
   }
 
   // map on all rideEvents
-  /*function MapEvents() {
+  /* function MapEvents() {
     console.log('mapEvents');
     console.log('rides :', rideEvents);
     const markerEvents = rideEvents.map((rideEvent) => {
@@ -88,19 +89,22 @@ const Map = ({
       <Marker position={[rideEvent.eventLat, rideEvent.eventLng]} />;
     });
     return markerEvents;
-  }*/
+  } */
 
   const MapEvents = () => (
-    //console.log('mapEvents')
-    //console.log('rides :', rideEvents)
+    // console.log('mapEvents')
+    // console.log('rides :', rideEvents)
     rideEvents.map((rideEvent) => (
-     // console.log(ride.eventLat);
+      // console.log(ride.eventLat);
       <Marker key={rideEvent.eventId} position={[rideEvent.eventLat, rideEvent.eventLong]} />
     ))
   );
 
-  
-
+  function UserPointer() {
+    return (
+      <Marker position={[lat, lng]} icon={userIcon} />
+    );
+  }
   return (
     <div className="map">
       {lat !== null && lng !== null && (
@@ -110,6 +114,7 @@ const Map = ({
         {(haveEventsLocation) && (
           <MapEvents />
         )}
+        <UserPointer />
         <TileLayer
           attribution='&copy; <a href="">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
