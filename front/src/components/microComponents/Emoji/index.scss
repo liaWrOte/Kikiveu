@@ -1,11 +1,14 @@
 @use '/home/etudiant/Bureau/html/projet-kikiveu/front/src/styles/_vars.scss';
 
 .emoji {
+  
   &__image {
+    margin-top : (vars.$smallGutter)/2;
     width: 3(vars.$bigGutter);
   }
 }
 
 .input {
+  
   font-family: vars.$bodyFont;
 }

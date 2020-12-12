@@ -76,6 +76,7 @@ const SigninForm = ({
             />
           </label>
         </div>
+
         <div className="signin__form__item">
 
           2. Est-ce un mâle ou une femelle ?
@@ -105,8 +106,8 @@ const SigninForm = ({
               Femelle
             </label>
           </div>
-
         </div>
+
         <div className="signin__form__item">
           <label htmlFor="age">
             3. Quel âge a-t-il ?
@@ -312,28 +313,27 @@ const SigninForm = ({
           </div>
         </div>
         <div className="signin__form__item">
-          <label htmlFor="dogShape">
+          <label htmlFor="dogShape" className="cgu__flex">
             7. KikiVeu est une application bienveillante, merci d'accepter la charte de KikiVeu et les CGU
-            <div>
-              <p>La charte</p>
-              <Cgu className="cgu" />
-              <label htmlFor="acceptCharte">
-                <input
-                  type="checkbox"
-                  name="acceptCharte"
-                  id="acceptCharte"
-                />
-                J'ai lu et j'accepte la charte de KikiVeu
-              </label>
-              <label htmlFor="acceptCGU">
-                <input
-                  type="checkbox"
-                  name="acceptCGU"
-                  id="acceptCGU"
-                />
-                J'ai lu et j'accepte les CGU
-              </label>
-            </div>
+
+            <Cgu className="cgu" />
+            <label htmlFor="acceptCharte" className="cgu__flex__label">
+              <input
+                type="checkbox"
+                name="acceptCharte"
+                id="acceptCharte"
+              />
+              J'ai lu et j'accepte la charte de KikiVeu
+            </label>
+            <label htmlFor="acceptCGU" className="cgu__flex__label">
+              <input
+                type="checkbox"
+                name="acceptCGU"
+                id="acceptCGU"
+              />
+              J'ai lu et j'accepte les CGU
+            </label>
+
           </label>
         </div>
         <div className="signin__form__item">
@@ -348,17 +348,19 @@ const SigninForm = ({
           />
         </div>
         <div className="signin__form__item">
-          <div className="signin__form__item__label">
+
             <label htmlFor="profileImage">
               9. Veuillez choisir une photo de profil
-            </label>
-            <input
-              name="profileImage"
-              id="profileImage"
-              type="file"
-              accept="image/png, image/jpeg"
-            />
-          </div>
+              </label>
+              <input
+                name="profileImage"
+                id="profileImage"
+                type="file"
+                accept="image/png, image/jpeg"
+                className="imageInput"
+              />
+            
+
         </div>
         <div className="signin__form__item">
           <label htmlFor="email">
@@ -397,14 +399,18 @@ const SigninForm = ({
           />
         </div>
         <p>Vous allez recevoir un email de confirmation d'inscription. Veuillez l'accepter.</p>
-        <TextButton
-          type="submit"
-          className="login-form-button"
-          onClick={handleSubmit}
-        >
-          Je m'inscris
-        </TextButton>
-        <PreviousButton />
+        <div className="signForm_flex">
+          <PreviousButton />
+          <TextButton
+            text="Je m'inscris"
+            type="submit"
+            className="login-form-button"
+            onClick={handleSubmit}
+          >
+            Je m'inscris
+          </TextButton>
+
+        </div>
       </form>
     </div>
   );

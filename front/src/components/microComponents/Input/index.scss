@@ -2,11 +2,15 @@
 
 .input {
   border-radius: 5px;
-  border-color: vars.$secondaryColor;
-  border-width: 2px;
+  border: 2px solid vars.$secondaryColor;
   padding: 0.5em;
   display: block;
   width: 70%;
   margin: 0 auto;
   margin-top: vars.$smallGutter;
+  font-family: vars.$bodyFont;
+  font-size: 1.2rem;
+  &:focus {
+    border: 2px solid vars.$accentColor;
+  }
 }

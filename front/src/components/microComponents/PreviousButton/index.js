@@ -8,7 +8,7 @@ const PreviousButton = () => {
   const history = useHistory();
   return (
     <button type="button" onClick={history.goBack} className="previousButton">
-      <ArrowLeft />
+      <ArrowLeft size={30} stroke-width={3} width={30} height={38} />
     </button>
   );
 };

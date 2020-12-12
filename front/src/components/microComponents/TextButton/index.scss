@@ -1,4 +1,19 @@
+@use '/home/etudiant/Bureau/html/projet-kikiveu/front/src/styles/_vars.scss';
+
 .button {
-  width: 100%;
+  width: 70%;
+  margin: 0 auto;
   display: block;
+  background-color: vars.$mainColor;
+  font-family: vars.$bodyFont;
+  font-size: 1.3rem;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: (vars.$smallGutter)/2;
+  font-weight: bold;
+}
+
+.buton:hover {
+  background-color: vars.$secondaryColor;
 }
