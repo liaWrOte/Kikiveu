@@ -9,8 +9,8 @@ import {
   useMap,
 } from 'react-leaflet';
 import L, { Leaflet } from 'leaflet';
+import { Link, MemoryRouter, useHistory } from 'react-router-dom';
 
-import { Link } from 'react-router-dom';
 import rideUrl from '../../../assets/images/ride_icon.png';
 
 import SecondaryUserButton from '../SecondaryUserButton/index';
@@ -93,30 +93,48 @@ const Map = ({
     return markerEvents;
   } */
 
-  const rideIcon = new L.Icon({
+  /* const rideIcon = new L.Icon({
     iconUrl: rideUrl,
     iconRetinaUrl: rideUrl,
     iconAnchor: null,
-    popupAnchor: null,
+    popupAnchor: '[rideEvent.eventLat,
+      rideEvent.eventLong]',
     shadowUrl: null,
     shadowSize: null,
     shadowAnchor: null,
     iconSize: new L.Point(40, 40),
     className: 'leaflet-div-icon',
-  });
+  }); */
 
   const MapEvents = () => (
     // console.log('mapEvents')
-    // console.log('rides :', rideEvents)
-    rideEvents.map((rideEvent) => (
-      // console.log(ride.eventLat);
-      <Marker
-        key={rideEvent.eventId}
-        position={[rideEvent.eventLat,
-          rideEvent.eventLong]}
-        icon={rideIcon}
-      />
-    ))
+    // {`/balade/${rideEvent.eventSlug}`}
+    rideEvents.map((rideEvent) => {
+      console.log(rideEvent.eventSlug);
+      return (
+        <Marker
+          key={rideEvent.eventId}
+          position={[rideEvent.eventLat,
+            rideEvent.eventLong]}
+          icon={new L.Icon({
+            iconUrl: rideUrl,
+            iconRetinaUrl: rideUrl,
+            iconAnchor: null,
+            popupAnchor: [rideEvent.eventLat,
+              rideEvent.eventLong],
+            shadowUrl: null,
+            shadowSize: null,
+            shadowAnchor: null,
+            iconSize: new L.Point(40, 40),
+            className: 'leaflet-div-icon',
+          })}
+        >
+          <Popup>
+              <Link to={`/balade/${rideEvent.eventSlug}`}>Voir la balade</Link>
+          </Popup>
+        </Marker>
+      );
+    })
   );
 
   function UserPointer() {
