@@ -1,3 +1,6 @@
+@use '/home/etudiant/Bureau/html/projet-kikiveu/front/src/styles/_vars.scss';
+
+
 .info {
   position: absolute;
   z-index: 25;
@@ -5,7 +8,7 @@
   height: 400px;
   width: 100%;
   display: flex;
-  background-color: #FCDEB0;
+  background-color: #fff;
   justify-content: space-around;
   height: 60px;
   align-items: center;

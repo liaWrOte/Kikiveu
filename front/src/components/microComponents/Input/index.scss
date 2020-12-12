@@ -1,4 +1,31 @@
+@use '/home/etudiant/Bureau/html/projet-kikiveu/front/src/styles/_vars.scss';
+
 .input {
   border-radius: 5px;
+  border: 2px solid vars.$secondaryColor;
   padding: 0.5em;
+  display: block;
+  width: 70%;
+  margin: 0 auto;
+  font-family: vars.$bodyFont;
+  font-size: 1.2rem;
+  margin-top: vars.$smallGutter;
+  &:focus {
+    border: 2px solid vars.$accentColor;
+  }
+}
+
+.input_small {
+  border-radius: 5px;
+  border: 2px solid vars.$secondaryColor;
+  padding: 0.5em;
+  display: block;
+  width: 100%;
+  margin: 0 auto;
+  font-family: vars.$bodyFont;
+  font-size: 0.8rem;
+  flex-grow: 1;
+  &:focus {
+    border: 2px solid vars.$accentColor;
+  }
 }

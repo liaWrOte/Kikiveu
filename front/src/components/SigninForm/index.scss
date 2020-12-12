@@ -1,8 +1,11 @@
+@use '/home/etudiant/Bureau/html/projet-kikiveu/front/src/styles/_vars.scss';
+
 .signin {
   display: flex;
   flex-direction: column;
   align-items: center;
   height: 100vh;
+  padding: vars.$smallGutter;
 
   &__form {
     width: 100%;
@@ -12,25 +15,60 @@
     &__title {
       text-align: center;
       font-weight: bold;
+      font-family: vars.$titleFont;
+      color: vars.$mainColor;
+      font-size: vars.$bigGutter;
     }
     &__item {
       display: flex;
       flex-direction: column;
       margin-top: 1em;
       text-align: center;
+      font-family: vars.$titleFont;
+      color: vars.$mainColor;
+      font-size: vars.$bigGutter;
+      margin-bottom: (vars.$smallGutter)*3;
 
       &__label {
+        width: 70%;
+        margin: 0 auto;
         display: flex;
-        justify-content: center;
+        justify-content: space-around;
         margin-top: 1em;
         flex-wrap: wrap;
+        font-family: vars.$bodyFont;
+        font-size: (vars.$bigGutter)/2;
+        color: vars.$secondaryColor;
+        padding: 0 0.5rem 0 0.5rem;
       }
     }
-
+  }  
+}
+.cgu__flex {
+  display: block;
+  &__label {
+    display: block;
+    font-family: vars.$bodyFont;
+    font-size: 1rem;
+    color: vars.$secondaryColor;
   }
-  .cgu{
-    margin: auto;
-  }
+}
 
-  
+.cgu__label {
+  font-family: vars.$bodyFont;
+  font-size: 1rem;
+  color: vars.$secondaryColor;
+}
+
+p {
+  font-family: vars.$bodyFont;
+  color: vars.$secondaryColor;
+  font-size: 1rem;
+  margin-bottom: vars.$smallGutter;
+}
+
+.signForm_flex {
+  display: flex;
+  margin-bottom: (vars.$bigGutter)*2;
+  margin-top: (vars.$bigGutter)*2;
 }

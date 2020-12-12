@@ -173,7 +173,7 @@ const Map = ({
         </div>
       </div>
       <div className="map__refresh">
-        <TextButton text={refresh} handleClick={sendMapCoords} />
+        <TextButton text={refresh} handleClick={sendMapCoords} buttonClass="button_small" />
       </div>
     </div>
   );

@@ -1,21 +1,28 @@
+@use '/home/etudiant/Bureau/html/projet-kikiveu/front/src/styles/_vars.scss';
+
 .login {
 display: flex;
 flex-direction: column;
 align-items: center;
 height: 100vh;
 padding: 1.5em;
+padding-top: 2rem;
 
   &__form {
-    margin-top: 2em;
+    margin-top: vars.$bigGutter;
     display : flex;
     flex-direction: column;
     width : 100%;
+    
   }
 }
 .signin {
-  margin-top: 2em;
+  margin-top:  (vars.$bigGutter)*2;
   width: 100%;
   text-align: center;
+  &__text {
+    margin-bottom: -0.2rem;
+  }
   }
 
 .animation {
@@ -24,5 +31,20 @@ padding: 1.5em;
   justify-content: center;
 }
 
+.button {
+  margin-top: vars.$smallGutter;
+}
 
+.emoji {
+  width: 1rem;
+}
 
+#catch_phrase {
+  font-family: vars.$titleFont;
+  color: vars.$mainColor;
+  font-size: vars.$smallGutter;
+}
+
+.full_width {
+  width: 100%;
+}

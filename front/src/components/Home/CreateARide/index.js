@@ -34,7 +34,7 @@ const CreateARide = ({
   updateTagRide,
   putRideMarker,
 }) => {
-  const placeCursor = 'Cliquer sur la carte pour positionner un marqueur indiquant la localisation de la balade';
+  const placeCursor = 'Je positionne ma balade sur la carte';
   const saveText = 'Enregistrer';
 
   const handleSubmit = (event) => {
@@ -50,7 +50,9 @@ const CreateARide = ({
       <MainUserButton className="createARide__mainUserButton" />
       <TextButton text={placeCursor} handleClick={putRideMarker} />
       <form autoComplete="off" className="createARide__form" onSubmit={handleSubmit}>
-        
+        <TextButton text={placeCursor} buttonClass="button_small"/>
+        <div className="twoColumns">
+
         <label htmlFor="description">
           Description de la balade :
           <TextArea
@@ -58,32 +60,23 @@ const CreateARide = ({
             maxLength="200"
             onChange={changeField}
             value={description}
+
+            inputClass="input_small"
           />
         </label>
         <div className="createARide__locate">
-          Localisation de la balade :
-          <label htmlFor="markerLat">
-            Latitude :
-            <Input
-              type="text"
-              id="markerLat"
-              name="markerLat"
-              value={markerLat}
-            />
-          </label>
-          <label htmlFor="markerLng">
-            Longitude :
-            <Input
-              type="text"
-              id="markerLng"
-              name="markerLng"
-              value={markerLng}
-            />
-          </label>
+          Lieu de la balade :
+          <p className="lieu">Latitude : </p>
+          <p className="lieu">{markerLat}</p>
+          <p className="lieu">Longitude :</p>
+          <p className="lieu">{markerLng}</p>
         </div>
+        </div>
+        <div className="twoColumns">
         <div className="createARide__item">
           <label htmlFor="date">
-            Date de la balade :
+            Date:
+
             <Input
               type="text"
               id="date"
@@ -91,36 +84,43 @@ const CreateARide = ({
               placeholder="JJ-MM-AAAA"
               onChange={changeField}
               value={date}
+              inputClass="input_small"
+
             />
           </label>
         </div>
         <div className="createARide__item">
           <label htmlFor="time">
-            Heure de la balade :
+            Heure :
             <Input
               type="time"
               id="time"
               name="time"
               onChange={changeField}
               value={time}
+              inputClass="input_small"
             />
           </label>
         </div>
+        </div>
+        <div className="twoColumns">
         <div className="createARide__item">
           <label htmlFor="duration">
-            Durée approximative :
+            Durée :
+
             <Input
               type="time"
               id="duration"
               name="duration"
               onChange={changeField}
               value={duration}
+              inputClass="input_small"
             />
           </label>
         </div>
         <div className="createARide__item">
           <label htmlFor="maxParticipant">
-            Nombre de participants maximum :
+            Participants:
             <Input
               type="number"
               id="maxParticipant"
@@ -128,8 +128,10 @@ const CreateARide = ({
               max="40"
               onChange={changeField}
               value={maxParticipant}
+              inputClass="input_small"
             />
           </label>
+        </div>
         </div>
         <p>
           Je choisis le type de la balade :
