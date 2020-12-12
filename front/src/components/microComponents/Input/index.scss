@@ -1,4 +1,12 @@
+@use '/home/etudiant/Bureau/html/projet-kikiveu/front/src/styles/_vars.scss';
+
 .input {
   border-radius: 5px;
+  border-color: vars.$secondaryColor;
+  border-width: 2px;
   padding: 0.5em;
+  display: block;
+  width: 70%;
+  margin: 0 auto;
+  margin-top: vars.$smallGutter;
 }

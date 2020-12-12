@@ -1,8 +1,11 @@
+@use '/home/etudiant/Bureau/html/projet-kikiveu/front/src/styles/_vars.scss';
+
 .signin {
   display: flex;
   flex-direction: column;
   align-items: center;
   height: 100vh;
+  padding: vars.$smallGutter;
 
   &__form {
     width: 100%;
@@ -18,12 +21,19 @@
       flex-direction: column;
       margin-top: 1em;
       text-align: center;
+      font-family: vars.$titleFont;
+      color: vars.$mainColor;
+      font-size: vars.$bigGutter;
+      margin-bottom: vars.$bigGutter;
 
       &__label {
         display: flex;
         justify-content: center;
         margin-top: 1em;
         flex-wrap: wrap;
+        font-family: vars.$bodyFont;
+        font-size: (vars.$bigGutter)/2;
+        color: vars.$secondaryColor;
       }
     }
 
