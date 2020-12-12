@@ -27,7 +27,6 @@ const Map = ({
   changeLng,
   changeMarkerLat,
   changeMarkerLng,
-  refreshRideEvents,
   refreshMapCoords,
   sendMapCoords,
   swLatMap,
@@ -36,6 +35,7 @@ const Map = ({
   neLongMap,
   rideEvents,
   haveEventsLocation,
+  canPutRideMarker,
 }) => {
   const refresh = 'Rafraîchir la carte';
 
@@ -60,6 +60,7 @@ const Map = ({
   }, []);
 
   function AddMarkerToClick() {
+    console.log('ajout du marqueur');
     useMapEvents({
       click(e) {
         const newMarkerLat = e.latlng.lat;
@@ -126,7 +127,9 @@ const Map = ({
     <div className="map">
       {lat !== null && lng !== null && (
       <MapContainer className="map__component" center={[lat, lng]} zoom={13}>
+        {(canPutRideMarker) && (
         <AddMarkerToClick />
+        )}
         <MapBounds />
         {(haveEventsLocation) && (
           <MapEvents />
@@ -176,6 +179,7 @@ Map.propTypes = {
   rideEvents: PropTypes.array,
   haveEventsLocation: PropTypes.func.isRequired,
   refreshMapCoords: PropTypes.func.isRequired,
+  canPutRideMarker: PropTypes.bool.isRequired,
 };
 
 Map.defaultProps = {
