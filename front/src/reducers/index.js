@@ -6,6 +6,7 @@ import userProfileReducer from './Home/userProfile';
 import createARideReducer from './Home/createARide';
 import mapReducer from './Map/map';
 import infoReducer from './Home/info';
+import rideReducer from './Home/ride';
 
 // etc
 // le reducer principal, qui regroupe les autres
@@ -18,6 +19,7 @@ const rootReducer = combineReducers({
   createARide: createARideReducer,
   map: mapReducer,
   info: infoReducer,
+  ride: rideReducer,
   // etc
 });
 export default rootReducer;

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Calendar } from 'react-feather';
+import PropTypes from 'prop-types';
 
 // Import composants
 import PreviousButton from '../../microComponents/PreviousButton';
@@ -10,7 +11,17 @@ import TextButton from '../../microComponents/TextButton';
 
 import './ride.scss';
 
-const Ride = () => (
+const Ride = (
+  markerLat,
+  markerLng,
+  description,
+  tags,
+  date,
+  time,
+  duration,
+  comments,
+  maxParticipants,
+) => (
   <div className="ride">
     <MainUserButton className="ride__mainUserButton" />
     <p>
@@ -33,6 +44,7 @@ const Ride = () => (
       <Emoji />
       <Emoji />
     </div>
+    <p>Commentaires</p>
     <p>Laisser un commentaire :
       <Input />
       <TextButton />
@@ -43,5 +55,17 @@ const Ride = () => (
   </div>
 
 );
+
+Ride.propTypes = {
+  markerLat: PropTypes.number.isRequired,
+  markerLng: PropTypes.number.isRequired,
+  description: PropTypes.number.isRequired,
+  tags: PropTypes.array.isRequired,
+  date: PropTypes.number.isRequired,
+  time: PropTypes.number.isRequired,
+  duration: PropTypes.number.isRequired,
+  comments: PropTypes.array.isRequired,
+  maxParticipant: PropTypes.number.isRequired,
+};
 
 export default Ride;
