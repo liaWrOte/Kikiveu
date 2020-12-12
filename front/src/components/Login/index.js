@@ -52,11 +52,13 @@ const Login = ({
       </form>
       <div className="signin">
         <p className="signin__text">Première fois sur KikiVeu ?</p>
+        <div className="full_width">
         <Link to="/inscription">
           <TextButton text="Je m'inscris" buttonClass="button">
             Inscription
           </TextButton>
         </Link>
+        </div>
         <Link to="/"><TextButton text="Map" /></Link>
       </div>
     </div>

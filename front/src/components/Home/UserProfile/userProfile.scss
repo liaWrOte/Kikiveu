@@ -31,23 +31,6 @@
   }
 }
 
-.button_small {
-  width: 70%;
-  margin: 0 auto;
-  display: block;
-  background-color: vars.$secondaryColor;
-  font-family: vars.$bodyFont;
-  font-size: 0.8rem;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  padding: (vars.$smallGutter)/3;
-  font-weight: bold;
-}
-
-.button_smalln:hover {
-  background-color: vars.$secondaryColor;
-}
 
 .before_button {
   margin-top: vars.$smallGutter;

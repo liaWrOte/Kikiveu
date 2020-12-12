@@ -20,6 +20,9 @@ padding-top: 2rem;
   margin-top:  (vars.$bigGutter)*2;
   width: 100%;
   text-align: center;
+  &__text {
+    margin-bottom: -0.2rem;
+  }
   }
 
 .animation {
@@ -40,4 +43,8 @@ padding-top: 2rem;
   font-family: vars.$titleFont;
   color: vars.$mainColor;
   font-size: vars.$smallGutter;
+}
+
+.full_width {
+  width: 100%;
 }

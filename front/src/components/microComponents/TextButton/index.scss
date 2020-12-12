@@ -13,7 +13,38 @@
   padding: (vars.$smallGutter)/2;
   font-weight: bold;
 }
-
 .button:hover {
+  background-color: vars.$secondaryColor;
+}
+
+.button_small {
+  width: 100%;
+  margin: 0 auto;
+  display: block;
+  background-color: vars.$mainColor;
+  font-family: vars.$bodyFont;
+  font-size: 0.8rem;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: (vars.$smallGutter)/3;
+  font-weight: bold;
+}
+
+.button_small_green {
+  width: 100%;
+  margin: 0 auto;
+  display: block;
+  background-color: vars.$secondaryColor;
+  font-family: vars.$bodyFont;
+  font-size: 0.8rem;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: (vars.$smallGutter)/3;
+  font-weight: bold;
+}
+
+.button_smalln:hover {
   background-color: vars.$secondaryColor;
 }

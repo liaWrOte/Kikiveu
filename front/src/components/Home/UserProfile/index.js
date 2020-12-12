@@ -49,7 +49,7 @@ const UserProfile = ({
     <div className="userProfile">
       <form autoComplete="off" className="userProfile_form" onSubmit={handleSubmit}>
         <MainUserButton className="mainUserButton" />
-        <TextButton text={changeAvatar} buttonClass="button_small" />
+        <TextButton text={changeAvatar} buttonClass="button_small_green" />
         <p className="before_button">Comment se sent Kiki aujourd'hui ?</p>
         <div className="userProfile__form__emoji">
           <label htmlFor="mood">
