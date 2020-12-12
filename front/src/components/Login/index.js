@@ -29,13 +29,14 @@ const Login = ({
   return (
     <div className="login">
       <div className="login__img"><img src={logo} alt="logoKikiVeu" /></div>
-      <h2>Les balades canines près de chez vous</h2>
+      <h2 id="catch_phrase">Les balades canines près de chez vous</h2>
       <form autoComplete="off" className="login__form" onSubmit={handleSubmit}>
         <Input
           name="email"
           placeholder="Email"
           onChange={changeField}
           value={email}
+          inputClass="input"
         />
         <Input
           name="password"
@@ -43,22 +44,20 @@ const Login = ({
           placeholder="Mot de passe"
           onChange={changeField}
           value={password}
+          inputClass="input"
         />
-        <TextButton text={loginText}>
+        <TextButton text={loginText} buttonClass="button">
           Connexion
         </TextButton>
       </form>
       <div className="signin">
         <p className="signin__text">Première fois sur KikiVeu ?</p>
         <Link to="/inscription">
-          <TextButton text={signInText}>
+          <TextButton text="Je m'inscris" buttonClass="button">
             Inscription
           </TextButton>
         </Link>
-        <Link to="/"><TextButton text={mapText} /></Link>
-      </div>
-      <div className="animation">
-        <img src="" alt="dogAnimation" />
+        <Link to="/"><TextButton text="Map" /></Link>
       </div>
     </div>
   );

@@ -49,10 +49,10 @@ const UserProfile = ({
     <div className="userProfile">
       <form autoComplete="off" className="userProfile_form" onSubmit={handleSubmit}>
         <MainUserButton className="mainUserButton" />
-        <TextButton text={changeAvatar} />
-        <p>Comment se sent Kiki aujourd'hui ?</p>
+        <TextButton text={changeAvatar} buttonClass="button_small" />
+        <p className="before_button">Comment se sent Kiki aujourd'hui ?</p>
         <div className="userProfile__form__emoji">
-          <label htmlFor="mood">Calme
+          <label htmlFor="mood">
             <Emoji src={calm} />
             <Input
               type="radio"
@@ -62,9 +62,10 @@ const UserProfile = ({
               name="mood"
               checked
             />
+            Calme
           </label>
 
-          <label htmlFor="mood">Excité
+          <label htmlFor="mood">
             <Emoji src={excited} />
             <Input
               type="radio"
@@ -73,9 +74,10 @@ const UserProfile = ({
               id="excited"
               name="mood"
             />
+            Excité
           </label>
 
-          <label htmlFor="mood">Joueur
+          <label htmlFor="mood">
             <Emoji src={player} />
             <Input
               type="radio"
@@ -84,9 +86,10 @@ const UserProfile = ({
               id="player"
               name="mood"
             />
+            Joueur
           </label>
 
-          <label htmlFor="mood">Energique
+          <label htmlFor="mood">
             <Emoji src={rough} />
             <Input
               type="radio"
@@ -95,9 +98,10 @@ const UserProfile = ({
               id="rough"
               name="mood"
             />
+            Energique
           </label>
 
-          <label htmlFor="mood">Fatigué
+          <label htmlFor="mood">
             <Emoji src={tired} />
             <Input
               type="radio"
@@ -106,13 +110,14 @@ const UserProfile = ({
               id="tired"
               name="mood"
             />
+            Fatigué
           </label>
 
         </div>
-        <p>L'état de santé de Kiki a changé ?</p>
+        <p className="before_button">L'état de santé de Kiki a changé ?</p>
         <div className="userProfile__form__emoji">
-          <label htmlFor="shape">Petite forme
-            <Emoji src={small} />
+          <label htmlFor="shape">
+          <Emoji src={small} />
             <Input
               type="radio"
               onChange={changeField}
@@ -120,9 +125,12 @@ const UserProfile = ({
               id="small"
               name="shape"
             />
+            
+            Mauvais
           </label>
 
-          <label htmlFor="shape">Forme moyenne
+          <label htmlFor="shape">
+          <Emoji src={medium} />
             <Input
               type="radio"
               onChange={changeField}
@@ -130,10 +138,10 @@ const UserProfile = ({
               id="medium"
               name="shape"
             />
-            <Emoji src={medium} />
+            Moyen
           </label>
 
-          <label htmlFor="shape">Excellente forme
+          <label htmlFor="shape">
             <Emoji src={good} />
             <Input
               type="radio"
@@ -142,26 +150,30 @@ const UserProfile = ({
               id="good"
               name="shape"
             />
+            Bon
           </label>
-          <label htmlFor="castrate">Castré
+          <label htmlFor="castrate">
             <Toggle
               onChange={changeField}
               id="castrate"
               name="castrate"
             />
+            <div id="castrate">Castré</div>
           </label>
         </div>
-        <label htmlFor="username">Votre nouveau pseudo
+        <p className="before_button">Votre nouveau pseudo</p>
+        <label htmlFor="username">
           <Input
             type="text"
             onChange={changeField}
             value={username}
             name="username"
+            inputClass="input_small"
           />
         </label>
         <div className="userProfile__bottom">
           <PreviousButton />
-          <TextButton text={saveText} />
+          <TextButton text={saveText} buttonClass="button_small" />
           <div> </div>
         </div>
       </form>

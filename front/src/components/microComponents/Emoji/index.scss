@@ -4,7 +4,8 @@
   
   &__image {
     margin-top : (vars.$smallGutter)/2;
-    width: 3(vars.$bigGutter);
+    width: 2*(vars.$bigGutter);
+    text-align: center;
   }
 }
 

@@ -13,6 +13,7 @@ const Input = ({
   placeholder,
   onChange,
   id,
+  inputClass,
 }) => {
   const handleChange = (evt) => {
     onChange(evt.target.value, name);
@@ -24,10 +25,10 @@ const Input = ({
       id={id}
       value={value}
       onChange={handleChange}
-      className="input"
       name={name}
       placeholder={placeholder}
       type={type}
+      className={inputClass}
     />
   );
 };
@@ -43,6 +44,7 @@ Input.propTypes = {
   placeholder: PropTypes.string,
   onChange: PropTypes.func,
   id: PropTypes.string,
+  inputClass: PropTypes.string.isRequired,
 };
 
 // Valeurs par défaut pour les props

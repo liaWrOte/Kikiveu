@@ -73,6 +73,7 @@ const SigninForm = ({
               onChange={changeField}
               id="dogName"
               value={dogName}
+              inputClass="input"
             />
           </label>
         </div>
@@ -117,6 +118,7 @@ const SigninForm = ({
               id="age"
               value={age}
               onChange={changeField}
+              inputClass="input"
             />
           </label>
         </div>
@@ -158,7 +160,7 @@ const SigninForm = ({
                   id="smallShape"
                   value={1}
                 />
-                Mauvaise
+                Mauvais
               </label>
               <label htmlFor="dogCondition">
                 <Emoji src={mediumShape} />
@@ -169,7 +171,7 @@ const SigninForm = ({
                   id="mediumShape"
                   value={2}
                 />
-                Moyenne
+                Moyen
               </label>
               <label htmlFor="dogCondition">
                 <Emoji src={goodShape} />
@@ -181,7 +183,7 @@ const SigninForm = ({
                   value={3}
                   checked
                 />
-                Bonne
+                Bon
               </label>
             </div>
           </label>
@@ -345,21 +347,21 @@ const SigninForm = ({
             onChange={changeField}
             id="username"
             value={username}
+            inputClass="input"
           />
         </div>
         <div className="signin__form__item">
 
-            <label htmlFor="profileImage">
-              9. Veuillez choisir une photo de profil
-              </label>
-              <input
-                name="profileImage"
-                id="profileImage"
-                type="file"
-                accept="image/png, image/jpeg"
-                className="imageInput"
-              />
-            
+          <label htmlFor="profileImage">
+            9. Veuillez choisir une photo de profil
+          </label>
+          <input
+            name="profileImage"
+            id="profileImage"
+            type="file"
+            accept="image/png, image/jpeg"
+            className="imageInput"
+          />
 
         </div>
         <div className="signin__form__item">
@@ -371,6 +373,7 @@ const SigninForm = ({
               onChange={changeField}
               id="email"
               value={email}
+              inputClass="input"
             />
           </label>
         </div>
@@ -384,6 +387,7 @@ const SigninForm = ({
             onChange={changeField}
             id="password1"
             value={password1}
+            inputClass="input"
           />
         </div>
         <div className="signin__form__item">
@@ -396,6 +400,7 @@ const SigninForm = ({
             onChange={changeField}
             id="password2"
             value={password2}
+            inputClass="input"
           />
         </div>
         <p>Vous allez recevoir un email de confirmation d'inscription. Veuillez l'accepter.</p>
@@ -406,6 +411,7 @@ const SigninForm = ({
             type="submit"
             className="login-form-button"
             onClick={handleSubmit}
+            buttonClass="button"
           >
             Je m'inscris
           </TextButton>
