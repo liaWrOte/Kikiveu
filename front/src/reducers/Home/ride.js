@@ -10,6 +10,7 @@ const initialState = {
   date: '',
   time: '',
   duration: '',
+  comments: [],
   maxParticipant: 1,
 };
 

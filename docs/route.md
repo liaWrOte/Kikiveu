@@ -54,8 +54,12 @@
 | `/` | `POST` | `Api\MainController` | `api_v1_connexion` | Connexion d'un utilisateur | réponse APi : info utilisateur |
 | `/signin` | `POST` | `Api\MainController` | `api_v1_signin` | Inscription d'un utilisateur | réponse API : info nouvelle utilisateur |
 | --- | ----------- | ---------- | ----------- | ------- | ------- |
+
 | `/user` | `GET` | `Api\UserController` | `api_v1_read` | Récupère les infos utilisateur | réponse Api : info utilisateur |
+
 | `/user/edit/{id}` | `PUT` | `Api\UserController` |  `api_v1_edit` | Edition des infos utilisateur | réponse Api : code HTTP 201 |
+| `/user/{id}` | `PUT` | `Api\UserController` |  `api_v1_edit` | Récupérer les données d'un user | réponse Api : code HTTP 201 |
+
 | `/user/edit/{id}` | `PATCH` | `Api\UserController` | `api_v1_edit` | Patch d'un user (modification de la localisation) | réponse Api : code HTTP 200 |
 | `/user/delete/{id}` | `DELETE` | `Api\UserController` | `api_v1_edit` | Supression d'un utilisateur | réponse Api : code HTTP 200 |
 | --- | ----------- | ---------- | ----------- | ------- | ------- |
