@@ -11,6 +11,10 @@
   justify-content: space-around;
   align-items: center;
   &__form {
+    &__profileImage{
+      display:flex;
+      flex-direction: column,
+    }
     &__emoji {
       display: flex;
       justify-content: space-evenly;

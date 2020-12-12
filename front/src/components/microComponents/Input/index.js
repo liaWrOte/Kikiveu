@@ -12,6 +12,7 @@ const Input = ({
   name,
   placeholder,
   onChange,
+  checked,
   id,
 }) => {
   const handleChange = (evt) => {
@@ -28,6 +29,7 @@ const Input = ({
       name={name}
       placeholder={placeholder}
       type={type}
+      checked={checked}
     />
   );
 };
@@ -43,6 +45,7 @@ Input.propTypes = {
   placeholder: PropTypes.string,
   onChange: PropTypes.func,
   id: PropTypes.string,
+  checked: PropTypes.bool,
 };
 
 // Valeurs par défaut pour les props
@@ -51,6 +54,7 @@ Input.defaultProps = {
   value: '',
   type: 'text',
   placeholder: '',
+  checked: false,
   onChange: () => {
   },
 };

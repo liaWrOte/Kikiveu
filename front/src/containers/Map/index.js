@@ -11,6 +11,8 @@ import {
   refreshMapCoords,
 } from '../../actions/Map';
 
+import { getUserProfile } from '../../actions/Home/changeUserProfile';
+
 import Map from '../../components/microComponents/Map';
 
 const mapStateToProps = (state) => ({
@@ -57,6 +59,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
   checkEventsLocation: (value) => {
     dispatch(checkEventsLocation(value));
+  },
+  getUserProfile: () => {
+    dispatch(getUserProfile());
   },
 });
 
