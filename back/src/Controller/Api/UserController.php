@@ -9,6 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Serializer\SerializerInterface;
 
 /**
  * @Route("/api/v1/user", name="api_v1_user_")
@@ -51,7 +52,7 @@ class UserController extends AbstractController
     /**
      * @Route("/edit/{id}", name="edit", methods={"PUT"}, requirements={"id" = "\d+"})
      */
-    public function edit(Users $users, Request $request): Response
+    public function edit(Users $users, SerializerInterface $serializer, Request $request): Response
     {
         $json = $request->getContent();
         
@@ -65,8 +66,14 @@ class UserController extends AbstractController
             $users->setUpdatedAt(new \DateTime());
             $em = $this->getDoctrine()->getManager();
             $em->flush();
-
-            return $this->json($users, 200);
+            
+            $json = $serializer->serialize(
+                $users,
+                'json',
+                ['groups' => "edit_user"]
+            );
+            // dd($users->getDogs());
+            return $this->json($json, 200);
         } else {
             return $this->json(
                 [

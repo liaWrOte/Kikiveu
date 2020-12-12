@@ -43,13 +43,13 @@ class Users implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=50)
-     * @Groups({"show_add_event", "show_add_comment"})
+     * @Groups({"show_add_event", "show_add_comment", "edit_user"})
      */
     private $pseudo;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
-     * @Groups({"show_add_event"})
+     * @Groups({"show_add_event", "edit_user"})
      */
     private $slug;
 
@@ -81,6 +81,7 @@ class Users implements UserInterface
 
     /**
      * @ORM\OneToMany(targetEntity=Dogs::class, mappedBy="users", orphanRemoval=true)
+     * @Groups({"edit_user"})
      */
     private $dogs;
 
