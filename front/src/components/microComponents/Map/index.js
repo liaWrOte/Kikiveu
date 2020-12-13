@@ -13,6 +13,7 @@ import { Link, MemoryRouter, useHistory } from 'react-router-dom';
 
 import rideUrl from '../../../assets/images/ride_icon.png';
 
+import Ride from '../../../containers/Home/ride';
 import SecondaryUserButton from '../SecondaryUserButton/index';
 import TextButton from '../TextButton/index';
 
@@ -134,7 +135,7 @@ const Map = ({
         })}
       >
         <Popup>
-          <Link to={`/balade/${rideEvent.eventSlug}`} onClick={getRide(rideEvent.eventId)}>Voir la balade</Link>
+          <Link to={`/balade/${rideEvent.eventSlug}`} onClick={getRide(rideEvent.eventId)}>Voir la balade...</Link>
         </Popup>
       </Marker>
     ))
