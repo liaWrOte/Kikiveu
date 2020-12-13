@@ -29,7 +29,7 @@ const Input = ({
       name={name}
       placeholder={placeholder}
       type={type}
-      checked={checked}
+      //checked={checked}
     />
   );
 };

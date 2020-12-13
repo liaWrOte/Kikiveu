@@ -141,10 +141,10 @@ const UserProfile = ({
             id="castrate"
             name="castrate"
             value={castrate}
-            checked={castrate}
+            checked={castrate === 1}
           />
         </label>
-        </div>
+      </div>
       <div className="userProfile__bottom">
         <PreviousButton />
       </div>
