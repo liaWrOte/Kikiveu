@@ -7,6 +7,7 @@ import {
   SEND_MAP_COORDS,
   CHECK_EVENTS_LOCATION,
   REFRESH_MAP_COORDS,
+  GET_RIDE_DATA,
 } from '../../actions/Map';
 
 const initialState = {
@@ -21,6 +22,7 @@ const initialState = {
   neLongMap: 0,
   mapCoords: [],
   haveEventsLocation: false,
+  rideDataId: '',
 };
 
 const mapReducer = (state = initialState, action = {}) => {
@@ -77,6 +79,12 @@ const mapReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         haveEventsLocation: action.value,
+      };
+
+    case GET_RIDE_DATA:
+      return {
+        ...state,
+        rideDataId: action.id,
       };
 
     default: return { ...state };

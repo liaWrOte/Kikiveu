@@ -19,10 +19,10 @@ const userProfile = (store) => (next) => (action) => {
       axios.get(`http://localhost:8000/api/v1/dog/${auth.userId}`, config)
         .then((response) => {
           // traitement si réponse est un succès
-          console.log(response.data[0]);
+          console.log(response.data);
           // je veux stocker response.data dans le state => seule possibilité,
           // dispatch une action au store
-          store.dispatch(saveUserProfileInfos(response.data[0]));
+          store.dispatch(saveUserProfileInfos(response.data));
         });
       next(action);
       break;

@@ -6,6 +6,7 @@ export const REFRESH_RIDE_EVENTS = 'REFRESH_RIDE_EVENTS';
 export const REFRESH_MAP_COORDS = 'REFRESH_MAP_COORDS';
 export const SEND_MAP_COORDS = 'SEND_MAP_COORDS';
 export const CHECK_EVENTS_LOCATION = 'CHECK_EVENTS_LOCATION';
+export const GET_RIDE_DATA = 'GET_RIDE_DATA';
 
 export const updateLat = (value) => ({
   type: UPDATE_LAT,
@@ -45,4 +46,9 @@ export const sendMapCoords = (value) => ({
 export const checkEventsLocation = (value) => ({
   type: CHECK_EVENTS_LOCATION,
   value,
+});
+
+export const getRideData = (id) => ({
+  type: GET_RIDE_DATA,
+  id,
 });

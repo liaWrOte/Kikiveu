@@ -2,10 +2,6 @@ import { connect } from 'react-redux';
 
 import Ride from '../../components/Home/Ride';
 
-import {
-  updateUserProfileField,
-  handleUpdateUserProfile,
-} from '../../actions/Home/changeUserProfile';
 
 const mapStateToProps = (state) => ({
   // nom de la prop à remplir: donnée à récupérer dans le state
@@ -19,15 +15,10 @@ const mapStateToProps = (state) => ({
   maxParticipant: state.ride.maxParticipant,
   comments: state.ride.comments,
   rideEvents: state.map.rideEvents,
+  rideInfos: state.ride.rideInfos,
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  changeField: (newValue, name) => {
-    dispatch(updateUserProfileField(newValue, name));
-  },
-  handleUpdateUserProfile: () => {
-    dispatch(handleUpdateUserProfile());
-  },
+const mapDispatchToProps = () => ({
 });
 
 export default connect(

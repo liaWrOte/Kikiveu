@@ -1,6 +1,12 @@
-export const LOAD_RIDE = 'LOAD_RIDE';
+export const GET_RIDE = 'GET_RIDE';
+export const SAVE_RIDE_INFOS = 'SAVE_RIDE_INFOS';
 
-export const updateUserProfileField = (value) => ({
-  type: LOAD_RIDE,
+export const getRide = (value) => ({
+  type: GET_RIDE,
+  value,
+});
+
+export const saveRideInfos = (value) => ({
+  type: SAVE_RIDE_INFOS,
   value,
 });
