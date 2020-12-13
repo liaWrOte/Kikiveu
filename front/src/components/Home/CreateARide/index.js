@@ -49,8 +49,8 @@ const CreateARide = ({
   return (
     <div className="createARide">
       <MainUserButton className="createARide__mainUserButton" />
+      <TextButton text={placeCursor} handleClick={putRideMarker} buttonClass="button_small" />
       <form autoComplete="off" className="createARide__form" onSubmit={handleSubmit}>
-        <TextButton text={placeCursor} handleClick={putRideMarker} buttonClass="button_small" />
         <div className="twoColumns">
 
           <label htmlFor="description">

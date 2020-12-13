@@ -14,7 +14,7 @@ import Chat from './Chat';
 import KikiVeuContact from './KikiVeuContact';
 import Cgu from '../microComponents/Cgu';
 import CreateARide from '../../containers/Home/CreateARide';
-import Ride from './Ride';
+import Ride from '../../containers/Home/ride';
 import PreviousButton from '../microComponents/PreviousButton';
 
 import './index.scss';

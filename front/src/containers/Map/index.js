@@ -9,7 +9,12 @@ import {
   sendMapCoords,
   checkEventsLocation,
   refreshMapCoords,
+  getRideData,
 } from '../../actions/Map';
+
+import {
+  getRide,
+} from '../../actions/Home/ride';
 
 import { getUserProfile } from '../../actions/Home/changeUserProfile';
 
@@ -63,6 +68,12 @@ const mapDispatchToProps = (dispatch) => ({
   },
   getUserProfile: () => {
     dispatch(getUserProfile());
+  },
+  getRideData: (id) => {
+    dispatch(getRideData(id));
+  },
+  getRide: (id) => {
+    dispatch(getRide(id));
   },
 });
 

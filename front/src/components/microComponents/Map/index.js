@@ -38,6 +38,8 @@ const Map = ({
   rideEvents,
   haveEventsLocation,
   canPutRideMarker,
+  getRideData,
+  getRide,
 }) => {
   const refresh = 'Rafraîchir la carte';
 
@@ -85,7 +87,7 @@ const Map = ({
     );
   }
 
-    // map on all rideEvents
+  // map on all rideEvents
   /* function MapEvents() {
     console.log('mapEvents');
     console.log('rides :', rideEvents);
@@ -112,32 +114,30 @@ const Map = ({
   const MapEvents = () => (
     // console.log('mapEvents')
     // {`/balade/${rideEvent.eventSlug}`}
-    rideEvents.map((rideEvent) => {
-      console.log(rideEvent.eventSlug);
-      return (
-        <Marker
-          key={rideEvent.eventId}
-          position={[rideEvent.eventLat,
-            rideEvent.eventLong]}
-          icon={new L.Icon({
-            iconUrl: rideUrl,
-            iconRetinaUrl: rideUrl,
-            iconAnchor: null,
-            popupAnchor: [rideEvent.eventLat,
-              rideEvent.eventLong],
-            shadowUrl: null,
-            shadowSize: null,
-            shadowAnchor: null,
-            iconSize: new L.Point(30, 30),
-            className: 'leaflet-div-icon',
-          })}
-        >
-          <Popup>
-              <Link to={`/balade/${rideEvent.eventSlug}`}>Voir la balade</Link>
-          </Popup>
-        </Marker>
-      );
-    })
+    rideEvents.map((rideEvent) => (
+      <Marker
+        key={rideEvent.eventId}
+        position={[rideEvent.eventLat,
+          rideEvent.eventLong]}
+        onClick={getRideData(rideEvent.eventId)}
+        icon={new L.Icon({
+          iconUrl: rideUrl,
+          iconRetinaUrl: rideUrl,
+          iconAnchor: null,
+          popupAnchor: [rideEvent.eventLat,
+            rideEvent.eventLong],
+          shadowUrl: null,
+          shadowSize: null,
+          shadowAnchor: null,
+          iconSize: new L.Point(30, 30),
+          className: 'leaflet-div-icon',
+        })}
+      >
+        <Popup>
+          <Link to={`/balade/${rideEvent.eventSlug}`} onClick={getRide(rideEvent.eventId)}>Voir la balade</Link>
+        </Popup>
+      </Marker>
+    ))
   );
 
   function UserPointer() {

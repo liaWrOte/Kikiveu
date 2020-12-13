@@ -2,6 +2,7 @@ import axios from 'axios';
 
 import {
   LOAD_RIDE,
+  GET_RIDE,
 } from '../../actions/Home/ride';
 
 import apiUrl from '../env';
@@ -22,15 +23,6 @@ const ride = (store) => (next) => (action) => {
       axios.post(
         'http://localhost:8000/api/v1/event/add',
         {
-          /* locate: '44.65876331712623 6.129169464111329',
-          description: 'balade',
-          tags: `${createARide.tags}`,
-          datetime: `${createARide.date} ${createARide.time}`,
-          duration: createARide.duration,
-          maxParticipant: createARide.maxParticipant,
-          slug: auth.nickname,
-          users: auth.userId, */
-
           eventLat: createARide.markerLat,
           eventLong: createARide.markerLng,
           description: createARide.description,
@@ -40,17 +32,6 @@ const ride = (store) => (next) => (action) => {
           maxParticipant: createARide.maxParticipant, // problème ici
           slug: auth.nickname,
           users: auth.userId,
-
-          /* Données qui fonctionnent dans insomnia
-          locate: '44.65876331712623 6.129169464111329',
-          description: 'balade',
-          tags: [2, 3],
-          datetime: '09-12-2020 02:30',
-	        duration: '02:30',
-          maxParticipant: 6,
-          slug: 'balade',
-          users: 16,
-          */
         },
         config,
       )
@@ -61,6 +42,24 @@ const ride = (store) => (next) => (action) => {
         })
         .catch((error) => {
         // traitement si réponse est une erreur
+          console.log('erreur :', error);
+        });
+
+      break;
+
+    case GET_RIDE:
+      const { map } = store.getState();
+      axios.get(
+        `http://localhost:8000/api/v1/event/${map.rideDataId}`,
+        config,
+      )
+        .then((response) => {
+          // traitement si réponse est un succès
+          console.log('response');
+          console.log(response);
+        })
+        .catch((error) => {
+          // traitement si réponse est une erreur
           console.log('erreur :', error);
         });
 
