@@ -66,12 +66,12 @@ const Home = ({ isLogged }) => (
                 <Chat />
               </div>
             </Route>
-            <Route exact path="/1/edit">
+            <Route exact path="/profil/edit">
               <div className=".item4">
                 <ChangeUserProfile />
               </div>
             </Route>
-            <Route exact path="/1">
+            <Route exact path="/profil">
               <div className=".item4">
                 <UserProfile />
               </div>
