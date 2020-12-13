@@ -2,7 +2,7 @@ import React from 'react';
 
 import './index.scss';
 
-import tree from '../../../assets/images/tree.png';
+import tree from '../../../assets/images/ride_icon.png';
 
 const RideButton = () => {
   const sectionStyle = {

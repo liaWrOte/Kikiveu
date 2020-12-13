@@ -45,3 +45,15 @@
   margin-top: (vars.$smallGutter)/2;
 }
 
+@media screen and (min-width: 1300px) {
+  .userProfile {
+    display: block;
+    position: absolute;
+    height: 80vh;
+    width: 33%;
+    right: 0;
+    z-index: 2000;
+    background-color: #fff;
+  }
+}
+

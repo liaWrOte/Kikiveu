@@ -128,7 +128,7 @@ const Map = ({
             shadowUrl: null,
             shadowSize: null,
             shadowAnchor: null,
-            iconSize: new L.Point(40, 40),
+            iconSize: new L.Point(30, 30),
             className: 'leaflet-div-icon',
           })}
         >

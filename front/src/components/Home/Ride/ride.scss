@@ -25,3 +25,16 @@
   }
 }
 
+@media screen and (min-width: 1300px) {
+  .ride {
+    display: block;
+    position: absolute;
+    height: 33.33vh;
+    width: 33%;
+    right: 0;
+    z-index: 1000;
+    background-color: #fff;
+  }
+}
+
+
