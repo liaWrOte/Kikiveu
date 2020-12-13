@@ -2,7 +2,6 @@ import { connect } from 'react-redux';
 
 import Ride from '../../components/Home/Ride';
 
-
 const mapStateToProps = (state) => ({
   // nom de la prop à remplir: donnée à récupérer dans le state
   markerLat: state.ride.markerLat,
