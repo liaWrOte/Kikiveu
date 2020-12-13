@@ -33,6 +33,8 @@ import sociable from '../../assets/images/character/sociable_character.png';
 
 import './index.scss';
 
+import screenshot from '../../assets/images/dog_profile.jpg';
+
 const SigninForm = ({
   dogsNumber,
   dogName,
@@ -57,9 +59,14 @@ const SigninForm = ({
     handleSignIn();
   };
 
+  const sectionStyle = {
+    backgroundImage: `url(${screenshot})`,
+    backgroundSize: 'cover',
+  };
+
   return (
     <div className="signin">
-      <div className="signin__img"><img src="" alt="screenshotApp" /></div>
+      <div style={sectionStyle} className="signin__img"></div>
 
       <form autoComplete="off" className="signin__form" onSubmit={handleSubmit}>
         <h2 className="signin__form__title">Rejoindre KikiVeu</h2>

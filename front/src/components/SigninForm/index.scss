@@ -72,3 +72,30 @@ p {
   margin-bottom: (vars.$bigGutter)*2;
   margin-top: (vars.$bigGutter)*2;
 }
+
+@media screen and (min-width: 1300px) {
+  .signin {
+    flex-direction: row;
+    background-color: #fff;
+    padding: 0;
+    height: 100vh;
+    margin-top: 0;
+    
+    &__img {
+      position: fixed;
+      width: 50%;
+      height: 100%;
+      padding: 0;
+      height: 100vh;
+    }
+    &__form {
+      width: 50%;
+      margin-left: 50%;
+      height: 100%;
+      padding: vars.$bigGutter;
+    }
+  }
+
+
+}
+
