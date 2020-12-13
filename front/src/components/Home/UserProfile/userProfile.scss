@@ -1,28 +1,47 @@
+//@use '/home/etudiant/Bureau/html/projet-kikiveu/front/src/styles/_vars.scss';
+@use '../../../styles/vars';
+
 .userProfile {
   position: absolute;
   z-index: 25;
-  height: 400px;
+  height: 550px;
   bottom: 0;
   width: 100%;
   display: flex;
   flex-direction: column;
-  background-color: #FCDEB0;
+  background-color: #fff;
   display : flex;
   justify-content: space-around;
   align-items: center;
+  padding: vars.$smallGutter;
+  font-family: vars.$bodyFont;
+  color: vars.$textColor;
+  text-align: center;
   &__form {
     &__profileImage{
       display:flex;
       flex-direction: column,
     }
     &__emoji {
+      margin-top: -1rem;
       display: flex;
       justify-content: space-evenly;
-    }
-    &__bottom {
-      display: flex;
-      justify-content: space-evenly;
+      align-items: center;
     }
   }
-  
+  &__bottom {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: vars.$smallGutter;
+  }
 }
+
+
+.before_button {
+  margin-top: vars.$smallGutter;
+}
+
+#castrate {
+  margin-top: (vars.$smallGutter)/2;
+}
+

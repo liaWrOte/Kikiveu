@@ -1,15 +1,19 @@
+//@use '/home/etudiant/Bureau/html/projet-kikiveu/front/src/styles/_vars.scss';
+@use '../../../styles/vars';
+
 .createARide {
   position: absolute;
   z-index: 25;
   bottom: 0;
-  height: 500px;
+  height: 550px;
   width: 100%;
   display: flex;
   flex-direction: column;
-  background-color: #FCDEB0;
-  display : flex;
-  justify-content: space-around;
-  align-items: center;
+  background-color: #fff;
+  font-family: vars.$bodyFont;
+  color: vars.$textColor;
+  padding: vars.$smallGutter;
+  text-align: center;
 
   &__divLabel{
     display: flex;
@@ -38,3 +42,11 @@
   }
 }
 
+.twoColumns {
+  display: flex;
+  width: 100%;
+}
+
+.lieu {
+  margin: 0;
+}

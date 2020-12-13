@@ -47,18 +47,10 @@ const ChangeUserProfile = ({
     <div className="userProfile">
       <form autoComplete="off" className="userProfile_form" onSubmit={handleSubmit}>
         <MainUserButton className="mainUserButton" />
-        <label htmlFor="profileImage" className="userProfile__form__profileImage">
-          Changer la photo de profil
-        </label>
-        <input
-          name="profileImage"
-          id="profileImage"
-          type="file"
-          accept="image/png, image/jpeg"
-        />
-        <p>Comment se sent Kiki aujourd'hui ?</p>
+        <TextButton text={changeAvatar} buttonClass="button_small_green" />
+        <p className="before_button">Comment se sent Kiki aujourd'hui ?</p>
         <div className="userProfile__form__emoji">
-          <label htmlFor="moodId">Calme
+          <label htmlFor="mood">
             <Emoji src={calm} />
             <Input
               type="radio"
@@ -67,9 +59,10 @@ const ChangeUserProfile = ({
               id="calm"
               name="moodId"
             />
+            Calme
           </label>
 
-          <label htmlFor="moodId">Excité
+          <label htmlFor="moodId">
             <Emoji src={excited} />
             <Input
               type="radio"
@@ -78,9 +71,10 @@ const ChangeUserProfile = ({
               id="excited"
               name="moodId"
             />
+            Excité
           </label>
 
-          <label htmlFor="moodId">Joueur
+          <label htmlFor="moodId">
             <Emoji src={player} />
             <Input
               type="radio"
@@ -89,9 +83,10 @@ const ChangeUserProfile = ({
               id="player"
               name="moodId"
             />
+            Joueur
           </label>
 
-          <label htmlFor="moodId">Energique
+          <label htmlFor="moodId">
             <Emoji src={rough} />
             <Input
               type="radio"
@@ -100,9 +95,10 @@ const ChangeUserProfile = ({
               id="rough"
               name="moodId"
             />
+            Energique
           </label>
 
-          <label htmlFor="moodId">Fatigué
+          <label htmlFor="moodId">
             <Emoji src={tired} />
             <Input
               type="radio"
@@ -111,12 +107,13 @@ const ChangeUserProfile = ({
               id="tired"
               name="moodId"
             />
+            Fatigué
           </label>
 
         </div>
-        <p>L'état de santé de Kiki a changé ?</p>
+        <p className="before_button">L'état de santé de Kiki a changé ?</p>
         <div className="userProfile__form__emoji">
-          <label htmlFor="stateId">Petite forme
+          <label htmlFor="stateId">
             <Emoji src={small} />
             <Input
               type="radio"
@@ -125,9 +122,11 @@ const ChangeUserProfile = ({
               id="small"
               name="stateId"
             />
+            Petite forme
           </label>
 
-          <label htmlFor="stateId">Forme moyenne
+          <label htmlFor="stateId">
+            <Emoji src={medium} />
             <Input
               type="radio"
               onChange={changeField}
@@ -135,10 +134,10 @@ const ChangeUserProfile = ({
               id="medium"
               name="stateId"
             />
-            <Emoji src={medium} />
+            Forme moyenne
           </label>
 
-          <label htmlFor="stateId">Excellente forme
+          <label htmlFor="stateId">
             <Emoji src={good} />
             <Input
               type="radio"
@@ -147,14 +146,16 @@ const ChangeUserProfile = ({
               id="good"
               name="stateId"
             />
+            Excellente forme
           </label>
-          <label htmlFor="castrate">Castré
+          <label htmlFor="castrate">
             <Toggle
               onChange={changeField}
               id="castrate"
               name="castrate"
               value={castrate}
             />
+            <div id="castrate">Castré</div>
           </label>
         </div>
         <label htmlFor="pseudo">Votre nouveau pseudo
@@ -167,7 +168,7 @@ const ChangeUserProfile = ({
         </label>
         <div className="userProfile__bottom">
           <PreviousButton />
-          <TextButton text={saveText} />
+          <TextButton text={saveText} buttonClass="button_small" />
           <div> </div>
         </div>
       </form>

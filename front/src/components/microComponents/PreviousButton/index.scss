@@ -1,3 +1,5 @@
+//@use '/home/etudiant/Bureau/html/projet-kikiveu/front/src/styles/_vars.scss';
+@use '../../../styles/vars';
 .previousButton {
   width : 40px;
   height : 40px;
@@ -7,7 +9,12 @@
   font-size: 1.5em;
   font-weight: bold;
   border-radius: 30px;
+  background-color: vars.$secondaryColor;
+  color: #fff;
+  font-weight: bold;
+  border: none;
   &:hover {
     cursor: pointer;
+    background-color: vars.$accentColor;
   }
 }

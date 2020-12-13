@@ -1,10 +1,14 @@
-.home {
+//@use '/home/etudiant/Bureau/html/projet-kikiveu/front/src/styles/_vars.scss';
+@use '../../styles/vars';
 
+.home {
   height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .item1 {
-  height: 10vh;
+  height: 7vh;
 }
 .item2 {
   height: 60vh;

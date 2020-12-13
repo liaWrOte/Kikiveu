@@ -8,8 +8,10 @@ import {
   useMapEvents,
   useMap,
 } from 'react-leaflet';
+import L, { Leaflet } from 'leaflet';
+import { Link, MemoryRouter, useHistory } from 'react-router-dom';
 
-import { Link } from 'react-router-dom';
+import rideUrl from '../../../assets/images/ride_icon.png';
 
 import SecondaryUserButton from '../SecondaryUserButton/index';
 import TextButton from '../TextButton/index';
@@ -35,11 +37,13 @@ const Map = ({
   neLongMap,
   rideEvents,
   haveEventsLocation,
+  canPutRideMarker,
 }) => {
   const refresh = 'Rafraîchir la carte';
 
   function MapBounds() {
     const map = useMap();
+    console.log(canPutRideMarker);
     console.log(map.getBounds());
     refreshMapCoords(map.getBounds());
     return null;
@@ -60,6 +64,7 @@ const Map = ({
   }, []);
 
   function AddMarkerToClick() {
+    console.log('ajout du marqueur');
     useMapEvents({
       click(e) {
         const newMarkerLat = e.latlng.lat;
@@ -80,24 +85,78 @@ const Map = ({
     );
   }
 
+    // map on all rideEvents
+  /* function MapEvents() {
+    console.log('mapEvents');
+    console.log('rides :', rideEvents);
+    const markerEvents = rideEvents.map((rideEvent) => {
+      console.log(ride.eventLat);
+      <Marker position={[rideEvent.eventLat, rideEvent.eventLng]} />;
+    });
+    return markerEvents;
+  } */
+
+  /* const rideIcon = new L.Icon({
+    iconUrl: rideUrl,
+    iconRetinaUrl: rideUrl,
+    iconAnchor: null,
+    popupAnchor: '[rideEvent.eventLat,
+      rideEvent.eventLong]',
+    shadowUrl: null,
+    shadowSize: null,
+    shadowAnchor: null,
+    iconSize: new L.Point(40, 40),
+    className: 'leaflet-div-icon',
+  }); */
+
   const MapEvents = () => (
-    //console.log('mapEvents')
-    //console.log('rides :', rideEvents)
-    rideEvents.map((rideEvent) => (
-     // console.log(ride.eventLat);
-      <Marker key={rideEvent.eventId} position={[rideEvent.eventLat, rideEvent.eventLong]} />
-    ))
+    // console.log('mapEvents')
+    // {`/balade/${rideEvent.eventSlug}`}
+    rideEvents.map((rideEvent) => {
+      console.log(rideEvent.eventSlug);
+      return (
+        <Marker
+          key={rideEvent.eventId}
+          position={[rideEvent.eventLat,
+            rideEvent.eventLong]}
+          icon={new L.Icon({
+            iconUrl: rideUrl,
+            iconRetinaUrl: rideUrl,
+            iconAnchor: null,
+            popupAnchor: [rideEvent.eventLat,
+              rideEvent.eventLong],
+            shadowUrl: null,
+            shadowSize: null,
+            shadowAnchor: null,
+            iconSize: new L.Point(40, 40),
+            className: 'leaflet-div-icon',
+          })}
+        >
+          <Popup>
+              <Link to={`/balade/${rideEvent.eventSlug}`}>Voir la balade</Link>
+          </Popup>
+        </Marker>
+      );
+    })
   );
 
+  function UserPointer() {
+    return (
+      <Marker position={[lat, lng]} />
+    );
+  }
   return (
     <div className="map">
       {lat !== null && lng !== null && (
       <MapContainer className="map__component" center={[lat, lng]} zoom={13}>
+        {(canPutRideMarker) && (
         <AddMarkerToClick />
+        )}
         <MapBounds />
         {(haveEventsLocation) && (
           <MapEvents />
         )}
+        <UserPointer />
         <TileLayer
           attribution='&copy; <a href="">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -117,7 +176,7 @@ const Map = ({
         </div>
       </div>
       <div className="map__refresh">
-        <TextButton text={refresh} handleClick={sendMapCoords} />
+        <TextButton text={refresh} handleClick={sendMapCoords} buttonClass="button_small" />
       </div>
     </div>
   );
@@ -142,6 +201,7 @@ Map.propTypes = {
   rideEvents: PropTypes.array,
   haveEventsLocation: PropTypes.func.isRequired,
   refreshMapCoords: PropTypes.func.isRequired,
+  canPutRideMarker: PropTypes.bool.isRequired,
 };
 
 Map.defaultProps = {

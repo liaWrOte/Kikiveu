@@ -27,6 +27,7 @@ const mapStateToProps = (state) => ({
   neLatMap: state.map.neLatMap,
   neLongMap: state.map.neLongMap,
   haveEventsLocation: state.map.haveEventsLocation,
+  canPutRideMarker: state.createARide.canPutRideMarker,
 });
 
 const mapDispatchToProps = (dispatch) => ({

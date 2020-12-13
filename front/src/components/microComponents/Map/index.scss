@@ -6,7 +6,6 @@
 
   &__component {
     position: relative;
-    top: 20px;
     width: 100%;
     height: 100%;
     z-index: 2;
@@ -34,9 +33,17 @@
     z-index: 10;
     left: 0;
     right: 0;
-    width: 15%;
+    width: 40%;
     margin: auto;
   } 
+}
+
+.leaflet-div-icon {
+  background-color: none;
+  border: none;
+  padding: 1rem;
+  box-sizing: content-box;
+  border-radius: 50%;
 }
 
 
