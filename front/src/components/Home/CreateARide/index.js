@@ -32,6 +32,7 @@ const CreateARide = ({
   maxParticipant,
   changeField,
   updateTagRide,
+  handleCreateARide,
   putRideMarker,
 }) => {
   const placeCursor = 'Je positionne ma balade sur la carte';

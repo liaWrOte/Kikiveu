@@ -27,6 +27,8 @@ const Map = ({
   changeLng,
   changeMarkerLat,
   changeMarkerLng,
+  getUserProfile,
+  refreshRideEvents,
   refreshMapCoords,
   sendMapCoords,
   swLatMap,
@@ -58,6 +60,7 @@ const Map = ({
   useEffect(() => {
     // Met à jour le titre du document via l’API du navigateur
     navigator.geolocation.getCurrentPosition(success);
+    getUserProfile();
   }, []);
 
   function AddMarkerToClick() {
@@ -82,7 +85,7 @@ const Map = ({
     );
   }
 
-  // map on all rideEvents
+    // map on all rideEvents
   /* function MapEvents() {
     console.log('mapEvents');
     console.log('rides :', rideEvents);

@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-import Ride from '../../components/Home/Ride';
+import ChangeUserProfile from '../../components/Home/UserProfile/changeUserProfile';
 
 import {
   updateUserProfileField,
@@ -8,16 +8,11 @@ import {
 } from '../../actions/Home/changeUserProfile';
 
 const mapStateToProps = (state) => ({
-  // nom de la prop à remplir: donnée à récupérer dans le state
-  markerLat: state.ride.markerLat,
-  markerLng: state.ride.markerLng,
-  description: state.ride.description,
-  tags: state.ride.tags,
-  date: state.ride.date,
-  time: state.ride.time,
-  duration: state.ride.duration,
-  maxParticipant: state.ride.maxParticipant,
-  comments: state.ride.comments,
+  avatar: state.changeUserProfile.avatar,
+  moodId: state.changeUserProfile.moodId,
+  stateId: state.changeUserProfile.stateId,
+  castrate: state.changeUserProfile.castrate,
+  pseudo: state.changeUserProfile.pseudo,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -32,4 +27,4 @@ const mapDispatchToProps = (dispatch) => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(Ride);
+)(ChangeUserProfile);

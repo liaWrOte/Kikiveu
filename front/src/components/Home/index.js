@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import Header from '../../containers/Header';
 import Map from '../../containers/Map';
 import Info from '../../containers/Home/info';
+import ChangeUserProfile from '../../containers/Home/changeUserProfile';
 import UserProfile from '../../containers/Home/userProfile';
 import Login from '../../containers/login';
 import SigninForm from '../../containers/signin';
@@ -63,6 +64,11 @@ const Home = ({ isLogged }) => (
             <Route exact path="/1/messages">
               <div className=".item3">
                 <Chat />
+              </div>
+            </Route>
+            <Route exact path="/1/edit">
+              <div className=".item4">
+                <ChangeUserProfile />
               </div>
             </Route>
             <Route exact path="/1">

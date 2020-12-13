@@ -1,5 +1,5 @@
-@use '/home/etudiant/Bureau/html/projet-kikiveu/front/src/styles/_vars.scss';
-
+//@use '/home/etudiant/Bureau/html/projet-kikiveu/front/src/styles/_vars.scss';
+@use '../../../styles/vars';
 .header {
   display: flex;
   justify-content: space-between;

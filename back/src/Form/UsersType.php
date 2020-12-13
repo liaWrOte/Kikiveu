@@ -27,30 +27,19 @@ class UsersType extends AbstractType
                     new NotBlank(),
                 ],
             ])
-            ->add('status', IntegerType::class, [
-                'constraints' => [
-                    new Range([
-                        'min' => 0,
-                        'max' => 1,
-                    ])
-                ]
-            ])
             ->add('pseudo', null, [
                 'constraints' => [
                     new NotBlank(),
                 ]
             ])
-
             ->add('slug')
-          
             ->add('password', PasswordType::class)
-            ->add('status')
-            ->add('userLat', NumberType::class)
-            ->add('userLong', NumberType::class)
-            ->add('swLat', NumberType::class)
-            ->add('swLong', NumberType::class)
-            ->add('neLat', NumberType::class)
-            ->add('neLong', NumberType::class)
+            //->add('userLat', NumberType::class)
+            //->add('userLong', NumberType::class)
+            //->add('swLat', NumberType::class)
+            //->add('swLong', NumberType::class)
+            //->add('neLat', NumberType::class)
+            //->add('neLong', NumberType::class)
         ;
     }
 
