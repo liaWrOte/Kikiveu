@@ -50,8 +50,8 @@ const Login = ({
           Connexion
         </TextButton>
       </form>
-      <div className="signin">
-        <p className="signin__text">Première fois sur KikiVeu ?</p>
+      <div className="loginSignIn">
+        <p className="login__loginSignIn__text">Première fois sur KikiVeu ?</p>
         <div className="full_width">
         <Link to="/inscription">
           <TextButton text="Je m'inscris" buttonClass="button">

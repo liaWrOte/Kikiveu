@@ -25,3 +25,16 @@
   position: absolute;
   left: 50%;
 }
+
+@media screen and (min-width: 1300px) {
+  .info {
+    position: absolute;
+    height: 80vh;
+    width: 33%;
+    right: 0;
+    align-items: flex-start;
+    z-index: 2000;
+  }
+
+}
+
