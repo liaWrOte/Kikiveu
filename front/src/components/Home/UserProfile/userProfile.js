@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
 // Import composants
 import PreviousButton from '../../microComponents/PreviousButton';
@@ -40,115 +40,59 @@ const UserProfile = ({
     getUserProfile();
   }, []);
 
+  const moodUrl = {
+    1: calm,
+    2: excited,
+    3: player,
+    4: rough,
+    5: tired,
+  };
+  const moodText = {
+    1: 'calme',
+    2: 'excité',
+    3: 'joueur',
+    4: 'nerveux',
+    5: 'fatigué',
+  };
+
+  const stateUrl = {
+    1: small,
+    2: medium,
+    3: good,
+  };
+  const stateText = {
+    1: 'Petite forme',
+    2: 'Forme moyenne',
+    3: 'Excellente forme',
+  };
+  const castrateText = {
+    0: 'Non',
+    1: 'Oui',
+  };
+
   return (
     <div className="userProfile">
-      <MainUserButton avatar={avatar} className="mainUserButton"  />
+      <MainUserButton avatar={avatar} className="mainUserButton" />
       <h2>Profil de {pseudo}</h2>
-      <Link to="/1/edit"><TextButton text={changeText} /></Link>
-      <p>L'état de Kiki aujourd'hui</p>
+      <Link to="/profil/edit"><TextButton text={changeText} /></Link>
+      <p>Son humeur du jour</p>
       <div className="userProfile__form__emoji">
-        <label htmlFor="mood">Calme
-          <Emoji src={calm} />
-          <Input
-            type="radio"
-            value={0}
-            id="calm"
-            name="mood"
-            checked={moodId === 0}
-          />
-        </label>
-
-        <label htmlFor="mood">Excité
-          <Emoji src={excited} />
-          <Input
-            type="radio"
-            value={1}
-            id="excited"
-            name="mood"
-            checked={moodId === 1}
-          />
-        </label>
-
-        <label htmlFor="mood">Joueur
-          <Emoji src={player} />
-          <Input
-            type="radio"
-            value={2}
-            id="player"
-            name="mood"
-            checked={moodId === 2}
-          />
-        </label>
-
-        <label htmlFor="mood">Energique
-          <Emoji src={rough} />
-          <Input
-            type="radio"
-            value={3}
-            id="rough"
-            name="mood"
-            checked={moodId === 3}
-          />
-        </label>
-
-        <label htmlFor="mood">Fatigué
-          <Emoji src={tired} />
-          <Input
-            type="radio"
-            value={4}
-            id="tired"
-            name="mood"
-            checked={moodId === 4}
-          />
-        </label>
+        {moodText[moodId]}
+        <Emoji src={moodUrl[moodId]} />
       </div>
-      <p>L'état de santé de Kiki a changé ?</p>
+
+      <p>Son état de santé</p>
       <div className="userProfile__form__emoji">
-        <label htmlFor="shape">Petite forme
-          <Emoji src={small} />
-          <Input
-            type="radio"
-            value={1}
-            id="small"
-            name="shape"
-            checked={stateId === 1}
-          />
-        </label>
-
-        <label htmlFor="shape">Forme moyenne
-          <Input
-            type="radio"
-            value={2}
-            id="medium"
-            name="shape"
-            checked={stateId === 2}
-          />
-          <Emoji src={medium} />
-        </label>
-
-        <label htmlFor="shape">Excellente forme
-          <Emoji src={good} />
-          <Input
-            type="radio"
-            value={3}
-            id="good"
-            name="shape"
-            checked={stateId === 3}
-          />
-        </label>
-        <label htmlFor="castrate">Castré
-          <Toggle
-            id="castrate"
-            name="castrate"
-            value={castrate}
-            checked={castrate === 1}
-          />
-        </label>
+        {stateText[stateId]}
+        <Emoji src={stateUrl[stateId]} />
       </div>
+
+      <div>Castré : {castrateText[castrate]}</div>
       <div className="userProfile__bottom">
         <PreviousButton />
       </div>
     </div>
+  
   );
 };
 

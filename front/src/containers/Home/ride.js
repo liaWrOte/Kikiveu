@@ -18,6 +18,7 @@ const mapStateToProps = (state) => ({
   duration: state.ride.duration,
   maxParticipant: state.ride.maxParticipant,
   comments: state.ride.comments,
+  rideEvents: state.map.rideEvents,
 });
 
 const mapDispatchToProps = (dispatch) => ({

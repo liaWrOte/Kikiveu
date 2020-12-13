@@ -1,6 +1,7 @@
 import React from 'react';
 import { Calendar } from 'react-feather';
 import PropTypes from 'prop-types';
+import {useParams} from 'react-router-dom';
 
 // Import composants
 import PreviousButton from '../../microComponents/PreviousButton';
@@ -21,8 +22,16 @@ const Ride = (
   duration,
   comments,
   maxParticipants,
-) => (
+  rideEvents,
+) => {
+  const { slug } = useParams();
+
+  const rideEventsInfo = {rideEvents};
+
+  return (
   <div className="ride">
+  {console.log(rideEventsInfo)}
+  {console.log({...rideEvents})}
     <MainUserButton className="ride__mainUserButton" />
     <p>
       Une balade folle entre chiots est prévue pour permettre à nos loulous de se défouler !
@@ -53,8 +62,9 @@ const Ride = (
       <PreviousButton />
     </div>
   </div>
+  );
 
-);
+};
 
 Ride.propTypes = {
   markerLat: PropTypes.number.isRequired,

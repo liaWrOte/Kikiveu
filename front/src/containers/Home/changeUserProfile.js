@@ -12,6 +12,7 @@ const mapStateToProps = (state) => ({
   moodId: state.changeUserProfile.moodId,
   stateId: state.changeUserProfile.stateId,
   castrate: state.changeUserProfile.castrate,
+  castrateInitialValue: state.userProfile.userInfos.castrate,
   pseudo: state.changeUserProfile.pseudo,
 });
 
