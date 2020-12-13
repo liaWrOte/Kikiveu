@@ -48,9 +48,8 @@ const CreateARide = ({
   return (
     <div className="createARide">
       <MainUserButton className="createARide__mainUserButton" />
-      <TextButton text={placeCursor} handleClick={putRideMarker} buttonClass="button_small" />
       <form autoComplete="off" className="createARide__form" onSubmit={handleSubmit}>
-
+        <TextButton text={placeCursor} handleClick={putRideMarker} buttonClass="button_small" />
         <div className="twoColumns">
 
           <label htmlFor="description">
@@ -104,7 +103,7 @@ const CreateARide = ({
         </div>
         <div className="twoColumns">
           <div className="createARide__item">
-            <label htmlFor="duration" className="fullWidth" >
+            <label htmlFor="duration" className="fullWidth">
               Durée :
 
               <Input
@@ -118,7 +117,7 @@ const CreateARide = ({
             </label>
           </div>
           <div className="createARide__item">
-            <label htmlFor="maxParticipant" className="fullWidth" >
+            <label htmlFor="maxParticipant" className="fullWidth">
               Participants:
               <Input
                 type="number"
@@ -136,84 +135,87 @@ const CreateARide = ({
           Je choisis le type de la balade :
         </p>
         <div className="createARide__divLabel">
-          <label htmlFor="tags" className="createARide__emoji">
-            Sportive
-            <Emoji src={athletic} />
-            <Input
-              type="checkbox"
-              onChange={updateTagRide}
-              value={1}
-              id="athletic"
-              name="tags"
-            />
-          </label>
-          <label htmlFor="tags" className="createARide__emoji">
-            Educative
-            <Emoji src={learning} />
-            <Input
-              type="checkbox"
-              onChange={updateTagRide}
-              value={2}
-              id="learning"
-              name="tags"
-            />
-          </label>
-          <label htmlFor="tags" className="createARide__emoji">
-            Nature
-            <Emoji src={nature} />
-            <Input
-              type="checkbox"
-              onChange={updateTagRide}
-              value={3}
-              id="nature"
-              name="tags"
-            />
-          </label>
-          <label htmlFor="tags" className="createARide__emoji">
-            Détente
-            <Emoji src={peaceful} />
-            <Input
-              type="checkbox"
-              onChange={updateTagRide}
-              value={4}
-              id="peaceful"
-              name="tags"
-            />
-          </label>
-          <label htmlFor="tags" className="createARide__emoji">
-            Joueuse
-            <Emoji src={player} />
-            <Input
-              type="checkbox"
-              onChange={updateTagRide}
-              value={5}
-              id="player"
-              name="tags"
-            />
-          </label>
-          <label htmlFor="tags" className="createARide__emoji">
-            Urbaine
-            <Emoji src={urban} />
-            <Input
-              type="checkbox"
-              onChange={updateTagRide}
-              value={6}
-              id="urban"
-              name="tags"
-            />
-          </label>
-          <label htmlFor="tags" className="createARide__emoji">
-            Aquatique
-            <Emoji src={water} />
-            <Input
-              type="checkbox"
-              onChange={updateTagRide}
-              value={7}
-              id="water"
-              name="tags"
-            />
-          </label>
-
+          <div className="createARide__divLabel__wrapper">
+            <div className="createARide__divLabel__wrapper__users">
+              <label htmlFor="tags" className="createARide__divLabel__wrapper__users__emoji">
+                Sportive
+                <Emoji src={athletic} />
+                <Input
+                  type="checkbox"
+                  onChange={updateTagRide}
+                  value={1}
+                  id="athletic"
+                  name="tags"
+                />
+              </label>
+              <label htmlFor="tags" className="createARide__divLabel__wrapper__users__emoji">
+                Educative
+                <Emoji src={learning} />
+                <Input
+                  type="checkbox"
+                  onChange={updateTagRide}
+                  value={2}
+                  id="learning"
+                  name="tags"
+                />
+              </label>
+              <label htmlFor="tags" className="createARide__divLabel__wrapper__users__emoji">
+                Nature
+                <Emoji src={nature} />
+                <Input
+                  type="checkbox"
+                  onChange={updateTagRide}
+                  value={3}
+                  id="nature"
+                  name="tags"
+                />
+              </label>
+              <label htmlFor="tags" className="createARide__divLabel__wrapper__users__emoji">
+                Détente
+                <Emoji src={peaceful} />
+                <Input
+                  type="checkbox"
+                  onChange={updateTagRide}
+                  value={4}
+                  id="peaceful"
+                  name="tags"
+                />
+              </label>
+              <label htmlFor="tags" className="createARide__divLabel__wrapper__users__emoji">
+                Joueuse
+                <Emoji src={player} />
+                <Input
+                  type="checkbox"
+                  onChange={updateTagRide}
+                  value={5}
+                  id="player"
+                  name="tags"
+                />
+              </label>
+              <label htmlFor="tags" className="createARide__divLabel__wrapper__users__emoji">
+                Urbaine
+                <Emoji src={urban} />
+                <Input
+                  type="checkbox"
+                  onChange={updateTagRide}
+                  value={6}
+                  id="urban"
+                  name="tags"
+                />
+              </label>
+              <label htmlFor="tags" className="createARide__divLabel__wrapper__users__emoji">
+                Aquatique
+                <Emoji src={water} />
+                <Input
+                  type="checkbox"
+                  onChange={updateTagRide}
+                  value={7}
+                  id="water"
+                  name="tags"
+                />
+              </label>
+            </div>
+          </div>
         </div>
 
         <div className="createARide__bottom">
