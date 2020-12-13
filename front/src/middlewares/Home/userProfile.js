@@ -1,32 +1,43 @@
 import axios from 'axios';
 
 import {
+  GET_USER_PROFILE,
+  saveUserProfileInfos,
   HANDLE_UPDATE_USER_PROFILE,
 
-} from '../../actions/Home/userProfile';
+} from '../../actions/Home/changeUserProfile';
 
 const userProfile = (store) => (next) => (action) => {
+  const tokenValue = localStorage.getItem('token');
+  const config = {
+    headers: { Authorization: `Bearer ${tokenValue}` },
+  };
+  const { auth } = store.getState();
   switch (action.type) {
-    case HANDLE_UPDATE_USER_PROFILE:
-      /*const { signin } = store.getState();
-      axios.post('http://localhost:8000/api/v1/signin', {
-        slug: signin.username,
-        pseudo: signin.username,
-        email: signin.email,
-        password: signin.password1,
-      }, {
-        withCredentials: true,
-      })
+    case GET_USER_PROFILE:
+      console.log('middleware, action FETCH_RECIPES');
+      axios.get(`http://localhost:8000/api/v1/dog/${auth.userId}`, config)
         .then((response) => {
-        // traitement si réponse est un succès
-          console.log('middleware : signin');
-          console.log(response);
-        })
-        .catch((error) => {
-        // traitement si réponse est une erreur
-          console.log('erreur :', error);
-        });*/
-
+          // traitement si réponse est un succès
+          console.log(response.data[0]);
+          // je veux stocker response.data dans le state => seule possibilité,
+          // dispatch une action au store
+          store.dispatch(saveUserProfileInfos(response.data[0]));
+        });
+      next(action);
+      break;
+    case HANDLE_UPDATE_USER_PROFILE:
+      const { changeUserProfile } = store.getState();
+      axios.put(`http://localhost:8000/api/v1/user/edit/${auth.userId}`, {
+        pseudo: changeUserProfile.pseudo,
+        users: auth.userId,
+        email: auth.email,
+        password: auth.password,
+        slug: auth.nickname,
+      }, config)
+        .then((response) => {
+          console.log(response.data);
+        });
       next(action);
       break;
 
@@ -36,3 +47,4 @@ const userProfile = (store) => (next) => (action) => {
   }
 };
 export default userProfile;
+
