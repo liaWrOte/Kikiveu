@@ -9,6 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 /**
  * @Route("/api/v1/user", name="api_v1_user_")
@@ -51,7 +52,7 @@ class UserController extends AbstractController
     /**
      * @Route("/edit/{id}", name="edit", methods={"PUT"}, requirements={"id" = "\d+"})
      */
-    public function edit(Users $users, Request $request): Response
+    public function edit(Users $users, Request $request,  UserPasswordEncoderInterface $userPasswordEncoder): Response
     {
         $json = $request->getContent();
         
@@ -64,6 +65,11 @@ class UserController extends AbstractController
         if ($form->isValid()) {
             $users->setUpdatedAt(new \DateTime());
             $em = $this->getDoctrine()->getManager();
+            $password = $form->get('password')->getData();
+            
+            if ($password != null) {
+                $users->setPassword($userPasswordEncoder->encodePassword($users, $password));
+            }
             $em->flush();
 
             return $this->json($users, 200);
