@@ -71,7 +71,7 @@ class UserController extends AbstractController
                 $users->setPassword($userPasswordEncoder->encodePassword($users, $password));
             }
             $em->flush();
-
+            dd($users);    
             return $this->json($users, 200);
         } else {
             return $this->json(
