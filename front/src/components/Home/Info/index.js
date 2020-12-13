@@ -14,7 +14,7 @@ const Info = ({
 }) => (
   <div className="info">
     <Link to="/1/messages"><p>Messages</p></Link>
-    <Link to="/1"><MainUserButton avatar={avatar} /></Link>
+    <Link to="/profil"><MainUserButton avatar={avatar} /></Link>
     <Link to="/creer-balade"><RideButton /></Link>
   </div>
 );

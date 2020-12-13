@@ -26,9 +26,8 @@ import './userProfile.scss';
 
 const ChangeUserProfile = ({
   avatar,
-  moodId,
-  stateId,
   castrate,
+  castrateInitialValue,
   pseudo,
   changeField,
   handleUpdateUserProfile,
@@ -50,7 +49,7 @@ const ChangeUserProfile = ({
         <TextButton text={changeAvatar} buttonClass="button_small_green" />
         <p className="before_button">Comment se sent Kiki aujourd'hui ?</p>
         <div className="userProfile__form__emoji">
-          <label htmlFor="mood">
+          <label htmlFor="moodId">
             <Emoji src={calm} />
             <Input
               type="radio"
@@ -154,6 +153,7 @@ const ChangeUserProfile = ({
               id="castrate"
               name="castrate"
               value={castrate}
+              checked={castrateInitialValue === 1}
             />
             <div id="castrate">Castré</div>
           </label>
@@ -179,6 +179,9 @@ const ChangeUserProfile = ({
 ChangeUserProfile.propTypes = {
   changeField: PropTypes.func.isRequired,
   handleUpdateUserProfile: PropTypes.func.isRequired,
+  pseudo: PropTypes.string.isRequired,
+  castrate: PropTypes.bool.isRequired,
+  castrateInitialValue: PropTypes.number.isRequired,
 };
 
 export default ChangeUserProfile;

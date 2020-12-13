@@ -14,7 +14,7 @@ import Chat from './Chat';
 import KikiVeuContact from './KikiVeuContact';
 import Cgu from '../microComponents/Cgu';
 import CreateARide from '../../containers/Home/CreateARide';
-import Ride from './Ride';
+import Ride from '../../containers/Home/ride';
 import PreviousButton from '../microComponents/PreviousButton';
 
 import './index.scss';
@@ -66,12 +66,12 @@ const Home = ({ isLogged }) => (
                 <Chat />
               </div>
             </Route>
-            <Route exact path="/1/edit">
+            <Route exact path="/profil/edit">
               <div className=".item4">
                 <ChangeUserProfile />
               </div>
             </Route>
-            <Route exact path="/1">
+            <Route exact path="/profil">
               <div className=".item4">
                 <UserProfile />
               </div>

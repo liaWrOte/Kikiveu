@@ -30,7 +30,6 @@ const userProfile = (store) => (next) => (action) => {
       const { changeUserProfile } = store.getState();
       axios.put(`http://localhost:8000/api/v1/user/edit/${auth.userId}`, {
         pseudo: changeUserProfile.pseudo,
-        users: auth.userId,
         email: auth.email,
         password: auth.password,
         slug: auth.nickname,
