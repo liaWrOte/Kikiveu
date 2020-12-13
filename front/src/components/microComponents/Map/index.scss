@@ -1,3 +1,6 @@
+@use '/home/etudiant/Bureau/html/projet-kikiveu/front/src/styles/_vars.scss';
+
+
 .map {
   position: fixed;
   width: 100%;
@@ -40,8 +43,8 @@
 
 .leaflet-div-icon {
   background-color: none;
-  border: none;
-  padding: 1rem;
+  border: solid 2px vars.$accentColor;;
+  padding: 0.6rem;
   box-sizing: content-box;
   border-radius: 50%;
 }
