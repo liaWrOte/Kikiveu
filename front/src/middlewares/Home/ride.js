@@ -50,7 +50,6 @@ const rideMiddleware = (store) => (next) => (action) => {
           // traitement si réponse est un succès
           console.log('middleware : post comment');
           console.log(response);
-          store.dispatch(saveComments(response.data));
           // console.log(localStorage.getItem('token'));
         })
         .catch((error) => {
@@ -60,7 +59,7 @@ const rideMiddleware = (store) => (next) => (action) => {
       break;
 
     case LOAD_COMMENTS:
-      axios.get(`http://localhost:8000/api/v1/comment/add/${ride.rideInfos.eventId}`,
+      axios.get(`http://localhost:8000/api/v1/comment/${ride.rideInfos.eventId}`,
         config)
         .then((response) => {
           // traitement si réponse est un succès

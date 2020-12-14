@@ -93,6 +93,15 @@ const Ride = ({
       </div>
       <p>Commentaires</p>
       <div>
+
+        {{ commentsSection }.map((commentItem) => (
+          <div>
+            <p>{commentItem.createdAt}</p>
+            <p>{commentItem.useStore.pseudo}</p>
+            <p>{commentItem.body}</p>
+          </div>
+        ))}
+
       </div>
       <form autoComplete="off" className="login__form" onSubmit={handleSubmit}>
         <p>Laisser un commentaire :
