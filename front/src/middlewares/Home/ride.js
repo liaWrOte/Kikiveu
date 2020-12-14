@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 import {
-  GET_RIDE,
+  GET_RIDE_ID,
   saveRideInfos,
 } from '../../actions/Home/ride';
 
@@ -13,11 +13,9 @@ const ride = (store) => (next) => (action) => {
     headers: { Authorization: `Bearer ${tokenValue}` },
   };
   switch (action.type) {
-    case GET_RIDE:
-      const { ride } = store.getState();
-      console.log(ride);
+    case GET_RIDE_ID:
       axios.get(
-        `http://localhost:8000/api/v1/event/${ride.rideId}`,
+        `http://localhost:8000/api/v1/event/${action.id}`,
         config,
       )
         .then((response) => {
