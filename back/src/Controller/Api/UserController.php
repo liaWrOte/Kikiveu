@@ -4,12 +4,14 @@ namespace App\Controller\Api;
 
 use App\Entity\Users;
 use App\Form\UsersType;
+use App\Form\UserEditType;
 use App\Repository\UsersRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Symfony\Component\Serializer\SerializerInterface;
 
 /**
  * @Route("/api/v1/user", name="api_v1_user_")
@@ -52,13 +54,13 @@ class UserController extends AbstractController
     /**
      * @Route("/edit/{id}", name="edit", methods={"PUT"}, requirements={"id" = "\d+"})
      */
-    public function edit(Users $users, Request $request, UserPasswordEncoderInterface $userPasswordEncoder): Response
+    public function edit(Users $users, Request $request, SerializerInterface $serializer, UserPasswordEncoderInterface $userPasswordEncoder): Response
     {
         $json = $request->getContent();
         
         $userArray = json_decode($json, true);
 
-        $form = $this->createForm(UsersType::class, $users, ['csrf_protection' => false]);
+        $form = $this->createForm(UserEditType::class, $users, ['csrf_protection' => false]);
 
         $form->submit($userArray);
 
@@ -71,8 +73,14 @@ class UserController extends AbstractController
                 $users->setPassword($userPasswordEncoder->encodePassword($users, $password));
             }
             $em->flush();
-            dd($users);
-            return $this->json($users, 200);
+
+            $json = $serializer->serialize(
+                $users,
+                'json',
+                ['groups' => 'edit_user'],
+            );
+
+            return $this->json($json, 200);
         } else {
             return $this->json(
                 [

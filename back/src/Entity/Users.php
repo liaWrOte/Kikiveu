@@ -18,13 +18,13 @@ class Users implements UserInterface
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
-     * @Groups({"show_add_event", "show_add_comment", "add_dogs"})
+     * @Groups({"show_add_event", "show_add_comment", "add_dogs", "edit_user"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=180, unique=true)
-     * @Groups({"show_add_event"})
+     * @Groups({"show_add_event", "edit_user"})
      */
     private $email;
 
@@ -61,6 +61,7 @@ class Users implements UserInterface
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
+     * @Groups({"edit_user"})
      */
     private $updatedAt;
 
@@ -97,31 +98,37 @@ class Users implements UserInterface
 
     /**
      * @ORM\Column(type="float", nullable=true)
+     * @Groups({"edit_user"})
      */
     private $userLat;
 
     /**
      * @ORM\Column(type="float", nullable=true)
+     * @Groups({"edit_user"})
      */
     private $userLong;
 
     /**
      * @ORM\Column(type="float", nullable=true)
+     * @Groups({"edit_user"})
      */
     private $swLat;
 
     /**
      * @ORM\Column(type="float", nullable=true)
+     * @Groups({"edit_user"})
      */
     private $swLong;
 
     /**
      * @ORM\Column(type="float", nullable=true)
+     * @Groups({"edit_user"})
      */
     private $neLat;
 
     /**
      * @ORM\Column(type="float", nullable=true)
+     * @Groups({"edit_user"})
      */
     private $neLong;
 

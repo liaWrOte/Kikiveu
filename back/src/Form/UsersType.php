@@ -40,7 +40,6 @@ class UsersType extends AbstractType
             ->add('swLong', NumberType::class)
             ->add('neLat', NumberType::class)
             ->add('neLong', NumberType::class)
-            // ->addEventListener(FormEvents::)
         ;
     }
 
