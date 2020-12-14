@@ -2,12 +2,15 @@ import {
   GET_RIDE,
   SAVE_RIDE_INFOS,
   CHANGE_FIELD,
+  LOAD_COMMENTS,
+  SAVE_COMMENTS,
 } from '../../actions/Home/ride';
 
 const initialState = {
   rideData: [],
   rideInfos: [],
   comment: '',
+  commentsSection: [],
 };
 
 const RideReducer = (state = initialState, action = {}) => {
@@ -32,6 +35,13 @@ const RideReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         comment: action.value,
+      };
+
+    case SAVE_COMMENTS:
+      console.log('action reçue pour comments section');
+      return {
+        ...state,
+        commentsSection: action.value,
       };
 
     default: return { ...state };

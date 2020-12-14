@@ -4,18 +4,23 @@ import {
   GET_RIDE,
   saveRideInfos,
   HANDLE_POST_COMMENT,
+  loadComments,
+  LOAD_COMMENTS,
+  saveComments,
 } from '../../actions/Home/ride';
 
 import apiUrl from '../env';
 
-const ride = (store) => (next) => (action) => {
+const rideMiddleware = (store) => (next) => (action) => {
   const tokenValue = localStorage.getItem('token');
   const config = {
     headers: { Authorization: `Bearer ${tokenValue}` },
   };
+  const { ride } = store.getState();
+  const { auth } = store.getState();
+  const { map } = store.getState();
   switch (action.type) {
     case GET_RIDE:
-      const { map } = store.getState();
       axios.get(
         `http://localhost:8000/api/v1/event/${map.rideDataId}`,
         config,
@@ -34,8 +39,7 @@ const ride = (store) => (next) => (action) => {
 
     case HANDLE_POST_COMMENT:
       // je récupère les données qui m'intéressent : email et mdp
-      const { ride } = store.getState();
-      const { auth } = store.getState();
+      
       axios.post('http://localhost:8000/api/v1/comment/add', {
         users: auth.userId,
         body: ride.comment,
@@ -45,6 +49,23 @@ const ride = (store) => (next) => (action) => {
         .then((response) => {
           // traitement si réponse est un succès
           console.log('middleware : post comment');
+          store.dispatch(saveComments(response));
+          console.log(response);
+          // console.log(localStorage.getItem('token'));
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+
+      break;
+
+    case LOAD_COMMENTS:
+      axios.get(`http://localhost:8000/api/v1/comment/add/${ride.rideInfos.eventId}`,
+        config)
+        .then((response) => {
+          // traitement si réponse est un succès
+          console.log('middleware : get all comments');
+          store.dispatch(loadComments(response));
           console.log(response);
           // console.log(localStorage.getItem('token'));
         })
@@ -60,4 +81,4 @@ const ride = (store) => (next) => (action) => {
       next(action);
   }
 };
-export default ride;
+export default rideMiddleware;

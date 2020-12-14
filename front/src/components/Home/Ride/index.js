@@ -26,6 +26,7 @@ const Ride = ({
   changeField,
   comment,
   handlePostComment,
+  commentsSection,
 }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
