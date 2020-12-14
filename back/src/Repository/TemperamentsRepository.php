@@ -22,19 +22,15 @@ class TemperamentsRepository extends ServiceEntityRepository
     // /**
     //  * @return Temperaments[] Returns an array of Temperaments objects
     //  */
-    /*
-    public function findByExampleField($value)
+    public function findAllTemperament()
     {
         return $this->createQueryBuilder('t')
-            ->andWhere('t.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('t.id', 'ASC')
-            ->setMaxResults(10)
+            ->select('t.id as temperamentId')
+            ->addSelect('t.name as temperamentName')
             ->getQuery()
             ->getResult()
         ;
     }
-    */
 
     /*
     public function findOneBySomeField($value): ?Temperaments

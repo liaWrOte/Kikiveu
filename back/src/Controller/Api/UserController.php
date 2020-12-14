@@ -9,7 +9,11 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+<<<<<<< HEAD
 use Symfony\Component\Serializer\SerializerInterface;
+=======
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+>>>>>>> develop
 
 /**
  * @Route("/api/v1/user", name="api_v1_user_")
@@ -52,7 +56,7 @@ class UserController extends AbstractController
     /**
      * @Route("/edit/{id}", name="edit", methods={"PUT"}, requirements={"id" = "\d+"})
      */
-    public function edit(Users $users, SerializerInterface $serializer, Request $request): Response
+    public function edit(Users $users, Request $request,  UserPasswordEncoderInterface $userPasswordEncoder): Response
     {
         $json = $request->getContent();
         
@@ -65,15 +69,14 @@ class UserController extends AbstractController
         if ($form->isValid()) {
             $users->setUpdatedAt(new \DateTime());
             $em = $this->getDoctrine()->getManager();
-            $em->flush();
+            $password = $form->get('password')->getData();
             
-            $json = $serializer->serialize(
-                $users,
-                'json',
-                ['groups' => "edit_user"]
-            );
-            // dd($users->getDogs());
-            return $this->json($json, 200);
+            if ($password != null) {
+                $users->setPassword($userPasswordEncoder->encodePassword($users, $password));
+            }
+            $em->flush();
+            dd($users);    
+            return $this->json($users, 200);
         } else {
             return $this->json(
                 [
