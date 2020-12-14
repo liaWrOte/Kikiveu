@@ -8,8 +8,7 @@ import {
   useMapEvents,
   useMap,
 } from 'react-leaflet';
-import L, { Leaflet } from 'leaflet';
-import { Link, MemoryRouter, useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import rideUrl from '../../../assets/images/ride_icon.png';
 
