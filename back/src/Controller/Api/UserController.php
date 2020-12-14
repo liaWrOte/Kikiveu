@@ -9,11 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-<<<<<<< HEAD
-use Symfony\Component\Serializer\SerializerInterface;
-=======
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
->>>>>>> develop
 
 /**
  * @Route("/api/v1/user", name="api_v1_user_")
@@ -56,7 +52,7 @@ class UserController extends AbstractController
     /**
      * @Route("/edit/{id}", name="edit", methods={"PUT"}, requirements={"id" = "\d+"})
      */
-    public function edit(Users $users, Request $request,  UserPasswordEncoderInterface $userPasswordEncoder): Response
+    public function edit(Users $users, Request $request, UserPasswordEncoderInterface $userPasswordEncoder): Response
     {
         $json = $request->getContent();
         
@@ -75,7 +71,7 @@ class UserController extends AbstractController
                 $users->setPassword($userPasswordEncoder->encodePassword($users, $password));
             }
             $em->flush();
-            dd($users);    
+            dd($users);
             return $this->json($users, 200);
         } else {
             return $this->json(
