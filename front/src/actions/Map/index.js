@@ -48,7 +48,4 @@ export const checkEventsLocation = (value) => ({
   value,
 });
 
-export const getRideData = (id) => ({
-  type: GET_RIDE_DATA,
-  id,
-});
+

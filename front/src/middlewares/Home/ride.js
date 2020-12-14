@@ -17,12 +17,12 @@ const ride = (store) => (next) => (action) => {
       const { ride } = store.getState();
       console.log(ride);
       axios.get(
-        `http://localhost:8000/api/v1/event/${ride.rideDataId}`,
+        `http://localhost:8000/api/v1/event/${ride.rideId}`,
         config,
       )
         .then((response) => {
           // traitement si réponse est un succès
-          console.log(response.data);
+          console.log('middleware ride', response.data);
           store.dispatch(saveRideInfos(response.data[0]));
         })
         .catch((error) => {

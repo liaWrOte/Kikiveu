@@ -2,6 +2,8 @@ import { connect } from 'react-redux';
 
 import Ride from '../../components/Home/Ride';
 
+import { getRide } from '../../actions/Home/ride';
+
 const mapStateToProps = (state) => ({
   // nom de la prop à remplir: donnée à récupérer dans le state
   markerLat: state.ride.markerLat,
@@ -15,9 +17,13 @@ const mapStateToProps = (state) => ({
   comments: state.ride.comments,
   rideEvents: state.map.rideEvents,
   rideInfos: state.ride.rideInfos,
+  rideId: state.ride.rideId,
 });
 
-const mapDispatchToProps = () => ({
+const mapDispatchToProps = (dispatch) => ({
+  getRide: (value) => {
+    dispatch(getRide(value));
+  },
 });
 
 export default connect(

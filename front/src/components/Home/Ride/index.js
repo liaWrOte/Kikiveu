@@ -21,7 +21,7 @@ import water from '../../../assets/images/ride/water_ride.png';
 
 import './ride.scss';
 
-const Ride = ({ rideInfos, getRide }) => {
+const Ride = ({ rideInfos, getRide, rideId }) => {
   console.log(rideInfos);
   const { slug } = useParams();
 
@@ -46,8 +46,9 @@ const Ride = ({ rideInfos, getRide }) => {
   };
 
   useEffect(() => {
-    getRide(rideInfos.eventId);
-  }, []);
+    console.log(rideId);
+    getRide(rideId);
+  }, [rideId]);
 
   const datetime = rideInfos.eventDatetime;
   const newdate = datetime.replace('T', '  ');

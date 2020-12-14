@@ -39,8 +39,7 @@ const Map = ({
   rideEvents,
   haveEventsLocation,
   canPutRideMarker,
-  getRideData,
-  getRide,
+  getRideId,
 }) => {
   const refresh = 'Rafraîchir la carte';
 
@@ -117,7 +116,6 @@ const Map = ({
     // {`/balade/${rideEvent.eventSlug}`}
     rideEvents.map((rideEvent) => (
       <Marker
-        onClick={() => getRideData(rideEvent.eventId)}
         key={rideEvent.eventId}
         position={[rideEvent.eventLat,
           rideEvent.eventLong]}
@@ -135,11 +133,13 @@ const Map = ({
         })}
       >{console.log(rideEvent.eventId)};
         <Popup>
-          <Link to={`/balade/${rideEvent.eventSlug}`} onClick={() => getRide(rideEvent.eventId)}>Voir la balade...</Link>
+          <Link to={`/balade/${rideEvent.eventSlug}`} onClick={() => getRideId(rideEvent.eventId)}>Voir la balade...</Link>
         </Popup>
       </Marker>
     ))
   );
+
+  // onClick={() => getRide(rideEvent.eventId)}
 
   function UserPointer() {
     return (
