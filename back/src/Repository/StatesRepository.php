@@ -22,19 +22,15 @@ class StatesRepository extends ServiceEntityRepository
     // /**
     //  * @return States[] Returns an array of States objects
     //  */
-    /*
-    public function findByExampleField($value)
+    public function findAllTemperament()
     {
         return $this->createQueryBuilder('s')
-            ->andWhere('s.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('s.id', 'ASC')
-            ->setMaxResults(10)
+            ->select('s.id as stateId')
+            ->addSelect('s.name as stateName')
             ->getQuery()
             ->getResult()
         ;
     }
-    */
 
     /*
     public function findOneBySomeField($value): ?States
