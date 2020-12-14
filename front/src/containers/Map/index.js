@@ -1,6 +1,15 @@
 import { connect } from 'react-redux';
 
-import { updateLat, updateLng, updateMarkerLat, updateMarkerLng } from '../../actions/Map/map';
+import {
+  updateLat,
+  updateLng,
+  updateMarkerLat,
+  updateMarkerLng,
+  refreshRideEvents,
+  sendMapCoords,
+  checkEventsLocation,
+  refreshMapCoords,
+} from '../../actions/Map';
 
 import Map from '../../components/microComponents/Map';
 
@@ -10,6 +19,12 @@ const mapStateToProps = (state) => ({
   lng: state.map.lng,
   markerLat: state.map.markerLat,
   markerLng: state.map.markerLng,
+  rideEvents: state.map.rideEvents,
+  swLatMap: state.map.swLatMap,
+  swLongMap: state.map.swLongMap,
+  neLatMap: state.map.neLatMap,
+  neLongMap: state.map.neLongMap,
+  haveEventsLocation: state.map.haveEventsLocation,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -28,6 +43,20 @@ const mapDispatchToProps = (dispatch) => ({
   changeMarkerLng: (newValue) => {
     // console.log(`Nouvelle valeur ${newValue} pour le champ ${name}`);
     dispatch(updateMarkerLng(newValue));
+  },
+  refreshRideEvents: (newValue) => {
+    console.log('refresh ride Events');
+    dispatch(refreshRideEvents(newValue));
+  },
+  refreshMapCoords: (newValue) => {
+    console.log('refresh map coords');
+    dispatch(refreshMapCoords(newValue));
+  },
+  sendMapCoords: (value) => {
+    dispatch(sendMapCoords(value));
+  },
+  checkEventsLocation: (value) => {
+    dispatch(checkEventsLocation(value));
   },
 });
 

@@ -22,4 +22,14 @@ class MoodController extends AbstractController
         
         return $this->json($moods);
     }
+
+    /**
+     * @Route("/{id}", name="read", requirements={"id" = "\d+"}, methods={"GET"})
+     */
+    public function read(int $id, MoodsRepository $moodsRepository): Response
+    {
+        $mood = $moodsRepository->findMoodById($id);
+
+        return $this->json($mood);
+    }
 }

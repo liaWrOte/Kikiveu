@@ -7,6 +7,7 @@
 | map | `/` | map and infos |  |
 | profile | `/:slug` | user profile | slug : user nickname|
 | ride | `/balade/:slug` | ride infos | slug : user nickname |
+| create a ride | `/creer-balade` | create a ride |  |
 | messages | `/messages/:slug` | list of the user's messages | slug : user nickname |
 | contact | `/contact` | contact the team of KikiVeu | |
 | CGU | `/cgu` | access to the CGU | |

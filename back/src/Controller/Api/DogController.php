@@ -34,7 +34,7 @@ class DogController extends AbstractController
     /**
      * @Route("/add", name="add", methods={"POST"})
      */
-    public function add(Request $request,  SerializerInterface $serializer): Response
+    public function add(Request $request, SerializerInterface $serializer): Response
     {
         $json = $request->getContent();
         $dogArray = json_decode($json, true);

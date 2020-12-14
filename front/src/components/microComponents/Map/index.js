@@ -7,7 +7,6 @@ import {
   Popup,
   useMapEvents,
   useMap,
-  latLngBounds,
 } from 'react-leaflet';
 import L, { Leaflet } from 'leaflet';
 
@@ -27,14 +26,24 @@ const Map = ({
   changeLng,
   changeMarkerLat,
   changeMarkerLng,
+  refreshRideEvents,
+  refreshMapCoords,
+  sendMapCoords,
+  swLatMap,
+  swLongMap,
+  neLatMap,
+  neLongMap,
+  rideEvents,
+  haveEventsLocation,
 }) => {
   const refresh = 'Rafraîchir la carte';
 
   function MapBounds() {
     const map = useMap();
     console.log(map.getBounds());
+    refreshMapCoords(map.getBounds());
     return null;
-  };
+  }
 
   const success = (position) => {
     // const coord = position.coords;
@@ -59,7 +68,7 @@ const Map = ({
       },
     });
 
-    //const bounds = Leaflet.latLngBounds([position, position2]);
+    // const bounds = Leaflet.latLngBounds([position, position2]);
 
     return (
       <>
@@ -70,12 +79,37 @@ const Map = ({
     );
   }
 
+  // map on all rideEvents
+  /*function MapEvents() {
+    console.log('mapEvents');
+    console.log('rides :', rideEvents);
+    const markerEvents = rideEvents.map((rideEvent) => {
+      console.log(ride.eventLat);
+      <Marker position={[rideEvent.eventLat, rideEvent.eventLng]} />;
+    });
+    return markerEvents;
+  }*/
+
+  const MapEvents = () => (
+    //console.log('mapEvents')
+    //console.log('rides :', rideEvents)
+    rideEvents.map((rideEvent) => (
+     // console.log(ride.eventLat);
+      <Marker key={rideEvent.eventId} position={[rideEvent.eventLat, rideEvent.eventLong]} />
+    ))
+  );
+
+  
+
   return (
     <div className="map">
       {lat !== null && lng !== null && (
       <MapContainer className="map__component" center={[lat, lng]} zoom={13}>
         <AddMarkerToClick />
         <MapBounds />
+        {(haveEventsLocation) && (
+          <MapEvents />
+        )}
         <TileLayer
           attribution='&copy; <a href="">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -95,13 +129,18 @@ const Map = ({
         </div>
       </div>
       <div className="map__refresh">
-        <TextButton text={refresh} />
+        <TextButton text={refresh} handleClick={sendMapCoords} />
       </div>
     </div>
   );
 };
 
 // PropTypes
+
+Map.defaultProps = {
+  rideEvents: [],
+};
+
 Map.propTypes = {
   lat: PropTypes.number,
   lng: PropTypes.number,
@@ -111,8 +150,11 @@ Map.propTypes = {
   changeLng: PropTypes.func.isRequired,
   changeMarkerLat: PropTypes.func.isRequired,
   changeMarkerLng: PropTypes.func.isRequired,
+  refreshRideEvents: PropTypes.func.isRequired,
+  rideEvents: PropTypes.array,
+  haveEventsLocation: PropTypes.func.isRequired,
+  refreshMapCoords: PropTypes.func.isRequired,
 };
-
 
 Map.defaultProps = {
   lat: null,
@@ -120,6 +162,5 @@ Map.defaultProps = {
   markerLat: 0,
   markerLng: 0,
 };
-
 
 export default Map;

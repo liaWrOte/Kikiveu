@@ -3,13 +3,24 @@ import {
   UPDATE_LNG,
   UPDATE_MARKERLAT,
   UPDATE_MARKERLNG,
-} from '../../actions/Map/map';
+  REFRESH_RIDE_EVENTS,
+  SEND_MAP_COORDS,
+  CHECK_EVENTS_LOCATION,
+  REFRESH_MAP_COORDS,
+} from '../../actions/Map';
 
 const initialState = {
   lat: null,
   lng: null,
   markerLat: 0,
   markerLng: 0,
+  rideEvents: [],
+  swLatMap: 0,
+  swLongMap: 0,
+  neLatMap: 0,
+  neLongMap: 0,
+  mapCoords: [],
+  haveEventsLocation: false,
 };
 
 const mapReducer = (state = initialState, action = {}) => {
@@ -42,6 +53,30 @@ const mapReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         markerLng: action.value,
+      };
+
+    case REFRESH_RIDE_EVENTS:
+      return {
+        ...state,
+        rideEvents: action.value,
+      };
+
+    case REFRESH_MAP_COORDS:
+      return {
+        ...state,
+        mapCoords: action.value,
+      };
+/*
+    case SEND_MAP_COORDS:
+      return {
+        ...state,
+        
+      };*/
+
+    case CHECK_EVENTS_LOCATION:
+      return {
+        ...state,
+        haveEventsLocation: action.value,
       };
 
     default: return { ...state };

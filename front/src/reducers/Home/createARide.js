@@ -8,7 +8,7 @@ import {
 import {
   UPDATE_MARKERLAT,
   UPDATE_MARKERLNG,
-} from '../../actions/Map/map';
+} from '../../actions/Map';
 
 const initialState = {
   markerLat: '',
@@ -61,15 +61,19 @@ const createARideReducer = (state = initialState, action = {}) => {
           myArray.splice(index, 1);
           console.log(myArray);
           return {
+            ...state,
             tags: myArray,
           };
         }
       }
       else {
         return {
+          ...state,
           tags: [...newState.tags, action.value],
         };
       }
+
+      break;
 
     case HANDLE_CREATE_A_RIDE:
       return {
