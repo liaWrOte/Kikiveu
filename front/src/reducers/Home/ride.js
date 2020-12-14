@@ -1,11 +1,13 @@
 import {
   GET_RIDE,
   SAVE_RIDE_INFOS,
+  CHANGE_FIELD,
 } from '../../actions/Home/ride';
 
 const initialState = {
   rideData: [],
   rideInfos: [],
+  comment: '',
 };
 
 const RideReducer = (state = initialState, action = {}) => {
@@ -23,6 +25,12 @@ const RideReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         rideInfos: action.value,
+      };
+
+    case CHANGE_FIELD:
+      return {
+        ...state,
+        comment: action.value,
       };
 
     default: return { ...state };

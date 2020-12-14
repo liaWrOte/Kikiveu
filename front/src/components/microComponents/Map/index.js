@@ -117,7 +117,7 @@ const Map = ({
     // {`/balade/${rideEvent.eventSlug}`}
     rideEvents.map((rideEvent) => (
       <Marker
-        onClick={getRideData(rideEvent.eventId)}
+        //onClick={getRideData(rideEvent.eventId)}
         key={rideEvent.eventId}
         position={[rideEvent.eventLat,
           rideEvent.eventLong]}
@@ -131,11 +131,11 @@ const Map = ({
           shadowSize: null,
           shadowAnchor: null,
           iconSize: new L.Point(30, 30),
-          className: 'leaflet-div-icon',
+          className: `leaflet-div-icon,${rideEvent.eventId}`,
         })}
       >{console.log(rideEvent.eventId)};
         <Popup>
-          <Link to={`/balade/${rideEvent.eventSlug}`} onClick={getRide(rideEvent.eventId)}>Voir la balade...</Link>
+          <Link to={`/balade/${rideEvent.eventSlug}`} onClick={getRide(getRideData(rideEvent.eventId))}>Voir la balade...</Link>
         </Popup>
       </Marker>
     ))

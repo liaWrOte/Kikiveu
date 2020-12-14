@@ -1,8 +1,7 @@
 import React, { useEffect } from 'react';
 import { Calendar } from 'react-feather';
 import PropTypes from 'prop-types';
-import {useParams} from 'react-router-dom';
-
+import { useParams } from 'react-router-dom';
 
 // Import composants
 import PreviousButton from '../../microComponents/PreviousButton';
@@ -22,7 +21,11 @@ import water from '../../../assets/images/ride/water_ride.png';
 import './ride.scss';
 import { getRide } from '../../../actions/Home/ride';
 
-const Ride = ({ rideInfos }) => {
+const Ride = ({
+  rideInfos,
+  changeField,
+  comment,
+}) => {
   const { slug } = useParams();
 
   const typesRideUrl = {
@@ -45,10 +48,10 @@ const Ride = ({ rideInfos }) => {
     7: 'Aquatique',
   };
 
-  useEffect(() => {
+  /*useEffect(() => {
     // Met à jour le titre du document via l’API du navigateur
     getRide(rideInfos.eventId);
-  }, []);
+  }, []);*/
   const datetime = rideInfos.eventDatetime;
   const newdate = datetime.replace('T', '  ');
   const newdatetime = newdate.slice(0, 20);
@@ -76,7 +79,14 @@ const Ride = ({ rideInfos }) => {
       </div>
       <p>Commentaires</p>
       <p>Laisser un commentaire :
-        <Input />
+        <Input
+          type="text"
+          name="comment"
+          placeholder="Votre commentaire ici"
+          onChange={changeField}
+          value={comment}
+          inputClass="input_small"
+        />
         <TextButton />
       </p>
       <div className="ride__bottom">
@@ -96,6 +106,8 @@ Ride.propTypes = {
       eventTagsId: PropTypes.number.isRequired,
     }),
   ).isRequired,
+  changeField: PropTypes.func.isRequired,
+  comment: PropTypes.string.isRequired,
 };
 
 export default Ride;
