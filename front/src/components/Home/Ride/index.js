@@ -25,7 +25,13 @@ const Ride = ({
   rideInfos,
   changeField,
   comment,
+  handlePostComment,
 }) => {
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    handlePostComment();
+  };
+
   const { slug } = useParams();
 
   const typesRideUrl = {
@@ -78,6 +84,7 @@ const Ride = ({
         <Emoji src={typesRideUrl[rideInfos.tagsId]} />
       </div>
       <p>Commentaires</p>
+      <form autoComplete="off" className="login__form" onSubmit={handleSubmit}>
       <p>Laisser un commentaire :
         <Input
           type="text"
@@ -89,6 +96,7 @@ const Ride = ({
         />
         <TextButton />
       </p>
+      </form>>
       <div className="ride__bottom">
         <PreviousButton />
       </div>
@@ -108,6 +116,7 @@ Ride.propTypes = {
   ).isRequired,
   changeField: PropTypes.func.isRequired,
   comment: PropTypes.string.isRequired,
+  handlePostComment: PropTypes.func.isRequired,
 };
 
 export default Ride;

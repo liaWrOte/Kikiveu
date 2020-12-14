@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 
 import Ride from '../../components/Home/Ride';
 
-import { changeField } from '../../actions/Home/ride';
+import { changeField, handlePostComment } from '../../actions/Home/ride';
 
 const mapStateToProps = (state) => ({
   // nom de la prop à remplir: donnée à récupérer dans le state
@@ -14,7 +14,7 @@ const mapStateToProps = (state) => ({
   time: state.ride.time,
   duration: state.ride.duration,
   maxParticipant: state.ride.maxParticipant,
-  comments: state.ride.comments,
+  comment: state.ride.comment,
   rideEvents: state.map.rideEvents,
   rideInfos: state.ride.rideInfos,
 });
@@ -22,6 +22,9 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   changeField: (newValue) => {
     dispatch(changeField(newValue));
+  },
+  handlePostComment: () => {
+    dispatch(handlePostComment());
   },
 });
 

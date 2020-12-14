@@ -28,6 +28,7 @@ const RideReducer = (state = initialState, action = {}) => {
       };
 
     case CHANGE_FIELD:
+      console.log('action reçue dans comment');
       return {
         ...state,
         comment: action.value,
