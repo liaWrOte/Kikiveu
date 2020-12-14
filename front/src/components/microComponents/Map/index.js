@@ -117,7 +117,7 @@ const Map = ({
     // {`/balade/${rideEvent.eventSlug}`}
     rideEvents.map((rideEvent) => (
       <Marker
-        onClick={getRideData(rideEvent.eventId)}
+        onClick={() => getRideData(rideEvent.eventId)}
         key={rideEvent.eventId}
         position={[rideEvent.eventLat,
           rideEvent.eventLong]}
@@ -135,7 +135,7 @@ const Map = ({
         })}
       >{console.log(rideEvent.eventId)};
         <Popup>
-          <Link to={`/balade/${rideEvent.eventSlug}`} onClick={getRide(rideEvent.eventId)}>Voir la balade...</Link>
+          <Link to={`/balade/${rideEvent.eventSlug}`} onClick={() => getRide(rideEvent.eventId)}>Voir la balade...</Link>
         </Popup>
       </Marker>
     ))

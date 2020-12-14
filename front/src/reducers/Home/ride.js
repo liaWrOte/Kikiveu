@@ -11,7 +11,7 @@ const initialState = {
 const RideReducer = (state = initialState, action = {}) => {
   switch (action.type) {
     case GET_RIDE:
-      console.log(`Action reçue, nouvelle valeur ${action.value} pour le champ loadRide`);
+      console.log(`Action reçue, nouvelle valeur ${action.value} pour le champ rideData`);
       return {
         ...state,
         // je veux prendre le contenu de action.name et utiliser ça comme nom

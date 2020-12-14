@@ -14,9 +14,10 @@ const ride = (store) => (next) => (action) => {
   };
   switch (action.type) {
     case GET_RIDE:
-      const { map } = store.getState();
+      const { ride } = store.getState();
+      console.log(ride);
       axios.get(
-        `http://localhost:8000/api/v1/event/${map.rideDataId}`,
+        `http://localhost:8000/api/v1/event/${ride.rideDataId}`,
         config,
       )
         .then((response) => {
