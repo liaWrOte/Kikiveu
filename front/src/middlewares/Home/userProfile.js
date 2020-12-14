@@ -22,7 +22,7 @@ const userProfile = (store) => (next) => (action) => {
           console.log(response.data);
           // je veux stocker response.data dans le state => seule possibilité,
           // dispatch une action au store
-          store.dispatch(saveUserProfileInfos(response.data));
+          store.dispatch(saveUserProfileInfos(response.data[0]));
         });
       next(action);
       break;

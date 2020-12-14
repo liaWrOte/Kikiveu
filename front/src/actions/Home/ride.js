@@ -28,3 +28,7 @@ export const saveComments = (value) => ({
   type: SAVE_COMMENTS,
   value,
 });
+
+export const loadComments = () => ({
+  type: LOAD_COMMENTS,
+});

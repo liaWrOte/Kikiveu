@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { useParams } from 'react-router-dom';
 
 // Import composants
+import { useStore } from 'react-redux';
 import PreviousButton from '../../microComponents/PreviousButton';
 import MainUserButton from '../../microComponents/MainUserButton';
 import Emoji from '../../microComponents/Emoji';
@@ -27,6 +28,7 @@ const Ride = ({
   comment,
   handlePostComment,
   commentsSection,
+  loadComments,
 }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -55,13 +57,18 @@ const Ride = ({
     7: 'Aquatique',
   };
 
-  /*useEffect(() => {
+  /* useEffect(() => {
     // Met à jour le titre du document via l’API du navigateur
     getRide(rideInfos.eventId);
-  }, []);*/
+  }, []); */
   const datetime = rideInfos.eventDatetime;
   const newdate = datetime.replace('T', '  ');
   const newdatetime = newdate.slice(0, 20);
+
+  useEffect(() => {
+    console.log(commentsSection);
+    loadComments();
+  }, []);
 
   return (
     <div className="ride">
@@ -85,18 +92,20 @@ const Ride = ({
         <Emoji src={typesRideUrl[rideInfos.tagsId]} />
       </div>
       <p>Commentaires</p>
+      <div>
+      </div>
       <form autoComplete="off" className="login__form" onSubmit={handleSubmit}>
-      <p>Laisser un commentaire :
-        <Input
-          type="text"
-          name="comment"
-          placeholder="Votre commentaire ici"
-          onChange={changeField}
-          value={comment}
-          inputClass="input_small"
-        />
-        <TextButton />
-      </p>
+        <p>Laisser un commentaire :
+          <Input
+            type="text"
+            name="comment"
+            placeholder="Votre commentaire ici"
+            onChange={changeField}
+            value={comment}
+            inputClass="input_small"
+          />
+          <TextButton />
+        </p>
       </form>>
       <div className="ride__bottom">
         <PreviousButton />

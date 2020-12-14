@@ -49,8 +49,8 @@ const rideMiddleware = (store) => (next) => (action) => {
         .then((response) => {
           // traitement si réponse est un succès
           console.log('middleware : post comment');
-          store.dispatch(saveComments(response));
           console.log(response);
+          store.dispatch(saveComments(response.data));
           // console.log(localStorage.getItem('token'));
         })
         .catch((error) => {
@@ -65,7 +65,8 @@ const rideMiddleware = (store) => (next) => (action) => {
         .then((response) => {
           // traitement si réponse est un succès
           console.log('middleware : get all comments');
-          store.dispatch(loadComments(response));
+          console.log(response);
+          store.dispatch(saveComments(response.data));
           console.log(response);
           // console.log(localStorage.getItem('token'));
         })

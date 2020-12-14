@@ -2,7 +2,11 @@ import { connect } from 'react-redux';
 
 import Ride from '../../components/Home/Ride';
 
-import { changeField, handlePostComment } from '../../actions/Home/ride';
+import {
+  changeField,
+  handlePostComment,
+  loadComments,
+} from '../../actions/Home/ride';
 
 const mapStateToProps = (state) => ({
   // nom de la prop à remplir: donnée à récupérer dans le state
@@ -26,6 +30,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
   handlePostComment: () => {
     dispatch(handlePostComment());
+  },
+  loadComments: () => {
+    dispatch(loadComments());
   },
 });
 
