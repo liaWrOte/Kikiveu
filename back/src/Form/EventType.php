@@ -15,10 +15,11 @@ use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints\PositiveOrZero;
-use Symfony\Component\Validator\Constraints\Regex;
+
 
 class EventType extends AbstractType
 {
+  
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
@@ -42,6 +43,7 @@ class EventType extends AbstractType
                 'entry_type' => EntityType::class,
                 'entry_options' => ['class' => Tags::class],
                 'allow_add' => true,
+                'allow_delete' => true,
                 'by_reference' => false,
             ])
             ->add('users', EntityType::class, [
