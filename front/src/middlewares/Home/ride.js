@@ -22,7 +22,6 @@ const ride = (store) => (next) => (action) => {
         .then((response) => {
           // traitement si réponse est un succès
           console.log(response.data);
-          store.dispatch(saveRideInfos(response.data[0]));
         })
         .catch((error) => {
           // traitement si réponse est une erreur

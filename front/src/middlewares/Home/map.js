@@ -6,8 +6,8 @@ import {
   REFRESH_RIDE_EVENTS,
   checkEventsLocation,
   refreshRideEvents,
-  GET_RIDE_DATA,
 } from '../../actions/Map';
+
 
 import apiUrl from '../env';
 
