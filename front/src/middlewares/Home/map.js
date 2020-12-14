@@ -8,7 +8,6 @@ import {
   refreshRideEvents,
 } from '../../actions/Map';
 
-
 import apiUrl from '../env';
 
 const map = (store) => (next) => (action) => {
