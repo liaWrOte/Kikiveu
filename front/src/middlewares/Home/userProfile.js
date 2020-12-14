@@ -32,13 +32,15 @@ const userProfile = (store) => (next) => (action) => {
         pseudo: changeUserProfile.pseudo,
         email: auth.email,
         password: auth.password,
-        slug: auth.nickname,
+        slug: changeUserProfile.pseudo,
       }, config)
         .then((response) => {
-          console.log(response.data);
+          console.log(response);
         });
       next(action);
       break;
+
+      /* ensuite il faut faire un appel en put sur la route editer le profil du chien */
 
     default:
       // on passe l'action au suivant (middleware suivant ou reducer)
