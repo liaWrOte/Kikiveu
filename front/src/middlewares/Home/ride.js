@@ -52,6 +52,7 @@ const rideMiddleware = (store) => (next) => (action) => {
           // traitement si réponse est un succès
           console.log('middleware : post comment');
           console.log(response);
+          store.dispatch(loadComments());
           // console.log(localStorage.getItem('token'));
         })
         .catch((error) => {
