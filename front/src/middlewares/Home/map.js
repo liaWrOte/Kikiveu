@@ -36,6 +36,7 @@ const map = (store) => (next) => (action) => {
           console.log(response);
           store.dispatch(checkEventsLocation(true));
           store.dispatch(refreshRideEvents(response.data.events));
+          console.log(map.lat);
           axios.put(
             `http://localhost:8000/api/v1/user/edit/${auth.userId}`,
             {
@@ -43,8 +44,8 @@ const map = (store) => (next) => (action) => {
               password: auth.password,
               pseudo: auth.nickname,
               slug: auth.nickname,
-              userLat: map.userLat,
-              userLong: map.userLong,
+              userLat: map.lat,
+              userLong: map.lng,
               swLat: map.mapCoords._southWest.lat,
               swLong: map.mapCoords._southWest.lng,
               neLat: map.mapCoords._northEast.lat,
