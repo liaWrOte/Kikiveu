@@ -31,14 +31,12 @@ const Map = ({
   refreshRideEvents,
   refreshMapCoords,
   sendMapCoords,
-  swLatMap,
-  swLongMap,
-  neLatMap,
-  neLongMap,
+  loadingMapCoords,
   rideEvents,
   haveEventsLocation,
   canPutRideMarker,
   getRideId,
+  getUsers,
 }) => {
   const refresh = 'Rafraîchir la carte';
 
@@ -162,17 +160,20 @@ const Map = ({
       </MapContainer>
       ) }
 
-      <div className="map__users">
-        <div className="map__users__user">
-          <Link to="/2"><SecondaryUserButton className="map__users__user" /></Link>
-        </div>
-        <div className="map__users__user">
-          <Link to="/2"><SecondaryUserButton className="map__users__user" /></Link>
+      {!loadingMapCoords && (
+        <div className="map__users">
+          <div className="map__users__user">
+            <Link to="/2"><SecondaryUserButton className="map__users__user" /></Link>
+         </div>
+          <div className="map__users__user">
+            <Link to="/2"><SecondaryUserButton className="map__users__user" /></Link>
         </div>
         <div className="map__users__user">
           <Link to="/2"><SecondaryUserButton className="map__users__user" /></Link>
         </div>
       </div>
+      )}
+      
       <div className="map__refresh">
         <TextButton text={refresh} handleClick={sendMapCoords} buttonClass="button_small" />
       </div>
@@ -200,6 +201,7 @@ Map.propTypes = {
   haveEventsLocation: PropTypes.func.isRequired,
   refreshMapCoords: PropTypes.func.isRequired,
   canPutRideMarker: PropTypes.bool.isRequired,
+  getUsers: PropTypes.func.isRequired,
 };
 
 Map.defaultProps = {

@@ -15,12 +15,9 @@ const initialState = {
   markerLat: 0,
   markerLng: 0,
   rideEvents: [],
-  swLatMap: 0,
-  swLongMap: 0,
-  neLatMap: 0,
-  neLongMap: 0,
   mapCoords: [],
   haveEventsLocation: false,
+  loadingMapCoords: true,
 };
 
 const mapReducer = (state = initialState, action = {}) => {
@@ -65,6 +62,7 @@ const mapReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         mapCoords: action.value,
+        loadingMapCoords: false,
       };
 /*
     case SEND_MAP_COORDS:

@@ -16,15 +16,36 @@ const userProfile = (store) => (next) => (action) => {
   const { auth } = store.getState();
   switch (action.type) {
     case GET_USER_PROFILE:
+      const { map } = store.getState();
       console.log('middleware, action GEt_USER_PROFILE');
-      axios.get(`http://localhost:8000/api/v1/dog/${auth.userId}`, config)
+      axios.put(`http://localhost:8000/api/v1/user/${auth.userId}`,
+      {
+          userLat: map.lat,
+          userLong: map.lng,
+          swLat: map.mapCoords._southWest.lat,
+          swLong: map.mapCoords._southWest.lng,
+          neLat: map.mapCoords._northEast.lat,
+          neLong: map.mapCoords._northEast.lng,
+      }, config)
         .then((response) => {
-          // traitement si réponse est un succès
+        // traitement si réponse est un succès
           console.log(response.data);
-          // je veux stocker response.data dans le state => seule possibilité,
-          // dispatch une action au store
-          store.dispatch(saveUserProfileInfos(response.data[0]));
+          axios.get(`http://localhost:8000/api/v1/dog/${auth.userId}`, config)
+            .then((response2) => {
+              // traitement si réponse est un succès
+              console.log(response2.data);
+              // je veux stocker response.data dans le state => seule possibilité,
+              // dispatch une action au store
+              store.dispatch(saveUserProfileInfos(response2.data[0]));
+            })
+            .catch((error2) => {
+              console.log(error2);
+            })
+            .catch((error) => {
+              console.log(error);
+            });
         });
+
       next(action);
       break;
     case HANDLE_UPDATE_USER_PROFILE:
@@ -77,4 +98,3 @@ const userProfile = (store) => (next) => (action) => {
   }
 };
 export default userProfile;
-
