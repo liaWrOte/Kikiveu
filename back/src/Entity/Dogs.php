@@ -15,19 +15,19 @@ class Dogs
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
-     * @Groups({"add_dogs", "edit_user"})
+     * @Groups({"add_dogs", "edit_user", "edit_dog"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"add_dogs", "edit_user"})
+     * @Groups({"add_dogs", "edit_user","edit_dog"})
      */
     private $name;
 
     /**
      * @ORM\Column(type="string", length=255, options={"default"=0})
-     * @Groups({"add_dogs"})
+     * @Groups({"add_dogs", "edit_dog"})
      */
     private $avatar;
 
@@ -38,19 +38,19 @@ class Dogs
 
     /**
      * @ORM\Column(type="smallint")
-     * @Groups({"add_dogs"})
+     * @Groups({"add_dogs", "edit_dog"})
      */
     private $sex;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
-     * @Groups({"add_dogs"})
+     * @Groups({"add_dogs", "edit_dog"})
      */
     private $age;
 
     /**
      * @ORM\Column(type="smallint")
-     * @Groups({"add_dogs"})
+     * @Groups({"add_dogs", "edit_dog"})
      */
     private $castrate;
 
@@ -68,26 +68,26 @@ class Dogs
     /**
      * @ORM\ManyToOne(targetEntity=Users::class, inversedBy="dogs")
      * @ORM\JoinColumn(nullable=false)
-     * @Groups({"add_dogs"})
+     * @Groups({"add_dogs", "edit_dog"})
      */
     private $users;
 
     /**
      * @ORM\ManyToOne(targetEntity=Moods::class, inversedBy="dogs")
-     * @Groups({"add_dogs"})
+     * @Groups({"add_dogs", "edit_dog"})
      */
     private $mood;
 
     /**
      * @ORM\ManyToOne(targetEntity=Temperaments::class, inversedBy="dogs")
-     * @Groups({"add_dogs"})
+     * @Groups({"add_dogs", "edit_dog"})
      */
     private $temperament;
 
     /**
      * @ORM\ManyToOne(targetEntity=States::class, inversedBy="dogs")
      * @ORM\JoinColumn(nullable=false)
-     * @Groups({"add_dogs"})
+     * @Groups({"add_dogs", "edit_dog"})
      */
     private $state;
 
