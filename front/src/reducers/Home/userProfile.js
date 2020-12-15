@@ -11,6 +11,7 @@ const initialState = {
   loading: true,
   otherUserInfo: [],
   otherUserDogInfo: [],
+  loadingOtherUserProfile: true,
 };
 
 const userProfileReducer = (state = initialState, action = {}) => {
@@ -39,6 +40,7 @@ const userProfileReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         otherUserDogInfo: action.value,
+        loadingOtherUserProfile: false,
       };
 
     default: return { ...state };
