@@ -12,6 +12,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Serializer\SerializerInterface;
+use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
 /**
  * @Route("/api/v1/user", name="api_v1_user_")
@@ -54,7 +55,7 @@ class UserController extends AbstractController
     /**
      * @Route("/edit/{id}", name="edit", methods={"PUT"}, requirements={"id" = "\d+"})
      */
-    public function edit(Users $users, Request $request, SerializerInterface $serializer, UserPasswordEncoderInterface $userPasswordEncoder): Response
+    public function edit(Users $users, Request $request, NormalizerInterface $normalizer, UserPasswordEncoderInterface $userPasswordEncoder): Response
     {
         $json = $request->getContent();
         
@@ -74,7 +75,7 @@ class UserController extends AbstractController
             }
             $em->flush();
 
-            $json = $serializer->serialize(
+            $json = $normalizer->normalize(
                 $users,
                 'json',
                 ['groups' => 'edit_user'],
