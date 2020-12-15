@@ -36,9 +36,9 @@ const UserProfile = ({
 }) => {
   const changeText = 'Modifier mon profil';
 
-  useEffect(() => {
+  /*useEffect(() => {
     getUserProfile();
-  }, []);
+  }, []);*/
 
   const moodUrl = {
     1: calm,

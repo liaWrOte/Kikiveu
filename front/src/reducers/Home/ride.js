@@ -1,12 +1,18 @@
 import {
   SAVE_RIDE_INFOS,
+  CHANGE_FIELD,
+  LOAD_COMMENTS,
+  SAVE_COMMENTS,
   GET_RIDE_ID,
   GET_RIDE,
+
 } from '../../actions/Home/ride';
 
 const initialState = {
   rideId: '',
   rideInfos: [],
+  comment: '',
+  commentsSection: [],
   loading: true,
 };
 
@@ -35,6 +41,20 @@ const RideReducer = (state = initialState, action = {}) => {
         ...state,
         rideInfos: action.value,
         loading: false,
+      };
+
+    case CHANGE_FIELD:
+      console.log('action reçue dans comment');
+      return {
+        ...state,
+        comment: action.value,
+      };
+
+    case SAVE_COMMENTS:
+      console.log('action reçue pour comments section');
+      return {
+        ...state,
+        commentsSection: action.value,
       };
 
     default: return { ...state };

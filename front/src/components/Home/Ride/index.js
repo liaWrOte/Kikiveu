@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
 import { Calendar } from 'react-feather';
 import PropTypes from 'prop-types';
-import {useParams} from 'react-router-dom';
-
+import { useParams } from 'react-router-dom';
 
 // Import composants
+import { useStore } from 'react-redux';
 import PreviousButton from '../../microComponents/PreviousButton';
 import MainUserButton from '../../microComponents/MainUserButton';
 import Emoji from '../../microComponents/Emoji';
@@ -21,8 +21,27 @@ import water from '../../../assets/images/ride/water_ride.png';
 
 import './ride.scss';
 
-const Ride = ({ rideInfos, rideId }) => {
-  console.log(rideInfos);
+const Ride = ({
+  rideInfos,
+  changeField,
+  comment,
+  handlePostComment,
+  commentsSection,
+  loadComments,
+  rideId,
+}) => {
+  /*useEffect(() => {
+    getRide(rideInfos.eventId);
+    console.log(commentsSection);
+    loadComments();
+  }, []);*/
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    handlePostComment();
+  };
+
+
   const { slug } = useParams();
 
   const typesRideUrl = {
@@ -78,10 +97,30 @@ const Ride = ({ rideInfos, rideId }) => {
         <Emoji src={typesRideUrl[rideInfos.tagsId]} />
       </div>
       <p>Commentaires</p>
-      <p>Laisser un commentaire :
-        <Input />
-        <TextButton />
-      </p>
+      <div className="ride__comments">
+
+        {commentsSection.map((commentItem) => (
+          <div className="ride__comments__line">
+            <p className="ride__comments__line__date">{commentItem.createdAt}</p>
+            <p>{commentItem.userId.pseudo}</p>
+            <p>{commentItem.body}</p>
+          </div>
+        ))}
+
+      </div>
+      <form autoComplete="off" className="login__form" onSubmit={handleSubmit}>
+        <p>Laisser un commentaire :
+          <Input
+            type="text"
+            name="comment"
+            placeholder="Votre commentaire ici"
+            onChange={changeField}
+            value={comment}
+            inputClass="input_small"
+          />
+          <TextButton />
+        </p>
+      </form>>
       <div className="ride__bottom">
         <PreviousButton />
       </div>
@@ -90,15 +129,10 @@ const Ride = ({ rideInfos, rideId }) => {
 };
 
 Ride.propTypes = {
-  rideInfos: PropTypes.arrayOf(
-    PropTypes.shape({
-      eventDescription: PropTypes.string.isRequired,
-      eventDatetime: PropTypes.string.isRequired,
-      eventMaxParticipant: PropTypes.number.isRequired,
-      eventDuration: PropTypes.string.isRequired,
-      eventTagsId: PropTypes.number.isRequired,
-    }),
-  ).isRequired,
+  rideInfos: PropTypes.object.isRequired,
+  changeField: PropTypes.func.isRequired,
+  comment: PropTypes.string.isRequired,
+  handlePostComment: PropTypes.func.isRequired,
 };
 
 export default Ride;

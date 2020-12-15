@@ -128,7 +128,7 @@ const Map = ({
           shadowSize: null,
           shadowAnchor: null,
           iconSize: new L.Point(30, 30),
-          className: 'leaflet-div-icon',
+          className: `leaflet-div-icon,${rideEvent.eventId}`,
         })}
       >
         <Popup>
