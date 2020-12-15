@@ -19,7 +19,7 @@ import PreviousButton from '../microComponents/PreviousButton';
 
 import './index.scss';
 
-const Home = ({ isLogged }) => (
+const Home = ({ isLogged, loadingRide }) => (
   <>
     <Switch>
       <Route exact path="/connexion">
@@ -52,9 +52,16 @@ const Home = ({ isLogged }) => (
               </div>
             </Route>
             <Route exact path="/balade/:slug">
-              <div className=".item3">
-                <Ride />
-              </div>
+              <>
+                {!loadingRide && (
+                  <div className=".item3">
+                    <Ride />
+                  </div>
+                )};
+                {loadingRide && (
+                  <div>Chargement...</div>
+                )};
+              </>
             </Route>
             <Route exact path="/creer-balade">
               <div className=".item3">

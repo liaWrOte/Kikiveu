@@ -44,12 +44,13 @@ const Ride = ({ rideInfos, rideId }) => {
     6: 'Urbaine',
     7: 'Aquatique',
   };
+
 /*
   useEffect(() => {
     console.log(rideId);
-    getRide(rideId);
-  }, [rideId]);
-  */
+    getRide();
+  }, [rideInfos]);
+*/
 
   const datetime = rideInfos.eventDatetime;
   const newdate = datetime.replace('T', '  ');
