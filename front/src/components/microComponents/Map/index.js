@@ -38,6 +38,7 @@ const Map = ({
   getRideId,
   getUsers,
   usersOnMap,
+  getOtherUserProfile,
 }) => {
   const refresh = 'Rafraîchir la carte';
   console.log(usersOnMap);
@@ -166,7 +167,7 @@ const Map = ({
         {(usersOnMap) && (
           usersOnMap.map((user) => (
             <div className="map__users__user">
-              <Link to="/2"><SecondaryUserButton className="map__users__user" />
+              <Link to={`/user/${user.userSlug}`} onClick={() => getOtherUserProfile(user.userId)}>
                 <p>{user.userPseudo}</p>
               </Link>
             </div>

@@ -8,6 +8,7 @@ export const SEND_MAP_COORDS = 'SEND_MAP_COORDS';
 export const CHECK_EVENTS_LOCATION = 'CHECK_EVENTS_LOCATION';
 export const GET_USERS = 'GET_USERS';
 export const SHOW_USERS_ON_MAP = 'SHOW_USERS_ON_MAP';
+export const GET_OTHER_USER_PROFILE = 'GET_OTHER_USER_PROFILE';
 
 export const updateLat = (value) => ({
   type: UPDATE_LAT,
@@ -55,4 +56,9 @@ export const getUsers = () => ({
 export const showUsersOnMap = (value) => ({
   type: SHOW_USERS_ON_MAP,
   value,
+});
+
+export const getOtherUserProfile = (id) => ({
+  type: GET_OTHER_USER_PROFILE,
+  id,
 });
