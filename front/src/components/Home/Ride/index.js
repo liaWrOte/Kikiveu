@@ -93,11 +93,11 @@ const Ride = ({
         <Emoji src={typesRideUrl[rideInfos.tagsId]} />
       </div>
       <p>Commentaires</p>
-      <div>
+      <div className="ride__comments">
 
         {commentsSection.map((commentItem) => (
-          <div>
-            <p>{commentItem.createdAt}</p>
+          <div className="ride__comments__line">
+            <p className="ride__comments__line__date">{commentItem.createdAt}</p>
             <p>{commentItem.userId.pseudo}</p>
             <p>{commentItem.body}</p>
           </div>
