@@ -87,8 +87,8 @@ class DogController extends AbstractController
             $em->flush();
 
             
-
-            return $this->json(200);
+            
+            return $this->json($dogs, 200);
         } else {
             return $this->json(
                 [
