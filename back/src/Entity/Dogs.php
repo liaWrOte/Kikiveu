@@ -21,7 +21,7 @@ class Dogs
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"add_dogs", "edit_user","edit_dog"})
+     * @Groups({"add_dogs","edit_user","edit_dog"})
      */
     private $name;
 
