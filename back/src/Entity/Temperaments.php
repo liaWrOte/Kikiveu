@@ -17,12 +17,13 @@ class Temperaments
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
-     * @Groups({"add_dogs"})
+     * @Groups({"add_dogs", "edit_dog"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=50)
+     * @Groups({"edit_dog"})
      */
     private $name;
 

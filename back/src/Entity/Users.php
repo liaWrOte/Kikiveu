@@ -43,7 +43,7 @@ class Users implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=50)
-     * @Groups({"show_add_event", "show_add_comment", "edit_user"})
+     * @Groups({"show_add_event", "show_add_comment", "edit_user", "edit_dog"})
      */
     private $pseudo;
 
