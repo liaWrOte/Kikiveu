@@ -30,6 +30,7 @@ const mapStateToProps = (state) => ({
   loadingMapCoords: state.map.loadingMapCoords,
   haveEventsLocation: state.map.haveEventsLocation,
   canPutRideMarker: state.createARide.canPutRideMarker,
+  usersOnMap: state.map.usersOnMap,
 });
 
 const mapDispatchToProps = (dispatch) => ({

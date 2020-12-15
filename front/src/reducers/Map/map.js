@@ -7,6 +7,7 @@ import {
   SEND_MAP_COORDS,
   CHECK_EVENTS_LOCATION,
   REFRESH_MAP_COORDS,
+  SHOW_USERS_ON_MAP,
 } from '../../actions/Map';
 
 const initialState = {
@@ -18,6 +19,7 @@ const initialState = {
   mapCoords: [],
   haveEventsLocation: false,
   loadingMapCoords: true,
+  usersOnMap: [],
 };
 
 const mapReducer = (state = initialState, action = {}) => {
@@ -75,6 +77,12 @@ const mapReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         haveEventsLocation: action.value,
+      };
+
+    case SHOW_USERS_ON_MAP:
+      return {
+        ...state,
+        usersOnMap: action.value,
       };
 
     default: return { ...state };

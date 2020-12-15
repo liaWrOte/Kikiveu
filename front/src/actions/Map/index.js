@@ -7,6 +7,7 @@ export const REFRESH_MAP_COORDS = 'REFRESH_MAP_COORDS';
 export const SEND_MAP_COORDS = 'SEND_MAP_COORDS';
 export const CHECK_EVENTS_LOCATION = 'CHECK_EVENTS_LOCATION';
 export const GET_USERS = 'GET_USERS';
+export const SHOW_USERS_ON_MAP = 'SHOW_USERS_ON_MAP';
 
 export const updateLat = (value) => ({
   type: UPDATE_LAT,
@@ -49,4 +50,9 @@ export const checkEventsLocation = (value) => ({
 
 export const getUsers = () => ({
   type: GET_USERS,
+});
+
+export const showUsersOnMap = (value) => ({
+  type: SHOW_USERS_ON_MAP,
+  value,
 });

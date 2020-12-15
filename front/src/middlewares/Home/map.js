@@ -7,6 +7,7 @@ import {
   checkEventsLocation,
   refreshRideEvents,
   GET_USERS,
+  showUsersOnMap,
 } from '../../actions/Map';
 
 import apiUrl from '../env';
@@ -67,6 +68,7 @@ const map = (store) => (next) => (action) => {
               )
                 .then((response4) => {
                   console.log(response4);
+                  store.dispatch(showUsersOnMap(response4.data.users));
                 })
                 .catch((error) => {
                   console.log(error);

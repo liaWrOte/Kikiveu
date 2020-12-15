@@ -37,8 +37,10 @@ const Map = ({
   canPutRideMarker,
   getRideId,
   getUsers,
+  usersOnMap,
 }) => {
   const refresh = 'Rafraîchir la carte';
+  console.log(usersOnMap);
 
   function MapBounds() {
     const map = useMap();
@@ -158,22 +160,19 @@ const Map = ({
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
       </MapContainer>
-      ) }
 
-      {!loadingMapCoords && (
-        <div className="map__users">
-          <div className="map__users__user">
-            <Link to="/2"><SecondaryUserButton className="map__users__user" /></Link>
-         </div>
-          <div className="map__users__user">
-            <Link to="/2"><SecondaryUserButton className="map__users__user" /></Link>
-        </div>
-        <div className="map__users__user">
-          <Link to="/2"><SecondaryUserButton className="map__users__user" /></Link>
-        </div>
+      )};
+      <div className="map__users">
+        {(usersOnMap) && (
+          usersOnMap.map((user) => (
+            <div className="map__users__user">
+              <Link to="/2"><SecondaryUserButton className="map__users__user" />
+                <p>{user.userPseudo}</p>
+              </Link>
+            </div>
+          ))
+        )}
       </div>
-      )}
-      
       <div className="map__refresh">
         <TextButton text={refresh} handleClick={() => sendMapCoords()} buttonClass="button_small" />
       </div>
@@ -212,4 +211,3 @@ Map.defaultProps = {
 };
 
 export default Map;
-
