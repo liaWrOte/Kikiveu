@@ -6,6 +6,8 @@ import userProfileReducer from './Home/userProfile';
 import createARideReducer from './Home/createARide';
 import mapReducer from './Map/map';
 import infoReducer from './Home/info';
+import rideReducer from './Home/ride';
+import changeUserProfileReducer from './Home/changeUserProfile';
 
 // etc
 // le reducer principal, qui regroupe les autres
@@ -15,9 +17,11 @@ const rootReducer = combineReducers({
   auth: authReducer,
   signin: signinReducer,
   userProfile: userProfileReducer,
+  changeUserProfile: changeUserProfileReducer,
   createARide: createARideReducer,
   map: mapReducer,
   info: infoReducer,
+  ride: rideReducer,
   // etc
 });
 export default rootReducer;

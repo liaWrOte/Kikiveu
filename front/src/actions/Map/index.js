@@ -46,3 +46,4 @@ export const checkEventsLocation = (value) => ({
   type: CHECK_EVENTS_LOCATION,
   value,
 });
+

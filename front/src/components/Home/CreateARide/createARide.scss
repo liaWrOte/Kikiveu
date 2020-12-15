@@ -1,19 +1,44 @@
+//@use '/home/etudiant/Bureau/html/projet-kikiveu/front/src/styles/_vars.scss';
+@use '../../../styles/vars';
+
 .createARide {
   position: absolute;
   z-index: 25;
+  height: 550px;
   bottom: 0;
-  height: 500px;
   width: 100%;
   display: flex;
   flex-direction: column;
-  background-color: #FCDEB0;
+  background-color: #fff;
   display : flex;
   justify-content: space-around;
   align-items: center;
+  padding: vars.$smallGutter;
+  font-family: vars.$bodyFont;
+  color: vars.$textColor;
+  text-align: center;
 
   &__divLabel{
     display: flex;
     flex-direction: rows;
+    &__wrapper {
+      display: flex;
+    width: 100%;
+    height: auto;
+      &__users {
+        height: 100%;
+      overflow-x: auto;
+      white-space: nowrap;
+      display: flex;
+      
+        &__emoji {
+          align-items: center;
+          margin-right: 0.5em;
+          display: flex;
+      flex-direction: column;
+        }
+      }
+    }
   }
 
   &__locate {
@@ -21,13 +46,6 @@
     flex-direction: column;
   }
 
-  &__emoji {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    align-items: center;
-    margin-right: 0.5em;
-  }
   &__bottom {
     display: flex;
     justify-content: space-evenly;
@@ -38,3 +56,25 @@
   }
 }
 
+.twoColumns {
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.lieu {
+  margin: 0;
+}
+
+@media screen and (min-width: 1300px) {
+  .createARide {
+    display: block;
+    position: absolute;
+    height: 80vh;
+    width: 33%;
+    right: 0;
+    z-index: 2000;
+    background-color: #fff;
+  }
+}

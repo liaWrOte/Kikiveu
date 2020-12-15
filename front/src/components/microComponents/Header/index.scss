@@ -1,7 +1,33 @@
+//@use '/home/etudiant/Bureau/html/projet-kikiveu/front/src/styles/_vars.scss';
+@use '../../../styles/vars';
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.5rem;
+  padding: 0.5rem 1rem;
+  width: 100%;
+  &__item {
+    width: 100%;
+    text-align: center;
+    margin: 0 auto;
+    &__img {
+      width: 100px;
+    }
+  }
 }
 
+.header__icone {
+  color: vars.$secondaryColor;
+}
+
+@media screen and (min-width: 1300px) {
+  .header {
+    display: block;
+    position: absolute;
+    height: 20vh;
+    width: 33%;
+    right: 0;
+    z-index: 1000;
+    background-color: #fff;
+  }
+}

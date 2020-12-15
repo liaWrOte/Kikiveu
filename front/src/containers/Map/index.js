@@ -11,6 +11,12 @@ import {
   refreshMapCoords,
 } from '../../actions/Map';
 
+import {
+  getRideId,
+} from '../../actions/Home/ride';
+
+import { getUserProfile } from '../../actions/Home/changeUserProfile';
+
 import Map from '../../components/microComponents/Map';
 
 const mapStateToProps = (state) => ({
@@ -25,6 +31,7 @@ const mapStateToProps = (state) => ({
   neLatMap: state.map.neLatMap,
   neLongMap: state.map.neLongMap,
   haveEventsLocation: state.map.haveEventsLocation,
+  canPutRideMarker: state.createARide.canPutRideMarker,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -57,6 +64,12 @@ const mapDispatchToProps = (dispatch) => ({
   },
   checkEventsLocation: (value) => {
     dispatch(checkEventsLocation(value));
+  },
+  getUserProfile: () => {
+    dispatch(getUserProfile());
+  },
+  getRideId: (id) => {
+    dispatch(getRideId(id));
   },
 });
 

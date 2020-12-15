@@ -1,21 +1,33 @@
+//@use '/home/etudiant/Bureau/html/projet-kikiveu/front/src/styles/_vars.scss';
+@use '../../styles/vars';
+
 .login {
 display: flex;
 flex-direction: column;
 align-items: center;
 height: 100vh;
 padding: 1.5em;
+padding-top: 2rem;
 
   &__form {
-    margin-top: 2em;
+    margin-top: vars.$bigGutter;
     display : flex;
     flex-direction: column;
     width : 100%;
+    
   }
+  
 }
-.signin {
-  margin-top: 2em;
+
+.loginSignIn {
+  margin-top:  (vars.$bigGutter)*2;
   width: 100%;
   text-align: center;
+  display : flex;
+    flex-direction: column;
+  &__text {
+    margin-bottom: -0.2rem;
+  }
   }
 
 .animation {
@@ -24,5 +36,34 @@ padding: 1.5em;
   justify-content: center;
 }
 
+.button {
+  margin-top: vars.$smallGutter;
+}
 
+.emoji {
+  width: 1rem;
+}
+
+#catch_phrase {
+  font-family: vars.$titleFont;
+  color: vars.$mainColor;
+  font-size: vars.$smallGutter;
+}
+
+.full_width {
+  width: 100%;
+}
+
+@media screen and (min-width: 850px) {
+  .login {
+    width: 50%;
+    margin: 0 auto;
+  }
+  .loginSignIn {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+  }
+  
 

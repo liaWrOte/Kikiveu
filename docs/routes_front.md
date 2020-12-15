@@ -6,6 +6,7 @@
 | sign in | `/inscription` | sign in form |  |
 | map | `/` | map and infos |  |
 | profile | `/:slug` | user profile | slug : user nickname|
+| edit profile | `/:slug/edit` | edit user profile | slug : usernickname|
 | ride | `/balade/:slug` | ride infos | slug : user nickname |
 | create a ride | `/creer-balade` | create a ride |  |
 | messages | `/messages/:slug` | list of the user's messages | slug : user nickname |

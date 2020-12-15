@@ -6,7 +6,7 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  background-color: #FCDEB0;
+  background-color: #fff;
   display : flex;
   justify-content: space-around;
   align-items: center;
@@ -14,6 +14,15 @@
     display: flex;
     justify-content: space-evenly;
     flex-wrap: wrap;
+  }
+  &__comments {
+    height: 200px;
+    &__line {
+      display: flex;
+      &__date {
+        font-size: 0.6em;
+      }
+    }
   }
   &__bottom {
     display: flex;
@@ -24,4 +33,17 @@
     margin-top: -60px;
   }
 }
+
+@media screen and (min-width: 1300px) {
+  .ride {
+    display: block;
+    position: absolute;
+    height: 33.33vh;
+    width: 33%;
+    right: 0;
+    z-index: 1000;
+    background-color: #fff;
+  }
+}
+
 

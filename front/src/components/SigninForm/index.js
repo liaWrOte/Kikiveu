@@ -33,6 +33,8 @@ import sociable from '../../assets/images/character/sociable_character.png';
 
 import './index.scss';
 
+import screenshot from '../../assets/images/dog_profile.jpg';
+
 const SigninForm = ({
   dogsNumber,
   dogName,
@@ -57,9 +59,14 @@ const SigninForm = ({
     handleSignIn();
   };
 
+  const sectionStyle = {
+    backgroundImage: `url(${screenshot})`,
+    backgroundSize: 'cover',
+  };
+
   return (
     <div className="signin">
-      <div className="signin__img"><img src="" alt="screenshotApp" /></div>
+      <div style={sectionStyle} className="signin__img"></div>
 
       <form autoComplete="off" className="signin__form" onSubmit={handleSubmit}>
         <h2 className="signin__form__title">Rejoindre KikiVeu</h2>
@@ -73,14 +80,16 @@ const SigninForm = ({
               onChange={changeField}
               id="dogName"
               value={dogName}
+              inputClass="input"
             />
           </label>
         </div>
+
         <div className="signin__form__item">
 
           2. Est-ce un mâle ou une femelle ?
           <div className="signin__form__item__label">
-            <label htmlFor="sex">Mâle
+            <label htmlFor="sex">
               <Emoji src={male} />
               <Input
                 type="radio"
@@ -90,20 +99,23 @@ const SigninForm = ({
                 name="sex"
                 checked
               />
+              Mâle
             </label>
 
-            <Emoji src={female} />
-            <Input
-              type="radio"
-              onChange={changeField}
-              value={0}
-              id="female"
-              name="sex"
-            />
-            <label htmlFor="sex">Femelle</label>
+            <label htmlFor="sex">
+              <Emoji src={female} />
+              <Input
+                type="radio"
+                onChange={changeField}
+                value={0}
+                id="female"
+                name="sex"
+              />
+              Femelle
+            </label>
           </div>
-
         </div>
+
         <div className="signin__form__item">
           <label htmlFor="age">
             3. Quel âge a-t-il ?
@@ -113,32 +125,33 @@ const SigninForm = ({
               id="age"
               value={age}
               onChange={changeField}
+              inputClass="input"
             />
           </label>
         </div>
         <div className="signin__form__item">
           4. Est-il castré ?
           <div className="signin__form__item__label">
-          <label htmlFor="castrate">
-            <Input
-              type="radio"
-              onChange={changeField}
-              name="castrate"
-              value={1}
-              checked
-            />
-            Oui
-          </label>
-          <label htmlFor="castrate">
-            <Input
-              type="radio"
-              onChange={changeField}
-              name="castrate"
-              value={0}
-              key="noCastrate"
-            />
-            Non
-          </label>
+            <label htmlFor="castrate">
+              <Input
+                type="radio"
+                onChange={changeField}
+                name="castrate"
+                value={1}
+                checked
+              />
+              Oui
+            </label>
+            <label htmlFor="castrate">
+              <Input
+                type="radio"
+                onChange={changeField}
+                name="castrate"
+                value={0}
+                key="noCastrate"
+              />
+              Non
+            </label>
           </div>
         </div>
         <div className="signin__form__item">
@@ -154,7 +167,7 @@ const SigninForm = ({
                   id="smallShape"
                   value={1}
                 />
-                Mauvaise condition physique
+                Mauvais
               </label>
               <label htmlFor="dogCondition">
                 <Emoji src={mediumShape} />
@@ -165,7 +178,7 @@ const SigninForm = ({
                   id="mediumShape"
                   value={2}
                 />
-                Condition physique moyenne
+                Moyen
               </label>
               <label htmlFor="dogCondition">
                 <Emoji src={goodShape} />
@@ -177,160 +190,159 @@ const SigninForm = ({
                   value={3}
                   checked
                 />
-                Bonne condition physique
+                Bon
               </label>
             </div>
           </label>
         </div>
         <div className="signin__form__item">
-            6. Votre chien est plutôt ? (1 choix possible)
-            <div className="signin__form__item__label">
-              <label htmlFor="character">
-                <Emoji src={dominant} />
-                <Input
-                  type="radio"
-                  onChange={changeField}
-                  name="character"
-                  id="dominant"
-                  value={1}
-                />
-                Dominant
-              </label>
-              <label htmlFor="character">
-                <Emoji src={shy} />
-                <Input
-                  type="radio"
-                  onChange={changeField}
-                  name="character"
-                  id="sensitive"
-                  value={2}
-                />
-                Timide/Sensible
-              </label>
-              <label htmlFor="character">
-                <Emoji src={fearful} />
-                <Input
-                  type="radio"
-                  onChange={changeField}
-                  name="character"
-                  id="fearful"
-                  value={3}
-                />
-                Peureux
-              </label>
-              <label htmlFor="character">
-                <Emoji src={player} />
-                <Input
-                  type="radio"
-                  onChange={changeField}
-                  name="character"
-                  id="playful"
-                  value={4}
-                />
-                Joueur
-              </label>
-              <label htmlFor="character">
-                <Emoji src={independent} />
-                <Input
-                  type="radio"
-                  onChange={changeField}
-                  name="character"
-                  id="independent"
-                  value={5}
-                />
-                Indépendant
-              </label>
-              <label htmlFor="character">
-                <Emoji src={sociable} />
-                <Input
-                  type="radio"
-                  onChange={changeField}
-                  name="character"
-                  id="sociable"
-                  value={6}
-                />
-                Sociable
-              </label>
-              <label htmlFor="character">
-                <Emoji src={barker} />
-                <Input
-                  type="radio"
-                  onChange={changeField}
-                  name="character"
-                  id="barker"
-                  value={7}
-                />
-                Aboyeur
-              </label>
-              <label htmlFor="character">
-                <Emoji src={possessive} />
-                <Input
-                  type="radio"
-                  onChange={changeField}
-                  name="character"
-                  id="possessive"
-                  value={8}
-                />
-                Possessif
-              </label>
-              <label htmlFor="character">
-                <Emoji src={curious} />
-                <Input
-                  type="radio"
-                  onChange={changeField}
-                  name="character"
-                  id="curious"
-                  value={9}
-                />
-                Curieux
-              </label>
-              <label htmlFor="character">
-                <Emoji src={learning} />
-                <Input
-                  type="radio"
-                  onChange={changeField}
-                  name="character"
-                  id="apprentice"
-                  value={10}
-                />
-                En apprentissage
-              </label>
-              <label htmlFor="character">
-                <Emoji src={balanced} />
-                <Input
-                  type="radio"
-                  onChange={changeField}
-                  name="character"
-                  id="stable"
-                  value={11}
-                />
-                Equilibré
-              </label>
-            </div>
+          6. Votre chien est plutôt ? (1 choix possible)
+          <div className="signin__form__item__label">
+            <label htmlFor="character">
+              <Emoji src={dominant} />
+              <Input
+                type="radio"
+                onChange={changeField}
+                name="character"
+                id="dominant"
+                value={1}
+              />
+              Dominant
+            </label>
+            <label htmlFor="character">
+              <Emoji src={shy} />
+              <Input
+                type="radio"
+                onChange={changeField}
+                name="character"
+                id="sensitive"
+                value={2}
+              />
+              Timide/Sensible
+            </label>
+            <label htmlFor="character">
+              <Emoji src={fearful} />
+              <Input
+                type="radio"
+                onChange={changeField}
+                name="character"
+                id="fearful"
+                value={3}
+              />
+              Peureux
+            </label>
+            <label htmlFor="character">
+              <Emoji src={player} />
+              <Input
+                type="radio"
+                onChange={changeField}
+                name="character"
+                id="playful"
+                value={4}
+              />
+              Joueur
+            </label>
+            <label htmlFor="character">
+              <Emoji src={independent} />
+              <Input
+                type="radio"
+                onChange={changeField}
+                name="character"
+                id="independent"
+                value={5}
+              />
+              Indépendant
+            </label>
+            <label htmlFor="character">
+              <Emoji src={sociable} />
+              <Input
+                type="radio"
+                onChange={changeField}
+                name="character"
+                id="sociable"
+                value={6}
+              />
+              Sociable
+            </label>
+            <label htmlFor="character">
+              <Emoji src={barker} />
+              <Input
+                type="radio"
+                onChange={changeField}
+                name="character"
+                id="barker"
+                value={7}
+              />
+              Aboyeur
+            </label>
+            <label htmlFor="character">
+              <Emoji src={possessive} />
+              <Input
+                type="radio"
+                onChange={changeField}
+                name="character"
+                id="possessive"
+                value={8}
+              />
+              Possessif
+            </label>
+            <label htmlFor="character">
+              <Emoji src={curious} />
+              <Input
+                type="radio"
+                onChange={changeField}
+                name="character"
+                id="curious"
+                value={9}
+              />
+              Curieux
+            </label>
+            <label htmlFor="character">
+              <Emoji src={learning} />
+              <Input
+                type="radio"
+                onChange={changeField}
+                name="character"
+                id="apprentice"
+                value={10}
+              />
+              En apprentissage
+            </label>
+            <label htmlFor="character">
+              <Emoji src={balanced} />
+              <Input
+                type="radio"
+                onChange={changeField}
+                name="character"
+                id="stable"
+                value={11}
+              />
+              Equilibré
+            </label>
+          </div>
         </div>
         <div className="signin__form__item">
-          <label htmlFor="dogShape">
+          <label htmlFor="dogShape" className="cgu__flex">
             7. KikiVeu est une application bienveillante, merci d'accepter la charte de KikiVeu et les CGU
-            <div>
-              <p>La charte</p>
-              <Cgu className="cgu" />
-              <label htmlFor="acceptCharte">
-                <input
-                  type="checkbox"
-                  name="acceptCharte"
-                  id="acceptCharte"
-                />
-                J'ai lu et j'accepte la charte de KikiVeu
-              </label>
-              <label htmlFor="acceptCGU">
-                <input
-                  type="checkbox"
-                  name="acceptCGU"
-                  id="acceptCGU"
-                />
-                J'ai lu et j'accepte les CGU
-              </label>
-            </div>
+
+            <Cgu className="cgu" />
+            <label htmlFor="acceptCharte" className="cgu__flex__label">
+              <input
+                type="checkbox"
+                name="acceptCharte"
+                id="acceptCharte"
+              />
+              J'ai lu et j'accepte la charte de KikiVeu
+            </label>
+            <label htmlFor="acceptCGU" className="cgu__flex__label">
+              <input
+                type="checkbox"
+                name="acceptCGU"
+                id="acceptCGU"
+              />
+              J'ai lu et j'accepte les CGU
+            </label>
+
           </label>
         </div>
         <div className="signin__form__item">
@@ -342,20 +354,22 @@ const SigninForm = ({
             onChange={changeField}
             id="username"
             value={username}
+            inputClass="input"
           />
         </div>
         <div className="signin__form__item">
-          <div className="signin__form__item__label">
-            <label htmlFor="profileImage">
-              9. Veuillez choisir une photo de profil
-            </label>
-            <input
-              name="profileImage"
-              id="profileImage"
-              type="file"
-              accept="image/png, image/jpeg"
-            />
-          </div>
+
+          <label htmlFor="profileImage">
+            9. Veuillez choisir une photo de profil
+          </label>
+          <input
+            name="profileImage"
+            id="profileImage"
+            type="file"
+            accept="image/png, image/jpeg"
+            className="imageInput"
+          />
+
         </div>
         <div className="signin__form__item">
           <label htmlFor="email">
@@ -366,6 +380,7 @@ const SigninForm = ({
               onChange={changeField}
               id="email"
               value={email}
+              inputClass="input"
             />
           </label>
         </div>
@@ -379,6 +394,7 @@ const SigninForm = ({
             onChange={changeField}
             id="password1"
             value={password1}
+            inputClass="input"
           />
         </div>
         <div className="signin__form__item">
@@ -391,17 +407,23 @@ const SigninForm = ({
             onChange={changeField}
             id="password2"
             value={password2}
+            inputClass="input"
           />
         </div>
         <p>Vous allez recevoir un email de confirmation d'inscription. Veuillez l'accepter.</p>
-        <TextButton
-          type="submit"
-          className="login-form-button"
-          onClick={handleSubmit}
-        >
-          Je m'inscris
-        </TextButton>
-        <PreviousButton />
+        <div className="signForm_flex">
+          <PreviousButton />
+          <TextButton
+            text="Je m'inscris"
+            type="submit"
+            className="login-form-button"
+            onClick={handleSubmit}
+            buttonClass="button"
+          >
+            Je m'inscris
+          </TextButton>
+
+        </div>
       </form>
     </div>
   );

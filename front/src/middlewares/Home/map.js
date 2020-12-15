@@ -19,6 +19,7 @@ const map = (store) => (next) => (action) => {
     case SEND_MAP_COORDS:
       console.log('dans middleware refresh ride events');
       const { map } = store.getState();
+      const { ride } = store.getState();
       console.log(map.mapCoords._southWest.lat);
       axios.post(
         'http://localhost:8000/api/v1/event',
@@ -38,7 +39,6 @@ const map = (store) => (next) => (action) => {
         .catch((error) => {
           console.log(error);
         });
-
       next(action);
       break;
 

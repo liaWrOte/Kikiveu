@@ -1,31 +1,43 @@
+//@use '/home/etudiant/Bureau/html/projet-kikiveu/front/src/styles/_vars.scss';
+@use '../../../styles/vars';
 .cgu {
   width: 100%;
-  height: 500px;
+  height: 300px;
   overflow-y: scroll;
   scrollbar-width: thin;
-  padding: 1em;
-  margin: 1em;
+  padding: vars.$bigGutter;
   border: solid 0.5px grey;
   border-radius: 10px;
+  margin: vars.$smallGutter auto vars.$bigGutter auto;
+  
 
   &__title{
     font-weight: bold;
-    text-decoration: underline;
-    font-size: 1.5em;
-    margin: 1em;
+    font-size: 1.3rem;
+    margin-bottom: vars.$smallGutter;
+    color: vars.$mainColor;
   }
 
   &__subtitle{
-    font-style: italic;
-    text-align: right;
+    text-align: center;
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: vars.$secondaryColor;
   }
 
   &__content{
     margin: 0.5em;
     text-align: justify;
+    color: vars.$textColor;
+    font-family: vars.$bodyFont;
+    font-size: 1rem;
   }
 
   &__article {
     font-weight: bold;
+    font-size: 1.3rem;
+    margin-bottom: vars.$smallGutter;
+    margin-top: vars.$bigGutter;
+    color: vars.$secondaryColor;
   }
 }

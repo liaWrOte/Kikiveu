@@ -1,10 +1,14 @@
-.home {
+//@use '/home/etudiant/Bureau/html/projet-kikiveu/front/src/styles/_vars.scss';
+@use '../../styles/vars';
 
+.home {
   height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .item1 {
-  height: 10vh;
+  height: 7vh;
 }
 .item2 {
   height: 60vh;
@@ -23,3 +27,29 @@
   height: 20vh;
   z-index:25;
 }
+
+@media screen and (min-width: 1300px) {
+  .home {
+    position: relative;
+    width: 100%;
+  }
+
+  .item1 {
+
+  }
+
+  .item2 {
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+
+  .item3 {
+    order: 1;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 33%;
+  }
+}
+

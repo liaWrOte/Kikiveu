@@ -24,14 +24,12 @@ import good from '../../../assets/images/shape/good_shape.png';
 
 import './userProfile.scss';
 
-const UserProfile = ({
+const ChangeUserProfile = ({
   avatar,
-  mood,
-  shape,
-  username,
-  signedIn,
   castrate,
-  coords,
+  castrateInitialValue,
+  pseudo,
+  initialPseudo,
   changeField,
   handleUpdateUserProfile,
 }) => {
@@ -49,119 +47,129 @@ const UserProfile = ({
     <div className="userProfile">
       <form autoComplete="off" className="userProfile_form" onSubmit={handleSubmit}>
         <MainUserButton className="mainUserButton" />
-        <TextButton text={changeAvatar} />
-        <p>Comment se sent Kiki aujourd'hui ?</p>
+        <TextButton text={changeAvatar} buttonClass="button_small_green" />
+        <p className="before_button">Comment se sent {initialPseudo} aujourd'hui ?</p>
         <div className="userProfile__form__emoji">
-          <label htmlFor="mood">Calme
+          <label htmlFor="moodId">
             <Emoji src={calm} />
             <Input
               type="radio"
               onChange={changeField}
               value={1}
               id="calm"
-              name="mood"
-              checked
+              name="moodId"
             />
+            Calme
           </label>
 
-          <label htmlFor="mood">Excité
+          <label htmlFor="moodId">
             <Emoji src={excited} />
             <Input
               type="radio"
               onChange={changeField}
               value={2}
               id="excited"
-              name="mood"
+              name="moodId"
             />
+            Excité
           </label>
 
-          <label htmlFor="mood">Joueur
+          <label htmlFor="moodId">
             <Emoji src={player} />
             <Input
               type="radio"
               onChange={changeField}
               value={3}
               id="player"
-              name="mood"
+              name="moodId"
             />
+            Joueur
           </label>
 
-          <label htmlFor="mood">Energique
+          <label htmlFor="moodId">
             <Emoji src={rough} />
             <Input
               type="radio"
               onChange={changeField}
               value={4}
               id="rough"
-              name="mood"
+              name="moodId"
             />
+            Energique
           </label>
 
-          <label htmlFor="mood">Fatigué
+          <label htmlFor="moodId">
             <Emoji src={tired} />
             <Input
               type="radio"
               onChange={changeField}
               value={5}
               id="tired"
-              name="mood"
+              name="moodId"
             />
+            Fatigué
           </label>
 
         </div>
-        <p>L'état de santé de Kiki a changé ?</p>
+        <p className="before_button">L'état de santé de Kiki a changé ?</p>
         <div className="userProfile__form__emoji">
-          <label htmlFor="shape">Petite forme
+          <label htmlFor="stateId">
             <Emoji src={small} />
             <Input
               type="radio"
               onChange={changeField}
-              value={0}
-              id="small"
-              name="shape"
-            />
-          </label>
-
-          <label htmlFor="shape">Forme moyenne
-            <Input
-              type="radio"
-              onChange={changeField}
               value={1}
-              id="medium"
-              name="shape"
+              id="small"
+              name="stateId"
             />
-            <Emoji src={medium} />
+            Petite forme
           </label>
 
-          <label htmlFor="shape">Excellente forme
-            <Emoji src={good} />
+          <label htmlFor="stateId">
+            <Emoji src={medium} />
             <Input
               type="radio"
               onChange={changeField}
               value={2}
-              id="good"
-              name="shape"
+              id="medium"
+              name="stateId"
             />
+            Forme moyenne
           </label>
-          <label htmlFor="castrate">Castré
+
+          <label htmlFor="stateId">
+            <Emoji src={good} />
+            <Input
+              type="radio"
+              onChange={changeField}
+              value={3}
+              id="good"
+              name="stateId"
+            />
+            Excellente forme
+          </label>
+          <label htmlFor="castrate">
             <Toggle
               onChange={changeField}
               id="castrate"
               name="castrate"
+              value={castrate}
+              checked={castrateInitialValue === 1}
             />
+            <div id="castrate">Castré</div>
           </label>
         </div>
-        <label htmlFor="username">Votre nouveau pseudo
+        <label htmlFor="pseudo">Votre nouveau pseudo
           <Input
             type="text"
             onChange={changeField}
-            value={username}
-            name="username"
+            value={pseudo}
+            name="pseudo"
           />
         </label>
         <div className="userProfile__bottom">
           <PreviousButton />
-          <TextButton text={saveText} />
+          <TextButton text={saveText} buttonClass="button_small" />
           <div> </div>
         </div>
       </form>
@@ -169,9 +177,13 @@ const UserProfile = ({
   );
 };
 
-UserProfile.propTypes = {
+ChangeUserProfile.propTypes = {
   changeField: PropTypes.func.isRequired,
   handleUpdateUserProfile: PropTypes.func.isRequired,
+  pseudo: PropTypes.string.isRequired,
+  castrate: PropTypes.bool.isRequired,
+  castrateInitialValue: PropTypes.number.isRequired,
+  initialPseudo: PropTypes.string.isRequired,
 };
 
-export default UserProfile;
+export default ChangeUserProfile;

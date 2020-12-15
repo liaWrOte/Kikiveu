@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import Header from '../../containers/Header';
 import Map from '../../containers/Map';
 import Info from '../../containers/Home/info';
+import ChangeUserProfile from '../../containers/Home/changeUserProfile';
 import UserProfile from '../../containers/Home/userProfile';
 import Login from '../../containers/login';
 import SigninForm from '../../containers/signin';
@@ -13,12 +14,12 @@ import Chat from './Chat';
 import KikiVeuContact from './KikiVeuContact';
 import Cgu from '../microComponents/Cgu';
 import CreateARide from '../../containers/Home/CreateARide';
-import Ride from './Ride';
+import Ride from '../../containers/Home/ride';
 import PreviousButton from '../microComponents/PreviousButton';
 
 import './index.scss';
 
-const Home = ({ isLogged }) => (
+const Home = ({ isLogged, loadingRide, loadingProfile }) => (
   <>
     <Switch>
       <Route exact path="/connexion">
@@ -50,10 +51,17 @@ const Home = ({ isLogged }) => (
                 <KikiVeuContact />
               </div>
             </Route>
-            <Route exact path="/balade/1">
-              <div className=".item3">
-                <Ride />
-              </div>
+            <Route exact path="/balade/:slug">
+              <>
+                {!loadingRide && (
+                  <div className=".item3">
+                    <Ride />
+                  </div>
+                )};
+                {loadingRide && (
+                  <div>Chargement...</div>
+                )};
+              </>
             </Route>
             <Route exact path="/creer-balade">
               <div className=".item3">
@@ -65,10 +73,22 @@ const Home = ({ isLogged }) => (
                 <Chat />
               </div>
             </Route>
-            <Route exact path="/1">
+            <Route exact path="/profil/edit">
               <div className=".item4">
-                <UserProfile />
+                <ChangeUserProfile />
               </div>
+            </Route>
+            <Route exact path="/profil">
+              <>
+                {!loadingProfile && (
+                  <div className=".item4">
+                    <UserProfile />
+                  </div>
+                )};
+                {loadingProfile && (
+                  <div>Chargement...</div>
+                )};
+              </>
             </Route>
             <Route exact path="/2">
               <div className=".item3">
