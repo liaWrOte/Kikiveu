@@ -3,6 +3,8 @@ export const SAVE_USER_PROFILE_INFOS = 'SAVE_USER_PROFILE_INFOS';
 export const SAVE_DOG_INFOS = 'SAVE_DOG_INFOS';
 export const UPDATE_USER_PROFILE_FIELD = 'UPDATE_USER_PROFILE_FIELD';
 export const HANDLE_UPDATE_USER_PROFILE = 'HANDLE_UPDATE_USER_PROFILE';
+export const SAVE_OTHER_USER_INFO = 'SAVE_OTHER_USER_INFO';
+export const SAVE_OTHER_USER_DOG_INFO = 'SAVE_OTHER_USER_DOG_INFO';
 
 // === action creators
 export const getUserProfile = () => ({
@@ -27,5 +29,15 @@ export const updateUserProfileField = (value, name) => ({
 
 export const handleUpdateUserProfile = (value) => ({
   type: HANDLE_UPDATE_USER_PROFILE,
+  value,
+});
+
+export const saveOtherUserInfo = (value) => ({
+  type: SAVE_OTHER_USER_INFO,
+  value,
+});
+
+export const saveOtherUserDogInfo = (value) => ({
+  type: SAVE_OTHER_USER_DOG_INFO,
   value,
 });

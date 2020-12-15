@@ -5,6 +5,8 @@ import {
   saveUserProfileInfos,
   HANDLE_UPDATE_USER_PROFILE,
   saveDogInfos,
+  saveOtherUserInfo,
+  saveOtherUserDogInfo,
 } from '../../actions/Home/changeUserProfile';
 
 import {
@@ -44,12 +46,12 @@ const userProfile = (store) => (next) => (action) => {
         .then((response) => {
           // traitement si réponse est un succès
           console.log(response.data);
-          // je veux stocker response.data dans le state => seule possibilité,
-          // dispatch une action au store
+          store.dispatch(saveOtherUserInfo(response.data));
           axios.get(`http://localhost:8000/api/v1/dog/${map.otherUserProfileId}`, config)
             .then((response2) => {
               // traitement si réponse est un succès
               console.log(response2.data);
+              store.dispatch(saveOtherUserDogInfo(response2.data));
               // je veux stocker response.data dans le state => seule possibilité,
               // dispatch une action au store
             })

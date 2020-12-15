@@ -76,7 +76,7 @@ const mapDispatchToProps = (dispatch) => ({
   },
   getOtherUserProfile: (id) => {
     dispatch(getOtherUserProfile(id));
-  }
+  },
 });
 
 export default connect(
