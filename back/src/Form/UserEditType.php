@@ -3,6 +3,8 @@
 namespace App\Form;
 
 use App\Entity\Users;
+use App\Entity\Dogs;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormEvent;
@@ -19,6 +21,11 @@ class UserEditType extends AbstractType
                 $form = $event->getForm();
 
                 foreach ($user as $key => $value) {
+                    if ($key === "dog") {
+                        $form->add('dog', EntityType::class, [
+                            'class' => Dogs::class,
+                        ]);
+                    }
                     $form->add($key);
                 }
             })
