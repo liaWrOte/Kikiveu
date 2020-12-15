@@ -11,6 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Serializer\SerializerInterface;
+use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
 /**
  * @Route("/api/v1/dog", name="api_v1_dog_")
@@ -51,7 +52,7 @@ class DogController extends AbstractController
             $em->persist($dog);
             $em->flush();
 
-            $json = $serializer->serialize(
+            $json = $normalizer->normalize(
                 $dog,
                 'json',
                 ['groups' => 'add_dogs']
@@ -71,7 +72,7 @@ class DogController extends AbstractController
     /**
      * @Route("/edit/{id}", name="edit", methods={"PUT"}, requirements={"id" = "\d+"})
      */
-    public function edit(Dogs $dogs, SerializerInterface $serializer, Request $request): Response
+    public function edit(Dogs $dogs, NormalizerInterface $normalizer, Request $request): Response
     {
         $json = $request->getContent();
         
