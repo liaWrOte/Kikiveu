@@ -38,9 +38,8 @@ export const refreshMapCoords = (value) => ({
   value,
 });
 
-export const sendMapCoords = (value) => ({
+export const sendMapCoords = () => ({
   type: SEND_MAP_COORDS,
-  value,
 });
 
 export const checkEventsLocation = (value) => ({

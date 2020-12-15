@@ -57,8 +57,8 @@ const mapDispatchToProps = (dispatch) => ({
     console.log('refresh map coords');
     dispatch(refreshMapCoords(newValue));
   },
-  sendMapCoords: (value) => {
-    dispatch(sendMapCoords(value));
+  sendMapCoords: () => {
+    dispatch(sendMapCoords());
   },
   checkEventsLocation: (value) => {
     dispatch(checkEventsLocation(value));

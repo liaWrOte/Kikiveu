@@ -64,12 +64,12 @@ const mapReducer = (state = initialState, action = {}) => {
         mapCoords: action.value,
         loadingMapCoords: false,
       };
-/*
+
     case SEND_MAP_COORDS:
       return {
         ...state,
-        
-      };*/
+        loadingMapCoords: false,
+      };
 
     case CHECK_EVENTS_LOCATION:
       return {
