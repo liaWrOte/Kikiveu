@@ -4,6 +4,7 @@ namespace App\Controller\Api;
 
 use App\Entity\Dogs;
 use App\Form\DogType;
+use App\Form\DogEditType;
 use App\Repository\DogsRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -15,7 +16,7 @@ use Symfony\Component\Serializer\SerializerInterface;
  * @Route("/api/v1/dog", name="api_v1_dog_")
 */
 class DogController extends AbstractController
-{   
+{
     /**
      * @Route("/{id}", name="read", methods={"GET"}, requirements={"id" = "\d+"})
      */
@@ -68,7 +69,7 @@ class DogController extends AbstractController
     }
 
     /**
-     * @Route("/edit/{id}", name="edit", methods={"POST"}, requirements={"id" = "\d+"})
+     * @Route("/edit/{id}", name="edit", methods={"PUT"}, requirements={"id" = "\d+"})
      */
     public function edit(Dogs $dogs, Request $request): Response
     {
@@ -76,7 +77,7 @@ class DogController extends AbstractController
         
         $dogArray = json_decode($json, true);
 
-        $form = $this->createForm(DogType::class, $dogs, ['csrf_protection' => false]);
+        $form = $this->createForm(DogEditType::class, $dogs, ['csrf_protection' => false]);
 
         $form->submit($dogArray);
 
