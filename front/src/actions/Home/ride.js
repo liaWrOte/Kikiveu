@@ -31,6 +31,7 @@ export const saveComments = (value) => ({
 
 export const loadComments = () => ({
   type: LOAD_COMMENTS,
+});
 
 export const getRideId = (id) => ({
   type: GET_RIDE_ID,
