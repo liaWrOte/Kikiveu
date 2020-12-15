@@ -52,7 +52,7 @@ class DogController extends AbstractController
             $em->persist($dog);
             $em->flush();
 
-            $json = $normalizer->normalize(
+            $json = $serializer->serialize(
                 $dog,
                 'json',
                 ['groups' => 'add_dogs']
@@ -87,7 +87,7 @@ class DogController extends AbstractController
             $em = $this->getDoctrine()->getManager();
             $em->flush();
 
-            $json = $serializer->serialize(
+            $json = $normalizer->normalize(
                 $dogs,
                 'json',
                 ['groups' => 'edit_dog']
