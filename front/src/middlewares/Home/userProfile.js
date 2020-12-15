@@ -28,6 +28,7 @@ const userProfile = (store) => (next) => (action) => {
       break;
     case HANDLE_UPDATE_USER_PROFILE:
       const { changeUserProfile } = store.getState();
+      const { userProfile } = store.getState();
       axios.put(`http://localhost:8000/api/v1/user/edit/${auth.userId}`, {
         pseudo: changeUserProfile.pseudo,
         email: auth.email,
@@ -36,7 +37,24 @@ const userProfile = (store) => (next) => (action) => {
       }, config)
         .then((response) => {
           console.log(response);
+          axios.put(`http://localhost:8000/api/v1/dog/edit/${userProfile.userInfos.dogId}`, {
+            mood: changeUserProfile.moodId,
+            state: changeUserProfile.stateId,
+            castrate: changeUserProfile.castrate,
+          }, config)
+            .then((response2) => {
+              console.log(response2);
+            })
+            .catch((error) => {
+              // traitement si réponse est une erreur
+              console.log('erreur :', error);
+            });
+        })
+        .catch((error) => {
+          // traitement si réponse est une erreur
+          console.log('erreur :', error);
         });
+
       next(action);
       break;
 
