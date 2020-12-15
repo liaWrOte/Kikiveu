@@ -78,13 +78,6 @@ const mapReducer = (state = initialState, action = {}) => {
         ...state,
         haveEventsLocation: action.value,
       };
-/*
-    case GET_RIDE_DATA:
-      return {
-        ...state,
-        rideDataId: action.id,
-      };
-*/
 
     default: return { ...state };
   }

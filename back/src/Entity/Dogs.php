@@ -15,13 +15,13 @@ class Dogs
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
-     * @Groups({"add_dogs"})
+     * @Groups({"add_dogs", "edit_user"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"add_dogs"})
+     * @Groups({"add_dogs", "edit_user"})
      */
     private $name;
 

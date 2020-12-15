@@ -40,7 +40,7 @@ class Tags
     private $updatedAt;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Events::class, mappedBy="tags")
+     * @ORM\ManyToMany(targetEntity=Events::class, mappedBy="tags", cascade={"persist"})
      */
     private $events;
 
@@ -48,6 +48,11 @@ class Tags
     {
         $this->events = new ArrayCollection();
         $this->createdAt = new \DateTime();
+    }
+
+    public function __toString()
+    {
+        return $this->name;
     }
 
     public function getId(): ?int

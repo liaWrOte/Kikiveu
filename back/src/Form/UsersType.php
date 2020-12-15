@@ -34,12 +34,12 @@ class UsersType extends AbstractType
             ])
             ->add('slug')
             ->add('password', PasswordType::class)
-            //->add('userLat', NumberType::class)
-            //->add('userLong', NumberType::class)
-            //->add('swLat', NumberType::class)
-            //->add('swLong', NumberType::class)
-            //->add('neLat', NumberType::class)
-            //->add('neLong', NumberType::class)
+            ->add('userLat', NumberType::class)
+            ->add('userLong', NumberType::class)
+            ->add('swLat', NumberType::class)
+            ->add('swLong', NumberType::class)
+            ->add('neLat', NumberType::class)
+            ->add('neLong', NumberType::class)
         ;
     }
 

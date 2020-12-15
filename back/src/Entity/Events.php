@@ -76,7 +76,7 @@ class Events
     private $comments;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Tags::class, inversedBy="events")
+     * @ORM\ManyToMany(targetEntity=Tags::class, inversedBy="events", cascade={"persist"})
      * @Groups({"show_add_event"})
      */
     private $tags;
