@@ -4,6 +4,7 @@ import {
   GET_USER_PROFILE,
   saveUserProfileInfos,
   HANDLE_UPDATE_USER_PROFILE,
+  saveDogInfos,
 
 } from '../../actions/Home/changeUserProfile';
 
@@ -37,6 +38,7 @@ const userProfile = (store) => (next) => (action) => {
       }, config)
         .then((response) => {
           console.log(response);
+          store.dispatch(saveUserProfileInfos(response.data));
           axios.put(`http://localhost:8000/api/v1/dog/edit/${userProfile.userInfos.dogId}`, {
             mood: changeUserProfile.moodId,
             state: changeUserProfile.stateId,
@@ -44,6 +46,15 @@ const userProfile = (store) => (next) => (action) => {
           }, config)
             .then((response2) => {
               console.log(response2);
+              store.dispatch(saveDogInfos(response2.data));
+              axios.get(`http://localhost:8000/api/v1/dog/${auth.userId}`, config)
+                .then((response3) => {
+                  // traitement si réponse est un succès
+                  console.log(response3.data);
+                  // je veux stocker response.data dans le state => seule possibilité,
+                  // dispatch une action au store
+                  store.dispatch(saveUserProfileInfos(response3.data[0]));
+                });
             })
             .catch((error) => {
               // traitement si réponse est une erreur

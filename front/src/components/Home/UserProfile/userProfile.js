@@ -36,9 +36,9 @@ const UserProfile = ({
 }) => {
   const changeText = 'Modifier mon profil';
 
-  /*useEffect(() => {
+  useEffect(() => {
     getUserProfile();
-  }, []);*/
+  }, []);
 
   const moodUrl = {
     1: calm,
@@ -48,11 +48,11 @@ const UserProfile = ({
     5: tired,
   };
   const moodText = {
-    1: 'calme',
-    2: 'excité',
-    3: 'joueur',
-    4: 'nerveux',
-    5: 'fatigué',
+    1: 'Calme',
+    2: 'Excité',
+    3: 'Joueur',
+    4: 'Energique',
+    5: 'Fatigué',
   };
 
   const stateUrl = {
