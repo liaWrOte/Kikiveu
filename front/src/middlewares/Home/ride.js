@@ -41,7 +41,7 @@ const rideMiddleware = (store) => (next) => (action) => {
 
     case HANDLE_POST_COMMENT:
       // je récupère les données qui m'intéressent : email et mdp
-      
+
       axios.post('http://localhost:8000/api/v1/comment/add', {
         users: auth.userId,
         body: ride.comment,
@@ -52,12 +52,13 @@ const rideMiddleware = (store) => (next) => (action) => {
           // traitement si réponse est un succès
           console.log('middleware : post comment');
           console.log(response);
+          store.dispatch(loadComments());
           // console.log(localStorage.getItem('token'));
         })
         .catch((error) => {
           console.log(error);
         });
-      
+
       next(action);
       break;
 
@@ -71,9 +72,19 @@ const rideMiddleware = (store) => (next) => (action) => {
           store.dispatch(saveComments(response.data));
           console.log(response);
           // console.log(localStorage.getItem('token'));
+          axios.get(`http://localhost:8000/api/v1/dog/${ride.rideInfos.userId}`,
+            config)
+            .then((response2) => {
+            // traitement si réponse est un succès
+              console.log('middleware : get all avatar');
+              console.log(response2);
+            })
+            .catch((error2) => {
+              console.log(error2);
+            });
         })
-        .catch((error) => {
-          console.log(error);
+        .catch((error1) => {
+          console.log(error1);
         });
 
       next(action);
