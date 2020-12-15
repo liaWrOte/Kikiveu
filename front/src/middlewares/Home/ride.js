@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 import {
-  GET_RIDE,
+  GET_RIDE_ID,
   saveRideInfos,
 } from '../../actions/Home/ride';
 
@@ -13,15 +13,14 @@ const ride = (store) => (next) => (action) => {
     headers: { Authorization: `Bearer ${tokenValue}` },
   };
   switch (action.type) {
-    case GET_RIDE:
-      const { map } = store.getState();
+    case GET_RIDE_ID:
       axios.get(
-        `http://localhost:8000/api/v1/event/${map.rideDataId}`,
+        `http://localhost:8000/api/v1/event/${action.id}`,
         config,
       )
         .then((response) => {
           // traitement si réponse est un succès
-          console.log(response.data);
+          console.log('middleware ride', response.data);
           store.dispatch(saveRideInfos(response.data[0]));
         })
         .catch((error) => {

@@ -1,6 +1,6 @@
-import React, { Redirect } from 'react';
+import React, { useEffect } from 'react';
 // import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import Input from '../microComponents/Input';
@@ -21,6 +21,13 @@ const Login = ({
     handleLogin();
   };
 
+  const history = useHistory();
+
+  useEffect(() => {
+    if (isLogged === true) {
+      history.push('/'); // when user is logged
+    }
+  }, [isLogged]);
 
   const loginText = 'Connexion';
   const signInText = 'Je m\'inscris';

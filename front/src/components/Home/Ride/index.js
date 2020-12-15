@@ -20,9 +20,9 @@ import urban from '../../../assets/images/ride/urban_ride.png';
 import water from '../../../assets/images/ride/water_ride.png';
 
 import './ride.scss';
-import { getRide } from '../../../actions/Home/ride';
 
-const Ride = ({ rideInfos }) => {
+const Ride = ({ rideInfos, rideId }) => {
+  console.log(rideInfos);
   const { slug } = useParams();
 
   const typesRideUrl = {
@@ -45,10 +45,13 @@ const Ride = ({ rideInfos }) => {
     7: 'Aquatique',
   };
 
+/*
   useEffect(() => {
-    // Met à jour le titre du document via l’API du navigateur
-    getRide(rideInfos.eventId);
-  }, []);
+    console.log(rideId);
+    getRide();
+  }, [rideInfos]);
+*/
+
   const datetime = rideInfos.eventDatetime;
   const newdate = datetime.replace('T', '  ');
   const newdatetime = newdate.slice(0, 20);

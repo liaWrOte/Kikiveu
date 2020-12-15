@@ -14,6 +14,7 @@ const mapStateToProps = (state) => ({
   castrate: state.changeUserProfile.castrate,
   castrateInitialValue: state.userProfile.userInfos.castrate,
   pseudo: state.changeUserProfile.pseudo,
+  initialPseudo: state.userProfile.userInfos.pseudo,
 });
 
 const mapDispatchToProps = (dispatch) => ({

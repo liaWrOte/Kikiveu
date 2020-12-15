@@ -39,7 +39,7 @@ const map = (store) => (next) => (action) => {
         .catch((error) => {
           console.log(error);
         });
-
+      next(action);
       break;
 
     default:
