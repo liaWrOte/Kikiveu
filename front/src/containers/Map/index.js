@@ -26,10 +26,6 @@ const mapStateToProps = (state) => ({
   markerLat: state.map.markerLat,
   markerLng: state.map.markerLng,
   rideEvents: state.map.rideEvents,
-  swLatMap: state.map.swLatMap,
-  swLongMap: state.map.swLongMap,
-  neLatMap: state.map.neLatMap,
-  neLongMap: state.map.neLongMap,
   haveEventsLocation: state.map.haveEventsLocation,
   canPutRideMarker: state.createARide.canPutRideMarker,
 });

@@ -15,10 +15,6 @@ const initialState = {
   markerLat: 0,
   markerLng: 0,
   rideEvents: [],
-  swLatMap: 0,
-  swLongMap: 0,
-  neLatMap: 0,
-  neLongMap: 0,
   mapCoords: [],
   haveEventsLocation: false,
 };
