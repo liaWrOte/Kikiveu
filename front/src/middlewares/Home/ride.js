@@ -29,6 +29,7 @@ const rideMiddleware = (store) => (next) => (action) => {
           // traitement si réponse est un succès
           console.log(response.data);
           store.dispatch(saveRideInfos(response.data[0]));
+          store.dispatch(loadComments());
         })
         .catch((error) => {
           // traitement si réponse est une erreur

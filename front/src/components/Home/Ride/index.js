@@ -30,6 +30,12 @@ const Ride = ({
   commentsSection,
   loadComments,
 }) => {
+  /*useEffect(() => {
+    getRide(rideInfos.eventId);
+    console.log(commentsSection);
+    loadComments();
+  }, []);*/
+
   const handleSubmit = (event) => {
     event.preventDefault();
     handlePostComment();
@@ -65,11 +71,6 @@ const Ride = ({
   const newdate = datetime.replace('T', '  ');
   const newdatetime = newdate.slice(0, 20);
 
-  useEffect(() => {
-    console.log(commentsSection);
-    loadComments();
-  }, []);
-
   return (
     <div className="ride">
       <MainUserButton className="ride__mainUserButton" />
@@ -94,10 +95,10 @@ const Ride = ({
       <p>Commentaires</p>
       <div>
 
-        {{ commentsSection }.map((commentItem) => (
+        {commentsSection.map((commentItem) => (
           <div>
             <p>{commentItem.createdAt}</p>
-            <p>{commentItem.useStore.pseudo}</p>
+            <p>{commentItem.userId.pseudo}</p>
             <p>{commentItem.body}</p>
           </div>
         ))}
@@ -124,15 +125,7 @@ const Ride = ({
 };
 
 Ride.propTypes = {
-  rideInfos: PropTypes.arrayOf(
-    PropTypes.shape({
-      eventDescription: PropTypes.string.isRequired,
-      eventDatetime: PropTypes.string.isRequired,
-      eventMaxParticipant: PropTypes.number.isRequired,
-      eventDuration: PropTypes.string.isRequired,
-      eventTagsId: PropTypes.number.isRequired,
-    }),
-  ).isRequired,
+  rideInfos: PropTypes.object.isRequired,
   changeField: PropTypes.func.isRequired,
   comment: PropTypes.string.isRequired,
   handlePostComment: PropTypes.func.isRequired,
