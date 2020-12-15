@@ -71,7 +71,7 @@ class DogController extends AbstractController
     /**
      * @Route("/edit/{id}", name="edit", methods={"PUT"}, requirements={"id" = "\d+"})
      */
-    public function edit(Dogs $dogs, Request $request): Response
+    public function edit(Dogs $dogs, SerializerInterface $serializer, Request $request): Response
     {
         $json = $request->getContent();
         
@@ -86,9 +86,13 @@ class DogController extends AbstractController
             $em = $this->getDoctrine()->getManager();
             $em->flush();
 
+            $json = $serializer->serialize(
+                $dogs,
+                'json',
+                ['groups' => 'edit_dog']
+            );
             
-            
-            return $this->json($dogs, 200);
+            return $this->json($json, 200);
         } else {
             return $this->json(
                 [

@@ -18,12 +18,13 @@ class States
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
-     * @Groups({"add_dogs"})
+     * @Groups({"add_dogs", "edit_dog"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"edit_dog"})
      */
     private $name;
 
