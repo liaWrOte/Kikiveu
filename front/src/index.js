@@ -10,6 +10,7 @@ import { Provider } from 'react-redux';
 import App from './components/App';
 import store from './store';
 
+
 // == Render
 // 1. Élément React racine (celui qui contient l'ensemble de l'app)
 //    => crée une structure d'objets imbriqués (DOM virtuel)

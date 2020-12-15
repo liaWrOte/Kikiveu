@@ -29,6 +29,7 @@ const ChangeUserProfile = ({
   castrate,
   castrateInitialValue,
   pseudo,
+  initialPseudo,
   changeField,
   handleUpdateUserProfile,
 }) => {
@@ -47,7 +48,7 @@ const ChangeUserProfile = ({
       <form autoComplete="off" className="userProfile_form" onSubmit={handleSubmit}>
         <MainUserButton className="mainUserButton" />
         <TextButton text={changeAvatar} buttonClass="button_small_green" />
-        <p className="before_button">Comment se sent Kiki aujourd'hui ?</p>
+        <p className="before_button">Comment se sent {initialPseudo} aujourd'hui ?</p>
         <div className="userProfile__form__emoji">
           <label htmlFor="moodId">
             <Emoji src={calm} />
@@ -182,6 +183,7 @@ ChangeUserProfile.propTypes = {
   pseudo: PropTypes.string.isRequired,
   castrate: PropTypes.bool.isRequired,
   castrateInitialValue: PropTypes.number.isRequired,
+  initialPseudo: PropTypes.string.isRequired,
 };
 
 export default ChangeUserProfile;

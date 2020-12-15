@@ -4,6 +4,7 @@ import {
 
 const initialState = {
   userInfos: [],
+  loading: true,
 };
 
 const userProfileReducer = (state = initialState, action = {}) => {
@@ -12,6 +13,7 @@ const userProfileReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         userInfos: action.value,
+        loading: false,
       };
 
     default: return { ...state };

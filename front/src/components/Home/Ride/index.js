@@ -20,7 +20,6 @@ import urban from '../../../assets/images/ride/urban_ride.png';
 import water from '../../../assets/images/ride/water_ride.png';
 
 import './ride.scss';
-import { getRide } from '../../../actions/Home/ride';
 
 const Ride = ({
   rideInfos,
@@ -29,6 +28,7 @@ const Ride = ({
   handlePostComment,
   commentsSection,
   loadComments,
+  rideId,
 }) => {
   /*useEffect(() => {
     getRide(rideInfos.eventId);
@@ -40,6 +40,7 @@ const Ride = ({
     event.preventDefault();
     handlePostComment();
   };
+
 
   const { slug } = useParams();
 
@@ -63,10 +64,13 @@ const Ride = ({
     7: 'Aquatique',
   };
 
-  /* useEffect(() => {
-    // Met à jour le titre du document via l’API du navigateur
-    getRide(rideInfos.eventId);
-  }, []); */
+/*
+  useEffect(() => {
+    console.log(rideId);
+    getRide();
+  }, [rideInfos]);
+*/
+
   const datetime = rideInfos.eventDatetime;
   const newdate = datetime.replace('T', '  ');
   const newdatetime = newdate.slice(0, 20);

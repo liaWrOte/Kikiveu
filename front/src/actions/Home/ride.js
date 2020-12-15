@@ -4,10 +4,10 @@ export const CHANGE_FIELD = 'CHANGE_FIELD';
 export const HANDLE_POST_COMMENT = 'HANDLE_POST_COMMENT';
 export const LOAD_COMMENTS = 'LOAD_COMMENTS';
 export const SAVE_COMMENTS = 'SAVE_COMMENTS';
+export const GET_RIDE_ID = 'GET_RIDE_ID';
 
-export const getRide = (value) => ({
+export const getRide = () => ({
   type: GET_RIDE,
-  value,
 });
 
 export const saveRideInfos = (value) => ({
@@ -31,4 +31,8 @@ export const saveComments = (value) => ({
 
 export const loadComments = () => ({
   type: LOAD_COMMENTS,
+
+export const getRideId = (id) => ({
+  type: GET_RIDE_ID,
+  id,
 });

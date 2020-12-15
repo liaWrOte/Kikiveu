@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 import {
-  GET_RIDE,
+  GET_RIDE_ID,
   saveRideInfos,
   HANDLE_POST_COMMENT,
   loadComments,
@@ -20,14 +20,14 @@ const rideMiddleware = (store) => (next) => (action) => {
   const { auth } = store.getState();
   const { map } = store.getState();
   switch (action.type) {
-    case GET_RIDE:
+    case GET_RIDE_ID:
       axios.get(
-        `http://localhost:8000/api/v1/event/${map.rideDataId}`,
+        `http://localhost:8000/api/v1/event/${action.id}`,
         config,
       )
         .then((response) => {
           // traitement si réponse est un succès
-          console.log(response.data);
+          console.log('middleware ride', response.data);
           store.dispatch(saveRideInfos(response.data[0]));
           store.dispatch(loadComments());
         })
@@ -36,6 +36,7 @@ const rideMiddleware = (store) => (next) => (action) => {
           console.log('erreur :', error);
         });
 
+      next(action);
       break;
 
     case HANDLE_POST_COMMENT:
@@ -56,7 +57,8 @@ const rideMiddleware = (store) => (next) => (action) => {
         .catch((error) => {
           console.log(error);
         });
-
+      
+      next(action);
       break;
 
     case LOAD_COMMENTS:

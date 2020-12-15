@@ -6,6 +6,7 @@ import {
   changeField,
   handlePostComment,
   loadComments,
+  getRideId
 } from '../../actions/Home/ride';
 
 const mapStateToProps = (state) => ({
@@ -21,6 +22,7 @@ const mapStateToProps = (state) => ({
   comment: state.ride.comment,
   rideEvents: state.map.rideEvents,
   rideInfos: state.ride.rideInfos,
+  rideId: state.ride.rideId,
   commentsSection: state.ride.commentsSection,
 });
 
@@ -33,6 +35,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
   loadComments: () => {
     dispatch(loadComments());
+  },
+  getRideId: (id) => {
+    dispatch(getRideId(id));
   },
 });
 
