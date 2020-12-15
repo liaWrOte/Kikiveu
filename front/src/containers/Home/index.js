@@ -8,6 +8,7 @@ const mapStateToProps = (state) => ({
   password: state.auth.password,
   isLogged: state.auth.isLogged,
   loadingRide: state.ride.loading,
+  loadingUserProfile: state.userProfile.loading,
 });
 
 const mapDispatchToProps = () => ({
