@@ -1,6 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import defaultAvatar from '../../assets/images/dog_profile.jpg';
+
+// import bundle pour gestion des uploads d'images
+import FileInputComponent from 'react-file-input-previews-base64';
+
 // import composants
 import Input from '../microComponents/Input';
 import TextButton from '../microComponents/TextButton';
@@ -51,7 +56,7 @@ const SigninForm = ({
   password2,
   changeField,
   handleSignIn,
-
+  uploadImage,
 }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -66,7 +71,7 @@ const SigninForm = ({
 
   return (
     <div className="signin">
-      <div style={sectionStyle} className="signin__img"></div>
+      <div style={sectionStyle} className="signin__img" />
 
       <form autoComplete="off" className="signin__form" onSubmit={handleSubmit}>
         <h2 className="signin__form__title">Rejoindre KikiVeu</h2>
@@ -359,15 +364,24 @@ const SigninForm = ({
         </div>
         <div className="signin__form__item">
 
-          <label htmlFor="profileImage">
-            9. Veuillez choisir une photo de profil
-          </label>
-          <input
-            name="profileImage"
-            id="profileImage"
-            type="file"
-            accept="image/png, image/jpeg"
-            className="imageInput"
+          
+          <FileInputComponent
+            labelText="Selectionnez une image"
+            labelStyle={{ fontSize: 14 }}
+            callbackFunction={(file_arr) => {
+              /*uploadImage({
+                filename: file_arr[0].base64,
+                data: file_arr[0].name,
+              });*/
+              console.log({
+                filename: file_arr[0].name,
+                data: file_arr[0].base64,
+              });
+              //créer callback le fichier a bien été ajouté
+            }}
+            imagePreview={false}
+            accept="image/*"
+            textFieldComponent="choisir une image"
           />
 
         </div>
