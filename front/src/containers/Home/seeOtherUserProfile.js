@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-import getOtherUserProfile from '../../actions/Home/changeUserProfile'
+//import getOtherUserProfile from '../../actions/Home/changeUserProfile';
 
 import seeOtherUserProfile from '../../components/Home/SeeOtherUserProfile';
 
@@ -10,9 +10,9 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = () => ({
-  getOtherUserProfile: () => {
-    dispatchEvent(getOtherUserProfile());
-  },
+  //getOtherUserProfile: () => {
+  //  dispatchEvent(getOtherUserProfile());
+  //},
 });
 
 export default connect(

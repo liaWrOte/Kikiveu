@@ -34,9 +34,9 @@ const SeeOtherUserProfile = ({
   const changeText = 'Modifier mon profil';
   console.log(otherUserDogInfo);
   console.log(getOtherUserProfile);
-  useEffect(() => {
+  /*useEffect(() => {
     getOtherUserProfile();
-  }, []);
+  }, []);*/
 
   const moodUrl = {
     1: calm,

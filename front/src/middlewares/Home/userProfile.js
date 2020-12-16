@@ -7,11 +7,8 @@ import {
   saveDogInfos,
   saveOtherUserInfo,
   saveOtherUserDogInfo,
-} from '../../actions/Home/changeUserProfile';
-
-import {
   GET_OTHER_USER_PROFILE,
-} from '../../actions/Map/index';
+} from '../../actions/Home/changeUserProfile';
 
 const userProfile = (store) => (next) => (action) => {
   const tokenValue = localStorage.getItem('token');

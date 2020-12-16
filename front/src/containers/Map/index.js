@@ -17,7 +17,10 @@ import {
   getRideId,
 } from '../../actions/Home/ride';
 
-import { getUserProfile } from '../../actions/Home/changeUserProfile';
+import {
+  getOtherUserProfile,
+  getUserProfile,
+} from '../../actions/Home/changeUserProfile';
 
 import Map from '../../components/microComponents/Map';
 
@@ -76,6 +79,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
   getOtherUserProfileId: (id) => {
     dispatch(getOtherUserProfileId(id));
+  },
+  getOtherUserProfile: (id) => {
+    dispatch(getOtherUserProfile(id));
   },
 });
 
