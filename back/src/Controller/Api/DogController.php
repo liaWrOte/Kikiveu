@@ -2,6 +2,7 @@
 
 namespace App\Controller\Api;
 
+use App\ApiModel\AvatarUploadApi;
 use App\Entity\Dogs;
 use App\Form\DogType;
 use App\Form\DogEditType;
@@ -12,6 +13,8 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Serializer\SerializerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
+use Symfony\Component\Validator\Validator\ValidatorInterface;
+use Symfony\Component\HttpKernel\KernelInterface;
 
 /**
  * @Route("/api/v1/dog", name="api_v1_dog_")
@@ -102,5 +105,45 @@ class DogController extends AbstractController
                 400
             );
         }
+    }
+
+    /**
+     * @Route("/upload/{id}", name="upload", methods={"POST"}, requirements={"id" = "\d+"})
+     */
+    public function upload(
+        Dogs $dogs,
+        DogsRepository $dogsRepository,
+        EntityManager $em,
+        KernelInterface $kernel,
+        Request $request,
+        SerializerInterface $serializer,
+        ValidatorInterface $validator
+    ): Response {
+        if ($request->headers->get('Content-Type') === 'application/json') {
+            $uploadApiModel = $serializer->deserialize(
+                $request->getContent(),
+                AvatarUploadApi::class,
+                'json'
+            );
+
+            $violations = $validator->validate($uploadApiModel);
+            if ($violations->count() > 0) {
+                return $this->json($violations, 400);
+            }
+        } else {
+            $uploadedFile = $request->files->get('reference');
+            if ($uploadedFile === null) {
+                return $this->json(400);
+            }
+        }
+        
+        file_put_contents($kernel->getProjectDir() . '/public/avatar/' . $uploadApiModel->filename, base64_decode($uploadApiModel->data));
+        
+        $dogUpload = $dogsRepository->find($dogs);
+        $dogUpload->setAvatar($uploadApiModel->filename);
+
+        
+
+        return $this->json($json, 200);
     }
 }
