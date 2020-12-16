@@ -42,7 +42,10 @@ class UploadFile
             'json'
         );
 
-        file_put_contents($this->kernel->getProjectDir() . '/public/avatar/' . $uploadApiModel->filename, base64_decode($uploadApiModel->data));
+        file_put_contents(
+            $this->kernel->getProjectDir() . '/public/avatar/' . $uploadApiModel->filename,
+            base64_decode($uploadApiModel->data)
+        );
         $dogs->setAvatar($uploadApiModel->filename);
         $this->em->flush();
 

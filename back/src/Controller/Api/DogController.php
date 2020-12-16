@@ -84,7 +84,6 @@ class DogController extends AbstractController
 
         $dogArray = json_decode($json, true);
         $cleanDogArray = UploadFile::cleanArray($dogArray);
-        // dd($cleanDogArray);
 
         $form = $this->createForm(DogEditType::class, $dogs, ['csrf_protection' => false]);
 
