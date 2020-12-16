@@ -3,6 +3,7 @@ import {
   SAVE_SIGNIN_INFO,
   SIGN_IN,
   UPDATE_SRC,
+  UPLOAD_IMAGE,
 } from '../actions/signin';
 
 const initialState = {
@@ -15,7 +16,7 @@ const initialState = {
   character: 1,
   picture: '',
   username: '',
-  avatar: '/front/src/assets/imagesdog_profile.jpg/',
+  avatar: '',
   email: '',
   password1: '',
   password2: '',
@@ -47,11 +48,18 @@ const signinReducer = (state = initialState, action = {}) => {
         ...state,
       };
 
-    case UPDATE_SRC:
+    /*case UPDATE_SRC:
       console.log(`Action reçue, nouvelle valeur ${action.value} pour la propriété picture`);
       return {
         ...state,
         picture: action.value,
+      };*/
+
+    case UPLOAD_IMAGE:
+      console.log('update image dans le state');
+      return {
+        ...state,
+        avatar: action.image,
       };
 
     default: return { ...state };

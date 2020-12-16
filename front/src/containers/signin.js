@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 
 import SigninForm from '../components/SigninForm';
 
-import { updateSigninField, signin } from '../actions/signin';
+import { updateSigninField, signin, uploadImage } from '../actions/signin';
 
 const mapStateToProps = (state) => ({
   // nom de la prop à remplir: donnée à récupérer dans le state
@@ -35,6 +35,9 @@ const mapDispatchToProps = (dispatch) => ({
   handleSignIn: () => {
     // console.log('handleLogin');
     dispatch(signin());
+  },
+  uploadImage: (image) => {
+    dispatch(uploadImage(image));
   },
 });
 
