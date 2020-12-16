@@ -4,16 +4,17 @@ import {
   SIGN_IN,
   UPDATE_SRC,
   UPLOAD_IMAGE,
+  CHANGE_CHECKBOX_FIELD,
 } from '../actions/signin';
 
 const initialState = {
-  dogsNumber: 1,
+  dogsNumber: '',
   dogName: '',
-  sex: 0,
-  age: 0,
-  castrate: 0,
+  sex: '',
+  age: '',
+  castrate: '',
   dogCondition: '',
-  character: 1,
+  character: '',
   picture: '',
   username: '',
   avatar: '',
@@ -21,6 +22,7 @@ const initialState = {
   password1: '',
   password2: '',
   signedIn: false,
+  acceptCGU: '',
 };
 
 const signinReducer = (state = initialState, action = {}) => {
@@ -33,6 +35,12 @@ const signinReducer = (state = initialState, action = {}) => {
         // de propriété
         [action.name]: action.value,
         picture: action.srcValue,
+      };
+
+    case CHANGE_CHECKBOX_FIELD:
+      return {
+        ...state,
+        acceptCGU: !state.acceptCGU,
       };
 
     case SAVE_SIGNIN_INFO:

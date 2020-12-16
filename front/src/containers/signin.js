@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 
 import SigninForm from '../components/SigninForm';
 
-import { updateSigninField, signin, uploadImage } from '../actions/signin';
+import { updateSigninField, signin, uploadImage, changeCheckboxField } from '../actions/signin';
 
 const mapStateToProps = (state) => ({
   // nom de la prop à remplir: donnée à récupérer dans le state
@@ -18,6 +18,9 @@ const mapStateToProps = (state) => ({
   email: state.signin.email,
   password1: state.signin.password1,
   password2: state.signin.password2,
+  alertStatus: state.alert.alertStatusSigninForm,
+  acceptCGU: state.signin.acceptCGU,
+  alertPasswordStatus: state.alert.alertPasswordStatus,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -38,6 +41,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
   uploadImage: (image) => {
     dispatch(uploadImage(image));
+  },
+  changeCheckboxField: () => {
+    dispatch(changeCheckboxField());
   },
 });
 

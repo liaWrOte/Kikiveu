@@ -4,6 +4,7 @@ export const SAVE_SIGNIN_INFO = 'SAVE_SIGNIN_INFO';
 export const CHECK_LOGGED = 'CHECK_LOGGED';
 export const UPDATE_SRC = 'UPDATE_SRC';
 export const UPLOAD_IMAGE = 'UPLOAD_IMAGE';
+export const CHANGE_CHECKBOX_FIELD = 'CHANGE_CHECKBOX_FIELD';
 
 export const updateSigninField = (value, name) => ({
   type: UPDATE_SIGNIN_FIELD,
@@ -26,3 +27,8 @@ export const uploadImage = (image) => ({
   type: UPLOAD_IMAGE,
   image,
 });
+
+export const changeCheckboxField = () => ({
+  type: CHANGE_CHECKBOX_FIELD,
+});
+
