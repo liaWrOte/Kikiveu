@@ -1,5 +1,5 @@
-import React from 'react';
-import { Route, Switch } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { Route, Switch, useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 // Import composants
 import Header from '../../containers/Header';
@@ -19,102 +19,114 @@ import PreviousButton from '../microComponents/PreviousButton';
 
 import './index.scss';
 
-const Home = ({ isLogged, loadingRide, loadingProfile }) => (
-  <>
-    <Switch>
-      <Route exact path="/connexion">
-        <Login />
-      </Route>
-      <Route exact path="/inscription">
-        <SigninForm />
-      </Route>
-      <Route exact path="/cgu">
-        <Cgu />
-        <PreviousButton />
-      </Route>
-      <Route>
-        <div className="home">
-          <div className=".item1">
-            <Header />
+const Home = ({ isLogged, loadingRide, loadingProfile }) => {
+  const history = useHistory();
+
+  useEffect(() => {
+    if (isLogged === false) {
+      history.push('/connexion'); // when user is logged
+    }
+  }, [isLogged]);
+
+  return (
+    <>
+      <Switch>
+        <Route exact path="/connexion">
+          <Login />
+        </Route>
+        <Route exact path="/inscription">
+          <SigninForm />
+        </Route>
+        <Route exact path="/cgu">
+          <Cgu />
+          <PreviousButton />
+        </Route>
+        <Route>
+          <div className="home">
+            <div className=".item1">
+              <Header />
+            </div>
+            <div className=".item2">
+              <Map />
+            </div>
+            <Switch>
+              <Route exact path="/">
+                <div className=".item3">
+                  <Info />
+                </div>
+              </Route>
+              <Route exact path="/contact">
+                <div className=".item3">
+                  <KikiVeuContact />
+                </div>
+              </Route>
+              <Route exact path="/balade/:slug">
+                <>
+                  {!loadingRide && (
+                    <div className=".item3">
+                      <Ride />
+                    </div>
+                  )};
+                  {loadingRide && (
+                    <div>Chargement...</div>
+                  )};
+                </>
+              </Route>
+              <Route exact path="/creer-balade">
+                <div className=".item3">
+                  <CreateARide />
+                </div>
+              </Route>
+              <Route exact path="/1/messages">
+                <div className=".item3">
+                  <Chat />
+                </div>
+              </Route>
+              <Route exact path="/profil/edit">
+                <div className=".item4">
+                  <ChangeUserProfile />
+                </div>
+              </Route>
+              <Route exact path="/profil">
+                <>
+                  {!loadingProfile && (
+                    <div className=".item4">
+                      <UserProfile />
+                    </div>
+                  )};
+                  {loadingProfile && (
+                    <div>Chargement...</div>
+                  )};
+                </>
+              </Route>
+              <Route exact path="/2">
+                <div className=".item3">
+                  <SeeOtherUserProfile />
+                </div>
+              </Route>
+              <Route exact path="/1/messages/2">
+                <div className=".item3">
+                  <Chat />
+                </div>
+              </Route>
+              <Route exact path="/1/messages/kikiveu-contact">
+                <div className=".item3">
+                  <KikiVeuContact />
+                </div>
+              </Route>
+            </Switch>
           </div>
-          <div className=".item2">
-            <Map />
-          </div>
-          <Switch>
-            <Route exact path="/">
-              <div className=".item3">
-                <Info />
-              </div>
-            </Route>
-            <Route exact path="/contact">
-              <div className=".item3">
-                <KikiVeuContact />
-              </div>
-            </Route>
-            <Route exact path="/balade/:slug">
-              <>
-                {!loadingRide && (
-                  <div className=".item3">
-                    <Ride />
-                  </div>
-                )};
-                {loadingRide && (
-                  <div>Chargement...</div>
-                )};
-              </>
-            </Route>
-            <Route exact path="/creer-balade">
-              <div className=".item3">
-                <CreateARide />
-              </div>
-            </Route>
-            <Route exact path="/1/messages">
-              <div className=".item3">
-                <Chat />
-              </div>
-            </Route>
-            <Route exact path="/profil/edit">
-              <div className=".item4">
-                <ChangeUserProfile />
-              </div>
-            </Route>
-            <Route exact path="/profil">
-              <>
-                {!loadingProfile && (
-                  <div className=".item4">
-                    <UserProfile />
-                  </div>
-                )};
-                {loadingProfile && (
-                  <div>Chargement...</div>
-                )};
-              </>
-            </Route>
-            <Route exact path="/2">
-              <div className=".item3">
-                <SeeOtherUserProfile />
-              </div>
-            </Route>
-            <Route exact path="/1/messages/2">
-              <div className=".item3">
-                <Chat />
-              </div>
-            </Route>
-            <Route exact path="/1/messages/kikiveu-contact">
-              <div className=".item3">
-                <KikiVeuContact />
-              </div>
-            </Route>
-          </Switch>
-        </div>
-      </Route>
-    </Switch>
-  </>
-);
+        </Route>
+      </Switch>
+    </>
+  );
+};
 
 // PropTypes
 Home.propTypes = {
   isLogged: PropTypes.bool.isRequired,
+  loadingRide: PropTypes.bool.isRequired,
+  loadingProfile: PropTypes.bool.isRequired,
 };
 
 export default Home;
