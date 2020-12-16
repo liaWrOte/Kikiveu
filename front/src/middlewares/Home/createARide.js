@@ -4,6 +4,10 @@ import {
   HANDLE_CREATE_A_RIDE,
 } from '../../actions/Home/createARide';
 
+import {
+  saveRideInfos
+} from '../../actions/Home/myRide';
+
 import apiUrl from '../env';
 
 const createARide = (store) => (next) => (action) => {
@@ -58,6 +62,7 @@ const createARide = (store) => (next) => (action) => {
         // traitement si réponse est un succès
           console.log('response');
           console.log(response);
+          //store.dispatch(saveRideInfos(response.data));
         })
         .catch((error) => {
         // traitement si réponse est une erreur

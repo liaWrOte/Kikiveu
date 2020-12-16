@@ -26,6 +26,7 @@ import Map from '../../components/microComponents/Map';
 
 const mapStateToProps = (state) => ({
   // nom de la prop à remplir: donnée à récupérer dans le state
+  isLogged: state.auth.isLogged,
   lat: state.map.lat,
   lng: state.map.lng,
   markerLat: state.map.markerLat,

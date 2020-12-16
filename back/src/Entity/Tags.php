@@ -17,13 +17,13 @@ class Tags
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
-     * @Groups({"show_tag"})
+     * @Groups({"show_tag", "show_add_event"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=50)
-     * @Groups({"show_add_event", "show_tag"})
+     * @Groups({"show_tag", "show_add_event"})
      */
     private $name;
 

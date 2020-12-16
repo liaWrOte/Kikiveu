@@ -14,6 +14,7 @@ use Symfony\Component\Serializer\SerializerInterface;
 use Symfony\Component\Serializer\Serializer;
 use Symfony\Component\Serializer\Normalizer\GetSetMethodNormalizer;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
+use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
 /**
  * @Route("/api/v1/event", name="api_v1_event_")
@@ -54,6 +55,20 @@ class EventController extends AbstractController
     }
 
     /**
+     * @Route("/user/{id}", name="read", methods={"GET"}, requirements={"id" = "\d+"})
+     */
+    public function readEventByUserId(int $id, EventsRepository $eventsRepository): Response
+    {
+        $oneEvent = $eventsRepository->findEventByUserId($id);
+        
+        if ($oneEvent === null) {
+            throw $this->createNotFoundException('L\'évènement demandé n\'existe plus');
+        }
+
+        return $this->json($oneEvent);
+    }
+
+    /**
      * @Route("/edit/{id}", name="edit", methods={"PUT"}, requirements={"id" = "\d+"})
      */
     public function edit(Events $events, Request $request): Response
@@ -83,7 +98,7 @@ class EventController extends AbstractController
     /**
      * @Route("/add", name="add", methods={"POST"})
      */
-    public function add(Request $request, SerializerInterface $serializer): Response
+    public function add(Request $request, NormalizerInterface $normalizer): Response
     {
         $json = $request->getContent();
         $eventArray = json_decode($json, true);
@@ -99,7 +114,7 @@ class EventController extends AbstractController
             $em->persist($event);
             $em->flush();
 
-            $json = $serializer->serialize(
+            $json = $normalizer->normalize(
                 $event,
                 'json',
                 ['groups' => 'show_add_event']
