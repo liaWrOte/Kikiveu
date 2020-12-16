@@ -14,6 +14,7 @@ use Symfony\Component\Serializer\SerializerInterface;
 use Symfony\Component\Serializer\Serializer;
 use Symfony\Component\Serializer\Normalizer\GetSetMethodNormalizer;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
+use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
 /**
  * @Route("/api/v1/event", name="api_v1_event_")
@@ -83,7 +84,7 @@ class EventController extends AbstractController
     /**
      * @Route("/add", name="add", methods={"POST"})
      */
-    public function add(Request $request, SerializerInterface $serializer): Response
+    public function add(Request $request, NormalizerInterface $normalizer): Response
     {
         $json = $request->getContent();
         $eventArray = json_decode($json, true);
@@ -99,7 +100,7 @@ class EventController extends AbstractController
             $em->persist($event);
             $em->flush();
 
-            $json = $serializer->serialize(
+            $json = $normalizer->normalize(
                 $event,
                 'json',
                 ['groups' => 'show_add_event']
