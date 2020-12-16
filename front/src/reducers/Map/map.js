@@ -8,7 +8,7 @@ import {
   CHECK_EVENTS_LOCATION,
   REFRESH_MAP_COORDS,
   SHOW_USERS_ON_MAP,
-  GET_OTHER_USER_PROFILE,
+  GET_OTHER_USER_PROFILE_ID,
 } from '../../actions/Map';
 
 const initialState = {
@@ -87,7 +87,7 @@ const mapReducer = (state = initialState, action = {}) => {
         usersOnMap: action.value,
       };
 
-    case GET_OTHER_USER_PROFILE:
+    case GET_OTHER_USER_PROFILE_ID:
       return {
         ...state,
         otherUserProfileId: action.id,

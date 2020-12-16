@@ -10,7 +10,7 @@ import {
   checkEventsLocation,
   refreshMapCoords,
   getUsers,
-  getOtherUserProfile,
+  getOtherUserProfileId,
 } from '../../actions/Map';
 
 import {
@@ -74,8 +74,8 @@ const mapDispatchToProps = (dispatch) => ({
   getUsers: () => {
     dispatch(getUsers());
   },
-  getOtherUserProfile: (id) => {
-    dispatch(getOtherUserProfile(id));
+  getOtherUserProfileId: (id) => {
+    dispatch(getOtherUserProfileId(id));
   },
 });
 
