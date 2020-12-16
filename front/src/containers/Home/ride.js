@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-import Ride from '../../components/Home/Ride';
+import Ride from '../../components/Home/Ride/ride';
 
 import {
   changeField,

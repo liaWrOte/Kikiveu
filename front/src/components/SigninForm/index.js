@@ -170,7 +170,7 @@ const SigninForm = ({
                   onChange={changeField}
                   name="dogCondition"
                   id="smallShape"
-                  value={1}
+                  value={3}
                 />
                 Mauvais
               </label>
@@ -192,7 +192,7 @@ const SigninForm = ({
                   onChange={changeField}
                   name="dogCondition"
                   id="goodShape"
-                  value={3}
+                  value={1}
                   checked
                 />
                 Bon

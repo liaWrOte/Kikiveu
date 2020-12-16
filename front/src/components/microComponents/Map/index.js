@@ -12,7 +12,6 @@ import { Link } from 'react-router-dom';
 
 import rideUrl from '../../../assets/images/ride_icon.png';
 
-import Ride from '../../../containers/Home/ride';
 import SecondaryUserButton from '../SecondaryUserButton/index';
 import TextButton from '../TextButton/index';
 
@@ -28,7 +27,6 @@ const Map = ({
   changeMarkerLat,
   changeMarkerLng,
   getUserProfile,
-  refreshRideEvents,
   refreshMapCoords,
   sendMapCoords,
   loadingMapCoords,
@@ -40,6 +38,7 @@ const Map = ({
   usersOnMap,
   getOtherUserProfileId,
   getOtherUserProfile,
+  isLogged,
 }) => {
   const refresh = 'Rafraîchir la carte';
   console.log(usersOnMap);
@@ -63,7 +62,9 @@ const Map = ({
   useEffect(() => {
     // Met à jour le titre du document via l’API du navigateur
     navigator.geolocation.getCurrentPosition(success);
-    getUserProfile();
+    if (isLogged === true) {
+      getUserProfile();
+    }
   }, []);
 
   function AddMarkerToClick() {
@@ -197,12 +198,15 @@ Map.propTypes = {
   changeLng: PropTypes.func.isRequired,
   changeMarkerLat: PropTypes.func.isRequired,
   changeMarkerLng: PropTypes.func.isRequired,
-  refreshRideEvents: PropTypes.func.isRequired,
   rideEvents: PropTypes.array,
   haveEventsLocation: PropTypes.func.isRequired,
   refreshMapCoords: PropTypes.func.isRequired,
   canPutRideMarker: PropTypes.bool.isRequired,
   getUsers: PropTypes.func.isRequired,
+  getRideId: PropTypes.func.isRequired,
+  isLogged: PropTypes.bool.isRequired,
+  sendMapCoords: PropTypes.func.isRequired,
+  getUserProfile: PropTypes.func.isRequired,
 };
 
 Map.defaultProps = {
