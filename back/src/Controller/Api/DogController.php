@@ -2,7 +2,6 @@
 
 namespace App\Controller\Api;
 
-use App\ApiModel\AvatarUploadApi;
 use App\Entity\Dogs;
 use App\Form\DogType;
 use App\Form\DogEditType;
@@ -40,37 +39,26 @@ class DogController extends AbstractController
     /**
      * @Route("/add", name="add", methods={"POST"})
      */
-    public function add(Request $request, SerializerInterface $serializer): Response
+    public function add(Request $request, NormalizerInterface $normalizer, UploadFile $uploadFile): Response
     {
         $json = $request->getContent();
 
-        $uploadApiModel = $serializer->deserialize(
-            $request->getContent(),
-            AvatarUploadApi::class,
-            'json'
-        );
-
         $dogArray = json_decode($json, true);
-        $filenameExist = array_key_exists('filename', $dogArray);
-        $dataExist = array_key_exists('data', $dogArray);
-
-        if ($filenameExist === true && $dataExist === true) {
-            unset($dogArray['filename']);
-            unset($dogArray['data']);
-        }
+        $cleanDogArray = UploadFile::cleanArray($dogArray);
         
         $dog = new Dogs();
         
         $form = $this->createForm(DogType::class, $dog, ['csrf_protection' => false]);
-        $form->submit($dogArray);
+        $form->submit($cleanDogArray);
         
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $dog->setCreatedAt(new \DateTime());
             $em->persist($dog);
+            $uploadFile->saveUpload($json, $dog);
             $em->flush();
 
-            $json = $serializer->serialize(
+            $json = $normalizer->normalize(
                 $dog,
                 'json',
                 ['groups' => 'add_dogs']
