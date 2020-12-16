@@ -9,13 +9,18 @@ import {
   sendMapCoords,
   checkEventsLocation,
   refreshMapCoords,
+  getUsers,
+  getOtherUserProfileId,
 } from '../../actions/Map';
 
 import {
   getRideId,
 } from '../../actions/Home/ride';
 
-import { getUserProfile } from '../../actions/Home/changeUserProfile';
+import {
+  getOtherUserProfile,
+  getUserProfile,
+} from '../../actions/Home/changeUserProfile';
 
 import Map from '../../components/microComponents/Map';
 
@@ -26,8 +31,10 @@ const mapStateToProps = (state) => ({
   markerLat: state.map.markerLat,
   markerLng: state.map.markerLng,
   rideEvents: state.map.rideEvents,
+  loadingMapCoords: state.map.loadingMapCoords,
   haveEventsLocation: state.map.haveEventsLocation,
   canPutRideMarker: state.createARide.canPutRideMarker,
+  usersOnMap: state.map.usersOnMap,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -55,8 +62,8 @@ const mapDispatchToProps = (dispatch) => ({
     console.log('refresh map coords');
     dispatch(refreshMapCoords(newValue));
   },
-  sendMapCoords: (value) => {
-    dispatch(sendMapCoords(value));
+  sendMapCoords: () => {
+    dispatch(sendMapCoords());
   },
   checkEventsLocation: (value) => {
     dispatch(checkEventsLocation(value));
@@ -66,6 +73,15 @@ const mapDispatchToProps = (dispatch) => ({
   },
   getRideId: (id) => {
     dispatch(getRideId(id));
+  },
+  getUsers: () => {
+    dispatch(getUsers());
+  },
+  getOtherUserProfileId: (id) => {
+    dispatch(getOtherUserProfileId(id));
+  },
+  getOtherUserProfile: (id) => {
+    dispatch(getOtherUserProfile(id));
   },
 });
 

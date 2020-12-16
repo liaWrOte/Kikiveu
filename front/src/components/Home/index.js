@@ -9,7 +9,7 @@ import ChangeUserProfile from '../../containers/Home/changeUserProfile';
 import UserProfile from '../../containers/Home/userProfile';
 import Login from '../../containers/login';
 import SigninForm from '../../containers/signin';
-import SeeOtherUserProfile from './SeeOtherUserProfile';
+import SeeOtherUserProfile from '../../containers/Home/seeOtherUserProfile';
 import Chat from './Chat';
 import KikiVeuContact from './KikiVeuContact';
 import Cgu from '../microComponents/Cgu';
@@ -19,7 +19,7 @@ import PreviousButton from '../microComponents/PreviousButton';
 
 import './index.scss';
 
-const Home = ({ isLogged, loadingRide, loadingProfile }) => (
+const Home = ({ isLogged, loadingRide, loadingProfile, loadingOtherProfile }) => (
   <>
     <Switch>
       <Route exact path="/connexion">
@@ -90,10 +90,12 @@ const Home = ({ isLogged, loadingRide, loadingProfile }) => (
                 )};
               </>
             </Route>
-            <Route exact path="/2">
+            <Route exact path="/:otherUser">
+              {!loadingOtherProfile && (
               <div className=".item3">
                 <SeeOtherUserProfile />
               </div>
+              )}
             </Route>
             <Route exact path="/1/messages/2">
               <div className=".item3">

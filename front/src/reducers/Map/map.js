@@ -7,6 +7,8 @@ import {
   SEND_MAP_COORDS,
   CHECK_EVENTS_LOCATION,
   REFRESH_MAP_COORDS,
+  SHOW_USERS_ON_MAP,
+  GET_OTHER_USER_PROFILE_ID,
 } from '../../actions/Map';
 
 const initialState = {
@@ -17,6 +19,9 @@ const initialState = {
   rideEvents: [],
   mapCoords: [],
   haveEventsLocation: false,
+  loadingMapCoords: true,
+  usersOnMap: [],
+  otherUserProfileId: '',
 };
 
 const mapReducer = (state = initialState, action = {}) => {
@@ -61,18 +66,31 @@ const mapReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         mapCoords: action.value,
+        loadingMapCoords: false,
       };
-/*
+
     case SEND_MAP_COORDS:
       return {
         ...state,
-        
-      };*/
+        loadingMapCoords: false,
+      };
 
     case CHECK_EVENTS_LOCATION:
       return {
         ...state,
         haveEventsLocation: action.value,
+      };
+
+    case SHOW_USERS_ON_MAP:
+      return {
+        ...state,
+        usersOnMap: action.value,
+      };
+
+    case GET_OTHER_USER_PROFILE_ID:
+      return {
+        ...state,
+        otherUserProfileId: action.id,
       };
 
     default: return { ...state };
