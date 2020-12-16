@@ -16,12 +16,12 @@ import Cgu from '../microComponents/Cgu';
 import CreateARide from '../../containers/Home/CreateARide';
 import Ride from '../../containers/Home/ride';
 // import ChangeRide from '../../components/Home/Ride/changeRide';
-import SeeMyRide from '../../components/Home/Ride/seeMyRide';
+import SeeMyRide from '../../containers/Home/seeMyRide';
 import PreviousButton from '../microComponents/PreviousButton';
 
 import './index.scss';
 
-const Home = ({ isLogged, loadingRide, loadingProfile }) => {
+const Home = ({ isLogged, loadingRide, loadingProfile, hasRide, myRideLoading }) => {
   const history = useHistory();
 
   const NotFound = () => (
@@ -78,10 +78,12 @@ const Home = ({ isLogged, loadingRide, loadingProfile }) => {
                   )};
                 </>
               </Route>
-              <Route exact path="/mabalade">
-                <div className=".item3">
-                  <SeeMyRide />
-                </div>
+              <Route exact path="/ma-balade">
+                {!myRideLoading && (
+                  <div className=".item3">
+                    <SeeMyRide />
+                  </div>
+                )};
               </Route>
               <Route exact path="/creer-balade">
                 <div className=".item3">
@@ -139,6 +141,7 @@ Home.propTypes = {
   isLogged: PropTypes.bool.isRequired,
   loadingRide: PropTypes.bool.isRequired,
   loadingProfile: PropTypes.bool.isRequired,
+  myRideLoading: PropTypes.bool.isRequired,
 };
 
 export default Home;

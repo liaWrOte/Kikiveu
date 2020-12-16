@@ -55,7 +55,7 @@ class EventController extends AbstractController
     }
 
     /**
-     * @Route("/user/{id}", name="read", methods={"GET"}, requirements={"id" = "\d+"})
+     * @Route("/user/{id}", name="read_event_by_user", methods={"GET"}, requirements={"id" = "\d+"})
      */
     public function readEventByUserId(int $id, EventsRepository $eventsRepository): Response
     {

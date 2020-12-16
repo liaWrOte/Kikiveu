@@ -10,6 +10,8 @@ const mapStateToProps = (state) => ({
   loadingRide: state.ride.loading,
   loadingUserProfile: state.userProfile.loading,
   loadingOtherProfile: state.userProfile.loadingOtherUserProfile,
+  hasRide: state.createARide.hasRide,
+  myRideLoading: state.myRide.myRideLoading,
 });
 
 const mapDispatchToProps = () => ({

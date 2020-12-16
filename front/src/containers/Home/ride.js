@@ -6,7 +6,7 @@ import {
   changeField,
   handlePostComment,
   loadComments,
-  getRideId
+  getRideId,
 } from '../../actions/Home/ride';
 
 const mapStateToProps = (state) => ({

@@ -101,7 +101,7 @@ const Ride = ({
       <div className="ride__comments">
 
         {commentsSection.map((commentItem) => (
-          <div className="ride__comments__line">
+          <div className="ride__comments__line" key={commentItem.commentId}>
             <p className="ride__comments__line__date">{commentItem.createdAt}</p>
             <p>{commentItem.userId.pseudo}</p>
             <p>{commentItem.body}</p>

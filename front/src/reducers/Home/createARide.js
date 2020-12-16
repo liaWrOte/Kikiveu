@@ -20,6 +20,7 @@ const initialState = {
   duration: '',
   maxParticipant: 1,
   canPutRideMarker: false,
+  hasRide: false,
 };
 
 const createARideReducer = (state = initialState, action = {}) => {
@@ -79,6 +80,7 @@ const createARideReducer = (state = initialState, action = {}) => {
     case HANDLE_CREATE_A_RIDE:
       return {
         ...state,
+        hasRide: true,
       };
 
     case PUT_RIDE_MARKER:

@@ -17,6 +17,7 @@ const Info = ({
     <Link to="/contact"><HelpCircle className="header__icone" stroke-width={2} width={27} height={27} /></Link>
     <Link to="/profil"><MainUserButton avatar={avatar} /></Link>
     <Link to="/creer-balade"><RideButton /></Link>
+    <Link to="/ma-balade"><RideButton /></Link>
   </div>
 );
 

@@ -2,8 +2,17 @@ import {
   SAVE_MY_RIDE_INFOS,
 } from '../../actions/Home/myRide';
 
+import {
+  CHANGE_FIELD,
+  LOAD_COMMENTS,
+  SAVE_COMMENTS,
+} from '../../actions/Home/ride';
+
 const initialState = {
-  myRide: [],
+  myRideInfos: [],
+  myRideLoading: true,
+  comment: '',
+  commentsSection: [],
 };
 
 const seeMyRideReducer = (state = initialState, action = {}) => {
@@ -11,9 +20,22 @@ const seeMyRideReducer = (state = initialState, action = {}) => {
     case SAVE_MY_RIDE_INFOS:
       return {
         ...state,
-        myRide: action.value,
+        myRideInfos: action.value,
+        myRideLoading: false,
+      };
+    case CHANGE_FIELD:
+      console.log('action reçue dans comment');
+      return {
+        ...state,
+        comment: action.value,
       };
 
+    case SAVE_COMMENTS:
+      console.log('action reçue pour comments section');
+      return {
+        ...state,
+        commentsSection: action.value,
+      };
     default: return { ...state };
   }
 };
