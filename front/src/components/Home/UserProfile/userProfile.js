@@ -56,14 +56,14 @@ const UserProfile = ({
   };
 
   const stateUrl = {
-    1: small,
+    1: good,
     2: medium,
-    3: good,
+    3: small,
   };
   const stateText = {
-    1: 'Petite forme',
+    1: 'Excellente forme',
     2: 'Forme moyenne',
-    3: 'Excellente forme',
+    3: 'Petite forme',
   };
   const castrateText = {
     0: 'Non',

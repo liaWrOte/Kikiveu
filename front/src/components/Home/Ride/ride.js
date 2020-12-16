@@ -1,10 +1,9 @@
 import React, { useEffect } from 'react';
 import { Calendar } from 'react-feather';
 import PropTypes from 'prop-types';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 
 // Import composants
-import { useStore } from 'react-redux';
 import PreviousButton from '../../microComponents/PreviousButton';
 import MainUserButton from '../../microComponents/MainUserButton';
 import Emoji from '../../microComponents/Emoji';
@@ -75,6 +74,8 @@ const Ride = ({
   const newdate = datetime.replace('T', '  ');
   const newdatetime = newdate.slice(0, 20);
 
+  const changeText = 'Modifier ma balade';
+
   return (
     <div className="ride">
       <MainUserButton className="ride__mainUserButton" />
@@ -120,7 +121,7 @@ const Ride = ({
           />
           <TextButton />
         </p>
-      </form>>
+      </form>
       <div className="ride__bottom">
         <PreviousButton />
       </div>

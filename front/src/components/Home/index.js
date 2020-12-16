@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Route, Switch, useHistory } from 'react-router-dom';
+import { Route, Switch, useHistory, Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 // Import composants
 import Header from '../../containers/Header';
@@ -15,6 +15,8 @@ import KikiVeuContact from './KikiVeuContact';
 import Cgu from '../microComponents/Cgu';
 import CreateARide from '../../containers/Home/CreateARide';
 import Ride from '../../containers/Home/ride';
+// import ChangeRide from '../../components/Home/Ride/changeRide';
+import SeeMyRide from '../../components/Home/Ride/seeMyRide';
 import PreviousButton from '../microComponents/PreviousButton';
 
 import './index.scss';
@@ -22,11 +24,15 @@ import './index.scss';
 const Home = ({ isLogged, loadingRide, loadingProfile }) => {
   const history = useHistory();
 
+  const NotFound = () => (
+    <div>404 Not Found. Oups, la page demandée n'existe pas...</div>
+  );
+/*
   useEffect(() => {
     if (isLogged === false) {
       history.push('/connexion'); // when user is logged
     }
-  }, [isLogged]);
+  }, [isLogged]);*/
 
   return (
     <>
@@ -41,7 +47,6 @@ const Home = ({ isLogged, loadingRide, loadingProfile }) => {
           <Cgu />
           <PreviousButton />
         </Route>
-        <Route>
           <div className="home">
             <div className=".item1">
               <Header />
@@ -71,6 +76,11 @@ const Home = ({ isLogged, loadingRide, loadingProfile }) => {
                     <div>Chargement...</div>
                   )};
                 </>
+              </Route>
+              <Route exact path="/mabalade">
+                <div className=".item3">
+                  <SeeMyRide />
+                </div>
               </Route>
               <Route exact path="/creer-balade">
                 <div className=".item3">
@@ -116,7 +126,6 @@ const Home = ({ isLogged, loadingRide, loadingProfile }) => {
               </Route>
             </Switch>
           </div>
-        </Route>
       </Switch>
     </>
   );

@@ -12,7 +12,6 @@ import { Link } from 'react-router-dom';
 
 import rideUrl from '../../../assets/images/ride_icon.png';
 
-import Ride from '../../../containers/Home/ride';
 import SecondaryUserButton from '../SecondaryUserButton/index';
 import TextButton from '../TextButton/index';
 
