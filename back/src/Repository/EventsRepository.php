@@ -76,6 +76,33 @@ class EventsRepository extends ServiceEntityRepository
         ;
     }
 
+    public function findEventByUserId($id)
+    {
+        return $this->createQueryBuilder('e')
+            ->select('e.id as eventId')
+            ->addSelect('e.eventLat')
+            ->addSelect('e.eventLong')
+            ->addSelect('e.maxParticipant as eventMaxParticipant')
+            ->addSelect('e.datetime as eventDatetime')
+            ->addSelect('e.duration as eventDuration')
+            ->addSelect('e.description as eventDescription')
+            ->addSelect('e.slug as eventSlug')
+            ->leftJoin('e.users', 'u')
+            ->addSelect('u.id as userId')
+            ->addSelect('u.pseudo as userPseudo')
+            ->leftJoin('u.dogs', 'd')
+            ->addSelect('d.id as dogId')
+            ->addSelect('d.avatar as dogAvatar')
+            ->leftJoin('e.tags', 't')
+            ->addSelect('t.id as tagsId')
+            ->addSelect('t.name as tagsName')
+            ->where('u.id = :id')
+            ->setParameter('id', $id)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
     public function findEventByLocalisation(float $swLat, float $swLong, float $neLat, float $neLong)
     {
         return $this->createQueryBuilder('e')
