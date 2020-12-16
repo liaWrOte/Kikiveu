@@ -169,7 +169,7 @@ const Map = ({
           usersOnMap.map((user) => (
             <div className="map__users__user">
               <Link to={`/${user.userSlug}`} onClick={() => getOtherUserProfile(getOtherUserProfileId(user.userId))}>
-                <p>{user.userPseudo}</p>
+                <img src={user.dogAvatar} alt={user.userPseudo} />
               </Link>
             </div>
           ))
