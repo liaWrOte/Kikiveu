@@ -389,14 +389,14 @@ const SigninForm = ({
             labelText="Selectionnez une image"
             labelStyle={{ fontSize: 14 }}
             callbackFunction={(file_arr) => {
-              /* uploadImage({
+               uploadImage({
                 filename: file_arr[0].base64,
                 data: file_arr[0].name,
-              }); */
-              console.log({
+              });
+              /*console.log({
                 filename: file_arr[0].name,
                 data: file_arr[0].base64,
-              });
+              });*/
               // créer callback le fichier a bien été ajouté
             }}
             imagePreview={false}
@@ -496,7 +496,7 @@ SigninForm.propTypes = {
   character: PropTypes.number,
   picture: PropTypes.string,
   username: PropTypes.string.isRequired,
-  avatar: PropTypes.string.isRequired,
+  avatar: PropTypes.object.isRequired,
   email: PropTypes.string.isRequired,
   password1: PropTypes.string.isRequired,
   password2: PropTypes.string.isRequired,

@@ -42,7 +42,8 @@ const signin = (store) => (next) => (action) => {
               console.log(response);
               axios.post('http://localhost:8000/api/v1/dog/add', {
                 name: signin.dogName, //
-                avatar: signin.avatar, //
+                filename: signin.avatar.data,
+                data: signin.avatar.name, //
                 sex: signin.sex, //
                 state: signin.dogCondition,
                 temperament: signin.character, //
