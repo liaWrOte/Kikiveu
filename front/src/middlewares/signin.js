@@ -76,6 +76,7 @@ const signin = (store) => (next) => (action) => {
       }
       else {
         store.dispatch(handleErrorPassword());
+        store.dispatch(handleErrorSignin());
       }
 
       next(action);

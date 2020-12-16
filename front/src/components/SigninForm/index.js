@@ -457,7 +457,7 @@ const SigninForm = ({
           )}
         </div>
         {alertStatus && (
-          <AlertMessage message="Vous avez des erreurs dans votre forulaire, veuillez remonter pour voir les messages d'erreurs" />
+          <AlertMessage message="Vous avez des erreurs dans votre formulaire, veuillez remonter pour voir les messages d'erreurs" />
         )}
         <p>Vous allez recevoir un email de confirmation d'inscription. Veuillez l'accepter.</p>
         <div className="signForm_flex">
@@ -500,6 +500,13 @@ SigninForm.propTypes = {
   email: PropTypes.string.isRequired,
   password1: PropTypes.string.isRequired,
   password2: PropTypes.string.isRequired,
+  changeField: PropTypes.func.isRequired,
+  handleSignIn: PropTypes.func.isRequired,
+  uploadImage: PropTypes.func.isRequired,
+  alertStatus: PropTypes.bool.isRequired,
+  acceptCGU: PropTypes.bool.isRequired,
+  changeCheckboxField: PropTypes.func.isRequired,
+  alertPasswordStatus: PropTypes.bool.isRequired,
 };
 
 export default SigninForm;
