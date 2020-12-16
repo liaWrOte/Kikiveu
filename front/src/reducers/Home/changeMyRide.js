@@ -1,9 +1,10 @@
 import {
-  UPDATE_CREATE_A_RIDE_FIELD,
+  UPDATE_RIDE_FIELD,
+  HANDLE_UPDATE_RIDE,
   UPDATE_TAGS_FIELD,
-  HANDLE_CREATE_A_RIDE,
   PUT_RIDE_MARKER,
-} from '../../actions/Home/createARide';
+
+} from '../../actions/Home/myRide';
 
 import {
   UPDATE_MARKERLAT,
@@ -14,15 +15,15 @@ const initialState = {
   markerLat: '',
   markerLng: '',
   description: '',
-  tags: [],
   date: '',
+  tags: [],
   time: '',
   duration: '',
   maxParticipant: 1,
   canPutRideMarker: false,
 };
 
-const createARideReducer = (state = initialState, action = {}) => {
+const changeMyRideReducer = (state = initialState, action = {}) => {
   switch (action.type) {
     case UPDATE_MARKERLAT:
       return {
@@ -35,8 +36,7 @@ const createARideReducer = (state = initialState, action = {}) => {
         ...state,
         markerLng: action.value,
       };
-
-    case UPDATE_CREATE_A_RIDE_FIELD:
+    case UPDATE_RIDE_FIELD:
       console.log(`Action reçue, nouvelle valeur ${action.value} pour le champ ${action.name}`);
       return {
         ...state,
@@ -76,16 +76,16 @@ const createARideReducer = (state = initialState, action = {}) => {
 
       break;
 
-    case HANDLE_CREATE_A_RIDE:
+    case HANDLE_UPDATE_RIDE:
       return {
         ...state,
       };
 
     case PUT_RIDE_MARKER:
       console.log('reducer put ride marker');
-      const rideState = { ...state };
+      const myRideState = { ...state };
 
-      var markerStatus = rideState.canPutRideMarker;
+      var markerStatus = myRideState.canPutRideMarker;
       if (markerStatus) {
         return {
           ...state,
@@ -104,4 +104,4 @@ const createARideReducer = (state = initialState, action = {}) => {
   }
 };
 
-export default createARideReducer;
+export default changeMyRideReducer;

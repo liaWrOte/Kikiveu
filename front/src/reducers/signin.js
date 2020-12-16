@@ -16,7 +16,7 @@ const initialState = {
   character: 1,
   picture: '',
   username: '',
-  avatar: '',
+  avatar: 'dog.jpeg',
   email: '',
   password1: '',
   password2: '',

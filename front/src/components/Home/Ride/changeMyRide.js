@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import PreviousButton from '../../microComponents/PreviousButton';
 import MainUserButton from '../../microComponents/MainUserButton';
 import Emoji from '../../microComponents/Emoji';
-import Toggle from '../../microComponents/Toggle';
+import TextArea from '../../microComponents/TextArea';
 import Input from '../../microComponents/Input';
 import TextButton from '../../microComponents/TextButton';
 
@@ -21,7 +21,7 @@ import water from '../../../assets/images/ride/water_ride.png';
 
 import './ride.scss';
 
-const ChangeRide = ({
+const ChangeMyRide = ({
   markerLat,
   markerLng,
   description,
@@ -42,7 +42,7 @@ const ChangeRide = ({
     event.preventDefault();
     console.log(changeField);
     console.log('update User profile');
-    //handleUpdateRide();
+    handleUpdateRide();
   };
 
   return (
@@ -227,7 +227,7 @@ const ChangeRide = ({
   );
 };
 
-ChangeRide.defaultProps = {
+ChangeMyRide.defaultProps = {
   date: '',
   time: '',
   description: '',
@@ -236,7 +236,7 @@ ChangeRide.defaultProps = {
 };
 
 // PropTypes
-ChangeRide.propTypes = {
+ChangeMyRide.propTypes = {
   markerLat: PropTypes.number.isRequired,
   markerLng: PropTypes.number.isRequired,
   description: PropTypes.string,
@@ -250,4 +250,4 @@ ChangeRide.propTypes = {
 };
 
 
-export default ChangeRide;
+export default ChangeMyRide;

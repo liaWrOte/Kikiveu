@@ -15,7 +15,7 @@ import KikiVeuContact from './KikiVeuContact';
 import Cgu from '../microComponents/Cgu';
 import CreateARide from '../../containers/Home/CreateARide';
 import Ride from '../../containers/Home/ride';
-// import ChangeRide from '../../components/Home/Ride/changeRide';
+import ChangeMyRide from '../../containers/Home/changeMyRide';
 import SeeMyRide from '../../containers/Home/seeMyRide';
 import PreviousButton from '../microComponents/PreviousButton';
 
@@ -84,6 +84,11 @@ const Home = ({ isLogged, loadingRide, loadingProfile, hasRide, myRideLoading })
                     <SeeMyRide />
                   </div>
                 )};
+              </Route>
+              <Route exact path="/ma-balade/edit">
+                <div className=".item3">
+                  <ChangeMyRide />
+                </div>
               </Route>
               <Route exact path="/creer-balade">
                 <div className=".item3">

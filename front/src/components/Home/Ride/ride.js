@@ -26,7 +26,6 @@ const Ride = ({
   comment,
   handlePostComment,
   commentsSection,
-  loadComments,
   rideId,
 }) => {
   /*useEffect(() => {
@@ -73,8 +72,6 @@ const Ride = ({
   const datetime = rideInfos.eventDatetime;
   const newdate = datetime.replace('T', '  ');
   const newdatetime = newdate.slice(0, 20);
-
-  const changeText = 'Modifier ma balade';
 
   return (
     <div className="ride">

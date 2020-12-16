@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 
 import SeeMyRide from '../../components/Home/Ride/seeMyRide';
 
-import { getMyRide } from '../../actions/Home/myRide';
+import { getMyRide, deleteMyRide } from '../../actions/Home/myRide';
 import {
   changeField,
   handlePostComment,
@@ -27,6 +27,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
   loadComments: () => {
     dispatch(loadComments());
+  },
+  deleteMyRide: () => {
+    dispatch(deleteMyRide());
   },
 });
 

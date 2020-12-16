@@ -42,12 +42,12 @@ Input.propTypes = {
     PropTypes.number.isRequired,
   ]),
   type: PropTypes.string,
-  name: PropTypes.string.isRequired,
+  name: PropTypes.string,
   placeholder: PropTypes.string,
   onChange: PropTypes.func,
   id: PropTypes.string,
   //checked: PropTypes.bool,
-  inputClass: PropTypes.string.isRequired,
+  inputClass: PropTypes.string,
 };
 
 // Valeurs par défaut pour les props
@@ -56,6 +56,8 @@ Input.defaultProps = {
   value: '',
   type: 'text',
   placeholder: '',
+  inputClass: '',
+  name: '',
   //checked: false,
   onChange: () => {
   },

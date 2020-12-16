@@ -26,7 +26,7 @@ const SeeMyRide = ({
   comment,
   handlePostComment,
   commentsSection,
-  loadComments,
+  deleteMyRide,
 }) => {
   const { slug } = useParams();
 
@@ -60,11 +60,13 @@ const SeeMyRide = ({
   const newdatetime = newdate.slice(0, 20);
 
   const changeText = 'Modifier ma balade';
+  const deleteText = 'Supprimer ma balade';
 
   return (
     <div className="ride">
       <MainUserButton className="ride__mainUserButton" />
-      <TextButton text={changeText} />
+      <Link to="/ma-balade/edit"><TextButton text={changeText} /></Link>
+      <TextButton text={deleteText} handleClick={() => deleteMyRide()} />
       <p> Description de la balade :
         {myRideInfos.eventDescription}
       </p>
@@ -117,6 +119,9 @@ const SeeMyRide = ({
 
 SeeMyRide.propTypes = {
   myRideInfos: PropTypes.object.isRequired,
+  changeField: PropTypes.func.isRequired,
+  comment: PropTypes.string.isRequired,
+  handlePostComment: PropTypes.func.isRequired,
 };
 
 export default SeeMyRide;
