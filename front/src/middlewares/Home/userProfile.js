@@ -42,13 +42,13 @@ const userProfile = (store) => (next) => (action) => {
       axios.get(`http://localhost:8000/api/v1/user/${map.otherUserProfileId}`, config)
         .then((response) => {
           // traitement si réponse est un succès
-          console.log(response.data);
-          store.dispatch(saveOtherUserInfo(response.data));
+          console.log(response.data[0]);
+          store.dispatch(saveOtherUserInfo(response.data[0]));
           axios.get(`http://localhost:8000/api/v1/dog/${map.otherUserProfileId}`, config)
             .then((response2) => {
               // traitement si réponse est un succès
               console.log(response2.data);
-              store.dispatch(saveOtherUserDogInfo(response2.data));
+              store.dispatch(saveOtherUserDogInfo(response2.data[0]));
               // je veux stocker response.data dans le state => seule possibilité,
               // dispatch une action au store
             })

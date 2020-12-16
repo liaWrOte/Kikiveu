@@ -70,21 +70,22 @@ const SeeOtherUserProfile = ({
 
   return (
     <div className="userProfile">
-      <MainUserButton avatar="" className="mainUserButton" />
-      <h2>Profil de </h2>
-      <p>Son humeur du jour</p>
+      <MainUserButton avatar={otherUserDogInfo.avatar} className="mainUserButton" />
+      <h2>Profil de {otherUserDogInfo.pseudo}</h2>
+      <p>Son humeur du jour </p>
+      <p>{moodText[otherUserDogInfo.mooId]}</p>
       <div className="userProfile__form__emoji">
-        
-        <Emoji src="" />
+      <p>{moodText[otherUserDogInfo.moodId]}</p>
+        <Emoji src={otherUserDogInfo.avatar} />
       </div>
 
       <p>Son état de santé</p>
       <div className="userProfile__form__emoji">
-        
-        <Emoji src="" />
+      <p>{stateText[otherUserDogInfo.stateId]}</p>
+        <Emoji src={moodUrl[otherUserDogInfo.stateId]} />
       </div>
-
-      <div>Castré : </div>
+      {stateText[otherUserDogInfo.stateId]}
+      <div>Castré : {castrateText[otherUserDogInfo.castrate]} </div>
       <div className="userProfile__bottom">
         <PreviousButton />
       </div>
