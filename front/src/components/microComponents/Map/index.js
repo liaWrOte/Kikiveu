@@ -29,13 +29,19 @@ const Map = ({
   getUserProfile,
   refreshMapCoords,
   sendMapCoords,
+  loadingMapCoords,
   rideEvents,
   haveEventsLocation,
   canPutRideMarker,
   getRideId,
+  getUsers,
+  usersOnMap,
+  getOtherUserProfileId,
+  getOtherUserProfile,
   isLogged,
 }) => {
   const refresh = 'Rafraîchir la carte';
+  console.log(usersOnMap);
 
   function MapBounds() {
     const map = useMap();
@@ -157,21 +163,21 @@ const Map = ({
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
       </MapContainer>
-      ) }
 
+      )};
       <div className="map__users">
-        <div className="map__users__user">
-          <Link to="/2"><SecondaryUserButton className="map__users__user" /></Link>
-        </div>
-        <div className="map__users__user">
-          <Link to="/2"><SecondaryUserButton className="map__users__user" /></Link>
-        </div>
-        <div className="map__users__user">
-          <Link to="/2"><SecondaryUserButton className="map__users__user" /></Link>
-        </div>
+        {(usersOnMap) && (
+          usersOnMap.map((user) => (
+            <div className="map__users__user">
+              <Link to={`/${user.userSlug}`} onClick={() => getOtherUserProfile(getOtherUserProfileId(user.userId))}>
+                <img src={user.dogAvatar} alt={user.userPseudo} />
+              </Link>
+            </div>
+          ))
+        )}
       </div>
       <div className="map__refresh">
-        <TextButton text={refresh} handleClick={sendMapCoords} buttonClass="button_small" />
+        <TextButton text={refresh} handleClick={() => sendMapCoords()} buttonClass="button_small" />
       </div>
     </div>
   );
@@ -196,6 +202,7 @@ Map.propTypes = {
   haveEventsLocation: PropTypes.func.isRequired,
   refreshMapCoords: PropTypes.func.isRequired,
   canPutRideMarker: PropTypes.bool.isRequired,
+  getUsers: PropTypes.func.isRequired,
   getRideId: PropTypes.func.isRequired,
   isLogged: PropTypes.bool.isRequired,
   sendMapCoords: PropTypes.func.isRequired,
@@ -210,4 +217,3 @@ Map.defaultProps = {
 };
 
 export default Map;
-

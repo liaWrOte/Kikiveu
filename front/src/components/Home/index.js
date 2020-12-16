@@ -9,7 +9,7 @@ import ChangeUserProfile from '../../containers/Home/changeUserProfile';
 import UserProfile from '../../containers/Home/userProfile';
 import Login from '../../containers/login';
 import SigninForm from '../../containers/signin';
-import SeeOtherUserProfile from './SeeOtherUserProfile';
+import SeeOtherUserProfile from '../../containers/Home/seeOtherUserProfile';
 import Chat from './Chat';
 import KikiVeuContact from './KikiVeuContact';
 import Cgu from '../microComponents/Cgu';
@@ -130,6 +130,7 @@ const Home = ({ isLogged, loadingRide, loadingProfile }) => {
     </>
   );
 };
+
 
 // PropTypes
 Home.propTypes = {
