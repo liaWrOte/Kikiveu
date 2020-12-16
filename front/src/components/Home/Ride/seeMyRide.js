@@ -53,8 +53,8 @@ const SeeMyRide = ({
   }, [rideInfos]);
 */
 
-  const datetime = rideInfos.eventDatetime;
-  const newdate = datetime.replace('T', '  ');
+  const dateTime = myRide.datetime;
+  const newdate = dateTime.replace('T', '  ');
   const newdatetime = newdate.slice(0, 20);
 
   const changeText = 'Modifier ma balade';
@@ -64,34 +64,25 @@ const SeeMyRide = ({
       <MainUserButton className="ride__mainUserButton" />
       <TextButton text={changeText} />
       <p> Description de la balade :
-        {rideInfos.eventDescription}
+        {myRide.description}
       </p>
       <p>
         <Calendar /> Date et heure : {newdatetime}
       </p>
       <p>
-        Durée: {rideInfos.eventDuration}
+        Durée: {myRide.eventDuration}
       </p>
       <p>
-        Nombre de participants maximum : {rideInfos.eventMaxParticipant}
+        Nombre de participants maximum : {myRide.maxParticipant}
       </p>
       <p>
-        Type de balade : {typesRideText[rideInfos.tagsId]}
+        Type de balade : {typesRideText[myRide.tags]}
       </p>
       <div className="ride__emoji">
-        <Emoji src={typesRideUrl[rideInfos.tagsId]} />
+        <Emoji src={typesRideUrl[myRide.tags]} />
       </div>
       <p>Commentaires</p>
       <div className="ride__comments">
-
-        {commentsSection.map((commentItem) => (
-          <div className="ride__comments__line">
-            <p className="ride__comments__line__date">{commentItem.createdAt}</p>
-            <p>{commentItem.userId.pseudo}</p>
-            <p>{commentItem.body}</p>
-          </div>
-        ))}
-
       </div>
       <div className="ride__bottom">
         <PreviousButton />
@@ -101,9 +92,7 @@ const SeeMyRide = ({
 };
 
 SeeMyRide.propTypes = {
-  rideInfos: PropTypes.object.isRequired,
-  changeField: PropTypes.func.isRequired,
-  comment: PropTypes.string.isRequired,
+  myRide: PropTypes.object.isRequired,
 };
 
 export default SeeMyRide;

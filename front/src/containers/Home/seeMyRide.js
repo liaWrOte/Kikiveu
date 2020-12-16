@@ -5,7 +5,7 @@ import SeeMyRide from '../../components/Home/Ride/seeMyRide';
 import { getMyRide } from '../../actions/Home/myRide';
 
 const mapStateToProps = (state) => ({
-  myRide: state.myRide,
+  myRide: state.myRide.myRide,
 });
 
 const mapDispatchToProps = (dispatch) => ({

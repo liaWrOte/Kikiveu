@@ -27,12 +27,12 @@ const Home = ({ isLogged, loadingRide, loadingProfile }) => {
   const NotFound = () => (
     <div>404 Not Found. Oups, la page demandée n'existe pas...</div>
   );
-/*
+
   useEffect(() => {
     if (isLogged === false) {
       history.push('/connexion'); // when user is logged
     }
-  }, [isLogged]);*/
+  }, [isLogged]);
 
   return (
     <>
@@ -47,6 +47,7 @@ const Home = ({ isLogged, loadingRide, loadingProfile }) => {
           <Cgu />
           <PreviousButton />
         </Route>
+        {isLogged && (
           <div className="home">
             <div className=".item1">
               <Header />
@@ -126,6 +127,7 @@ const Home = ({ isLogged, loadingRide, loadingProfile }) => {
               </Route>
             </Switch>
           </div>
+        )}
       </Switch>
     </>
   );
