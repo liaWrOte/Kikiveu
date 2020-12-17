@@ -78,3 +78,22 @@
     background-color: #fff;
   }
 }
+
+/* HIDE RADIO */
+[type=checkbox] { 
+  position: absolute;
+  opacity: 0;
+  width: 60px;
+  height: 60px;
+}
+
+/* IMAGE STYLES */
+[type=checkbox] + .emoji__image {
+  cursor: pointer;
+}
+
+/* CHECKED STYLES */
+[type=checkbox]:checked + .emoji__image {
+  outline: 2px solid #f00;
+}
+

@@ -76,15 +76,15 @@ const UserProfile = ({
       <h2>Profil de {pseudo}</h2>
       <Link to="/profil/edit"><TextButton text={changeText} buttonClass="button_small" /></Link>
       <p>Son humeur du jour</p>
-      <div className="userProfile__form__emoji">
-        {moodText[moodId]}
+      <div className="createARide__divLabel__wrapper__users__emoji">
         <Emoji src={moodUrl[moodId]} />
+        {moodText[moodId]}
       </div>
 
       <p>Son état de santé</p>
-      <div className="userProfile__form__emoji">
-        {stateText[stateId]}
+      <div className="createARide__divLabel__wrapper__users__emoji">
         <Emoji src={stateUrl[stateId]} />
+        {stateText[stateId]}
       </div>
 
       <div>Castré : {castrateText[castrate]}</div>

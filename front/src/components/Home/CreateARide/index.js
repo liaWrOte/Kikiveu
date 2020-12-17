@@ -140,7 +140,7 @@ const CreateARide = ({
           <div className="createARide__divLabel__wrapper">
             <div className="createARide__divLabel__wrapper__users">
               <label htmlFor="tags" className="createARide__divLabel__wrapper__users__emoji">
-                Sportive
+
                 <Emoji src={athletic} />
                 <Input
                   type="checkbox"
@@ -148,10 +148,12 @@ const CreateARide = ({
                   value={1}
                   id="athletic"
                   name="tags"
+
                 />
+                Sportive
               </label>
               <label htmlFor="tags" className="createARide__divLabel__wrapper__users__emoji">
-                Educative
+
                 <Emoji src={learning} />
                 <Input
                   type="checkbox"
@@ -160,9 +162,10 @@ const CreateARide = ({
                   id="learning"
                   name="tags"
                 />
+                Educative
               </label>
               <label htmlFor="tags" className="createARide__divLabel__wrapper__users__emoji">
-                Nature
+
                 <Emoji src={nature} />
                 <Input
                   type="checkbox"
@@ -171,9 +174,10 @@ const CreateARide = ({
                   id="nature"
                   name="tags"
                 />
+                Nature
               </label>
               <label htmlFor="tags" className="createARide__divLabel__wrapper__users__emoji">
-                Détente
+
                 <Emoji src={peaceful} />
                 <Input
                   type="checkbox"
@@ -182,9 +186,10 @@ const CreateARide = ({
                   id="peaceful"
                   name="tags"
                 />
+                Détente
               </label>
               <label htmlFor="tags" className="createARide__divLabel__wrapper__users__emoji">
-                Joueuse
+                
                 <Emoji src={player} />
                 <Input
                   type="checkbox"
@@ -193,9 +198,10 @@ const CreateARide = ({
                   id="player"
                   name="tags"
                 />
+                Joueuse
               </label>
               <label htmlFor="tags" className="createARide__divLabel__wrapper__users__emoji">
-                Urbaine
+
                 <Emoji src={urban} />
                 <Input
                   type="checkbox"
@@ -204,9 +210,10 @@ const CreateARide = ({
                   id="urban"
                   name="tags"
                 />
+                Urbaine
               </label>
               <label htmlFor="tags" className="createARide__divLabel__wrapper__users__emoji">
-                Aquatique
+
                 <Emoji src={water} />
                 <Input
                   type="checkbox"
@@ -215,6 +222,7 @@ const CreateARide = ({
                   id="water"
                   name="tags"
                 />
+                Aquatique
               </label>
             </div>
           </div>
