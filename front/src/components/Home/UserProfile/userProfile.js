@@ -74,7 +74,7 @@ const UserProfile = ({
     <div className="userProfile">
       <MainUserButton avatar={avatar} className="mainUserButton" />
       <h2>Profil de {pseudo}</h2>
-      <Link to="/profil/edit"><TextButton text={changeText} /></Link>
+      <Link to="/profil/edit"><TextButton text={changeText} buttonClass="button_small" /></Link>
       <p>Son humeur du jour</p>
       <div className="userProfile__form__emoji">
         {moodText[moodId]}

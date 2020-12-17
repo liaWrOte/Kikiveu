@@ -117,7 +117,7 @@ const Ride = ({
             value={comment}
             inputClass="input_small"
           />
-          <TextButton text={submitText} />
+          <TextButton text="Envoyer" buttonClass="button_small_green" />
         </p>
       </form>
       <div className="ride__bottom">

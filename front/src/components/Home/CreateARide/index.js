@@ -222,7 +222,7 @@ const CreateARide = ({
 
         <div className="createARide__bottom">
           <PreviousButton />
-          <Input value="Enregistrer sur la carte" type="submit" className="button_small" />
+          <TextButton value="Enregistrer sur la carte" type="submit" buttonClass="button_small" />
         </div>
       </form>
     </div>
