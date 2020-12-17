@@ -62,3 +62,4 @@ export const getOtherUserProfileId = (id) => ({
   type: GET_OTHER_USER_PROFILE_ID,
   id,
 });
+

@@ -5,13 +5,17 @@ import ChangeMyRide from '../../components/Home/Ride/changeMyRide';
 import {
   updateRideField,
   handleUpdateRide,
-  updateTagsField,
+  updateTagsMyRideField,
   putRideMarker,
-
 } from '../../actions/Home/myRide';
 
 const mapStateToProps = (state) => ({
   myRideInfos: state.myRide.myRideInfos,
+  markerLat: state.map.markerLat,
+  markerLng: state.map.markerLng,
+  newDate: state.myRide.newDate,
+  newTime: state.myRide.newTime,
+  newTagsId: state.myRide.newTagsId,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -20,7 +24,7 @@ const mapDispatchToProps = (dispatch) => ({
   },
   updateTagRide: (newValue, name) => {
     console.log('update');
-    dispatch(updateTagsField(newValue, name));
+    dispatch(updateTagsMyRideField(newValue, name));
   },
   handleUpdateRide: () => {
     dispatch(handleUpdateRide());

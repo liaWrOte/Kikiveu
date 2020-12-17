@@ -22,7 +22,12 @@ import water from '../../../assets/images/ride/water_ride.png';
 import './ride.scss';
 
 const ChangeMyRide = ({
+  markerLat,
+  markerLng,
   myRideInfos,
+  newDate,
+  newTime,
+  newTagsId,
   putRideMarker,
   changeField,
   updateTagRide,
@@ -39,8 +44,10 @@ const ChangeMyRide = ({
   };
 
   const datetime = myRideInfos.eventDatetime;
-  const newdate = datetime.replace('T', '  ');
-  const newdatetime = newdate.slice(0, 20);
+  const newdatetime = datetime.replace('T', '  ');
+  const newdate = newdatetime.slice(0, 11);
+
+  const newtime = newdatetime.slice(11, 18);
 
   return (
     <div className="ride">
@@ -59,25 +66,35 @@ const ChangeMyRide = ({
               inputClass="input_small"
             />
           </label>
-          <div className="ride__locate">
-            Lieu de la balade :
-            <p className="lieu">Latitude : </p>
-            <p className="lieu">
-              {myRideInfos.eventLat}
-            </p>
-            <p className="lieu">Longitude :</p>
-            <p className="lieu">{myRideInfos.eventLong}</p>
-          </div>
+          <label htmlFor="eventLat">
+            Latitude :
+            <Input
+              name="eventLat"
+              maxLength="200"
+              onChange={changeField}
+              value={markerLat}
+              inputClass="input_small"
+            />
+          </label>
+          <label htmlFor="eventLong">
+            Longitude :
+            <Input
+              name="eventLong"
+              maxLength="200"
+              onChange={changeField}
+              value={markerLng}
+              inputClass="input_small"
+            />
+          </label>
         </div>
-        <p>Date et heure initiales : {newdatetime}</p>
         <div className="twoColumns">
           <div className="ride__item">
-            <label htmlFor="date">
+            <label htmlFor="eventDatetime">
               Date:
               <Input
                 type="text"
                 id="date"
-                name="date"
+                name="eventDatetime"
                 placeholder="JJ-MM-AAAA"
                 onChange={changeField}
                 value={myRideInfos.eventDatetime}
@@ -100,12 +117,12 @@ const ChangeMyRide = ({
         </div>
         <div className="twoColumns">
           <div className="createARide__item">
-            <label htmlFor="duration" className="fullWidth">
+            <label htmlFor="eventDuration" className="fullWidth">
               Durée :
               <Input
                 type="time"
                 id="duration"
-                name="duration"
+                name="eventDuration"
                 onChange={changeField}
                 value={myRideInfos.eventDuration}
                 inputClass="input_small"
@@ -113,12 +130,12 @@ const ChangeMyRide = ({
             </label>
           </div>
           <div className="createARide__item">
-            <label htmlFor="maxParticipant" className="fullWidth">
+            <label htmlFor="eventMaxParticipant" className="fullWidth">
               Participants:
               <Input
                 type="number"
                 id="maxParticipant"
-                name="maxParticipant"
+                name="eventMaxParticipant"
                 max="40"
                 onChange={changeField}
                 value={myRideInfos.eventMaxParticipant}
@@ -128,86 +145,86 @@ const ChangeMyRide = ({
           </div>
         </div>
         <p>
-          Je choisis le type de la balade :
+          Je choisis le type de la balade : (plusieurs choix possibles)
         </p>
         <div className="createARide__divLabel">
           <div className="createARide__divLabel__wrapper">
             <div className="createARide__divLabel__wrapper__users">
-              <label htmlFor="tags" className="createARide__divLabel__wrapper__users__emoji">
+              <label htmlFor="tagsId" className="createARide__divLabel__wrapper__users__emoji">
                 Sportive
                 <Emoji src={athletic} />
                 <Input
                   type="checkbox"
-                  onChange={updateTagRide}
+                  onChange={changeField}
                   value={1}
                   id="athletic"
-                  name="tags"
+                  name="tagsId"
                 />
               </label>
-              <label htmlFor="tags" className="createARide__divLabel__wrapper__users__emoji">
+              <label htmlFor="tagsId" className="createARide__divLabel__wrapper__users__emoji">
                 Educative
                 <Emoji src={learning} />
                 <Input
                   type="checkbox"
-                  onChange={updateTagRide}
+                  onChange={changeField}
                   value={2}
                   id="learning"
-                  name="tags"
+                  name="tagsId"
                 />
               </label>
-              <label htmlFor="tags" className="createARide__divLabel__wrapper__users__emoji">
+              <label htmlFor="tagsId" className="createARide__divLabel__wrapper__users__emoji">
                 Nature
                 <Emoji src={nature} />
                 <Input
                   type="checkbox"
-                  onChange={updateTagRide}
+                  onChange={changeField}
                   value={3}
                   id="nature"
-                  name="tags"
+                  name="tagsId"
                 />
               </label>
-              <label htmlFor="tags" className="createARide__divLabel__wrapper__users__emoji">
+              <label htmlFor="tagsId" className="createARide__divLabel__wrapper__users__emoji">
                 Détente
                 <Emoji src={peaceful} />
                 <Input
                   type="checkbox"
-                  onChange={updateTagRide}
+                  onChange={changeField}
                   value={4}
                   id="peaceful"
-                  name="tags"
+                  name="tagsId"
                 />
               </label>
-              <label htmlFor="tags" className="createARide__divLabel__wrapper__users__emoji">
+              <label htmlFor="tagsId" className="createARide__divLabel__wrapper__users__emoji">
                 Joueuse
                 <Emoji src={player} />
                 <Input
                   type="checkbox"
-                  onChange={updateTagRide}
+                  onChange={changeField}
                   value={5}
                   id="player"
-                  name="tags"
+                  name="tagsId"
                 />
               </label>
-              <label htmlFor="tags" className="createARide__divLabel__wrapper__users__emoji">
+              <label htmlFor="tagsId" className="createARide__divLabel__wrapper__users__emoji">
                 Urbaine
                 <Emoji src={urban} />
                 <Input
                   type="checkbox"
-                  onChange={updateTagRide}
+                  onChange={changeField}
                   value={6}
                   id="urban"
-                  name="tags"
+                  name="tagsId"
                 />
               </label>
-              <label htmlFor="tags" className="createARide__divLabel__wrapper__users__emoji">
+              <label htmlFor="tagsId" className="createARide__divLabel__wrapper__users__emoji">
                 Aquatique
                 <Emoji src={water} />
                 <Input
                   type="checkbox"
-                  onChange={updateTagRide}
+                  onChange={changeField}
                   value={7}
                   id="water"
-                  name="tags"
+                  name="tagsId"
                 />
               </label>
             </div>
@@ -233,21 +250,16 @@ ChangeMyRide.defaultProps = {
 
 // PropTypes
 ChangeMyRide.propTypes = {
-  markerLat: PropTypes.number.isRequired,
-  markerLng: PropTypes.number.isRequired,
-  description: PropTypes.string,
-  date: PropTypes.string,
-  time: PropTypes.string,
-  duration: PropTypes.string,
-  maxParticipant: PropTypes.number,
+  myRideInfos: PropTypes.arrayOf(PropTypes.shape({
+    eventDescription: PropTypes.string.isRequired,
+    eventDatetime: PropTypes.string.isRequired,
+    eventDuration: PropTypes.string.isRequired,
+    eventMaxParticipant: PropTypes.string.isRequired,
+    tagsId: PropTypes.number.isRequired,
+  })).isRequired,
   changeField: PropTypes.func.isRequired,
   handleUpdateRide: PropTypes.func.isRequired,
   putRideMarker: PropTypes.func.isRequired,
-  initialDescription: PropTypes.string.isRequired,
-  initialDatetime: PropTypes.string.isRequired,
-  initialMaxParticipant: PropTypes.number.isRequired,
-  initialLat: PropTypes.number.isRequired,
-  initialLng: PropTypes.number.isRequired,
 };
 
 

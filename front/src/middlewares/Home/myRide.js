@@ -23,7 +23,7 @@ const myRide = (store) => (next) => (action) => {
   };
   const { auth } = store.getState();
   const { myRide } = store.getState();
-  const { changeMyRide } = store.getState();
+  const { map } = store.getState();
   switch (action.type) {
     case GET_MY_RIDE:
       console.log('middleware, action GET_MY_RIDE');
@@ -100,13 +100,13 @@ const myRide = (store) => (next) => (action) => {
 
     case HANDLE_UPDATE_RIDE:
       axios.put(`http://localhost:8000/api/v1/event/edit/${myRide.myRideInfos.eventId}`, {
-        eventLat: changeMyRide.markerLat,
-        eventLong: changeMyRide.markerLng,
-        description: changeMyRide.description,
-        tags: changeMyRide.tags,
-        datetime: `${changeMyRide.date} ${changeMyRide.time}`,
-        duration: changeMyRide.duration,
-        maxParticipant: changeMyRide.maxParticipant, // problème ici
+        eventLat: map.markerLat,
+        eventLong: map.markerLng,
+        description: myRide.myRideInfos.eventDescription,
+        tags: `[${myRide.myRideInfos.tagsId}]`,
+        datetime: `${myRide.myRideInfos.eventDatetime}`,
+        duration: myRide.myRideInfos.eventDuration,
+        maxParticipant: myRide.myRideInfos.eventMaxParticipant,
         slug: auth.nickname,
         users: auth.userId,
       }, config)
