@@ -390,13 +390,13 @@ const SigninForm = ({
             labelStyle={{ fontSize: 14 }}
             callbackFunction={(file_arr) => {
               uploadImage({
-                filename: file_arr[0].base64,
-                data: file_arr[0].name,
-              });
-              /* console.log({
                 filename: file_arr[0].name,
                 data: file_arr[0].base64,
-              }); */
+              });
+              console.log({
+                filename: (file_arr[0].name),
+                data: (file_arr[0].base64).substring(22),
+              });
               // créer callback le fichier a bien été ajouté
             }}
             imagePreview={false}
