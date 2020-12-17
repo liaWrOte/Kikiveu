@@ -20,6 +20,7 @@ const mapStateToProps = (state) => ({
   maxParticipant: state.createARide.maxParticipant,
   userId: state.auth.userId,
   canPutRideMarker: state.createARide.canPutRideMarker,
+  hasRide: state.myRide.hasRide,
 });
 
 const mapDispatchToProps = (dispatch) => ({

@@ -41,7 +41,7 @@ const Map = ({
   getOtherUserProfile,
   isLogged,
 }) => {
-  const refresh = 'Rafraîchir la carte';
+  const refresh = 'Rechercher dans la zone';
   console.log(usersOnMap);
 
   function MapBounds() {

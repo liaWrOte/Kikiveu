@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { useHistory } from 'react-router-dom';
 
 // Import composants
 import PreviousButton from '../../microComponents/PreviousButton';
@@ -34,6 +35,7 @@ const CreateARide = ({
   updateTagRide,
   handleCreateARide,
   putRideMarker,
+  hasRide,
 }) => {
   const placeCursor = 'Je positionne ma balade sur la carte';
   const saveText = 'Enregistrer';

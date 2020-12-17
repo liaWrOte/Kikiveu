@@ -128,7 +128,7 @@ const myRide = (store) => (next) => (action) => {
         .then((response) => {
           // traitement si réponse est un succès
           console.log(response);
-          //store.dispatch(hasRide(false));
+          store.dispatch(hasRide(false));
         })
         .catch((error) => {
         // traitement si réponse est une erreur

@@ -5,6 +5,7 @@ import {
 } from '../../actions/Home/createARide';
 
 import {
+  getMyRide,
   saveMyRideInfos,
   hasRide,
 } from '../../actions/Home/myRide';
@@ -16,6 +17,7 @@ const createARide = (store) => (next) => (action) => {
   const config = {
     headers: { Authorization: `Bearer ${tokenValue}` },
   };
+
   switch (action.type) {
     case HANDLE_CREATE_A_RIDE:
       console.log('middlewareCreateARide ok');
@@ -45,6 +47,7 @@ const createARide = (store) => (next) => (action) => {
           console.log(response);
           store.dispatch(saveMyRideInfos(response.data));
           store.dispatch(hasRide(true));
+          store.dispatch(getMyRide());
         })
         .catch((error) => {
         // traitement si réponse est une erreur

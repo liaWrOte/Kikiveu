@@ -69,7 +69,8 @@ const SeeMyRide = ({
       <TextButton
         text={deleteText}
         handleClick={() => {
-          if (window.confirm('Je confirme la suppression de ma balade.')) deleteMyRide()}}
+          if (window.confirm('Je confirme la suppression de ma balade.')) deleteMyRide();
+        }}
       />
       <p> Description de la balade :
         {myRideInfos.eventDescription}
