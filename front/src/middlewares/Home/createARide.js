@@ -6,6 +6,7 @@ import {
 
 import {
   saveMyRideInfos,
+  hasRide,
 } from '../../actions/Home/myRide';
 
 import apiUrl from '../env';
@@ -43,10 +44,12 @@ const createARide = (store) => (next) => (action) => {
           console.log('response');
           console.log(response);
           store.dispatch(saveMyRideInfos(response.data));
+          store.dispatch(hasRide(true));
         })
         .catch((error) => {
         // traitement si réponse est une erreur
           console.log('erreur :', error);
+          store.dispatch(hasRide(false));
         });
 
       next(action);
