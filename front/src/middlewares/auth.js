@@ -1,11 +1,13 @@
 import axios from 'axios';
-
-
 import {
   LOG_IN,
   LOG_OUT,
   saveAuthInfo,
 } from '../actions/auth';
+
+import {
+  handleErrorLogin,
+} from '../actions/Home/alertMessage';
 
 import apiUrl from './env';
 
@@ -24,12 +26,13 @@ const authMiddleware = (store) => (next) => (action) => {
           console.log(response);
           // on envoie les nouvelles infos dans notre state
           store.dispatch(saveAuthInfo(response.data.logged, response.data.pseudo, response.data.id));
-          // je stocke mon token dans le localStorage
+          store.dispatch(handleErrorLogin());
           localStorage.setItem('token', response.data.token);
           // console.log(localStorage.getItem('token'));
         })
         .catch((error) => {
           console.log(error);
+          store.dispatch(handleErrorLogin());
         });
       next(action);
       break;

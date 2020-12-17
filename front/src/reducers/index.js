@@ -10,6 +10,7 @@ import rideReducer from './Home/ride';
 import changeUserProfileReducer from './Home/changeUserProfile';
 import seeMyRideReducer from './Home/seeMyRide';
 import changeMyRideReducer from './Home/changeMyRide';
+import alertReducer from './Home/alertMessage';
 
 // etc
 // le reducer principal, qui regroupe les autres
@@ -26,6 +27,7 @@ const rootReducer = combineReducers({
   ride: rideReducer,
   myRide: seeMyRideReducer,
   changeMyRide: changeMyRideReducer,
+  alert: alertReducer,
   // etc
 });
 export default rootReducer;
