@@ -234,7 +234,7 @@ CreateARide.defaultProps = {
   time: '',
   description: '',
   duration: '',
-  maxParticipant: 1,
+  maxParticipant: '',
 };
 
 // PropTypes
@@ -245,7 +245,7 @@ CreateARide.propTypes = {
   date: PropTypes.string,
   time: PropTypes.string,
   duration: PropTypes.string,
-  maxParticipant: PropTypes.number,
+  maxParticipant: PropTypes.string,
   changeField: PropTypes.func.isRequired,
   handleCreateARide: PropTypes.func.isRequired,
   putRideMarker: PropTypes.func.isRequired,
