@@ -6,12 +6,15 @@ use App\Entity\Dogs;
 use App\Form\DogType;
 use App\Form\DogEditType;
 use App\Repository\DogsRepository;
+use App\Service\UploadFile;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Serializer\SerializerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
+use Symfony\Component\Validator\Validator\ValidatorInterface;
+use Symfony\Component\HttpKernel\KernelInterface;
 
 /**
  * @Route("/api/v1/dog", name="api_v1_dog_")
@@ -36,23 +39,26 @@ class DogController extends AbstractController
     /**
      * @Route("/add", name="add", methods={"POST"})
      */
-    public function add(Request $request, SerializerInterface $serializer): Response
+    public function add(Request $request, NormalizerInterface $normalizer, UploadFile $uploadFile): Response
     {
         $json = $request->getContent();
+
         $dogArray = json_decode($json, true);
+        $cleanDogArray = UploadFile::cleanArray($dogArray);
         
         $dog = new Dogs();
         
         $form = $this->createForm(DogType::class, $dog, ['csrf_protection' => false]);
-        $form->submit($dogArray);
+        $form->submit($cleanDogArray);
         
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $dog->setCreatedAt(new \DateTime());
             $em->persist($dog);
+            $uploadFile->saveUpload($json, $dog);
             $em->flush();
 
-            $json = $serializer->serialize(
+            $json = $normalizer->normalize(
                 $dog,
                 'json',
                 ['groups' => 'add_dogs']
@@ -72,20 +78,23 @@ class DogController extends AbstractController
     /**
      * @Route("/edit/{id}", name="edit", methods={"PUT"}, requirements={"id" = "\d+"})
      */
-    public function edit(Dogs $dogs, NormalizerInterface $normalizer, Request $request): Response
+    public function edit(Dogs $dogs, NormalizerInterface $normalizer, Request $request, UploadFile $uploadFile): Response
     {
         $json = $request->getContent();
-        
+
         $dogArray = json_decode($json, true);
+        $cleanDogArray = UploadFile::cleanArray($dogArray);
 
         $form = $this->createForm(DogEditType::class, $dogs, ['csrf_protection' => false]);
 
-        $form->submit($dogArray);
+        $form->submit($cleanDogArray);
 
         if ($form->isValid()) {
             $dogs->setUpdatedAt(new \DateTime());
             $em = $this->getDoctrine()->getManager();
             $em->flush();
+
+            $uploadFile->saveUpload($json, $dogs);
 
             $json = $normalizer->normalize(
                 $dogs,
