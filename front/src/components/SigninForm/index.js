@@ -487,16 +487,16 @@ SigninForm.defaultProps = {
 };
 
 SigninForm.propTypes = {
-  dogsNumber: PropTypes.number.isRequired,
+  dogsNumber: PropTypes.string.isRequired,
   dogName: PropTypes.string.isRequired,
-  sex: PropTypes.number.isRequired,
-  age: PropTypes.number.isRequired,
-  castrate: PropTypes.number.isRequired,
+  sex: PropTypes.string.isRequired,
+  age: PropTypes.string.isRequired,
+  castrate: PropTypes.string.isRequired,
   dogCondition: PropTypes.number,
-  character: PropTypes.number,
+  character: PropTypes.string,
   picture: PropTypes.string,
   username: PropTypes.string.isRequired,
-  avatar: PropTypes.object.isRequired,
+  avatar: PropTypes.string.isRequired,
   email: PropTypes.string.isRequired,
   password1: PropTypes.string.isRequired,
   password2: PropTypes.string.isRequired,
@@ -504,7 +504,7 @@ SigninForm.propTypes = {
   handleSignIn: PropTypes.func.isRequired,
   uploadImage: PropTypes.func.isRequired,
   alertStatus: PropTypes.bool.isRequired,
-  acceptCGU: PropTypes.bool.isRequired,
+  acceptCGU: PropTypes.string.isRequired,
   changeCheckboxField: PropTypes.func.isRequired,
   alertPasswordStatus: PropTypes.bool.isRequired,
 };
