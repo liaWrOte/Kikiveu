@@ -71,7 +71,7 @@ const Login = ({
         <p className="login__loginSignIn__text">Première fois sur KikiVeu ?</p>
         <div className="full_width">
         <Link to="/inscription">
-          <TextButton text="Je m'inscris" buttonClass="button">
+          <TextButton text={signInText} buttonClass="button">
             Inscription
           </TextButton>
         </Link>

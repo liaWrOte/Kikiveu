@@ -21,10 +21,19 @@ import water from '../../../assets/images/ride/water_ride.png';
 import './ride.scss';
 
 const SeeMyRide = ({
-  myRide,
-  getMyRide,
+  myRideInfos,
+  changeField,
+  comment,
+  handlePostComment,
+  commentsSection,
+  deleteMyRide,
 }) => {
   const { slug } = useParams();
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    handlePostComment();
+  };
 
   const typesRideUrl = {
     1: athletic,
@@ -46,46 +55,45 @@ const SeeMyRide = ({
     7: 'Aquatique',
   };
 
-/*
-  useEffect(() => {
-    console.log(rideId);
-    getRide();
-  }, [rideInfos]);
-*/
-
-  const datetime = rideInfos.eventDatetime;
-  const newdate = datetime.replace('T', '  ');
+  const dateTime = myRideInfos.eventDatetime;
+  const newdate = dateTime.replace('T', '  ');
   const newdatetime = newdate.slice(0, 20);
 
   const changeText = 'Modifier ma balade';
+  const deleteText = 'Supprimer ma balade';
 
   return (
     <div className="ride">
       <MainUserButton className="ride__mainUserButton" />
-      <TextButton text={changeText} />
+      <Link to="/ma-balade/edit"><TextButton text={changeText} /></Link>
+      <TextButton
+        text={deleteText}
+        handleClick={() => {
+          if (window.confirm('Je confirme la suppression de ma balade.')) deleteMyRide()}}
+      />
       <p> Description de la balade :
-        {rideInfos.eventDescription}
+        {myRideInfos.eventDescription}
       </p>
       <p>
         <Calendar /> Date et heure : {newdatetime}
       </p>
       <p>
-        Durée: {rideInfos.eventDuration}
+        Durée: {myRideInfos.eventDuration}
       </p>
       <p>
-        Nombre de participants maximum : {rideInfos.eventMaxParticipant}
+        Nombre de participants maximum : {myRideInfos.eventMaxParticipant}
       </p>
       <p>
-        Type de balade : {typesRideText[rideInfos.tagsId]}
+        Type de balade : {typesRideText[myRideInfos.tagsId]}
       </p>
       <div className="ride__emoji">
-        <Emoji src={typesRideUrl[rideInfos.tagsId]} />
+        <Emoji src={typesRideUrl[myRideInfos.tagsId]} />
       </div>
       <p>Commentaires</p>
       <div className="ride__comments">
 
         {commentsSection.map((commentItem) => (
-          <div className="ride__comments__line">
+          <div className="ride__comments__line" key={commentItem.commentId}>
             <p className="ride__comments__line__date">{commentItem.createdAt}</p>
             <p>{commentItem.userId.pseudo}</p>
             <p>{commentItem.body}</p>
@@ -93,6 +101,19 @@ const SeeMyRide = ({
         ))}
 
       </div>
+      <form autoComplete="off" className="login__form" onSubmit={handleSubmit}>
+        <p>Laisser un commentaire :
+          <Input
+            type="text"
+            name="comment"
+            placeholder="Votre commentaire ici"
+            onChange={changeField}
+            value={comment}
+            inputClass="input_small"
+          />
+          <TextButton />
+        </p>
+      </form>
       <div className="ride__bottom">
         <PreviousButton />
       </div>
@@ -101,9 +122,11 @@ const SeeMyRide = ({
 };
 
 SeeMyRide.propTypes = {
-  rideInfos: PropTypes.object.isRequired,
+  myRideInfos: PropTypes.object.isRequired,
   changeField: PropTypes.func.isRequired,
   comment: PropTypes.string.isRequired,
+  handlePostComment: PropTypes.func.isRequired,
+  deleteMyRide: PropTypes.func.isRequired,
 };
 
 export default SeeMyRide;

@@ -18,6 +18,10 @@ import {
 } from '../../actions/Home/ride';
 
 import {
+  getMyRide,
+} from '../../actions/Home/myRide';
+
+import {
   getOtherUserProfile,
   getUserProfile,
 } from '../../actions/Home/changeUserProfile';
@@ -83,6 +87,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
   getOtherUserProfile: (id) => {
     dispatch(getOtherUserProfile(id));
+  },
+  getMyRide: () => {
+    dispatch(getMyRide());
   },
 });
 

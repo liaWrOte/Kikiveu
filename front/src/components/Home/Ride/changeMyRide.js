@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import PreviousButton from '../../microComponents/PreviousButton';
 import MainUserButton from '../../microComponents/MainUserButton';
 import Emoji from '../../microComponents/Emoji';
-import Toggle from '../../microComponents/Toggle';
+import TextArea from '../../microComponents/TextArea';
 import Input from '../../microComponents/Input';
 import TextButton from '../../microComponents/TextButton';
 
@@ -21,7 +21,7 @@ import water from '../../../assets/images/ride/water_ride.png';
 
 import './ride.scss';
 
-const ChangeRide = ({
+const ChangeMyRide = ({
   markerLat,
   markerLng,
   description,
@@ -34,6 +34,11 @@ const ChangeRide = ({
   updateTagRide,
   handleUpdateRide,
   putRideMarker,
+  initialDescription,
+  initialDatetime,
+  initialMaxParticipant,
+  initialLat,
+  initialLng,
 }) => {
   const placeCursor = 'Je change le lieu de ma balade';
   const saveText = 'Enregistrer';
@@ -42,8 +47,12 @@ const ChangeRide = ({
     event.preventDefault();
     console.log(changeField);
     console.log('update User profile');
-    //handleUpdateRide();
+    handleUpdateRide();
   };
+
+  const datetime = initialDatetime;
+  const newdate = datetime.replace('T', '  ');
+  const newdatetime = newdate.slice(0, 20);
 
   return (
     <div className="ride">
@@ -58,19 +67,22 @@ const ChangeRide = ({
               name="description"
               maxLength="200"
               onChange={changeField}
+              placeholder={initialDescription}
               value={description}
-
               inputClass="input_small"
             />
           </label>
           <div className="ride__locate">
             Lieu de la balade :
             <p className="lieu">Latitude : </p>
-            <p className="lieu">{markerLat}</p>
+            <p className="lieu">
+              {markerLat}
+            </p>
             <p className="lieu">Longitude :</p>
             <p className="lieu">{markerLng}</p>
           </div>
         </div>
+        <p>Date et heure initiales : {newdatetime}</p>
         <div className="twoColumns">
           <div className="ride__item">
             <label htmlFor="date">
@@ -105,7 +117,6 @@ const ChangeRide = ({
           <div className="createARide__item">
             <label htmlFor="duration" className="fullWidth">
               Durée :
-
               <Input
                 type="time"
                 id="duration"
@@ -227,7 +238,7 @@ const ChangeRide = ({
   );
 };
 
-ChangeRide.defaultProps = {
+ChangeMyRide.defaultProps = {
   date: '',
   time: '',
   description: '',
@@ -236,7 +247,7 @@ ChangeRide.defaultProps = {
 };
 
 // PropTypes
-ChangeRide.propTypes = {
+ChangeMyRide.propTypes = {
   markerLat: PropTypes.number.isRequired,
   markerLng: PropTypes.number.isRequired,
   description: PropTypes.string,
@@ -247,7 +258,12 @@ ChangeRide.propTypes = {
   changeField: PropTypes.func.isRequired,
   handleUpdateRide: PropTypes.func.isRequired,
   putRideMarker: PropTypes.func.isRequired,
+  initialDescription: PropTypes.string.isRequired,
+  initialDatetime: PropTypes.string.isRequired,
+  initialMaxParticipant: PropTypes.number.isRequired,
+  initialLat: PropTypes.number.isRequired,
+  initialLng: PropTypes.number.isRequired,
 };
 
 
-export default ChangeRide;
+export default ChangeMyRide;

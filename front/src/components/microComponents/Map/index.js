@@ -34,6 +34,7 @@ const Map = ({
   haveEventsLocation,
   canPutRideMarker,
   getRideId,
+  getMyRide,
   getUsers,
   usersOnMap,
   getOtherUserProfileId,
@@ -64,6 +65,7 @@ const Map = ({
     navigator.geolocation.getCurrentPosition(success);
     if (isLogged === true) {
       getUserProfile();
+      getMyRide();
     }
   }, []);
 

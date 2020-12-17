@@ -26,7 +26,6 @@ const Ride = ({
   comment,
   handlePostComment,
   commentsSection,
-  loadComments,
   rideId,
 }) => {
   /*useEffect(() => {
@@ -39,7 +38,6 @@ const Ride = ({
     event.preventDefault();
     handlePostComment();
   };
-
 
   const { slug } = useParams();
 
@@ -74,7 +72,7 @@ const Ride = ({
   const newdate = datetime.replace('T', '  ');
   const newdatetime = newdate.slice(0, 20);
 
-  const changeText = 'Modifier ma balade';
+  const submitText='Envoyer';
 
   return (
     <div className="ride">
@@ -101,7 +99,7 @@ const Ride = ({
       <div className="ride__comments">
 
         {commentsSection.map((commentItem) => (
-          <div className="ride__comments__line">
+          <div className="ride__comments__line" key={commentItem.commentId}>
             <p className="ride__comments__line__date">{commentItem.createdAt}</p>
             <p>{commentItem.userId.pseudo}</p>
             <p>{commentItem.body}</p>
@@ -119,7 +117,7 @@ const Ride = ({
             value={comment}
             inputClass="input_small"
           />
-          <TextButton />
+          <TextButton text={submitText} />
         </p>
       </form>
       <div className="ride__bottom">

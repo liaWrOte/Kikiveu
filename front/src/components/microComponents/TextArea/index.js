@@ -12,6 +12,7 @@ const TextArea = ({
   name,
   placeholder,
   onChange,
+  defaultValue,
 }) => {
   const handleChange = (evt) => {
     onChange(evt.target.value, name);

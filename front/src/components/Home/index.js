@@ -15,24 +15,24 @@ import KikiVeuContact from './KikiVeuContact';
 import Cgu from '../microComponents/Cgu';
 import CreateARide from '../../containers/Home/CreateARide';
 import Ride from '../../containers/Home/ride';
-// import ChangeRide from '../../components/Home/Ride/changeRide';
-import SeeMyRide from '../../components/Home/Ride/seeMyRide';
+import ChangeMyRide from '../../containers/Home/changeMyRide';
+import SeeMyRide from '../../containers/Home/seeMyRide';
 import PreviousButton from '../microComponents/PreviousButton';
 
 import './index.scss';
 
-const Home = ({ isLogged, loadingRide, loadingProfile }) => {
+const Home = ({ isLogged, loadingRide, loadingProfile, hasRide, myRideLoading }) => {
   const history = useHistory();
 
   const NotFound = () => (
     <div>404 Not Found. Oups, la page demandée n'existe pas...</div>
   );
-/*
+
   useEffect(() => {
     if (isLogged === false) {
       history.push('/connexion'); // when user is logged
     }
-  }, [isLogged]);*/
+  }, [isLogged]);
 
   return (
     <>
@@ -47,6 +47,7 @@ const Home = ({ isLogged, loadingRide, loadingProfile }) => {
           <Cgu />
           <PreviousButton />
         </Route>
+        {isLogged && (
           <div className="home">
             <div className=".item1">
               <Header />
@@ -77,15 +78,26 @@ const Home = ({ isLogged, loadingRide, loadingProfile }) => {
                   )};
                 </>
               </Route>
-              <Route exact path="/mabalade">
-                <div className=".item3">
-                  <SeeMyRide />
-                </div>
+              <Route exact path="/ma-balade">
+                {!myRideLoading && hasRide && (
+                  <div className=".item3">
+                    <SeeMyRide />
+                  </div>
+                )};
+              </Route>
+              <Route exact path="/ma-balade/edit">
+                {!myRideLoading && hasRide && (
+                  <div className=".item3">
+                    <ChangeMyRide />
+                  </div>
+                )}
               </Route>
               <Route exact path="/creer-balade">
-                <div className=".item3">
-                  <CreateARide />
-                </div>
+                {!hasRide && (
+                  <div className=".item3">
+                    <CreateARide />
+                  </div>
+                )}
               </Route>
               <Route exact path="/1/messages">
                 <div className=".item3">
@@ -126,6 +138,7 @@ const Home = ({ isLogged, loadingRide, loadingProfile }) => {
               </Route>
             </Switch>
           </div>
+        )}
       </Switch>
     </>
   );
@@ -137,6 +150,7 @@ Home.propTypes = {
   isLogged: PropTypes.bool.isRequired,
   loadingRide: PropTypes.bool.isRequired,
   loadingProfile: PropTypes.bool.isRequired,
+  myRideLoading: PropTypes.bool.isRequired,
 };
 
 export default Home;
