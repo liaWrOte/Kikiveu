@@ -6,10 +6,15 @@ export const HANDLE_UPDATE_USER_PROFILE = 'HANDLE_UPDATE_USER_PROFILE';
 export const SAVE_OTHER_USER_INFO = 'SAVE_OTHER_USER_INFO';
 export const SAVE_OTHER_USER_DOG_INFO = 'SAVE_OTHER_USER_DOG_INFO';
 export const GET_OTHER_USER_PROFILE = 'GET_OTHER_USER_PROFILE';
+export const DELETE_USER_PROFILE = 'DELETE_USER_PROFILE';
 
 // === action creators
 export const getUserProfile = () => ({
   type: GET_USER_PROFILE,
+});
+
+export const deleteUserProfile = () => ({
+  type: DELETE_USER_PROFILE,
 });
 
 export const saveUserProfileInfos = (value) => ({

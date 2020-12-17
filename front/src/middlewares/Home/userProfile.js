@@ -2,6 +2,7 @@ import axios from 'axios';
 
 import {
   GET_USER_PROFILE,
+  DELETE_USER_PROFILE,
   saveUserProfileInfos,
   HANDLE_UPDATE_USER_PROFILE,
   saveDogInfos,
@@ -103,11 +104,23 @@ const userProfile = (store) => (next) => (action) => {
           // traitement si réponse est une erreur
           console.log('erreur :', error);
         });
-
       next(action);
       break;
 
-      /* ensuite il faut faire un appel en put sur la route editer le profil du chien */
+    case DELETE_USER_PROFILE:
+      console.log('middleware, action GET_MY_RIDE');
+      axios.delete(`http://localhost:8000/api/v1/user/delete/${auth.userId}`, config)
+        .then((response) => {
+          // traitement si réponse est un succès
+          console.log(response);
+        })
+        .catch((error) => {
+        // traitement si réponse est une erreur
+          console.log('erreur :', error);
+        });
+      next(action);
+      break;
+
 
     default:
       // on passe l'action au suivant (middleware suivant ou reducer)

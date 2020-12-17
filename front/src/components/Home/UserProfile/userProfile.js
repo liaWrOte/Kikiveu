@@ -33,8 +33,10 @@ const UserProfile = ({
   castrate,
   pseudo,
   getUserProfile,
+  deleteUserProfile,
 }) => {
   const changeText = 'Modifier mon profil';
+  const deleteText = "Supprimer mon compte";
 
   useEffect(() => {
     getUserProfile();
@@ -75,6 +77,12 @@ const UserProfile = ({
       <MainUserButton avatar={avatar} className="mainUserButton" />
       <h2>Profil de {pseudo}</h2>
       <Link to="/profil/edit"><TextButton text={changeText} /></Link>
+      <TextButton
+        text={deleteText}
+        handleClick={() => {
+          if (window.confirm('Je confirme la suppression de mon compte KikiVeu.')) deleteUserProfile();
+        }}
+      />
       <p>Son humeur du jour</p>
       <div className="userProfile__form__emoji">
         {moodText[moodId]}
