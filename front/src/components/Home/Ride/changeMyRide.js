@@ -22,23 +22,11 @@ import water from '../../../assets/images/ride/water_ride.png';
 import './ride.scss';
 
 const ChangeMyRide = ({
-  markerLat,
-  markerLng,
-  description,
-  date,
-  tags,
-  time,
-  duration,
-  maxParticipant,
+  myRideInfos,
+  putRideMarker,
   changeField,
   updateTagRide,
   handleUpdateRide,
-  putRideMarker,
-  initialDescription,
-  initialDatetime,
-  initialMaxParticipant,
-  initialLat,
-  initialLng,
 }) => {
   const placeCursor = 'Je change le lieu de ma balade';
   const saveText = 'Enregistrer';
@@ -50,7 +38,7 @@ const ChangeMyRide = ({
     handleUpdateRide();
   };
 
-  const datetime = initialDatetime;
+  const datetime = myRideInfos.eventDatetime;
   const newdate = datetime.replace('T', '  ');
   const newdatetime = newdate.slice(0, 20);
 
@@ -61,14 +49,13 @@ const ChangeMyRide = ({
       <form autoComplete="off" className="ride__form" onSubmit={handleSubmit}>
         <div className="twoColumns">
 
-          <label htmlFor="description">
+          <label htmlFor="eventDescription">
             Description de la balade :
             <TextArea
-              name="description"
+              name="eventDescription"
               maxLength="200"
               onChange={changeField}
-              placeholder={initialDescription}
-              value={description}
+              value={myRideInfos.eventDescription}
               inputClass="input_small"
             />
           </label>
@@ -76,10 +63,10 @@ const ChangeMyRide = ({
             Lieu de la balade :
             <p className="lieu">Latitude : </p>
             <p className="lieu">
-              {markerLat}
+              {myRideInfos.eventLat}
             </p>
             <p className="lieu">Longitude :</p>
-            <p className="lieu">{markerLng}</p>
+            <p className="lieu">{myRideInfos.eventLong}</p>
           </div>
         </div>
         <p>Date et heure initiales : {newdatetime}</p>
@@ -87,14 +74,13 @@ const ChangeMyRide = ({
           <div className="ride__item">
             <label htmlFor="date">
               Date:
-
               <Input
                 type="text"
                 id="date"
                 name="date"
                 placeholder="JJ-MM-AAAA"
                 onChange={changeField}
-                value={date}
+                value={myRideInfos.eventDatetime}
                 inputClass="input_small"
               />
             </label>
@@ -107,7 +93,6 @@ const ChangeMyRide = ({
                 id="time"
                 name="time"
                 onChange={changeField}
-                value={time}
                 inputClass="input_small"
               />
             </label>
@@ -122,7 +107,7 @@ const ChangeMyRide = ({
                 id="duration"
                 name="duration"
                 onChange={changeField}
-                value={duration}
+                value={myRideInfos.eventDuration}
                 inputClass="input_small"
               />
             </label>
@@ -136,7 +121,7 @@ const ChangeMyRide = ({
                 name="maxParticipant"
                 max="40"
                 onChange={changeField}
-                value={maxParticipant}
+                value={myRideInfos.eventMaxParticipant}
                 inputClass="input_small"
               />
             </label>

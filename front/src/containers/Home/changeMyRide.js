@@ -11,20 +11,7 @@ import {
 } from '../../actions/Home/myRide';
 
 const mapStateToProps = (state) => ({
-  markerLat: state.map.markerLat,
-  markerLng: state.map.markerLng,
-  description: state.changeMyRide.description,
-  date: state.changeMyRide.date,
-  tags: state.changeMyRide.tags,
-  time: state.changeMyRide.time,
-  duration: state.changeMyRide.duration,
-  maxParticipant: state.changeMyRide.maxParticipant,
-  canPutRideMarker: state.changeMyRide.canPutRideMarker,
-  initialDatetime: state.myRide.myRideInfos.eventDatetime,
-  initialMaxParticipant: state.myRide.myRideInfos.eventMaxParticipant,
-  initialDescription: state.myRide.myRideInfos.eventDescription,
-  initialLat: state.myRide.myRideInfos.eventLat,
-  initialLng: state.myRide.myRideInfos.eventLong,
+  myRideInfos: state.myRide.myRideInfos,
 });
 
 const mapDispatchToProps = (dispatch) => ({
