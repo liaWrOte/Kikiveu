@@ -22,7 +22,7 @@ const rideMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
     case GET_RIDE_ID:
       axios.get(
-        `http://localhost:8000/api/v1/event/${action.id}`,
+        `${apiUrl}/event/${action.id}`,
         config,
       )
         .then((response) => {
@@ -42,7 +42,7 @@ const rideMiddleware = (store) => (next) => (action) => {
     case HANDLE_POST_COMMENT:
       // je récupère les données qui m'intéressent : email et mdp
 
-      axios.post('http://localhost:8000/api/v1/comment/add', {
+      axios.post(`${apiUrl}/comment/add`, {
         users: auth.userId,
         body: ride.comment,
         events: ride.rideInfos.eventId,
@@ -63,7 +63,7 @@ const rideMiddleware = (store) => (next) => (action) => {
       break;
 
     case LOAD_COMMENTS:
-      axios.get(`http://localhost:8000/api/v1/comment/${ride.rideInfos.eventId}`,
+      axios.get(`${apiUrl}/comment/${ride.rideInfos.eventId}`,
         config)
         .then((response) => {
           // traitement si réponse est un succès
@@ -72,7 +72,7 @@ const rideMiddleware = (store) => (next) => (action) => {
           store.dispatch(saveComments(response.data));
           console.log(response);
           // console.log(localStorage.getItem('token'));
-          axios.get(`http://localhost:8000/api/v1/dog/${ride.rideInfos.userId}`,
+          axios.get(`${apiUrl}/dog/${ride.rideInfos.userId}`,
             config)
             .then((response2) => {
             // traitement si réponse est un succès

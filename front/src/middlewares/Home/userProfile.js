@@ -10,6 +10,8 @@ import {
   GET_OTHER_USER_PROFILE,
 } from '../../actions/Home/changeUserProfile';
 
+import apiUrl from '../env';
+
 const userProfile = (store) => (next) => (action) => {
   const tokenValue = localStorage.getItem('token');
   const config = {
@@ -19,7 +21,7 @@ const userProfile = (store) => (next) => (action) => {
   switch (action.type) {
     case GET_USER_PROFILE:
       console.log('middleware, action GET_USER_PROFILE');
-      axios.get(`http://localhost:8000/api/v1/dog/${auth.userId}`, config)
+      axios.get(`${apiUrl}/dog/${auth.userId}`, config)
         .then((response) => {
           // traitement si réponse est un succès
           console.log(response.data);
@@ -39,12 +41,12 @@ const userProfile = (store) => (next) => (action) => {
       const { map } = store.getState();
       console.log('middleware, action GET_USER_PROFILE');
       console.log(map.otherUserProfileId);
-      axios.get(`http://localhost:8000/api/v1/user/${map.otherUserProfileId}`, config)
+      axios.get(`${apiUrl}/user/${map.otherUserProfileId}`, config)
         .then((response) => {
           // traitement si réponse est un succès
           console.log(response.data[0]);
           store.dispatch(saveOtherUserInfo(response.data[0]));
-          axios.get(`http://localhost:8000/api/v1/dog/${map.otherUserProfileId}`, config)
+          axios.get(`${apiUrl}/dog/${map.otherUserProfileId}`, config)
             .then((response2) => {
               // traitement si réponse est un succès
               console.log(response2.data);
@@ -68,7 +70,7 @@ const userProfile = (store) => (next) => (action) => {
     case HANDLE_UPDATE_USER_PROFILE:
       const { changeUserProfile } = store.getState();
       const { userProfile } = store.getState();
-      axios.put(`http://localhost:8000/api/v1/user/edit/${auth.userId}`, {
+      axios.put(`${apiUrl}/user/edit/${auth.userId}`, {
         pseudo: changeUserProfile.pseudo,
         email: auth.email,
         password: auth.password,
@@ -77,7 +79,7 @@ const userProfile = (store) => (next) => (action) => {
         .then((response) => {
           console.log(response);
           store.dispatch(saveUserProfileInfos(response.data));
-          axios.put(`http://localhost:8000/api/v1/dog/edit/${userProfile.userInfos.dogId}`, {
+          axios.put(`${apiUrl}/dog/edit/${userProfile.userInfos.dogId}`, {
             mood: changeUserProfile.moodId,
             state: changeUserProfile.stateId,
             castrate: changeUserProfile.castrate,
@@ -85,7 +87,7 @@ const userProfile = (store) => (next) => (action) => {
             .then((response2) => {
               console.log(response2);
               store.dispatch(saveDogInfos(response2.data));
-              axios.get(`http://localhost:8000/api/v1/dog/${auth.userId}`, config)
+              axios.get(`${apiUrl}/dog/${auth.userId}`, config)
                 .then((response3) => {
                   // traitement si réponse est un succès
                   console.log(response3.data);

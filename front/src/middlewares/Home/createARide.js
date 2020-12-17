@@ -27,7 +27,7 @@ const createARide = (store) => (next) => (action) => {
       console.log(`'${createARide.markerLat} ${createARide.markerLng}'`);
       console.log(createARide.tags);
       axios.post(
-        'http://localhost:8000/api/v1/event/add',
+        `${apiUrl}/event/add`,
         {
           eventLat: createARide.markerLat,
           eventLong: createARide.markerLng,

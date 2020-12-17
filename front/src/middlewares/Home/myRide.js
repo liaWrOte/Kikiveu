@@ -16,6 +16,8 @@ import {
   saveComments,
 } from '../../actions/Home/ride';
 
+import apiUrl from '../env';
+
 const myRide = (store) => (next) => (action) => {
   const tokenValue = localStorage.getItem('token');
   const config = {
@@ -27,7 +29,7 @@ const myRide = (store) => (next) => (action) => {
   switch (action.type) {
     case GET_MY_RIDE:
       console.log('middleware, action GET_MY_RIDE');
-      axios.get(`http://localhost:8000/api/v1/event/user/${auth.userId}`, config)
+      axios.get(`${apiUrl}/event/user/${auth.userId}`, config)
         .then((response) => {
           // traitement si réponse est un succès
           console.log(response.data[0]);
@@ -51,7 +53,7 @@ const myRide = (store) => (next) => (action) => {
       break;
     case HANDLE_POST_COMMENT:
       // je récupère les données qui m'intéressent : email et mdp
-      axios.post('http://localhost:8000/api/v1/comment/add', {
+      axios.post(`${apiUrl}/comment/add`, {
         users: auth.userId,
         body: myRide.comment,
         events: myRide.myRideInfos.eventId,
@@ -71,7 +73,7 @@ const myRide = (store) => (next) => (action) => {
       next(action);
       break;
     case LOAD_COMMENTS:
-      axios.get(`http://localhost:8000/api/v1/comment/${myRide.myRideInfos.eventId}`,
+      axios.get(`${apiUrl}/comment/${myRide.myRideInfos.eventId}`,
         config)
         .then((response) => {
           // traitement si réponse est un succès
@@ -80,7 +82,7 @@ const myRide = (store) => (next) => (action) => {
           store.dispatch(saveComments(response.data));
           console.log(response);
           // console.log(localStorage.getItem('token'));
-          axios.get(`http://localhost:8000/api/v1/dog/${myRide.myRideInfos.userId}`,
+          axios.get(`${apiUrl}/dog/${myRide.myRideInfos.userId}`,
             config)
             .then((response2) => {
             // traitement si réponse est un succès
@@ -99,7 +101,7 @@ const myRide = (store) => (next) => (action) => {
       break;
 
     case HANDLE_UPDATE_RIDE:
-      axios.put(`http://localhost:8000/api/v1/event/edit/${myRide.myRideInfos.eventId}`, {
+      axios.put(`${apiUrl}/event/edit/${myRide.myRideInfos.eventId}`, {
         eventLat: changeMyRide.markerLat,
         eventLong: changeMyRide.markerLng,
         description: changeMyRide.description,
@@ -124,7 +126,7 @@ const myRide = (store) => (next) => (action) => {
 
     case DELETE_MY_RIDE:
       console.log('middleware, action GET_MY_RIDE');
-      axios.delete(`http://localhost:8000/api/v1/event/delete/${myRide.myRideInfos.eventId}`, config)
+      axios.delete(`${apiUrl}/event/delete/${myRide.myRideInfos.eventId}`, config)
         .then((response) => {
           // traitement si réponse est un succès
           console.log(response);
