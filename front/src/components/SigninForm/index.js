@@ -102,7 +102,7 @@ const SigninForm = ({
 
           2. Est-ce un mâle ou une femelle ?
           <div className="signin__form__item__label">
-            <label htmlFor="sex">
+            <label htmlFor="sex" className="createARide__divLabel__wrapper__users__emoji">
               <Emoji src={male} />
               <Input
                 type="radio"
@@ -115,7 +115,7 @@ const SigninForm = ({
               Mâle
             </label>
 
-            <label htmlFor="sex">
+            <label htmlFor="sex" className="createARide__divLabel__wrapper__users__emoji">
               <Emoji src={female} />
               <Input
                 type="radio"
@@ -181,8 +181,15 @@ const SigninForm = ({
           <label htmlFor="dogShape">
             5. Comment décrirez-vous son état de santé général ?
             <div className="signin__form__item__label">
-              <label htmlFor="dogCondition">
-                <Emoji src={smallShape} />
+              <label htmlFor="dogCondition" className="createARide__divLabel__wrapper__users__emoji">
+                <Emoji
+                  src={smallShape}
+                  name="dogCondition"
+                  value={3}
+                  onClick={(e) => (
+                    e.target.nextSibling.setAttribute('checked', true)
+                  )}
+                />
                 <Input
                   type="radio"
                   onChange={changeField}
@@ -192,7 +199,7 @@ const SigninForm = ({
                 />
                 Mauvais
               </label>
-              <label htmlFor="dogCondition">
+              <label htmlFor="dogCondition" className="createARide__divLabel__wrapper__users__emoji">
                 <Emoji src={mediumShape} />
                 <Input
                   type="radio"
@@ -203,7 +210,7 @@ const SigninForm = ({
                 />
                 Moyen
               </label>
-              <label htmlFor="dogCondition">
+              <label htmlFor="dogCondition" className="createARide__divLabel__wrapper__users__emoji">
                 <Emoji src={goodShape} />
                 <Input
                   type="radio"
@@ -224,7 +231,7 @@ const SigninForm = ({
         <div className="signin__form__item">
           6. Votre chien est plutôt ? (1 choix possible)
           <div className="signin__form__item__label">
-            <label htmlFor="character">
+            <label htmlFor="character" className="createARide__divLabel__wrapper__users__emoji">
               <Emoji src={dominant} />
               <Input
                 type="radio"
@@ -235,7 +242,7 @@ const SigninForm = ({
               />
               Dominant
             </label>
-            <label htmlFor="character">
+            <label htmlFor="character" className="createARide__divLabel__wrapper__users__emoji">
               <Emoji src={shy} />
               <Input
                 type="radio"
@@ -246,7 +253,7 @@ const SigninForm = ({
               />
               Timide/Sensible
             </label>
-            <label htmlFor="character">
+            <label htmlFor="character" className="createARide__divLabel__wrapper__users__emoji">
               <Emoji src={fearful} />
               <Input
                 type="radio"
@@ -257,7 +264,7 @@ const SigninForm = ({
               />
               Peureux
             </label>
-            <label htmlFor="character">
+            <label htmlFor="character" className="createARide__divLabel__wrapper__users__emoji">
               <Emoji src={player} />
               <Input
                 type="radio"
@@ -268,7 +275,7 @@ const SigninForm = ({
               />
               Joueur
             </label>
-            <label htmlFor="character">
+            <label htmlFor="character" className="createARide__divLabel__wrapper__users__emoji">
               <Emoji src={independent} />
               <Input
                 type="radio"
@@ -279,7 +286,7 @@ const SigninForm = ({
               />
               Indépendant
             </label>
-            <label htmlFor="character">
+            <label htmlFor="character" className="createARide__divLabel__wrapper__users__emoji">
               <Emoji src={sociable} />
               <Input
                 type="radio"
@@ -290,7 +297,7 @@ const SigninForm = ({
               />
               Sociable
             </label>
-            <label htmlFor="character">
+            <label htmlFor="character" className="createARide__divLabel__wrapper__users__emoji">
               <Emoji src={barker} />
               <Input
                 type="radio"
@@ -301,7 +308,7 @@ const SigninForm = ({
               />
               Aboyeur
             </label>
-            <label htmlFor="character">
+            <label htmlFor="character" className="createARide__divLabel__wrapper__users__emoji">
               <Emoji src={possessive} />
               <Input
                 type="radio"
@@ -312,7 +319,7 @@ const SigninForm = ({
               />
               Possessif
             </label>
-            <label htmlFor="character">
+            <label htmlFor="character" className="createARide__divLabel__wrapper__users__emoji">
               <Emoji src={curious} />
               <Input
                 type="radio"
@@ -323,7 +330,7 @@ const SigninForm = ({
               />
               Curieux
             </label>
-            <label htmlFor="character">
+            <label htmlFor="character" className="createARide__divLabel__wrapper__users__emoji">
               <Emoji src={learning} />
               <Input
                 type="radio"
@@ -334,7 +341,7 @@ const SigninForm = ({
               />
               En apprentissage
             </label>
-            <label htmlFor="character">
+            <label htmlFor="character" className="createARide__divLabel__wrapper__users__emoji">
               <Emoji src={balanced} />
               <Input
                 type="radio"
@@ -384,7 +391,7 @@ const SigninForm = ({
         <AlertMessage message="Veuillez choisir un pseudo" />
         )}
         <div className="signin__form__item">
-        9. Sélectionnez une image
+          9. Sélectionnez une image
           <FileInputComponent
             labelText=""
             labelStyle={{ fontSize: 17 }}
@@ -402,7 +409,7 @@ const SigninForm = ({
             imageContainerStyle={{ textAlign: 'center', margin: '0 auto' }}
             accept="image/*"
             textFieldComponent=<p className="image_upload_text">choisir une image"</p>
-            buttonComponent=<button type="button" className="button_small" >Choisir</button>
+            buttonComponent=<button type="button" className="button_small">Choisir</button>
           />
 
         </div>
