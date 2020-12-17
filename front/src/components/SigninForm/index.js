@@ -182,14 +182,7 @@ const SigninForm = ({
             5. Comment décrirez-vous son état de santé général ?
             <div className="signin__form__item__label">
               <label htmlFor="dogCondition" className="createARide__divLabel__wrapper__users__emoji">
-                <Emoji
-                  src={smallShape}
-                  name="dogCondition"
-                  value={3}
-                  onClick={(e) => (
-                    e.target.nextSibling.setAttribute('checked', true)
-                  )}
-                />
+                <Emoji src={smallShape} />
                 <Input
                   type="radio"
                   onChange={changeField}

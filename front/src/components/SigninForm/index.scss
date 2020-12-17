@@ -96,7 +96,22 @@ p {
       padding: vars.$bigGutter;
     }
   }
-
-
 }
 
+/* HIDE RADIO */
+[type=radio] { 
+  position: absolute;
+  opacity: 0;
+  width: 60px;
+  height: 60px;
+}
+
+/* IMAGE STYLES */
+[type=radio] + .emoji__image {
+  cursor: pointer;
+}
+
+/* CHECKED STYLES */
+[type=radio]:checked + .emoji__image {
+  outline: 2px solid #f00;
+}
