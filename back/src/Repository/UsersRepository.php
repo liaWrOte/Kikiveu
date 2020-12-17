@@ -109,6 +109,16 @@ class UsersRepository extends ServiceEntityRepository implements PasswordUpgrade
                 'neLong' => $neLong
             ))
             ->getQuery()
+            ->getOneOrNullResult()
+        ;
+    }
+
+    public function findByEmail($email)
+    {
+        return $this->createQueryBuilder('u')
+            ->where('u.email = :email')
+            ->setParameter('email', $email)
+            ->getQuery()
             ->getResult()
         ;
     }
