@@ -384,10 +384,10 @@ const SigninForm = ({
         <AlertMessage message="Veuillez choisir un pseudo" />
         )}
         <div className="signin__form__item">
-
+        9. Sélectionnez une image
           <FileInputComponent
-            labelText="Selectionnez une image"
-            labelStyle={{ fontSize: 14 }}
+            labelText=""
+            labelStyle={{ fontSize: 17 }}
             callbackFunction={(file_arr) => {
               uploadImage({
                 filename: file_arr[0].name,
@@ -399,9 +399,10 @@ const SigninForm = ({
               });
               // créer callback le fichier a bien été ajouté
             }}
-            imagePreview={false}
+            imageContainerStyle={{ textAlign: 'center', margin: '0 auto' }}
             accept="image/*"
-            textFieldComponent="choisir une image"
+            textFieldComponent=<p className="image_upload_text">choisir une image"</p>
+            buttonComponent=<button type="button" className="button_small" >Choisir</button>
           />
 
         </div>
@@ -464,7 +465,6 @@ const SigninForm = ({
           <PreviousButton />
           <TextButton
             text="Je m'inscris"
-            type="submit"
             className="login-form-button"
             onClick={handleSubmit}
             buttonClass="button"

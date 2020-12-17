@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import './index.scss';
 
-const TextButton = ({ text, handleClick, buttonClass }) => (
+const TextButton = ({text, handleClick, buttonClass }) => (
   <button type="submit" className={buttonClass} onClick={handleClick}>{text}</button>
 );
 
