@@ -109,7 +109,7 @@ class UsersRepository extends ServiceEntityRepository implements PasswordUpgrade
                 'neLong' => $neLong
             ))
             ->getQuery()
-            ->getOneOrNullResult()
+            ->getResult()
         ;
     }
 
