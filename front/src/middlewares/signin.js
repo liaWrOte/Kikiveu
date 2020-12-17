@@ -40,10 +40,12 @@ const signin = (store) => (next) => (action) => {
               store.dispatch(saveAuthInfo(response.data.logged, response.data.pseudo, response.data.id));
               const { auth } = store.getState();
               console.log(response);
+              console.log(signin.avatar.data);
+              console.log(signin.avatar.filename);
               axios.post('http://localhost:8000/api/v1/dog/add', {
                 name: signin.dogName, //
-                filename: signin.avatar.data,
-                data: signin.avatar.name, //
+                filename: signin.avatar.filename,
+                data: signin.avatar.data, //
                 sex: signin.sex, //
                 state: signin.dogCondition,
                 temperament: signin.character, //
