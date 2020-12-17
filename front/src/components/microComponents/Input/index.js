@@ -13,7 +13,6 @@ const Input = ({
   placeholder,
   onChange,
   checked,
-  defaultValue,
   id,
   inputClass,
 }) => {
@@ -32,7 +31,6 @@ const Input = ({
       type={type}
       //checked={checked}
       className={inputClass}
-      defaultValue={defaultValue}
     />
   );
 };
@@ -48,7 +46,6 @@ Input.propTypes = {
   placeholder: PropTypes.string,
   onChange: PropTypes.func,
   id: PropTypes.string,
-  defaultValue: PropTypes.string,
   //checked: PropTypes.bool,
   inputClass: PropTypes.string,
 };

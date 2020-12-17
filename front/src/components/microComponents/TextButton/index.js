@@ -10,10 +10,11 @@ const TextButton = ({ text, handleClick, buttonClass }) => (
 TextButton.propTypes = {
   text: PropTypes.string.isRequired,
   handleClick: PropTypes.func.isRequired,
-  buttonClass: PropTypes.string.isRequired,
+  buttonClass: PropTypes.string,
 };
 
 TextButton.defaultProps = {
+  buttonClass: '',
   text: 'Bouton',
   handleClick: () => { 
     return console.log('clic');},

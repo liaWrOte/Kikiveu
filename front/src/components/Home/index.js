@@ -21,7 +21,7 @@ import PreviousButton from '../microComponents/PreviousButton';
 
 import './index.scss';
 
-const Home = ({ isLogged, loadingRide, loadingProfile, hasRide, myRideLoading }) => {
+const Home = ({ isLogged, loadingRide, loadingUserProfile, hasRide, myRideLoading }) => {
   const history = useHistory();
 
   const NotFound = () => (
@@ -109,12 +109,12 @@ const Home = ({ isLogged, loadingRide, loadingProfile, hasRide, myRideLoading })
               </Route>
               <Route exact path="/profil">
                 <>
-                  {!loadingProfile && (
+                  {!loadingUserProfile && (
                     <div className=".item4">
                       <UserProfile />
                     </div>
                   )};
-                  {loadingProfile && (
+                  {loadingUserProfile && (
                     <div>Chargement...</div>
                   )};
                 </>
@@ -147,7 +147,7 @@ const Home = ({ isLogged, loadingRide, loadingProfile, hasRide, myRideLoading })
 Home.propTypes = {
   isLogged: PropTypes.bool.isRequired,
   loadingRide: PropTypes.bool.isRequired,
-  loadingProfile: PropTypes.bool.isRequired,
+  loadingUserProfile: PropTypes.bool.isRequired,
   myRideLoading: PropTypes.bool.isRequired,
 };
 
