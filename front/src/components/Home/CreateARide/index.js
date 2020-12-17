@@ -76,7 +76,6 @@ const CreateARide = ({
           <div className="createARide__item">
             <label htmlFor="date">
               Date:
-
               <Input
                 type="text"
                 id="date"

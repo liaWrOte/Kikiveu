@@ -10,7 +10,7 @@ const mapStateToProps = (state) => ({
   loadingRide: state.ride.loading,
   loadingUserProfile: state.userProfile.loading,
   loadingOtherProfile: state.userProfile.loadingOtherUserProfile,
-  hasRide: state.createARide.hasRide,
+  hasRide: state.myRide.hasRide,
   myRideLoading: state.myRide.myRideLoading,
 });
 

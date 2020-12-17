@@ -66,7 +66,11 @@ const SeeMyRide = ({
     <div className="ride">
       <MainUserButton className="ride__mainUserButton" />
       <Link to="/ma-balade/edit"><TextButton text={changeText} /></Link>
-      <TextButton text={deleteText} handleClick={() => deleteMyRide()} />
+      <TextButton
+        text={deleteText}
+        handleClick={() => {
+          if (window.confirm('Je confirme la suppression de ma balade.')) deleteMyRide()}}
+      />
       <p> Description de la balade :
         {myRideInfos.eventDescription}
       </p>
@@ -122,6 +126,7 @@ SeeMyRide.propTypes = {
   changeField: PropTypes.func.isRequired,
   comment: PropTypes.string.isRequired,
   handlePostComment: PropTypes.func.isRequired,
+  deleteMyRide: PropTypes.func.isRequired,
 };
 
 export default SeeMyRide;

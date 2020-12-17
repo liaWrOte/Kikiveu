@@ -79,21 +79,25 @@ const Home = ({ isLogged, loadingRide, loadingProfile, hasRide, myRideLoading })
                 </>
               </Route>
               <Route exact path="/ma-balade">
-                {!myRideLoading && (
+                {!myRideLoading && hasRide && (
                   <div className=".item3">
                     <SeeMyRide />
                   </div>
                 )};
               </Route>
               <Route exact path="/ma-balade/edit">
-                <div className=".item3">
-                  <ChangeMyRide />
-                </div>
+                {!myRideLoading && hasRide && (
+                  <div className=".item3">
+                    <ChangeMyRide />
+                  </div>
+                )}
               </Route>
               <Route exact path="/creer-balade">
-                <div className=".item3">
-                  <CreateARide />
-                </div>
+                {!hasRide && (
+                  <div className=".item3">
+                    <CreateARide />
+                  </div>
+                )}
               </Route>
               <Route exact path="/1/messages">
                 <div className=".item3">

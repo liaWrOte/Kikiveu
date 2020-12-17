@@ -34,6 +34,11 @@ const ChangeMyRide = ({
   updateTagRide,
   handleUpdateRide,
   putRideMarker,
+  initialDescription,
+  initialDatetime,
+  initialMaxParticipant,
+  initialLat,
+  initialLng,
 }) => {
   const placeCursor = 'Je change le lieu de ma balade';
   const saveText = 'Enregistrer';
@@ -44,6 +49,10 @@ const ChangeMyRide = ({
     console.log('update User profile');
     handleUpdateRide();
   };
+
+  const datetime = initialDatetime;
+  const newdate = datetime.replace('T', '  ');
+  const newdatetime = newdate.slice(0, 20);
 
   return (
     <div className="ride">
@@ -58,19 +67,22 @@ const ChangeMyRide = ({
               name="description"
               maxLength="200"
               onChange={changeField}
+              placeholder={initialDescription}
               value={description}
-
               inputClass="input_small"
             />
           </label>
           <div className="ride__locate">
             Lieu de la balade :
             <p className="lieu">Latitude : </p>
-            <p className="lieu">{markerLat}</p>
+            <p className="lieu">
+              {markerLat}
+            </p>
             <p className="lieu">Longitude :</p>
             <p className="lieu">{markerLng}</p>
           </div>
         </div>
+        <p>Date et heure initiales : {newdatetime}</p>
         <div className="twoColumns">
           <div className="ride__item">
             <label htmlFor="date">
@@ -105,7 +117,6 @@ const ChangeMyRide = ({
           <div className="createARide__item">
             <label htmlFor="duration" className="fullWidth">
               Durée :
-
               <Input
                 type="time"
                 id="duration"
@@ -247,6 +258,11 @@ ChangeMyRide.propTypes = {
   changeField: PropTypes.func.isRequired,
   handleUpdateRide: PropTypes.func.isRequired,
   putRideMarker: PropTypes.func.isRequired,
+  initialDescription: PropTypes.string.isRequired,
+  initialDatetime: PropTypes.string.isRequired,
+  initialMaxParticipant: PropTypes.number.isRequired,
+  initialLat: PropTypes.number.isRequired,
+  initialLng: PropTypes.number.isRequired,
 };
 
 

@@ -5,6 +5,7 @@ export const HANDLE_UPDATE_RIDE = 'HANDLE_UPDATE_RIDE';
 export const PUT_RIDE_MARKER = 'PUT_RIDE_MARKER';
 export const UPDATE_TAGS_FIELD = 'UPDATE_TAGS_FIELD';
 export const DELETE_MY_RIDE = 'DELETE_MY_RIDE';
+export const HAS_RIDE = 'HAS_RIDE';
 
 // === action creators
 export const getMyRide = () => ({
@@ -39,4 +40,9 @@ export const handleUpdateRide = (value) => ({
 
 export const deleteMyRide = () => ({
   type: DELETE_MY_RIDE,
+});
+
+export const hasRide = (value) => ({
+  type: HAS_RIDE,
+  value,
 });

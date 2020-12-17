@@ -39,7 +39,6 @@ const Ride = ({
     handlePostComment();
   };
 
-
   const { slug } = useParams();
 
   const typesRideUrl = {
@@ -72,6 +71,8 @@ const Ride = ({
   const datetime = rideInfos.eventDatetime;
   const newdate = datetime.replace('T', '  ');
   const newdatetime = newdate.slice(0, 20);
+
+  const submitText='Envoyer';
 
   return (
     <div className="ride">
@@ -116,7 +117,7 @@ const Ride = ({
             value={comment}
             inputClass="input_small"
           />
-          <TextButton />
+          <TextButton text={submitText} />
         </p>
       </form>
       <div className="ride__bottom">

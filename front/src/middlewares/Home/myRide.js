@@ -6,6 +6,7 @@ import {
   saveMyRideInfos,
   HANDLE_UPDATE_RIDE,
   DELETE_MY_RIDE,
+  hasRide,
 } from '../../actions/Home/myRide';
 
 import {
@@ -32,12 +33,19 @@ const myRide = (store) => (next) => (action) => {
           console.log(response.data[0]);
           // je veux stocker response.data dans le state => seule possibilité,
           // dispatch une action au store
-          store.dispatch(saveMyRideInfos(response.data[0]));
-          store.dispatch(loadComments());
+          if (response.status !== 200) {
+            store.dispatch(hasRide(false));
+          }
+          else if (response.status === 200) {
+            store.dispatch(hasRide(true));
+            store.dispatch(saveMyRideInfos(response.data[0]));
+            store.dispatch(loadComments());
+          }
         })
         .catch((error) => {
         // traitement si réponse est une erreur
           console.log('erreur :', error);
+          store.dispatch(hasRide(false));
         });
       next(action);
       break;

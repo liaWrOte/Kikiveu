@@ -12,18 +12,24 @@ import './info.scss';
 
 const Info = ({
   avatar,
+  hasRide,
 }) => (
   <div className="info">
     <Link to="/contact"><HelpCircle className="header__icone" stroke-width={2} width={27} height={27} /></Link>
     <Link to="/profil"><MainUserButton avatar={avatar} /></Link>
-    <Link to="/creer-balade"><RideButton /></Link>
-    <Link to="/ma-balade"><RideButton /></Link>
+    {!hasRide && (
+      <Link to="/creer-balade"><RideButton /></Link>
+    )}
+    {hasRide && (
+      <Link to="/ma-balade"><RideButton /></Link>
+    )}
   </div>
 );
 
 Info.propTypes = {
   avatar: PropTypes.string.isRequired,
   changeStatus: PropTypes.func.isRequired,
+  hasRide: PropTypes.bool.isRequired,
 };
 
 export default Info;

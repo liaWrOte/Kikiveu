@@ -1,5 +1,6 @@
 import {
   SAVE_MY_RIDE_INFOS,
+  HAS_RIDE,
 } from '../../actions/Home/myRide';
 
 import {
@@ -13,10 +14,16 @@ const initialState = {
   myRideLoading: true,
   comment: '',
   commentsSection: [],
+  hasRide: false,
 };
 
 const seeMyRideReducer = (state = initialState, action = {}) => {
   switch (action.type) {
+    case HAS_RIDE:
+      return {
+        ...state,
+        hasRide: action.value,
+      };
     case SAVE_MY_RIDE_INFOS:
       return {
         ...state,

@@ -20,6 +20,11 @@ const mapStateToProps = (state) => ({
   duration: state.changeMyRide.duration,
   maxParticipant: state.changeMyRide.maxParticipant,
   canPutRideMarker: state.changeMyRide.canPutRideMarker,
+  initialDatetime: state.myRide.myRideInfos.eventDatetime,
+  initialMaxParticipant: state.myRide.myRideInfos.eventMaxParticipant,
+  initialDescription: state.myRide.myRideInfos.eventDescription,
+  initialLat: state.myRide.myRideInfos.eventLat,
+  initialLng: state.myRide.myRideInfos.eventLong,
 });
 
 const mapDispatchToProps = (dispatch) => ({
