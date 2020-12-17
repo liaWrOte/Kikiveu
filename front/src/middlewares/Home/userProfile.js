@@ -4,7 +4,10 @@ import {
   GET_USER_PROFILE,
   saveUserProfileInfos,
   HANDLE_UPDATE_USER_PROFILE,
-
+  saveDogInfos,
+  saveOtherUserInfo,
+  saveOtherUserDogInfo,
+  GET_OTHER_USER_PROFILE,
 } from '../../actions/Home/changeUserProfile';
 
 const userProfile = (store) => (next) => (action) => {
@@ -15,7 +18,7 @@ const userProfile = (store) => (next) => (action) => {
   const { auth } = store.getState();
   switch (action.type) {
     case GET_USER_PROFILE:
-      console.log('middleware, action GEt_USER_PROFILE');
+      console.log('middleware, action GET_USER_PROFILE');
       axios.get(`http://localhost:8000/api/v1/dog/${auth.userId}`, config)
         .then((response) => {
           // traitement si réponse est un succès
@@ -23,9 +26,45 @@ const userProfile = (store) => (next) => (action) => {
           // je veux stocker response.data dans le state => seule possibilité,
           // dispatch une action au store
           store.dispatch(saveUserProfileInfos(response.data[0]));
+        })
+        .catch((error) => {
+        // traitement si réponse est une erreur
+          console.log('erreur :', error);
         });
+
       next(action);
       break;
+
+    case GET_OTHER_USER_PROFILE:
+      const { map } = store.getState();
+      console.log('middleware, action GET_USER_PROFILE');
+      console.log(map.otherUserProfileId);
+      axios.get(`http://localhost:8000/api/v1/user/${map.otherUserProfileId}`, config)
+        .then((response) => {
+          // traitement si réponse est un succès
+          console.log(response.data[0]);
+          store.dispatch(saveOtherUserInfo(response.data[0]));
+          axios.get(`http://localhost:8000/api/v1/dog/${map.otherUserProfileId}`, config)
+            .then((response2) => {
+              // traitement si réponse est un succès
+              console.log(response2.data);
+              store.dispatch(saveOtherUserDogInfo(response2.data[0]));
+              // je veux stocker response.data dans le state => seule possibilité,
+              // dispatch une action au store
+            })
+            .catch((error) => {
+            // traitement si réponse est une erreur
+              console.log('erreur :', error);
+            });
+        })
+        .catch((error2) => {
+        // traitement si réponse est une erreur
+          console.log('erreur :', error2);
+        });
+
+      next(action);
+      break;
+
     case HANDLE_UPDATE_USER_PROFILE:
       const { changeUserProfile } = store.getState();
       const { userProfile } = store.getState();
@@ -37,6 +76,7 @@ const userProfile = (store) => (next) => (action) => {
       }, config)
         .then((response) => {
           console.log(response);
+          store.dispatch(saveUserProfileInfos(response.data));
           axios.put(`http://localhost:8000/api/v1/dog/edit/${userProfile.userInfos.dogId}`, {
             mood: changeUserProfile.moodId,
             state: changeUserProfile.stateId,
@@ -44,6 +84,15 @@ const userProfile = (store) => (next) => (action) => {
           }, config)
             .then((response2) => {
               console.log(response2);
+              store.dispatch(saveDogInfos(response2.data));
+              axios.get(`http://localhost:8000/api/v1/dog/${auth.userId}`, config)
+                .then((response3) => {
+                  // traitement si réponse est un succès
+                  console.log(response3.data);
+                  // je veux stocker response.data dans le state => seule possibilité,
+                  // dispatch une action au store
+                  store.dispatch(saveUserProfileInfos(response3.data[0]));
+                });
             })
             .catch((error) => {
               // traitement si réponse est une erreur
@@ -66,4 +115,3 @@ const userProfile = (store) => (next) => (action) => {
   }
 };
 export default userProfile;
-

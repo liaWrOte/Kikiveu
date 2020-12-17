@@ -1,10 +1,9 @@
 import React, { useEffect } from 'react';
 import { Calendar } from 'react-feather';
 import PropTypes from 'prop-types';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 
 // Import composants
-import { useStore } from 'react-redux';
 import PreviousButton from '../../microComponents/PreviousButton';
 import MainUserButton from '../../microComponents/MainUserButton';
 import Emoji from '../../microComponents/Emoji';
@@ -21,28 +20,20 @@ import water from '../../../assets/images/ride/water_ride.png';
 
 import './ride.scss';
 
-const Ride = ({
-  rideInfos,
+const SeeMyRide = ({
+  myRideInfos,
   changeField,
   comment,
   handlePostComment,
   commentsSection,
-  loadComments,
-  rideId,
+  deleteMyRide,
 }) => {
-  /*useEffect(() => {
-    getRide(rideInfos.eventId);
-    console.log(commentsSection);
-    loadComments();
-  }, []);*/
+  const { slug } = useParams();
 
   const handleSubmit = (event) => {
     event.preventDefault();
     handlePostComment();
   };
-
-
-  const { slug } = useParams();
 
   const typesRideUrl = {
     1: athletic,
@@ -64,43 +55,45 @@ const Ride = ({
     7: 'Aquatique',
   };
 
-/*
-  useEffect(() => {
-    console.log(rideId);
-    getRide();
-  }, [rideInfos]);
-*/
-
-  const datetime = rideInfos.eventDatetime;
-  const newdate = datetime.replace('T', '  ');
+  const dateTime = myRideInfos.eventDatetime;
+  const newdate = dateTime.replace('T', '  ');
   const newdatetime = newdate.slice(0, 20);
+
+  const changeText = 'Modifier ma balade';
+  const deleteText = 'Supprimer ma balade';
 
   return (
     <div className="ride">
       <MainUserButton className="ride__mainUserButton" />
+      <Link to="/ma-balade/edit"><TextButton text={changeText} /></Link>
+      <TextButton
+        text={deleteText}
+        handleClick={() => {
+          if (window.confirm('Je confirme la suppression de ma balade.')) deleteMyRide()}}
+      />
       <p> Description de la balade :
-        {rideInfos.eventDescription}
+        {myRideInfos.eventDescription}
       </p>
       <p>
         <Calendar /> Date et heure : {newdatetime}
       </p>
       <p>
-        Durée: {rideInfos.eventDuration}
+        Durée: {myRideInfos.eventDuration}
       </p>
       <p>
-        Nombre de participants maximum : {rideInfos.eventMaxParticipant}
+        Nombre de participants maximum : {myRideInfos.eventMaxParticipant}
       </p>
       <p>
-        Type de balade : {typesRideText[rideInfos.tagsId]}
+        Type de balade : {typesRideText[myRideInfos.tagsId]}
       </p>
       <div className="ride__emoji">
-        <Emoji src={typesRideUrl[rideInfos.tagsId]} />
+        <Emoji src={typesRideUrl[myRideInfos.tagsId]} />
       </div>
       <p>Commentaires</p>
       <div className="ride__comments">
 
         {commentsSection.map((commentItem) => (
-          <div className="ride__comments__line">
+          <div className="ride__comments__line" key={commentItem.commentId}>
             <p className="ride__comments__line__date">{commentItem.createdAt}</p>
             <p>{commentItem.userId.pseudo}</p>
             <p>{commentItem.body}</p>
@@ -120,7 +113,7 @@ const Ride = ({
           />
           <TextButton />
         </p>
-      </form>>
+      </form>
       <div className="ride__bottom">
         <PreviousButton />
       </div>
@@ -128,11 +121,12 @@ const Ride = ({
   );
 };
 
-Ride.propTypes = {
-  rideInfos: PropTypes.object.isRequired,
+SeeMyRide.propTypes = {
+  myRideInfos: PropTypes.object.isRequired,
   changeField: PropTypes.func.isRequired,
   comment: PropTypes.string.isRequired,
   handlePostComment: PropTypes.func.isRequired,
+  deleteMyRide: PropTypes.func.isRequired,
 };
 
-export default Ride;
+export default SeeMyRide;

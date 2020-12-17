@@ -5,12 +5,12 @@ import PropTypes from 'prop-types';
 import PreviousButton from '../../microComponents/PreviousButton';
 import MainUserButton from '../../microComponents/MainUserButton';
 import Emoji from '../../microComponents/Emoji';
-import Toggle from '../../microComponents/Toggle';
-import TextButton from '../../microComponents/TextButton';
 import TextArea from '../../microComponents/TextArea';
 import Input from '../../microComponents/Input';
+import TextButton from '../../microComponents/TextButton';
 
-// import des emojis types de balade
+// import emoji
+// tags
 import athletic from '../../../assets/images/ride/athletic_ride.png';
 import learning from '../../../assets/images/ride/learning_ride.png';
 import nature from '../../../assets/images/ride/nature_ride.png';
@@ -19,9 +19,9 @@ import player from '../../../assets/images/ride/player_ride.png';
 import urban from '../../../assets/images/ride/urban_ride.png';
 import water from '../../../assets/images/ride/water_ride.png';
 
-import './createARide.scss';
+import './ride.scss';
 
-const CreateARide = ({
+const ChangeMyRide = ({
   markerLat,
   markerLng,
   description,
@@ -32,25 +32,33 @@ const CreateARide = ({
   maxParticipant,
   changeField,
   updateTagRide,
-  handleCreateARide,
+  handleUpdateRide,
   putRideMarker,
+  initialDescription,
+  initialDatetime,
+  initialMaxParticipant,
+  initialLat,
+  initialLng,
 }) => {
-  const placeCursor = 'Je positionne ma balade sur la carte';
+  const placeCursor = 'Je change le lieu de ma balade';
   const saveText = 'Enregistrer';
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log('handle Create A Ride');
-    console.log(putRideMarker);
-    putRideMarker();
-    handleCreateARide();
+    console.log(changeField);
+    console.log('update User profile');
+    handleUpdateRide();
   };
 
+  const datetime = initialDatetime;
+  const newdate = datetime.replace('T', '  ');
+  const newdatetime = newdate.slice(0, 20);
+
   return (
-    <div className="createARide">
-      <MainUserButton className="createARide__mainUserButton" />
+    <div className="ride">
+      <MainUserButton className="ride__mainUserButton" />
       <TextButton text={placeCursor} handleClick={putRideMarker} buttonClass="button_small" />
-      <form autoComplete="off" className="createARide__form" onSubmit={handleSubmit}>
+      <form autoComplete="off" className="ride__form" onSubmit={handleSubmit}>
         <div className="twoColumns">
 
           <label htmlFor="description">
@@ -59,23 +67,27 @@ const CreateARide = ({
               name="description"
               maxLength="200"
               onChange={changeField}
+              placeholder={initialDescription}
               value={description}
-
               inputClass="input_small"
             />
           </label>
-          <div className="createARide__locate">
+          <div className="ride__locate">
             Lieu de la balade :
             <p className="lieu">Latitude : </p>
-            <p className="lieu">{markerLat}</p>
+            <p className="lieu">
+              {markerLat}
+            </p>
             <p className="lieu">Longitude :</p>
             <p className="lieu">{markerLng}</p>
           </div>
         </div>
+        <p>Date et heure initiales : {newdatetime}</p>
         <div className="twoColumns">
-          <div className="createARide__item">
+          <div className="ride__item">
             <label htmlFor="date">
               Date:
+
               <Input
                 type="text"
                 id="date"
@@ -105,7 +117,6 @@ const CreateARide = ({
           <div className="createARide__item">
             <label htmlFor="duration" className="fullWidth">
               Durée :
-
               <Input
                 type="time"
                 id="duration"
@@ -218,7 +229,7 @@ const CreateARide = ({
           </div>
         </div>
 
-        <div className="createARide__bottom">
+        <div className="ride__bottom">
           <PreviousButton />
           <Input value="Enregistrer sur la carte" type="submit" className="button_small" />
         </div>
@@ -227,7 +238,7 @@ const CreateARide = ({
   );
 };
 
-CreateARide.defaultProps = {
+ChangeMyRide.defaultProps = {
   date: '',
   time: '',
   description: '',
@@ -236,7 +247,7 @@ CreateARide.defaultProps = {
 };
 
 // PropTypes
-CreateARide.propTypes = {
+ChangeMyRide.propTypes = {
   markerLat: PropTypes.number.isRequired,
   markerLng: PropTypes.number.isRequired,
   description: PropTypes.string,
@@ -245,8 +256,14 @@ CreateARide.propTypes = {
   duration: PropTypes.string,
   maxParticipant: PropTypes.number,
   changeField: PropTypes.func.isRequired,
-  handleCreateARide: PropTypes.func.isRequired,
+  handleUpdateRide: PropTypes.func.isRequired,
   putRideMarker: PropTypes.func.isRequired,
+  initialDescription: PropTypes.string.isRequired,
+  initialDatetime: PropTypes.string.isRequired,
+  initialMaxParticipant: PropTypes.number.isRequired,
+  initialLat: PropTypes.number.isRequired,
+  initialLng: PropTypes.number.isRequired,
 };
 
-export default CreateARide;
+
+export default ChangeMyRide;

@@ -12,7 +12,6 @@ import { Link } from 'react-router-dom';
 
 import rideUrl from '../../../assets/images/ride_icon.png';
 
-import Ride from '../../../containers/Home/ride';
 import SecondaryUserButton from '../SecondaryUserButton/index';
 import TextButton from '../TextButton/index';
 
@@ -28,19 +27,22 @@ const Map = ({
   changeMarkerLat,
   changeMarkerLng,
   getUserProfile,
-  refreshRideEvents,
   refreshMapCoords,
   sendMapCoords,
-  swLatMap,
-  swLongMap,
-  neLatMap,
-  neLongMap,
+  loadingMapCoords,
   rideEvents,
   haveEventsLocation,
   canPutRideMarker,
   getRideId,
+  getMyRide,
+  getUsers,
+  usersOnMap,
+  getOtherUserProfileId,
+  getOtherUserProfile,
+  isLogged,
 }) => {
   const refresh = 'Rafraîchir la carte';
+  console.log(usersOnMap);
 
   function MapBounds() {
     const map = useMap();
@@ -61,7 +63,10 @@ const Map = ({
   useEffect(() => {
     // Met à jour le titre du document via l’API du navigateur
     navigator.geolocation.getCurrentPosition(success);
-    getUserProfile();
+    if (isLogged === true) {
+      getUserProfile();
+      getMyRide();
+    }
   }, []);
 
   function AddMarkerToClick() {
@@ -160,21 +165,21 @@ const Map = ({
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
       </MapContainer>
-      ) }
 
+      )};
       <div className="map__users">
-        <div className="map__users__user">
-          <Link to="/2"><SecondaryUserButton className="map__users__user" /></Link>
-        </div>
-        <div className="map__users__user">
-          <Link to="/2"><SecondaryUserButton className="map__users__user" /></Link>
-        </div>
-        <div className="map__users__user">
-          <Link to="/2"><SecondaryUserButton className="map__users__user" /></Link>
-        </div>
+        {(usersOnMap) && (
+          usersOnMap.map((user) => (
+            <div className="map__users__user">
+              <Link to={`/${user.userSlug}`} onClick={() => getOtherUserProfile(getOtherUserProfileId(user.userId))}>
+                <img src={user.dogAvatar} alt={user.userPseudo} />
+              </Link>
+            </div>
+          ))
+        )}
       </div>
       <div className="map__refresh">
-        <TextButton text={refresh} handleClick={sendMapCoords} buttonClass="button_small" />
+        <TextButton text={refresh} handleClick={() => sendMapCoords()} buttonClass="button_small" />
       </div>
     </div>
   );
@@ -195,11 +200,15 @@ Map.propTypes = {
   changeLng: PropTypes.func.isRequired,
   changeMarkerLat: PropTypes.func.isRequired,
   changeMarkerLng: PropTypes.func.isRequired,
-  refreshRideEvents: PropTypes.func.isRequired,
   rideEvents: PropTypes.array,
   haveEventsLocation: PropTypes.func.isRequired,
   refreshMapCoords: PropTypes.func.isRequired,
   canPutRideMarker: PropTypes.bool.isRequired,
+  getUsers: PropTypes.func.isRequired,
+  getRideId: PropTypes.func.isRequired,
+  isLogged: PropTypes.bool.isRequired,
+  sendMapCoords: PropTypes.func.isRequired,
+  getUserProfile: PropTypes.func.isRequired,
 };
 
 Map.defaultProps = {
@@ -210,4 +219,3 @@ Map.defaultProps = {
 };
 
 export default Map;
-

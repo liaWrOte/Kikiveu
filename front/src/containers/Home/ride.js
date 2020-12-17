@@ -1,12 +1,12 @@
 import { connect } from 'react-redux';
 
-import Ride from '../../components/Home/Ride';
+import Ride from '../../components/Home/Ride/ride';
 
 import {
   changeField,
   handlePostComment,
   loadComments,
-  getRideId
+  getRideId,
 } from '../../actions/Home/ride';
 
 const mapStateToProps = (state) => ({

@@ -111,7 +111,7 @@ const ChangeUserProfile = ({
           </label>
 
         </div>
-        <p className="before_button">L'état de santé de Kiki a changé ?</p>
+        <p className="before_button">L'état de santé de {initialPseudo} a changé ?</p>
         <div className="userProfile__form__emoji">
           <label htmlFor="stateId">
             <Emoji src={small} />

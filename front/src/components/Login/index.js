@@ -8,6 +8,7 @@ import TextButton from '../microComponents/TextButton';
 import logo from '../../assets/images/logo.png';
 
 import './index.scss';
+import AlertMessage from '../microComponents/AlertMessage';
 
 const Login = ({
   email,
@@ -15,7 +16,9 @@ const Login = ({
   changeField,
   handleLogin,
   isLogged,
+  alertLoginStatus,
 }) => {
+  console.log(alertLoginStatus);
   const handleSubmit = (event) => {
     event.preventDefault();
     handleLogin();
@@ -28,6 +31,10 @@ const Login = ({
       history.push('/'); // when user is logged
     }
   }, [isLogged]);
+
+  /*useEffect(() => {
+    <AlertMessage message="Votre indentifiant/mot de passe est incorrect" />
+  }, [alertloginStatus])*/
 
   const loginText = 'Connexion';
   const signInText = 'Je m\'inscris';
@@ -56,12 +63,15 @@ const Login = ({
         <TextButton text={loginText} buttonClass="button">
           Connexion
         </TextButton>
+        {alertLoginStatus && (
+          <AlertMessage message="Votre indentifiant/mot de passe est incorrect" />
+        )}
       </form>
       <div className="loginSignIn">
         <p className="login__loginSignIn__text">Première fois sur KikiVeu ?</p>
         <div className="full_width">
         <Link to="/inscription">
-          <TextButton text="Je m'inscris" buttonClass="button">
+          <TextButton text={signInText} buttonClass="button">
             Inscription
           </TextButton>
         </Link>

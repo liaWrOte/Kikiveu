@@ -4,6 +4,11 @@ import {
   HANDLE_CREATE_A_RIDE,
 } from '../../actions/Home/createARide';
 
+import {
+  saveMyRideInfos,
+  hasRide,
+} from '../../actions/Home/myRide';
+
 import apiUrl from '../env';
 
 const createARide = (store) => (next) => (action) => {
@@ -22,15 +27,6 @@ const createARide = (store) => (next) => (action) => {
       axios.post(
         'http://localhost:8000/api/v1/event/add',
         {
-          /* locate: '44.65876331712623 6.129169464111329',
-          description: 'balade',
-          tags: `${createARide.tags}`,
-          datetime: `${createARide.date} ${createARide.time}`,
-          duration: createARide.duration,
-          maxParticipant: createARide.maxParticipant,
-          slug: auth.nickname,
-          users: auth.userId, */
-
           eventLat: createARide.markerLat,
           eventLong: createARide.markerLng,
           description: createARide.description,
@@ -40,17 +36,6 @@ const createARide = (store) => (next) => (action) => {
           maxParticipant: createARide.maxParticipant, // problème ici
           slug: auth.nickname,
           users: auth.userId,
-
-          /* Données qui fonctionnent dans insomnia
-          locate: '44.65876331712623 6.129169464111329',
-          description: 'balade',
-          tags: [2, 3],
-          datetime: '09-12-2020 02:30',
-	        duration: '02:30',
-          maxParticipant: 6,
-          slug: 'balade',
-          users: 16,
-          */
         },
         config,
       )
@@ -58,10 +43,13 @@ const createARide = (store) => (next) => (action) => {
         // traitement si réponse est un succès
           console.log('response');
           console.log(response);
+          store.dispatch(saveMyRideInfos(response.data));
+          store.dispatch(hasRide(true));
         })
         .catch((error) => {
         // traitement si réponse est une erreur
           console.log('erreur :', error);
+          store.dispatch(hasRide(false));
         });
 
       next(action);

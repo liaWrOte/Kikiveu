@@ -1,12 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import FileInputComponent from 'react-file-input-previews-base64';
+import defaultAvatar from '../../assets/images/dog_profile.jpg';
+
+// import bundle pour gestion des uploads d'images
+
 // import composants
 import Input from '../microComponents/Input';
 import TextButton from '../microComponents/TextButton';
 import Cgu from '../microComponents/Cgu';
 import Emoji from '../microComponents/Emoji';
 import PreviousButton from '../microComponents/PreviousButton';
+import AlertMessage from '../microComponents/AlertMessage';
 
 // import emoji
 // sex
@@ -51,7 +57,11 @@ const SigninForm = ({
   password2,
   changeField,
   handleSignIn,
-
+  uploadImage,
+  alertStatus,
+  acceptCGU,
+  changeCheckboxField,
+  alertPasswordStatus,
 }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -66,7 +76,7 @@ const SigninForm = ({
 
   return (
     <div className="signin">
-      <div style={sectionStyle} className="signin__img"></div>
+      <div style={sectionStyle} className="signin__img" />
 
       <form autoComplete="off" className="signin__form" onSubmit={handleSubmit}>
         <h2 className="signin__form__title">Rejoindre KikiVeu</h2>
@@ -82,6 +92,9 @@ const SigninForm = ({
               value={dogName}
               inputClass="input"
             />
+            {((dogName === '') && alertStatus) && (
+              <AlertMessage message="Veuillez entrer le nom de votre chien" />
+            )}
           </label>
         </div>
 
@@ -113,6 +126,9 @@ const SigninForm = ({
               />
               Femelle
             </label>
+            {((sex === '') && alertStatus) && (
+              <AlertMessage message="Veuillez entrer le sexe de votre chien" />
+            )}
           </div>
         </div>
 
@@ -127,6 +143,9 @@ const SigninForm = ({
               onChange={changeField}
               inputClass="input"
             />
+            {((age === '') && alertStatus) && (
+              <AlertMessage message="Veuillez entrer l'âge de votre chien" />
+            )}
           </label>
         </div>
         <div className="signin__form__item">
@@ -152,7 +171,11 @@ const SigninForm = ({
               />
               Non
             </label>
+
           </div>
+          {((castrate === '') && alertStatus) && (
+          <AlertMessage message="Veuillez compléter cette information" />
+          )}
         </div>
         <div className="signin__form__item">
           <label htmlFor="dogShape">
@@ -165,7 +188,7 @@ const SigninForm = ({
                   onChange={changeField}
                   name="dogCondition"
                   id="smallShape"
-                  value={1}
+                  value={3}
                 />
                 Mauvais
               </label>
@@ -187,11 +210,14 @@ const SigninForm = ({
                   onChange={changeField}
                   name="dogCondition"
                   id="goodShape"
-                  value={3}
+                  value={1}
                   checked
                 />
                 Bon
               </label>
+              {((dogCondition === '') && alertStatus) && (
+              <AlertMessage message="Veuillez préciser l'état de santévotre chien" />
+              )}
             </div>
           </label>
         </div>
@@ -319,31 +345,28 @@ const SigninForm = ({
               />
               Equilibré
             </label>
+            {((character === '') && alertStatus) && (
+              <AlertMessage message="Veuillez choisir le trait de caractère principal de votre chien" />
+            )}
           </div>
         </div>
         <div className="signin__form__item">
-          <label htmlFor="dogShape" className="cgu__flex">
-            7. KikiVeu est une application bienveillante, merci d'accepter la charte de KikiVeu et les CGU
+          <p>7. KikiVeu est une application bienveillante, merci d'accepter les conditions générales d'utilisation</p>
 
-            <Cgu className="cgu" />
-            <label htmlFor="acceptCharte" className="cgu__flex__label">
-              <input
-                type="checkbox"
-                name="acceptCharte"
-                id="acceptCharte"
-              />
-              J'ai lu et j'accepte la charte de KikiVeu
-            </label>
-            <label htmlFor="acceptCGU" className="cgu__flex__label">
-              <input
-                type="checkbox"
-                name="acceptCGU"
-                id="acceptCGU"
-              />
-              J'ai lu et j'accepte les CGU
-            </label>
-
+          <Cgu className="cgu" />
+          <label htmlFor="acceptCGU" className="cgu__flex__label">
+            <input
+              type="checkbox"
+              name="acceptCGU"
+              id="acceptCGU"
+              onChange={changeCheckboxField}
+              checked={acceptCGU}
+            />
+            J'ai lu et j'accepte les CGU
           </label>
+          {(!acceptCGU && alertStatus) && (
+          <AlertMessage message="Veuillez accepter les conditions générales d'utilisation" />
+          )}
         </div>
         <div className="signin__form__item">
           <label htmlFor="username">
@@ -357,17 +380,28 @@ const SigninForm = ({
             inputClass="input"
           />
         </div>
+        {((username === '') && alertStatus) && (
+        <AlertMessage message="Veuillez choisir un pseudo" />
+        )}
         <div className="signin__form__item">
 
-          <label htmlFor="profileImage">
-            9. Veuillez choisir une photo de profil
-          </label>
-          <input
-            name="profileImage"
-            id="profileImage"
-            type="file"
-            accept="image/png, image/jpeg"
-            className="imageInput"
+          <FileInputComponent
+            labelText="Selectionnez une image"
+            labelStyle={{ fontSize: 14 }}
+            callbackFunction={(file_arr) => {
+              uploadImage({
+                filename: file_arr[0].name,
+                data: file_arr[0].base64,
+              });
+              console.log({
+                filename: (file_arr[0].name),
+                data: (file_arr[0].base64).substring(22),
+              });
+              // créer callback le fichier a bien été ajouté
+            }}
+            imagePreview={false}
+            accept="image/*"
+            textFieldComponent="choisir une image"
           />
 
         </div>
@@ -383,6 +417,9 @@ const SigninForm = ({
               inputClass="input"
             />
           </label>
+          {((email === '') && alertStatus) && (
+          <AlertMessage message="Veuillez entrer un email valide" />
+          )}
         </div>
         <div className="signin__form__item">
           <label htmlFor="password1">
@@ -396,6 +433,9 @@ const SigninForm = ({
             value={password1}
             inputClass="input"
           />
+          {((password1 === '') && alertStatus) && (
+          <AlertMessage message="Veuillez entrer votre mot de passe" />
+          )}
         </div>
         <div className="signin__form__item">
           <label htmlFor="password2">
@@ -409,7 +449,16 @@ const SigninForm = ({
             value={password2}
             inputClass="input"
           />
+          {((password2 === '') && alertStatus) && (
+          <AlertMessage message="Veuillez confirmer votre mot de passe" />
+          )}
+          {alertPasswordStatus && (
+          <AlertMessage message="Veuillez entrer des mots de passe identiques" />
+          )}
         </div>
+        {alertStatus && (
+          <AlertMessage message="Vous avez des erreurs dans votre formulaire, veuillez remonter pour voir les messages d'erreurs" />
+        )}
         <p>Vous allez recevoir un email de confirmation d'inscription. Veuillez l'accepter.</p>
         <div className="signForm_flex">
           <PreviousButton />
@@ -447,10 +496,17 @@ SigninForm.propTypes = {
   character: PropTypes.number,
   picture: PropTypes.string,
   username: PropTypes.string.isRequired,
-  avatar: PropTypes.string.isRequired,
+  avatar: PropTypes.object.isRequired,
   email: PropTypes.string.isRequired,
   password1: PropTypes.string.isRequired,
   password2: PropTypes.string.isRequired,
+  changeField: PropTypes.func.isRequired,
+  handleSignIn: PropTypes.func.isRequired,
+  uploadImage: PropTypes.func.isRequired,
+  alertStatus: PropTypes.bool.isRequired,
+  acceptCGU: PropTypes.bool.isRequired,
+  changeCheckboxField: PropTypes.func.isRequired,
+  alertPasswordStatus: PropTypes.bool.isRequired,
 };
 
 export default SigninForm;

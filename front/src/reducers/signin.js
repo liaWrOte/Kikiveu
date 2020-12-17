@@ -3,23 +3,26 @@ import {
   SAVE_SIGNIN_INFO,
   SIGN_IN,
   UPDATE_SRC,
+  UPLOAD_IMAGE,
+  CHANGE_CHECKBOX_FIELD,
 } from '../actions/signin';
 
 const initialState = {
-  dogsNumber: 1,
+  dogsNumber: '',
   dogName: '',
-  sex: 0,
-  age: 0,
-  castrate: 0,
+  sex: '',
+  age: '',
+  castrate: '',
   dogCondition: '',
-  character: 1,
+  character: '',
   picture: '',
   username: '',
-  avatar: '/front/src/assets/imagesdog_profile.jpg/',
+  avatar: 'dog.jpeg',
   email: '',
   password1: '',
   password2: '',
   signedIn: false,
+  acceptCGU: '',
 };
 
 const signinReducer = (state = initialState, action = {}) => {
@@ -32,6 +35,12 @@ const signinReducer = (state = initialState, action = {}) => {
         // de propriété
         [action.name]: action.value,
         picture: action.srcValue,
+      };
+
+    case CHANGE_CHECKBOX_FIELD:
+      return {
+        ...state,
+        acceptCGU: !state.acceptCGU,
       };
 
     case SAVE_SIGNIN_INFO:
@@ -47,11 +56,18 @@ const signinReducer = (state = initialState, action = {}) => {
         ...state,
       };
 
-    case UPDATE_SRC:
+    /*case UPDATE_SRC:
       console.log(`Action reçue, nouvelle valeur ${action.value} pour la propriété picture`);
       return {
         ...state,
         picture: action.value,
+      };*/
+
+    case UPLOAD_IMAGE:
+      console.log('update image dans le state');
+      return {
+        ...state,
+        avatar: action.image,
       };
 
     default: return { ...state };

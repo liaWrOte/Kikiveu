@@ -36,9 +36,9 @@ const UserProfile = ({
 }) => {
   const changeText = 'Modifier mon profil';
 
-  /*useEffect(() => {
+  useEffect(() => {
     getUserProfile();
-  }, []);*/
+  }, []);
 
   const moodUrl = {
     1: calm,
@@ -48,22 +48,22 @@ const UserProfile = ({
     5: tired,
   };
   const moodText = {
-    1: 'calme',
-    2: 'excité',
-    3: 'joueur',
-    4: 'nerveux',
-    5: 'fatigué',
+    1: 'Calme',
+    2: 'Excité',
+    3: 'Joueur',
+    4: 'Energique',
+    5: 'Fatigué',
   };
 
   const stateUrl = {
-    1: small,
+    1: good,
     2: medium,
-    3: good,
+    3: small,
   };
   const stateText = {
-    1: 'Petite forme',
+    1: 'Excellente forme',
     2: 'Forme moyenne',
-    3: 'Excellente forme',
+    3: 'Petite forme',
   };
   const castrateText = {
     0: 'Non',

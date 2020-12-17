@@ -6,6 +6,8 @@ import {
   REFRESH_RIDE_EVENTS,
   checkEventsLocation,
   refreshRideEvents,
+  GET_USERS,
+  showUsersOnMap,
 } from '../../actions/Map';
 
 import apiUrl from '../env';
@@ -19,7 +21,7 @@ const map = (store) => (next) => (action) => {
     case SEND_MAP_COORDS:
       console.log('dans middleware refresh ride events');
       const { map } = store.getState();
-      const { ride } = store.getState();
+      const {auth}= store.getState();
       console.log(map.mapCoords._southWest.lat);
       axios.post(
         'http://localhost:8000/api/v1/event',
@@ -35,13 +37,74 @@ const map = (store) => (next) => (action) => {
           console.log(response);
           store.dispatch(checkEventsLocation(true));
           store.dispatch(refreshRideEvents(response.data.events));
+          console.log(map.lat);
+          axios.put(
+            `http://localhost:8000/api/v1/user/edit/${auth.userId}`,
+            {
+              email: auth.email,
+              password: auth.password,
+              pseudo: auth.nickname,
+              slug: auth.nickname,
+              userLat: map.lat,
+              userLong: map.lng,
+              swLat: map.mapCoords._southWest.lat,
+              swLong: map.mapCoords._southWest.lng,
+              neLat: map.mapCoords._northEast.lat,
+              neLong: map.mapCoords._northEast.lng,
+            },
+            config,
+          )
+            .then((response2) => {
+              console.log(response2);
+              axios.post(
+                'http://localhost:8000/api/v1/user',
+                {
+                  swLat: map.mapCoords._southWest.lat,
+                  swLong: map.mapCoords._southWest.lng,
+                  neLat: map.mapCoords._northEast.lat,
+                  neLong: map.mapCoords._northEast.lng,
+                },
+                config,
+              )
+                .then((response4) => {
+                  console.log(response4);
+                  store.dispatch(showUsersOnMap(response4.data.users));
+                })
+                .catch((error) => {
+                  console.log(error);
+                });
+            })
+            .catch((error2) => {
+              console.log(error2);
+            });
         })
         .catch((error) => {
           console.log(error);
         });
       next(action);
       break;
-
+/*
+    case GET_USERS:
+      console.log('dans middleware get users on map');
+      axios.post(
+        'http://localhost:8000/api/v1/user',
+        {
+          swLat: map.mapCoords._southWest.lat,
+          swLong: map.mapCoords._southWest.lng,
+          neLat: map.mapCoords._northEast.lat,
+          neLong: map.mapCoords._northEast.lng,
+        },
+        config,
+      )
+        .then((response) => {
+          console.log(response);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+      next(action);
+      break;
+*/
     default:
       // on passe l'action au suivant (middleware suivant ou reducer)
       next(action);

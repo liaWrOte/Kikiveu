@@ -13,6 +13,7 @@ const Input = ({
   placeholder,
   onChange,
   checked,
+  defaultValue,
   id,
   inputClass,
 }) => {
@@ -31,6 +32,7 @@ const Input = ({
       type={type}
       //checked={checked}
       className={inputClass}
+      defaultValue={defaultValue}
     />
   );
 };
@@ -42,12 +44,13 @@ Input.propTypes = {
     PropTypes.number.isRequired,
   ]),
   type: PropTypes.string,
-  name: PropTypes.string.isRequired,
+  name: PropTypes.string,
   placeholder: PropTypes.string,
   onChange: PropTypes.func,
   id: PropTypes.string,
+  defaultValue: PropTypes.string,
   //checked: PropTypes.bool,
-  inputClass: PropTypes.string.isRequired,
+  inputClass: PropTypes.string,
 };
 
 // Valeurs par défaut pour les props
@@ -56,6 +59,9 @@ Input.defaultProps = {
   value: '',
   type: 'text',
   placeholder: '',
+  inputClass: '',
+  name: '',
+  defaultValue: '',
   //checked: false,
   onChange: () => {
   },

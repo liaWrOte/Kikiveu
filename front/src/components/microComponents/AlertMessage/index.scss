@@ -1,0 +1,9 @@
+@use '../../../styles/vars';
+
+.alertMessage {
+  padding: (vars.$smallGutter)/2;
+  border: 2px solid vars.$mainColor;
+  color: vars.$mainColor;
+  border-radius: 15px;
+  margin-top: vars.$smallGutter;
+}

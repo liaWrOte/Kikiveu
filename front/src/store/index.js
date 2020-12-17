@@ -8,6 +8,7 @@ import createARideMiddleware from '../middlewares/Home/createARide';
 import infoMiddleware from '../middlewares/Home/info';
 import mapMiddleware from '../middlewares/Home/map';
 import rideMiddleware from '../middlewares/Home/ride';
+import myRideMiddleware from '../middlewares/Home/myRide';
 
 import rootReducer from '../reducers';
 
@@ -21,6 +22,7 @@ const enhancers = composeWithDevTools(
     infoMiddleware,
     mapMiddleware,
     rideMiddleware,
+    myRideMiddleware,
     // ... d'autres middlewares
   ),
 );
