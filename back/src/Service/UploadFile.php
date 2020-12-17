@@ -41,10 +41,12 @@ class UploadFile
             AvatarUploadApi::class,
             'json'
         );
+        
+        $cleanBase64 = preg_replace('~^data:[a-z]+/[a-z]+:base64,~', '', $uploadApiModel->data);
 
         file_put_contents(
             $this->kernel->getProjectDir() . '/public/avatar/' . $uploadApiModel->filename,
-            base64_decode($uploadApiModel->data)
+            base64_decode($cleanBase64)
         );
         $dogs->setAvatar($uploadApiModel->filename);
         $this->em->flush();
