@@ -3,11 +3,12 @@ import { connect } from 'react-redux';
 import SeeMyRide from '../../components/Home/Ride/seeMyRide';
 
 import { getMyRide, deleteMyRide } from '../../actions/Home/myRide';
+
 import {
-  changeField,
-  handlePostComment,
-  loadComments,
-} from '../../actions/Home/ride';
+  handlePostMyComment,
+  loadMyComments,
+  changeMyField,
+} from '../../actions/Home/myRide';
 
 const mapStateToProps = (state) => ({
   myRideInfos: state.myRide.myRideInfos,
@@ -20,13 +21,13 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(getMyRide());
   },
   changeField: (newValue) => {
-    dispatch(changeField(newValue));
+    dispatch(changeMyField(newValue));
   },
-  handlePostComment: () => {
-    dispatch(handlePostComment());
+  handlePostMyComment: () => {
+    dispatch(handlePostMyComment());
   },
-  loadComments: () => {
-    dispatch(loadComments());
+  loadMyComments: () => {
+    dispatch(loadMyComments());
   },
   deleteMyRide: () => {
     dispatch(deleteMyRide());

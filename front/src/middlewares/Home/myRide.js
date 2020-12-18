@@ -7,14 +7,12 @@ import {
   HANDLE_UPDATE_RIDE,
   DELETE_MY_RIDE,
   hasRide,
+  HANDLE_POST_MY_COMMENT,
+  loadMyComments,
+  LOAD_MY_COMMENTS,
+  saveMyComment,
 } from '../../actions/Home/myRide';
 
-import {
-  HANDLE_POST_COMMENT,
-  loadComments,
-  LOAD_COMMENTS,
-  saveComments,
-} from '../../actions/Home/ride';
 
 import apiUrl from '../env';
 
@@ -41,7 +39,7 @@ const myRide = (store) => (next) => (action) => {
           else if (response.status === 200) {
             store.dispatch(hasRide(true));
             store.dispatch(saveMyRideInfos(response.data[0]));
-            store.dispatch(loadComments());
+            store.dispatch(loadMyComments());
           }
         })
         .catch((error) => {
@@ -51,7 +49,7 @@ const myRide = (store) => (next) => (action) => {
         });
       next(action);
       break;
-    case HANDLE_POST_COMMENT:
+    case HANDLE_POST_MY_COMMENT:
       // je récupère les données qui m'intéressent : email et mdp
       axios.post(`${apiUrl}/comment/add`, {
         users: auth.userId,
@@ -63,7 +61,7 @@ const myRide = (store) => (next) => (action) => {
           // traitement si réponse est un succès
           console.log('middleware : post comment');
           console.log(response);
-          store.dispatch(loadComments());
+          store.dispatch(loadMyComments());
           // console.log(localStorage.getItem('token'));
         })
         .catch((error) => {
@@ -72,14 +70,14 @@ const myRide = (store) => (next) => (action) => {
 
       next(action);
       break;
-    case LOAD_COMMENTS:
+    case LOAD_MY_COMMENTS:
       axios.get(`${apiUrl}/comment/${myRide.myRideInfos.eventId}`,
         config)
         .then((response) => {
           // traitement si réponse est un succès
           console.log('middleware : get all comments');
           console.log(response);
-          store.dispatch(saveComments(response.data));
+          store.dispatch(saveMyComment(response.data));
           console.log(response);
           // console.log(localStorage.getItem('token'));
           axios.get(`${apiUrl}/dog/${myRide.myRideInfos.userId}`,
@@ -103,13 +101,13 @@ const myRide = (store) => (next) => (action) => {
     case HANDLE_UPDATE_RIDE:
 
       axios.put(`${apiUrl}/event/edit/${myRide.myRideInfos.eventId}`, {
-        eventLat: changeMyRide.markerLat,
-        eventLong: changeMyRide.markerLng,
-        description: changeMyRide.description,
-        tags: changeMyRide.tags,
-        datetime: `${changeMyRide.date} ${changeMyRide.time}`,
-        duration: changeMyRide.duration,
-        maxParticipant: changeMyRide.maxParticipant, // problème ici
+        eventLat: map.markerLat,
+        eventLong: map.markerLng,
+        description: myRide.myRideInfos.eventDescription,
+        tags: myRide.myRideInfos.tagsId,
+        datetime: `${myRide.myRideInfos.date} ${myRide.myRideInfos.time}`,
+        duration: myRide.myRideInfos.eventDuration,
+        maxParticipant: myRide.myRideInfos.eventMaxParticipant, // problème ici
         slug: auth.nickname,
         users: auth.userId,
       }, config)

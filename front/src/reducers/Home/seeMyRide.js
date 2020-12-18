@@ -5,14 +5,12 @@ import {
   HANDLE_UPDATE_RIDE,
   UPDATE_TAGS_MY_RIDE_FIELD,
   PUT_RIDE_MARKER,
+  HANDLE_POST_MY_COMMENT,
+  SAVE_MY_COMMENT,
+  LOAD_MY_COMMENTS,
+  CHANGE_MY_FIELD,
+
 } from '../../actions/Home/myRide';
-
-import {
-  CHANGE_FIELD,
-  LOAD_COMMENTS,
-  SAVE_COMMENTS,
-} from '../../actions/Home/ride';
-
 
 import {
   UPDATE_MARKERLAT,
@@ -54,14 +52,15 @@ const seeMyRideReducer = (state = initialState, action = {}) => {
         myRideInfos: action.value,
         myRideLoading: false,
       };
-    case CHANGE_FIELD:
+      
+    case CHANGE_MY_FIELD:
       console.log('action reçue dans comment');
       return {
         ...state,
         comment: action.value,
       };
 
-    case SAVE_COMMENTS:
+    case SAVE_MY_COMMENT:
       console.log('action reçue pour comments section');
       return {
         ...state,

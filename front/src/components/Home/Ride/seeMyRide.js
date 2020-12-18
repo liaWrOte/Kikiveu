@@ -24,7 +24,7 @@ const SeeMyRide = ({
   myRideInfos,
   changeField,
   comment,
-  handlePostComment,
+  handlePostMyComment,
   commentsSection,
   deleteMyRide,
 }) => {
@@ -32,7 +32,7 @@ const SeeMyRide = ({
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    handlePostComment();
+    handlePostMyComment();
   };
 
   const typesRideUrl = {
