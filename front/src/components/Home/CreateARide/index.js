@@ -119,12 +119,13 @@ const CreateARide = ({
               Durée :
 
               <Input
-                type="time"
+                type="number"
                 id="duration"
                 name="duration"
                 onChange={changeField}
                 value={duration}
                 inputClass="input_small"
+                placeholder="HH.MM"
               />
             </label>
           </div>

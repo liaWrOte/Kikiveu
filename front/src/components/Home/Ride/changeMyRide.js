@@ -129,12 +129,13 @@ const ChangeMyRide = ({
             <label htmlFor="eventDuration" className="fullWidth">
               Durée :
               <Input
-                type="time"
+                type="number"
                 id="duration"
                 name="eventDuration"
                 onChange={changeField}
                 value={myRideInfos.eventDuration}
                 inputClass="input_small"
+                placeholder="HH.MM"
               />
             </label>
           </div>

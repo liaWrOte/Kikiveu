@@ -55,6 +55,7 @@ const RideReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         commentsSection: action.value,
+        comment: '',
       };
 
     default: return { ...state };
