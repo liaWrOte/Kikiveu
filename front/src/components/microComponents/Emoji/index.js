@@ -12,10 +12,13 @@ const Emoji = ({ src }) => (
   <img src={src} alt="emoji" className="emoji__image" />
 );
 
+Emoji.defaultProps = {
+  src: '',
+}
 
 // Validation des props
 Emoji.propTypes = {
-  src: PropTypes.string.isRequired,
+  src: PropTypes.string,
   onClick: PropTypes.func.isRequired,
 };
 

@@ -69,6 +69,8 @@ const Ride = ({
 */
 
   const datetime = rideInfos.eventDatetime;
+  // const dateSplit = datetime.split(' ');
+  // console.log(dateSplit);
   const newdate = datetime.replace('T', '  ');
   const newdatetime = newdate.slice(0, 20);
 

@@ -96,10 +96,14 @@ const UserProfile = ({
   );
 };
 
+UserProfile.defaultProps = {
+  moodId: '',
+};
+
 UserProfile.propTypes = {
   avatar: PropTypes.string.isRequired,
   getUserProfile: PropTypes.func.isRequired,
-  moodId: PropTypes.number.isRequired,
+  moodId: PropTypes.number,
   stateId: PropTypes.number.isRequired,
   pseudo: PropTypes.string.isRequired,
   castrate: PropTypes.number.isRequired,

@@ -201,7 +201,7 @@ Map.propTypes = {
   changeMarkerLat: PropTypes.func.isRequired,
   changeMarkerLng: PropTypes.func.isRequired,
   rideEvents: PropTypes.array,
-  haveEventsLocation: PropTypes.func.isRequired,
+  haveEventsLocation: PropTypes.bool.isRequired,
   refreshMapCoords: PropTypes.func.isRequired,
   canPutRideMarker: PropTypes.bool.isRequired,
   getUsers: PropTypes.func.isRequired,
