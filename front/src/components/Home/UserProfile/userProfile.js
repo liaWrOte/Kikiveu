@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, useHistory } from 'react-router-dom';
 
 // Import composants
 import PreviousButton from '../../microComponents/PreviousButton';
@@ -41,6 +41,7 @@ const UserProfile = ({
   useEffect(() => {
     getUserProfile();
   }, []);
+
 
   const moodUrl = {
     1: calm,
