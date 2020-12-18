@@ -19,6 +19,7 @@ Emoji.defaultProps = {
 // Validation des props
 Emoji.propTypes = {
   src: PropTypes.string,
+  onClick: PropTypes.func.isRequired,
 };
 
 // == Export

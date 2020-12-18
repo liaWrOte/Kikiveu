@@ -16,7 +16,7 @@ const authMiddleware = (store) => (next) => (action) => {
     case LOG_IN:
       // je récupère les données qui m'intéressent : email et mdp
       const { auth } = store.getState();
-      axios.post('http://localhost:8000/api/v1/login_check', {
+      axios.post(`${apiUrl}/login_check`, {
         username: auth.email,
         password: auth.password,
       })

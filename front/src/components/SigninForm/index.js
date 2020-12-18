@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 
 import FileInputComponent from 'react-file-input-previews-base64';
@@ -92,7 +92,7 @@ const SigninForm = ({
               value={dogName}
               inputClass="input"
             />
-            {((dogName === '') && alertStatus) && (
+            {((dogName === '3') && alertStatus) && (
               <AlertMessage message="Veuillez entrer le nom de votre chien" />
             )}
           </label>
@@ -102,7 +102,7 @@ const SigninForm = ({
 
           2. Est-ce un mâle ou une femelle ?
           <div className="signin__form__item__label">
-            <label htmlFor="sex">
+            <label htmlFor="sex" className="createARide__divLabel__wrapper__users__emoji">
               <Emoji src={male} />
               <Input
                 type="radio"
@@ -115,7 +115,7 @@ const SigninForm = ({
               Mâle
             </label>
 
-            <label htmlFor="sex">
+            <label htmlFor="sex" className="createARide__divLabel__wrapper__users__emoji">
               <Emoji src={female} />
               <Input
                 type="radio"
@@ -151,7 +151,7 @@ const SigninForm = ({
         <div className="signin__form__item">
           4. Est-il castré ?
           <div className="signin__form__item__label">
-            <label htmlFor="castrate">
+            <label htmlFor="castrate" className="text_select">
               <Input
                 type="radio"
                 onChange={changeField}
@@ -159,9 +159,9 @@ const SigninForm = ({
                 value={1}
                 checked
               />
-              Oui
+              <p className="text_select">Oui</p>
             </label>
-            <label htmlFor="castrate">
+            <label htmlFor="castrate" className="text_select">
               <Input
                 type="radio"
                 onChange={changeField}
@@ -169,7 +169,7 @@ const SigninForm = ({
                 value={0}
                 key="noCastrate"
               />
-              Non
+              <p className="text_select">Non</p>
             </label>
 
           </div>
@@ -181,7 +181,8 @@ const SigninForm = ({
           <label htmlFor="dogShape">
             5. Comment décrirez-vous son état de santé général ?
             <div className="signin__form__item__label">
-              <label htmlFor="dogCondition">
+              <label htmlFor="dogCondition" className="createARide__divLabel__wrapper__users__emoji" >
+              
                 <Emoji src={smallShape} />
                 <Input
                   type="radio"
@@ -189,10 +190,12 @@ const SigninForm = ({
                   name="dogCondition"
                   id="smallShape"
                   value={3}
-                />
+
+                /> 
                 Mauvais
+                
               </label>
-              <label htmlFor="dogCondition">
+              <label htmlFor="dogCondition" className="createARide__divLabel__wrapper__users__emoji">
                 <Emoji src={mediumShape} />
                 <Input
                   type="radio"
@@ -201,9 +204,10 @@ const SigninForm = ({
                   id="mediumShape"
                   value={2}
                 />
+                
                 Moyen
               </label>
-              <label htmlFor="dogCondition">
+              <label htmlFor="dogCondition" className="createARide__divLabel__wrapper__users__emoji">
                 <Emoji src={goodShape} />
                 <Input
                   type="radio"
@@ -224,7 +228,7 @@ const SigninForm = ({
         <div className="signin__form__item">
           6. Votre chien est plutôt ? (1 choix possible)
           <div className="signin__form__item__label">
-            <label htmlFor="character">
+            <label htmlFor="character" className="createARide__divLabel__wrapper__users__emoji">
               <Emoji src={dominant} />
               <Input
                 type="radio"
@@ -235,7 +239,7 @@ const SigninForm = ({
               />
               Dominant
             </label>
-            <label htmlFor="character">
+            <label htmlFor="character" className="createARide__divLabel__wrapper__users__emoji">
               <Emoji src={shy} />
               <Input
                 type="radio"
@@ -246,7 +250,7 @@ const SigninForm = ({
               />
               Timide/Sensible
             </label>
-            <label htmlFor="character">
+            <label htmlFor="character" className="createARide__divLabel__wrapper__users__emoji">
               <Emoji src={fearful} />
               <Input
                 type="radio"
@@ -257,7 +261,7 @@ const SigninForm = ({
               />
               Peureux
             </label>
-            <label htmlFor="character">
+            <label htmlFor="character" className="createARide__divLabel__wrapper__users__emoji">
               <Emoji src={player} />
               <Input
                 type="radio"
@@ -268,7 +272,7 @@ const SigninForm = ({
               />
               Joueur
             </label>
-            <label htmlFor="character">
+            <label htmlFor="character" className="createARide__divLabel__wrapper__users__emoji">
               <Emoji src={independent} />
               <Input
                 type="radio"
@@ -279,7 +283,7 @@ const SigninForm = ({
               />
               Indépendant
             </label>
-            <label htmlFor="character">
+            <label htmlFor="character" className="createARide__divLabel__wrapper__users__emoji">
               <Emoji src={sociable} />
               <Input
                 type="radio"
@@ -290,7 +294,7 @@ const SigninForm = ({
               />
               Sociable
             </label>
-            <label htmlFor="character">
+            <label htmlFor="character" className="createARide__divLabel__wrapper__users__emoji">
               <Emoji src={barker} />
               <Input
                 type="radio"
@@ -301,7 +305,7 @@ const SigninForm = ({
               />
               Aboyeur
             </label>
-            <label htmlFor="character">
+            <label htmlFor="character" className="createARide__divLabel__wrapper__users__emoji">
               <Emoji src={possessive} />
               <Input
                 type="radio"
@@ -312,7 +316,7 @@ const SigninForm = ({
               />
               Possessif
             </label>
-            <label htmlFor="character">
+            <label htmlFor="character" className="createARide__divLabel__wrapper__users__emoji">
               <Emoji src={curious} />
               <Input
                 type="radio"
@@ -323,7 +327,7 @@ const SigninForm = ({
               />
               Curieux
             </label>
-            <label htmlFor="character">
+            <label htmlFor="character" className="createARide__divLabel__wrapper__users__emoji">
               <Emoji src={learning} />
               <Input
                 type="radio"
@@ -334,7 +338,7 @@ const SigninForm = ({
               />
               En apprentissage
             </label>
-            <label htmlFor="character">
+            <label htmlFor="character" className="createARide__divLabel__wrapper__users__emoji">
               <Emoji src={balanced} />
               <Input
                 type="radio"
@@ -384,10 +388,10 @@ const SigninForm = ({
         <AlertMessage message="Veuillez choisir un pseudo" />
         )}
         <div className="signin__form__item">
-
+          9. Sélectionnez une image
           <FileInputComponent
-            labelText="Selectionnez une image"
-            labelStyle={{ fontSize: 14 }}
+            labelText=""
+            labelStyle={{ fontSize: 17 }}
             callbackFunction={(file_arr) => {
               uploadImage({
                 filename: file_arr[0].name,
@@ -399,9 +403,10 @@ const SigninForm = ({
               });
               // créer callback le fichier a bien été ajouté
             }}
-            imagePreview={false}
+            imageContainerStyle={{ textAlign: 'center', margin: '0 auto' }}
             accept="image/*"
-            textFieldComponent="choisir une image"
+            textFieldComponent=<p className="image_upload_text">choisir une image"</p>
+            buttonComponent=<button type="button" className="button_small">Choisir</button>
           />
 
         </div>
@@ -464,7 +469,6 @@ const SigninForm = ({
           <PreviousButton />
           <TextButton
             text="Je m'inscris"
-            type="submit"
             className="login-form-button"
             onClick={handleSubmit}
             buttonClass="button"
