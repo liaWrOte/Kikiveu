@@ -66,6 +66,7 @@ const seeMyRideReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         commentsSection: action.value,
+        comment: '',
       };
 
     case UPDATE_TAGS_MY_RIDE_FIELD:
