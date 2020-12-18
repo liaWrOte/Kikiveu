@@ -1,14 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import defaultAvatar from '../../../assets/images/dog_profile.jpg';
 
 import './index.scss';
 
 const MainUserButton = ({
-  avatar,
+  image,
 }) => {
   const sectionStyle = {
-    backgroundImage: `url(https://www.kikiveu.me/back/avatar${avatar})`,
+    backgroundImage: `url(http://www.kikiveu.me/back/avatar/${image})`,
   };
   return (
 
@@ -17,12 +18,12 @@ const MainUserButton = ({
 };
 
 MainUserButton.propTypes = {
-  avatar: PropTypes.string,
+  image: PropTypes.string,
 };
 
 // Valeurs par défaut pour les props
 MainUserButton.defaultProps = {
-  avatar: '',
+  image: { defaultAvatar },
 };
 
 export default MainUserButton;

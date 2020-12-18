@@ -28,6 +28,7 @@ const SeeMyRide = ({
   handlePostMyComment,
   commentsSection,
   deleteMyRide,
+  avatar,
 }) => {
   const { slug } = useParams();
 
@@ -75,7 +76,7 @@ const SeeMyRide = ({
 
   return (
     <div className="ride">
-      <MainUserButton className="ride__mainUserButton" />
+      <MainUserButton className="ride__mainUserButton" image={avatar} />
       <Link to="/ma-balade/edit"><TextButton text={changeText} buttonClass="button_small_green" /></Link>
       <TextButton
         text={deleteText}

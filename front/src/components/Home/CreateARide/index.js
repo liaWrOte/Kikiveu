@@ -36,6 +36,7 @@ const CreateARide = ({
   handleCreateARide,
   putRideMarker,
   hasRide,
+  avatar,
 }) => {
   const placeCursor = 'Je positionne ma balade sur la carte';
   const saveText = 'Enregistrer';
@@ -50,7 +51,7 @@ const CreateARide = ({
 
   return (
     <div className="createARide">
-      <MainUserButton className="createARide__mainUserButton" />
+      <MainUserButton className="ride__mainUserButton" image={avatar} />
       <TextButton text={placeCursor} handleClick={putRideMarker} buttonClass="button_small" />
       <form autoComplete="off" className="createARide__form" onSubmit={handleSubmit}>
         <div className="twoColumns">
