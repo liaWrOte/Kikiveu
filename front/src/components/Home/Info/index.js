@@ -16,13 +16,13 @@ const Info = ({
 }) => (
   <div className="info">
     <Link to="/contact"><HelpCircle className="header__icone" stroke-width={2} width={27} height={27} /></Link>
-    <Link to="/profil"><MainUserButton avatar={avatar} /></Link>
     {!hasRide && (
       <Link to="/creer-balade"><RideButton /></Link>
     )}
     {hasRide && (
       <Link to="/ma-balade"><RideButton /></Link>
     )}
+    <Link to="/profil"><MainUserButton avatar={avatar} /></Link>
   </div>
 );
 

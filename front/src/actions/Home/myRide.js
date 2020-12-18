@@ -3,7 +3,7 @@ export const SAVE_MY_RIDE_INFOS = 'SAVE_MY_RIDE_INFOS';
 export const UPDATE_RIDE_FIELD = 'UPDATE_RIDE_FIELD';
 export const HANDLE_UPDATE_RIDE = 'HANDLE_UPDATE_RIDE';
 export const PUT_RIDE_MARKER = 'PUT_RIDE_MARKER';
-export const UPDATE_TAGS_FIELD = 'UPDATE_TAGS_FIELD';
+export const UPDATE_TAGS_MY_RIDE_FIELD = 'UPDATE_TAGS_MY_RIDE_FIELD';
 export const DELETE_MY_RIDE = 'DELETE_MY_RIDE';
 export const HAS_RIDE = 'HAS_RIDE';
 
@@ -23,8 +23,8 @@ export const updateRideField = (value, name) => ({
   name,
 });
 
-export const updateTagsField = (value, name) => ({
-  type: UPDATE_TAGS_FIELD,
+export const updateTagsMyRideField = (value, name) => ({
+  type: UPDATE_TAGS_MY_RIDE_FIELD,
   value,
   name,
 });

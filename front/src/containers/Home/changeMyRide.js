@@ -5,26 +5,17 @@ import ChangeMyRide from '../../components/Home/Ride/changeMyRide';
 import {
   updateRideField,
   handleUpdateRide,
-  updateTagsField,
+  updateTagsMyRideField,
   putRideMarker,
-
 } from '../../actions/Home/myRide';
 
 const mapStateToProps = (state) => ({
+  myRideInfos: state.myRide.myRideInfos,
   markerLat: state.map.markerLat,
   markerLng: state.map.markerLng,
-  description: state.changeMyRide.description,
-  date: state.changeMyRide.date,
-  tags: state.changeMyRide.tags,
-  time: state.changeMyRide.time,
-  duration: state.changeMyRide.duration,
-  maxParticipant: state.changeMyRide.maxParticipant,
-  canPutRideMarker: state.changeMyRide.canPutRideMarker,
-  initialDatetime: state.myRide.myRideInfos.eventDatetime,
-  initialMaxParticipant: state.myRide.myRideInfos.eventMaxParticipant,
-  initialDescription: state.myRide.myRideInfos.eventDescription,
-  initialLat: state.myRide.myRideInfos.eventLat,
-  initialLng: state.myRide.myRideInfos.eventLong,
+  newDate: state.myRide.newDate,
+  newTime: state.myRide.newTime,
+  newTagsId: state.myRide.newTagsId,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -33,7 +24,7 @@ const mapDispatchToProps = (dispatch) => ({
   },
   updateTagRide: (newValue, name) => {
     console.log('update');
-    dispatch(updateTagsField(newValue, name));
+    dispatch(updateTagsMyRideField(newValue, name));
   },
   handleUpdateRide: () => {
     dispatch(handleUpdateRide());

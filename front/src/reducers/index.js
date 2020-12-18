@@ -9,7 +9,6 @@ import infoReducer from './Home/info';
 import rideReducer from './Home/ride';
 import changeUserProfileReducer from './Home/changeUserProfile';
 import seeMyRideReducer from './Home/seeMyRide';
-import changeMyRideReducer from './Home/changeMyRide';
 import alertReducer from './Home/alertMessage';
 
 // etc
@@ -26,7 +25,6 @@ const rootReducer = combineReducers({
   info: infoReducer,
   ride: rideReducer,
   myRide: seeMyRideReducer,
-  changeMyRide: changeMyRideReducer,
   alert: alertReducer,
   // etc
 });

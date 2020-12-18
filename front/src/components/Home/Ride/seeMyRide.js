@@ -65,9 +65,10 @@ const SeeMyRide = ({
   return (
     <div className="ride">
       <MainUserButton className="ride__mainUserButton" />
-      <Link to="/ma-balade/edit"><TextButton text={changeText} /></Link>
+      <Link to="/ma-balade/edit"><TextButton text={changeText} buttonClass="button_small_green"/></Link>
       <TextButton
         text={deleteText}
+        buttonClass="button_small"
         handleClick={() => {
           if (window.confirm('Je confirme la suppression de ma balade.')) deleteMyRide();
         }}
@@ -112,7 +113,7 @@ const SeeMyRide = ({
             value={comment}
             inputClass="input_small"
           />
-          <TextButton />
+          <TextButton text="Envoyer" buttonClass="button_small_green" />
         </p>
       </form>
       <div className="ride__bottom">

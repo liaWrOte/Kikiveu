@@ -53,7 +53,7 @@ const changeMyRideReducer = (state = initialState, action = {}) => {
         newState.tags = newState.tags.remove(action.value);
       } */
 
-      var myArray = newState.tags;
+      var myArray = newState.myRideInfos.tagsId;
 
       if (myArray.includes(action.value)) {
         const index = myArray.indexOf(action.value);
