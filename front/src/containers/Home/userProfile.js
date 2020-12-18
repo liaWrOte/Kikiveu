@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 
 import UserProfile from '../../components/Home/UserProfile/userProfile';
 
-import { getUserProfile } from '../../actions/Home/changeUserProfile';
+import { getUserProfile, deleteUserProfile } from '../../actions/Home/changeUserProfile';
 
 const mapStateToProps = (state) => ({
   dogId: state.userProfile.userInfos.dogId,
@@ -16,6 +16,9 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   getUserProfile: () => {
     dispatch(getUserProfile());
+  },
+  deleteUserProfile: () => {
+    dispatch(deleteUserProfile());
   },
 });
 

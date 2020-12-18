@@ -11,6 +11,8 @@ import {
   refreshMapCoords,
   getUsers,
   getOtherUserProfileId,
+  markerLatChangeRide,
+  markerLngChangeRide,
 } from '../../actions/Map';
 
 import {
@@ -40,6 +42,7 @@ const mapStateToProps = (state) => ({
   haveEventsLocation: state.map.haveEventsLocation,
   canPutRideMarker: state.createARide.canPutRideMarker,
   usersOnMap: state.map.usersOnMap,
+  hasRide: state.myRide.hasRide,
 });
 
 const mapDispatchToProps = (dispatch) => ({

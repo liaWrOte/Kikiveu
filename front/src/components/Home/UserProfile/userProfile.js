@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, useHistory } from 'react-router-dom';
 
 // Import composants
 import PreviousButton from '../../microComponents/PreviousButton';
@@ -33,12 +33,15 @@ const UserProfile = ({
   castrate,
   pseudo,
   getUserProfile,
+  deleteUserProfile,
 }) => {
   const changeText = 'Modifier mon profil';
+  const deleteText = "Supprimer mon compte";
 
   useEffect(() => {
     getUserProfile();
   }, []);
+
 
   const moodUrl = {
     1: calm,
@@ -74,6 +77,13 @@ const UserProfile = ({
     <div className="userProfile">
       <MainUserButton avatar={avatar} className="mainUserButton" />
       <h2>Profil de {pseudo}</h2>
+      <Link to="/profil/edit"><TextButton text={changeText} /></Link>
+      <TextButton
+        text={deleteText}
+        handleClick={() => {
+          if (window.confirm('Je confirme la suppression de mon compte KikiVeu.')) deleteUserProfile();
+        }}
+      />
       <Link to="/profil/edit"><TextButton text={changeText} buttonClass="button_small" /></Link>
       <p>Son humeur du jour</p>
       <div className="createARide__divLabel__wrapper__users__emoji">

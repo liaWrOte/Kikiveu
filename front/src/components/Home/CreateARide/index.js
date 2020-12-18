@@ -134,7 +134,7 @@ const CreateARide = ({
           </div>
         </div>
         <p>
-          Je choisis le type de la balade :
+          Je choisis le type de la balade : (plusieurs choix possibles)
         </p>
         <div className="createARide__divLabel">
           <div className="createARide__divLabel__wrapper">

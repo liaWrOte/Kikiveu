@@ -16,6 +16,7 @@ import SecondaryUserButton from '../SecondaryUserButton/index';
 import TextButton from '../TextButton/index';
 
 import './index.scss';
+import { markerLatChangeRide } from '../../../actions/Map';
 
 const Map = ({
   lat,
@@ -30,6 +31,7 @@ const Map = ({
   refreshMapCoords,
   sendMapCoords,
   loadingMapCoords,
+  hasRide,
   rideEvents,
   haveEventsLocation,
   canPutRideMarker,

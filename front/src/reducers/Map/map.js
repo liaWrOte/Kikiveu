@@ -55,7 +55,6 @@ const mapReducer = (state = initialState, action = {}) => {
         ...state,
         markerLng: action.value,
       };
-
     case REFRESH_RIDE_EVENTS:
       return {
         ...state,
