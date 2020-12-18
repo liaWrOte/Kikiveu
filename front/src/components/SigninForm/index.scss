@@ -135,3 +135,6 @@ label {
   margin-top: 20px;
 }
 
+.active:focus {
+  border: 3px solide vars.$secondaryColor;
+}

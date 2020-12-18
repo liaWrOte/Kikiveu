@@ -70,7 +70,7 @@ const SeeOtherUserProfile = ({
 
   return (
     <div className="userProfile">
-      <MainUserButton avatar={otherUserDogInfo.avatar} className="mainUserButton" />
+      <MainUserButton image={otherUserDogInfo.avatar} className="ride_mainUserButton" />
       <h2>Profil de {otherUserDogInfo.pseudo}</h2>
       <p>Son humeur du jour </p>
       <p>{moodText[otherUserDogInfo.mooId]}</p>

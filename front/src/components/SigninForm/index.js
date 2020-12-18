@@ -74,6 +74,12 @@ const SigninForm = ({
     backgroundSize: 'cover',
   };
 
+  const [activeClass, setActiveClass] = useState(false);
+
+  useEffect (() => {
+    setActiveClass(true);
+  }, [acceptCGU]);
+
   return (
     <div className="signin">
       <div style={sectionStyle} className="signin__img" />
@@ -359,14 +365,16 @@ const SigninForm = ({
 
           <Cgu className="cgu" />
           <label htmlFor="acceptCGU" className="cgu__flex__label">
-            <input
-              type="checkbox"
+            <button
+              type="button"
               name="acceptCGU"
               id="acceptCGU"
-              onChange={changeCheckboxField}
+              onClick={changeCheckboxField}
               checked={acceptCGU}
-            />
+              className=(`button_small (${activeClass} ? active : '')`})
+            >
             J'ai lu et j'accepte les CGU
+            </button>
           </label>
           {(!acceptCGU && alertStatus) && (
           <AlertMessage message="Veuillez accepter les conditions générales d'utilisation" />
@@ -508,7 +516,7 @@ SigninForm.propTypes = {
   handleSignIn: PropTypes.func.isRequired,
   uploadImage: PropTypes.func.isRequired,
   alertStatus: PropTypes.bool.isRequired,
-  acceptCGU: PropTypes.string.isRequired,
+  acceptCGU: PropTypes.bool.isRequired,
   changeCheckboxField: PropTypes.func.isRequired,
   alertPasswordStatus: PropTypes.bool.isRequired,
 };
