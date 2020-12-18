@@ -94,7 +94,9 @@ class DogController extends AbstractController
             $em = $this->getDoctrine()->getManager();
             $em->flush();
 
-            $uploadFile->saveUpload($json, $dogs);
+            if (array_key_exists('filename', $dogArray) && array_key_exists('data', $dogArray)) {
+                $uploadFile->saveUpload($json, $dogs);
+            }
 
             $json = $normalizer->normalize(
                 $dogs,
