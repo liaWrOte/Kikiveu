@@ -42,6 +42,13 @@ const ChangeUserProfile = ({
     handleUpdateUserProfile();
   };
 
+  const history= useHistory();   
+  useEffect(() => {
+  if (responseOk === true) {
+    history.push('/');
+  }
+}, [responseOk]);
+
   return (
     <div className="userProfile">
       <form autoComplete="off" className="userProfile_form" onSubmit={handleSubmit}>
