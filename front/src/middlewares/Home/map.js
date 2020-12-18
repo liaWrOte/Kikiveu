@@ -24,7 +24,7 @@ const map = (store) => (next) => (action) => {
       const { auth } = store.getState();
       console.log(map.mapCoords._southWest.lat);
       axios.post(
-        'http://localhost:8000/api/v1/event',
+        `${apiUrl}/event`,
         {
           swLat: map.mapCoords._southWest.lat,
           swLong: map.mapCoords._southWest.lng,
@@ -39,7 +39,7 @@ const map = (store) => (next) => (action) => {
           store.dispatch(refreshRideEvents(response.data.events));
           console.log(map.lat);
           axios.put(
-            `http://localhost:8000/api/v1/user/edit/${auth.userId}`,
+            `${apiUrl}/user/edit/${auth.userId}`,
             {
               email: auth.email,
               password: auth.password,
@@ -57,7 +57,7 @@ const map = (store) => (next) => (action) => {
             .then((response2) => {
               console.log(response2);
               axios.post(
-                'http://localhost:8000/api/v1/user',
+                `${apiUrl}/user`,
                 {
                   swLat: map.mapCoords._southWest.lat,
                   swLong: map.mapCoords._southWest.lng,

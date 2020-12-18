@@ -9,6 +9,8 @@ import { saveAuthInfo } from '../actions/auth';
 
 import { handleErrorSignin, handleErrorPassword } from '../actions/Home/alertMessage';
 
+import apiUrl from './env';
+
 const signin = (store) => (next) => (action) => {
   switch (action.type) {
     case SIGN_IN:
@@ -27,7 +29,7 @@ const signin = (store) => (next) => (action) => {
           && signin.castrate
           && signin.acceptCGU
         ) {
-          axios.post('http://localhost:8000/api/v1/signin', {
+          axios.post(`${apiUrl}/signin`, {
             slug: signin.username,
             pseudo: signin.username,
             email: signin.email,
@@ -42,7 +44,7 @@ const signin = (store) => (next) => (action) => {
               console.log(response);
               console.log(signin.avatar.data);
               console.log(signin.avatar.filename);
-              axios.post('http://localhost:8000/api/v1/dog/add', {
+              axios.post(`${apiUrl}/dog/add`, {
                 name: signin.dogName, //
                 filename: signin.avatar.filename,
                 data: signin.avatar.data, //
