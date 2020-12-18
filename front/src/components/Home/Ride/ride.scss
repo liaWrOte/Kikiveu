@@ -16,7 +16,8 @@
     flex-wrap: wrap;
   }
   &__comments {
-    height: 200px;
+    height: 120px;
+    scroll-behavior: auto;
     &__line {
       display: flex;
       &__date {

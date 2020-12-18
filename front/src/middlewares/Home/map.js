@@ -21,7 +21,7 @@ const map = (store) => (next) => (action) => {
     case SEND_MAP_COORDS:
       console.log('dans middleware refresh ride events');
       const { map } = store.getState();
-      const {auth}= store.getState();
+      const { auth } = store.getState();
       console.log(map.mapCoords._southWest.lat);
       axios.post(
         'http://localhost:8000/api/v1/event',
@@ -66,12 +66,12 @@ const map = (store) => (next) => (action) => {
                 },
                 config,
               )
-                .then((response4) => {
-                  console.log(response4);
-                  store.dispatch(showUsersOnMap(response4.data.users));
+                .then((response3) => {
+                  console.log(response3);
+                  store.dispatch(showUsersOnMap(response3.data.users));
                 })
-                .catch((error) => {
-                  console.log(error);
+                .catch((error3) => {
+                  console.log(error3);
                 });
             })
             .catch((error2) => {
@@ -83,28 +83,7 @@ const map = (store) => (next) => (action) => {
         });
       next(action);
       break;
-/*
-    case GET_USERS:
-      console.log('dans middleware get users on map');
-      axios.post(
-        'http://localhost:8000/api/v1/user',
-        {
-          swLat: map.mapCoords._southWest.lat,
-          swLong: map.mapCoords._southWest.lng,
-          neLat: map.mapCoords._northEast.lat,
-          neLong: map.mapCoords._northEast.lng,
-        },
-        config,
-      )
-        .then((response) => {
-          console.log(response);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-      next(action);
-      break;
-*/
+
     default:
       // on passe l'action au suivant (middleware suivant ou reducer)
       next(action);
