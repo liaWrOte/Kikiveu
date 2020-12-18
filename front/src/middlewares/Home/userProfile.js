@@ -111,10 +111,13 @@ const userProfile = (store) => (next) => (action) => {
 
     case DELETE_USER_PROFILE:
       console.log('middleware, action GET_MY_RIDE');
-      axios.delete(`http://localhost:8000/api/v1/user/delete/${auth.userId}`, config)
+      axios.delete(`${apiUrl}/user/delete/${auth.userId}`, config)
         .then((response) => {
           // traitement si réponse est un succès
           console.log(response);
+          if (response.status === 200) {
+            window.location = ('/connexion');
+          }
         })
         .catch((error) => {
         // traitement si réponse est une erreur

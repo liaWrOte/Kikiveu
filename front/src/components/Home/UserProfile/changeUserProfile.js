@@ -46,7 +46,7 @@ const ChangeUserProfile = ({
         <TextButton text={changeAvatar} buttonClass="button_small_green" />
         <p className="before_button">Comment se sent {userInfos.pseudo} aujourd'hui ?</p>
         <div className="userProfile__form__emoji">
-          <label htmlFor="moodId">
+          <label htmlFor="moodId" className="createARide__divLabel__wrapper__users__emoji">
             <Emoji src={calm} />
             <Input
               type="radio"
@@ -58,7 +58,7 @@ const ChangeUserProfile = ({
             Calme
           </label>
 
-          <label htmlFor="moodId">
+          <label htmlFor="moodId" className="createARide__divLabel__wrapper__users__emoji">
             <Emoji src={excited} />
             <Input
               type="radio"
@@ -70,7 +70,7 @@ const ChangeUserProfile = ({
             Excité
           </label>
 
-          <label htmlFor="moodId">
+          <label htmlFor="moodId" className="createARide__divLabel__wrapper__users__emoji">
             <Emoji src={player} />
             <Input
               type="radio"
@@ -82,7 +82,7 @@ const ChangeUserProfile = ({
             Joueur
           </label>
 
-          <label htmlFor="moodId">
+          <label htmlFor="moodId" className="createARide__divLabel__wrapper__users__emoji">
             <Emoji src={rough} />
             <Input
               type="radio"
@@ -94,7 +94,7 @@ const ChangeUserProfile = ({
             Energique
           </label>
 
-          <label htmlFor="moodId">
+          <label htmlFor="moodId" className="createARide__divLabel__wrapper__users__emoji">
             <Emoji src={tired} />
             <Input
               type="radio"
@@ -109,19 +109,19 @@ const ChangeUserProfile = ({
         </div>
         <p className="before_button">L'état de santé de {userInfos.pseudo} a changé ?</p>
         <div className="userProfile__form__emoji">
-          <label htmlFor="stateId">
+          <label htmlFor="stateId" className="createARide__divLabel__wrapper__users__emoji">
             <Emoji src={small} />
             <Input
               type="radio"
               onChange={changeField}
-              value={1}
+              value={3}
               id="small"
               name="stateId"
             />
             Petite forme
           </label>
 
-          <label htmlFor="stateId">
+          <label htmlFor="stateId" className="createARide__divLabel__wrapper__users__emoji">
             <Emoji src={medium} />
             <Input
               type="radio"
@@ -133,18 +133,18 @@ const ChangeUserProfile = ({
             Forme moyenne
           </label>
 
-          <label htmlFor="stateId">
+          <label htmlFor="stateId" className="createARide__divLabel__wrapper__users__emoji">
             <Emoji src={good} />
             <Input
               type="radio"
               onChange={changeField}
-              value={3}
+              value={1}
               id="good"
               name="stateId"
             />
             Excellente forme
           </label>
-          <label htmlFor="castrate">
+          <label htmlFor="castrate" className="createARide__divLabel__wrapper__users__emoji">
             <Toggle
               onChange={changeField}
               id="castrate"
@@ -154,7 +154,8 @@ const ChangeUserProfile = ({
             <div id="castrate">Castré</div>
           </label>
         </div>
-        <label htmlFor="pseudo">Votre nouveau pseudo
+        <label htmlFor="pseudo">
+          Votre nouveau pseudo
           <Input
             type="text"
             onChange={changeField}
