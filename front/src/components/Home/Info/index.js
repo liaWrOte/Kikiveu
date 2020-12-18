@@ -7,6 +7,7 @@ import Toggle from '../../microComponents/Toggle';
 import MainUserButton from '../../microComponents/MainUserButton';
 import RideButton from '../../microComponents/RideButton';
 import { HelpCircle } from 'react-feather';
+import SecondaryUserButton from '../../microComponents/SecondaryUserButton';
 
 import './info.scss';
 
@@ -22,7 +23,7 @@ const Info = ({
     {hasRide && (
       <Link to="/ma-balade"><RideButton /></Link>
     )}
-    <Link to="/profil"><MainUserButton avatar={avatar} /></Link>
+    <Link to="/profil"><SecondaryUserButton profileImage={avatar} /></Link>
   </div>
 );
 

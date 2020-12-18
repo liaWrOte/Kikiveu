@@ -8,7 +8,7 @@ import {
 
 const mapStateToProps = (state) => ({
   // nom de la prop à remplir: donnée à récupérer dans le state
-  avatar: state.info.avatar,
+  avatar: state.userProfile.userInfos.avatar,
   hasRide: state.myRide.hasRide,
 });
 
