@@ -5,7 +5,7 @@ import {
 
 const initialState = {
   avatar: '',
-  castrate: 0,
+  castrate: false,
   moodId: 1,
   stateId: 3,
   pseudo: '',

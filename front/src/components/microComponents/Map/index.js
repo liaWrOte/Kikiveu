@@ -135,7 +135,7 @@ const Map = ({
           shadowSize: null,
           shadowAnchor: null,
           iconSize: new L.Point(30, 30),
-          className: `leaflet-div-icon,${rideEvent.eventId}`,
+          className: 'leaflet-div-icon',
         })}
       >
         <Popup>
@@ -174,7 +174,7 @@ const Map = ({
           usersOnMap.map((user) => (
             <div className="map__users__user">
               <Link to={`/${user.userSlug}`} onClick={() => getOtherUserProfile(getOtherUserProfileId(user.userId))}>
-                <img src={user.dogAvatar} alt={user.userPseudo} />
+                <img src={`https://www.kikiveu.me/back/public/avatar/${user.dogAvatar}`} alt={user.userPseudo} />
               </Link>
             </div>
           ))
@@ -203,7 +203,7 @@ Map.propTypes = {
   changeMarkerLat: PropTypes.func.isRequired,
   changeMarkerLng: PropTypes.func.isRequired,
   rideEvents: PropTypes.array,
-  haveEventsLocation: PropTypes.func.isRequired,
+  haveEventsLocation: PropTypes.bool.isRequired,
   refreshMapCoords: PropTypes.func.isRequired,
   canPutRideMarker: PropTypes.bool.isRequired,
   getUsers: PropTypes.func.isRequired,

@@ -69,6 +69,8 @@ const Ride = ({
 */
 
   const datetime = rideInfos.eventDatetime;
+  // const dateSplit = datetime.split(' ');
+  // console.log(dateSplit);
   const newdate = datetime.replace('T', '  ');
   const newdatetime = newdate.slice(0, 20);
 
@@ -117,7 +119,7 @@ const Ride = ({
             value={comment}
             inputClass="input_small"
           />
-          <TextButton text={submitText} />
+          <TextButton text="Envoyer" buttonClass="button_small_green" />
         </p>
       </form>
       <div className="ride__bottom">
