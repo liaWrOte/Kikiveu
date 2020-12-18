@@ -371,7 +371,7 @@ const SigninForm = ({
               id="acceptCGU"
               onClick={changeCheckboxField}
               checked={acceptCGU}
-              className=(`button_small (${activeClass} ? active : '')`})
+              
             >
             J'ai lu et j'accepte les CGU
             </button>
