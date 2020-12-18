@@ -107,7 +107,7 @@ const SigninForm = ({
               <Input
                 type="radio"
                 onChange={changeField}
-                value={1}
+                value={0}
                 id="male"
                 name="sex"
                 checked
@@ -120,7 +120,7 @@ const SigninForm = ({
               <Input
                 type="radio"
                 onChange={changeField}
-                value={0}
+                value={1}
                 id="female"
                 name="sex"
               />
@@ -159,7 +159,7 @@ const SigninForm = ({
                 value={1}
                 checked
               />
-              <p className="text_select">Oui</p>
+              <p className="text_select">Non</p>
             </label>
             <label htmlFor="castrate" className="text_select">
               <Input
@@ -169,7 +169,7 @@ const SigninForm = ({
                 value={0}
                 key="noCastrate"
               />
-              <p className="text_select">Non</p>
+              <p className="text_select">Oui</p>
             </label>
 
           </div>
@@ -235,7 +235,7 @@ const SigninForm = ({
                 onChange={changeField}
                 name="character"
                 id="dominant"
-                value={1}
+                value={4}
               />
               Dominant
             </label>
@@ -246,7 +246,7 @@ const SigninForm = ({
                 onChange={changeField}
                 name="character"
                 id="sensitive"
-                value={2}
+                value={11}
               />
               Timide/Sensible
             </label>
@@ -257,7 +257,7 @@ const SigninForm = ({
                 onChange={changeField}
                 name="character"
                 id="fearful"
-                value={3}
+                value={6}
               />
               Peureux
             </label>
@@ -268,7 +268,7 @@ const SigninForm = ({
                 onChange={changeField}
                 name="character"
                 id="playful"
-                value={4}
+                value={9}
               />
               Joueur
             </label>
@@ -279,7 +279,7 @@ const SigninForm = ({
                 onChange={changeField}
                 name="character"
                 id="independent"
-                value={5}
+                value={7}
               />
               Indépendant
             </label>
@@ -290,7 +290,7 @@ const SigninForm = ({
                 onChange={changeField}
                 name="character"
                 id="sociable"
-                value={6}
+                value={12}
               />
               Sociable
             </label>
@@ -301,7 +301,7 @@ const SigninForm = ({
                 onChange={changeField}
                 name="character"
                 id="barker"
-                value={7}
+                value={2}
               />
               Aboyeur
             </label>
@@ -312,7 +312,7 @@ const SigninForm = ({
                 onChange={changeField}
                 name="character"
                 id="possessive"
-                value={8}
+                value={10}
               />
               Possessif
             </label>
@@ -323,7 +323,7 @@ const SigninForm = ({
                 onChange={changeField}
                 name="character"
                 id="curious"
-                value={9}
+                value={3}
               />
               Curieux
             </label>
@@ -334,7 +334,7 @@ const SigninForm = ({
                 onChange={changeField}
                 name="character"
                 id="apprentice"
-                value={10}
+                value={8}
               />
               En apprentissage
             </label>
@@ -345,7 +345,7 @@ const SigninForm = ({
                 onChange={changeField}
                 name="character"
                 id="stable"
-                value={11}
+                value={1}
               />
               Equilibré
             </label>

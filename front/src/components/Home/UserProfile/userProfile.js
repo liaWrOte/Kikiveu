@@ -75,7 +75,7 @@ const UserProfile = ({
 
   return (
     <div className="userProfile">
-      <MainUserButton avatar={avatar} className="mainUserButton" />
+      <MainUserButton image={avatar} className="mainUserButton" />
       <h2>Profil de {pseudo}</h2>
       <div className="button_wrapper">
         <div className="buttonItem"><Link to="/profil/edit"><TextButton text={changeText} buttonClass="button_small"/></Link></div>

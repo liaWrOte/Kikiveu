@@ -174,7 +174,7 @@ const Map = ({
           usersOnMap.map((user) => (
             <div className="map__users__user">
               <Link to={`/${user.userSlug}`} onClick={() => getOtherUserProfile(getOtherUserProfileId(user.userId))}>
-                <img src={`https://www.kikiveu.me/back/public/avatar/${user.dogAvatar}`} alt={user.userPseudo} />
+                <SecondaryUserButton profileImage={user.dogAvatar} alt={user.userPseudo} />
               </Link>
             </div>
           ))

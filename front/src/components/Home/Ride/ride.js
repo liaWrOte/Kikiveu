@@ -27,6 +27,7 @@ const Ride = ({
   handlePostComment,
   commentsSection,
   rideId,
+  avatar,
 }) => {
   /* useEffect(() => {
     getRide(rideInfos.eventId);
@@ -84,7 +85,7 @@ const Ride = ({
 
   return (
     <div className="ride">
-      <MainUserButton className="ride__mainUserButton" />
+      <MainUserButton className="ride__mainUserButton" image={avatar} />
       <p> Description de la balade :
         {rideInfos.eventDescription}
       </p>
