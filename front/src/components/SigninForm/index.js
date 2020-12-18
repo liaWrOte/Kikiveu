@@ -107,7 +107,7 @@ const SigninForm = ({
               <Input
                 type="radio"
                 onChange={changeField}
-                value={1}
+                value={0}
                 id="male"
                 name="sex"
                 checked
@@ -120,7 +120,7 @@ const SigninForm = ({
               <Input
                 type="radio"
                 onChange={changeField}
-                value={0}
+                value={1}
                 id="female"
                 name="sex"
               />
