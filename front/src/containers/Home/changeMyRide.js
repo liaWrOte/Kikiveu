@@ -16,6 +16,7 @@ const mapStateToProps = (state) => ({
   newDate: state.myRide.newDate,
   newTime: state.myRide.newTime,
   newTagsId: state.myRide.newTagsId,
+  responseOk: state.myRide.responseOk,
 });
 
 const mapDispatchToProps = (dispatch) => ({

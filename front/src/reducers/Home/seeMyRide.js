@@ -26,6 +26,7 @@ const initialState = {
   newDate: '',
   newTime: '',
   newTagsId: [],
+  responseOk: false,
 };
 
 const seeMyRideReducer = (state = initialState, action = {}) => {
@@ -93,6 +94,7 @@ const seeMyRideReducer = (state = initialState, action = {}) => {
     case HANDLE_UPDATE_RIDE:
       return {
         ...state,
+        responseOk: true,
       };
 
     default: return { ...state };

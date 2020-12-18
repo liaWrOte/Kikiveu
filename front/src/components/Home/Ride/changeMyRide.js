@@ -32,6 +32,7 @@ const ChangeMyRide = ({
   changeField,
   updateTagRide,
   handleUpdateRide,
+  responseOk
 }) => {
   const placeCursor = 'Je change le lieu de ma balade';
   const saveText = 'Enregistrer';

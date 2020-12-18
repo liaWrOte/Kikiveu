@@ -13,6 +13,7 @@ const initialState = {
   otherUserInfo: [],
   otherUserDogInfo: [],
   loadingOtherUserProfile: true,
+  responseOk: false,
 };
 
 const userProfileReducer = (state = initialState, action = {}) => {
@@ -22,6 +23,7 @@ const userProfileReducer = (state = initialState, action = {}) => {
         ...state,
         userInfos: action.value,
         loading: false,
+        responseOk: true,
       };
 
     case SAVE_DOG_INFOS:
@@ -29,6 +31,7 @@ const userProfileReducer = (state = initialState, action = {}) => {
         ...state,
         dogInfos: action.value,
         loading: false,
+        responseOk:true,
       };
 
     case SAVE_OTHER_USER_INFO:

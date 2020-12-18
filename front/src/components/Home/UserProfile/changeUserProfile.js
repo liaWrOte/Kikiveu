@@ -1,5 +1,7 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import PropTypes from 'prop-types';
+
+import { useHistory } from 'react-router-dom';
 
 // Import composants
 import PreviousButton from '../../microComponents/PreviousButton';
@@ -28,6 +30,7 @@ const ChangeUserProfile = ({
   userInfos,
   handleUpdateUserProfile,
   changeField,
+  responseOk,
 }) => {
   const changeAvatar = 'Cliquez ici pour modifier la photo';
   const saveText = 'Enregistrer';
