@@ -97,14 +97,6 @@ const seeMyRideReducer = (state = initialState, action = {}) => {
         responseOk: true,
       };
 
-    case DELETE_MY_RIDE:
-      return {
-        ...state,
-        responseOk: false,
-      };
-
-
-
     default: return { ...state };
   }
 };

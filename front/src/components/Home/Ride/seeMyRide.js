@@ -74,6 +74,9 @@ const SeeMyRide = ({
 
   const formatedTime = `${addZero(date.getHours())}:${addZero(date.getMinutes())}`;
 
+  const duration = myRideInfos.eventDuration;
+  const newduration = duration.replace('.',':');
+
   return (
     <div className="ride">
       <MainUserButton className="ride__mainUserButton" image={avatar} />
@@ -92,7 +95,7 @@ const SeeMyRide = ({
         <Calendar /> Date et heure : {formatedDate} à {formatedTime}
       </p>
       <p>
-        Durée: {myRideInfos.eventDuration}
+        Durée: {newduration}
       </p>
       <p>
         Nombre de participants maximum : {myRideInfos.eventMaxParticipant}
