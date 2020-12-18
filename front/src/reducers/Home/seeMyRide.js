@@ -9,7 +9,7 @@ import {
   SAVE_MY_COMMENT,
   LOAD_MY_COMMENTS,
   CHANGE_MY_FIELD,
-
+  DELETE_MY_RIDE,
 } from '../../actions/Home/myRide';
 
 import {
@@ -26,6 +26,7 @@ const initialState = {
   newDate: '',
   newTime: '',
   newTagsId: [],
+  responseOk: false,
 };
 
 const seeMyRideReducer = (state = initialState, action = {}) => {
@@ -93,7 +94,16 @@ const seeMyRideReducer = (state = initialState, action = {}) => {
     case HANDLE_UPDATE_RIDE:
       return {
         ...state,
+        responseOk: true,
       };
+
+    case DELETE_MY_RIDE:
+      return {
+        ...state,
+        responseOk: false,
+      };
+
+
 
     default: return { ...state };
   }

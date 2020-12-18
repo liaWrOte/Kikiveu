@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { useHistory } from 'react-router-dom';
 
 // Import composants
 import PreviousButton from '../../microComponents/PreviousButton';
@@ -32,6 +33,7 @@ const ChangeMyRide = ({
   changeField,
   updateTagRide,
   handleUpdateRide,
+  responseOk
 }) => {
   const placeCursor = 'Je change le lieu de ma balade';
   const saveText = 'Enregistrer';
@@ -42,6 +44,13 @@ const ChangeMyRide = ({
     console.log('update User profile');
     handleUpdateRide();
   };
+
+  const history= useHistory();   
+  useEffect(() => {
+  if (responseOk === true) {
+    history.push('/');
+  }
+}, [responseOk]);
 
   const datetime = myRideInfos.eventDatetime;
   const newdatetime = datetime.replace('T', '  ');
@@ -103,28 +112,14 @@ const ChangeMyRide = ({
         <div className="twoColumns">
           <div className="ride__item">
             <label htmlFor="eventDatetime">
-              Date:
+              Date et heure (JJ/MM/AAAA HH:MM):
               <Input
                 type="text"
                 id="date"
                 name="eventDatetime"
-                placeholder={formatedDate}
                 onChange={changeField}
-                value={formatedDate}
+                value= {`${formatedDate} ${formatedTime}`}
                 inputClass="input_small"
-              />
-            </label>
-          </div>
-          <div className="createARide__item">
-            <label htmlFor="time">
-              Heure :
-              <Input
-                type="time"
-                id="time"
-                name="time"
-                onChange={changeField}
-                inputClass="input_small"
-                value={formatedTime}
               />
             </label>
           </div>

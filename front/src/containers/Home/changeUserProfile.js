@@ -9,6 +9,7 @@ import {
 
 const mapStateToProps = (state) => ({
   userInfos: state.userProfile.userInfos,
+  responseOk: state.userProfile.responseOk,
   avatar: state.userProfile.userInfos.avatar,
 });
 

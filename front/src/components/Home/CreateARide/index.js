@@ -36,10 +36,13 @@ const CreateARide = ({
   handleCreateARide,
   putRideMarker,
   hasRide,
+  responseOk,
   avatar,
 }) => {
   const placeCursor = 'Je positionne ma balade sur la carte';
   const saveText = 'Enregistrer';
+
+  const history = useHistory();
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -48,6 +51,12 @@ const CreateARide = ({
     putRideMarker();
     handleCreateARide();
   };
+
+  useEffect(() => {
+    if (responseOk === true) {
+      history.push('/'); // when user is logged
+    }
+  }, [responseOk]);
 
   return (
     <div className="createARide">
