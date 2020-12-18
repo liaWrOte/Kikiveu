@@ -1,6 +1,7 @@
 //@use '/home/etudiant/Bureau/html/projet-kikiveu/front/src/styles/_vars.scss';
 @use '../../styles/vars';
 
+
 .signin {
   display: flex;
   flex-direction: column;
@@ -98,12 +99,18 @@ p {
   }
 }
 
+label {
+  margin: (vars.$smallGutter)/2;
+}
+
 /* HIDE RADIO */
 [type=radio] { 
   position: absolute;
-  opacity: 0;
-  width: 60px;
-  height: 60px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 80px;
+  height: 80px;
 }
 
 /* IMAGE STYLES */
@@ -112,6 +119,19 @@ p {
 }
 
 /* CHECKED STYLES */
-[type=radio]:checked + .emoji__image {
-  outline: 2px solid #f00;
+[type=radio]:checked {
+  background-image: url('../../assets/images/checked.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0.7;
 }
+
+.text_select {
+  width: 80px;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  vertical-align: center;
+  margin-top: 20px;
+}
+

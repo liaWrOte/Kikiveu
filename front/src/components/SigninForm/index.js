@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 
 import FileInputComponent from 'react-file-input-previews-base64';
@@ -92,7 +92,7 @@ const SigninForm = ({
               value={dogName}
               inputClass="input"
             />
-            {((dogName === '') && alertStatus) && (
+            {((dogName === '3') && alertStatus) && (
               <AlertMessage message="Veuillez entrer le nom de votre chien" />
             )}
           </label>
@@ -151,7 +151,7 @@ const SigninForm = ({
         <div className="signin__form__item">
           4. Est-il castré ?
           <div className="signin__form__item__label">
-            <label htmlFor="castrate">
+            <label htmlFor="castrate" className="text_select">
               <Input
                 type="radio"
                 onChange={changeField}
@@ -159,9 +159,9 @@ const SigninForm = ({
                 value={1}
                 checked
               />
-              Oui
+              <p className="text_select">Oui</p>
             </label>
-            <label htmlFor="castrate">
+            <label htmlFor="castrate" className="text_select">
               <Input
                 type="radio"
                 onChange={changeField}
@@ -169,7 +169,7 @@ const SigninForm = ({
                 value={0}
                 key="noCastrate"
               />
-              Non
+              <p className="text_select">Non</p>
             </label>
 
           </div>
@@ -181,7 +181,8 @@ const SigninForm = ({
           <label htmlFor="dogShape">
             5. Comment décrirez-vous son état de santé général ?
             <div className="signin__form__item__label">
-              <label htmlFor="dogCondition" className="createARide__divLabel__wrapper__users__emoji">
+              <label htmlFor="dogCondition" className="createARide__divLabel__wrapper__users__emoji" >
+              
                 <Emoji src={smallShape} />
                 <Input
                   type="radio"
@@ -189,8 +190,10 @@ const SigninForm = ({
                   name="dogCondition"
                   id="smallShape"
                   value={3}
-                />
+
+                /> 
                 Mauvais
+                
               </label>
               <label htmlFor="dogCondition" className="createARide__divLabel__wrapper__users__emoji">
                 <Emoji src={mediumShape} />
@@ -201,6 +204,7 @@ const SigninForm = ({
                   id="mediumShape"
                   value={2}
                 />
+                
                 Moyen
               </label>
               <label htmlFor="dogCondition" className="createARide__divLabel__wrapper__users__emoji">
