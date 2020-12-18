@@ -2,11 +2,10 @@ import React from 'react';
 
 import './index.scss';
 
-import profileImage from '../../../assets/images/dog_profile.jpg';
 
-const SecondaryUserButton = () => {
+const SecondaryUserButton = ({ profileImage }) => {
   const sectionStyle = {
-    backgroundImage: `url(${profileImage})`,
+    backgroundImage: `url(http://www.kikiveu.me/back/avatar/${profileImage})`,
   };
   return (
 

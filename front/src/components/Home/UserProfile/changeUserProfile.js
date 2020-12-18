@@ -28,6 +28,7 @@ const ChangeUserProfile = ({
   userInfos,
   handleUpdateUserProfile,
   changeField,
+  avatar,
 }) => {
   const changeAvatar = 'Cliquez ici pour modifier la photo';
   const saveText = 'Enregistrer';
@@ -42,7 +43,7 @@ const ChangeUserProfile = ({
   return (
     <div className="userProfile">
       <form autoComplete="off" className="userProfile_form" onSubmit={handleSubmit}>
-        <MainUserButton className="mainUserButton" />
+        <MainUserButton className="mainUserButton" image={avatar} />
         <TextButton text={changeAvatar} buttonClass="button_small_green" />
         <p className="before_button">Comment se sent {userInfos.pseudo} aujourd'hui ?</p>
         <div className="userProfile__form__emoji">

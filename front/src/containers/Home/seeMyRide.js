@@ -14,6 +14,7 @@ const mapStateToProps = (state) => ({
   myRideInfos: state.myRide.myRideInfos,
   comment: state.myRide.comment,
   commentsSection: state.myRide.commentsSection,
+  avatar: state.userProfile.userInfos.avatar,
 });
 
 const mapDispatchToProps = (dispatch) => ({

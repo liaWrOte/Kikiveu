@@ -9,6 +9,7 @@ import {
 
 const mapStateToProps = (state) => ({
   userInfos: state.userProfile.userInfos,
+  avatar: state.userProfile.userInfos.avatar,
 });
 
 const mapDispatchToProps = (dispatch) => ({
