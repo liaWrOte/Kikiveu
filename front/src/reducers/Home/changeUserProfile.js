@@ -1,4 +1,4 @@
-import {
+/*import {
   UPDATE_USER_PROFILE_FIELD,
   HANDLE_UPDATE_USER_PROFILE,
 } from '../../actions/Home/changeUserProfile';
@@ -31,4 +31,4 @@ const changeUserProfileReducer = (state = initialState, action = {}) => {
   }
 };
 
-export default changeUserProfileReducer;
+export default changeUserProfileReducer;*/

@@ -42,7 +42,6 @@ const UserProfile = ({
     getUserProfile();
   }, []);
 
-
   const moodUrl = {
     1: calm,
     2: excited,
@@ -77,26 +76,27 @@ const UserProfile = ({
     <div className="userProfile">
       <MainUserButton avatar={avatar} className="mainUserButton" />
       <h2>Profil de {pseudo}</h2>
-      <Link to="/profil/edit"><TextButton text={changeText} /></Link>
-      <TextButton
-        text={deleteText}
-        handleClick={() => {
-          if (window.confirm('Je confirme la suppression de mon compte KikiVeu.')) deleteUserProfile();
-        }}
-      />
-      <Link to="/profil/edit"><TextButton text={changeText} buttonClass="button_small" /></Link>
-      <p>Son humeur du jour</p>
+      <div className="button_wrapper">
+        <div className="buttonItem"><Link to="/profil/edit"><TextButton text={changeText} buttonClass="button_small"/></Link></div>
+        <div className="buttonItem"><TextButton
+          text={deleteText}
+          buttonClass="button_small"
+          handleClick={() => {
+            if (window.confirm('Je confirme la suppression de mon compte KikiVeu.')) deleteUserProfile();
+          }}
+        />
+        </div>
+      </div>
       <div className="createARide__divLabel__wrapper__users__emoji">
+        Son humeur du jour
         <Emoji src={moodUrl[moodId]} />
         {moodText[moodId]}
       </div>
-
-      <p>Son état de santé</p>
       <div className="createARide__divLabel__wrapper__users__emoji">
+        Son état de santé
         <Emoji src={stateUrl[stateId]} />
         {stateText[stateId]}
       </div>
-
       <div>Castré : {castrateText[castrate]}</div>
       <div className="userProfile__bottom">
         <PreviousButton />
@@ -117,6 +117,7 @@ UserProfile.propTypes = {
   stateId: PropTypes.number.isRequired,
   pseudo: PropTypes.string.isRequired,
   castrate: PropTypes.number.isRequired,
+  deleteUserProfile: PropTypes.func.isRequired,
 };
 
 export default UserProfile;

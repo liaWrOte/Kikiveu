@@ -36,6 +36,13 @@
   }
 }
 
+.button_wrapper {
+  display: flex;
+}
+
+.buttonItem {
+  margin: 0.2em;
+}
 
 .before_button {
   margin-top: vars.$smallGutter;
