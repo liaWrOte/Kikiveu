@@ -28,11 +28,26 @@ const Ride = ({
   commentsSection,
   rideId,
 }) => {
-  /*useEffect(() => {
+  /* useEffect(() => {
     getRide(rideInfos.eventId);
     console.log(commentsSection);
     loadComments();
-  }, []);*/
+  }, []); */
+  const string = rideInfos.eventDatetime;
+  const date = new Date(string);
+
+  function addZero(i) {
+    if (i < 10) {
+      i = "0" + i;
+    }
+    return i;
+  }
+  
+  const formatedDate = addZero(date.getDate())+'/'+addZero((date.getMonth()+1))+'/'+date.getFullYear();
+  console.log(formatedDate);
+  
+  const formatedTime = addZero(date.getHours()) + ':' + addZero(date.getMinutes());
+  console.log(formatedTime);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -61,20 +76,14 @@ const Ride = ({
     7: 'Aquatique',
   };
 
-/*
+  /*
   useEffect(() => {
     console.log(rideId);
     getRide();
   }, [rideInfos]);
 */
 
-  const datetime = rideInfos.eventDatetime;
-  // const dateSplit = datetime.split(' ');
-  // console.log(dateSplit);
-  const newdate = datetime.replace('T', '  ');
-  const newdatetime = newdate.slice(0, 20);
-
-  const submitText='Envoyer';
+  const submitText = 'Envoyer';
 
   return (
     <div className="ride">
@@ -83,7 +92,7 @@ const Ride = ({
         {rideInfos.eventDescription}
       </p>
       <p>
-        <Calendar /> Date et heure : {newdatetime}
+        <Calendar /> Date et heure : {formatedDate} à {formatedTime}
       </p>
       <p>
         Durée: {rideInfos.eventDuration}
