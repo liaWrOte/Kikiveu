@@ -3,6 +3,7 @@ import { Calendar } from 'react-feather';
 import PropTypes from 'prop-types';
 import { useParams, Link } from 'react-router-dom';
 
+
 // Import composants
 import PreviousButton from '../../microComponents/PreviousButton';
 import MainUserButton from '../../microComponents/MainUserButton';
@@ -55,17 +56,27 @@ const SeeMyRide = ({
     7: 'Aquatique',
   };
 
-  const dateTime = myRideInfos.eventDatetime;
-  const newdate = dateTime.replace('T', '  ');
-  const newdatetime = newdate.slice(0, 20);
-
+  console.log(commentsSection[0]);
   const changeText = 'Modifier ma balade';
   const deleteText = 'Supprimer ma balade';
+
+  const string = myRideInfos.eventDatetime;
+  const date = new Date(string);
+
+  function addZero(i) {
+    if (i < 10) {
+      i = `0${i}`;
+    }
+    return i;
+  }
+  const formatedDate = `${addZero(date.getDate())}/${addZero((date.getMonth() + 1))}/${date.getFullYear()}`;
+
+  const formatedTime = `${addZero(date.getHours())}:${addZero(date.getMinutes())}`;
 
   return (
     <div className="ride">
       <MainUserButton className="ride__mainUserButton" />
-      <Link to="/ma-balade/edit"><TextButton text={changeText} buttonClass="button_small_green"/></Link>
+      <Link to="/ma-balade/edit"><TextButton text={changeText} buttonClass="button_small_green" /></Link>
       <TextButton
         text={deleteText}
         buttonClass="button_small"
@@ -77,7 +88,7 @@ const SeeMyRide = ({
         {myRideInfos.eventDescription}
       </p>
       <p>
-        <Calendar /> Date et heure : {newdatetime}
+        <Calendar /> Date et heure : {formatedDate} à {formatedTime}
       </p>
       <p>
         Durée: {myRideInfos.eventDuration}
@@ -94,13 +105,24 @@ const SeeMyRide = ({
       <p>Commentaires</p>
       <div className="ride__comments">
 
-        {commentsSection.map((commentItem) => (
-          <div className="ride__comments__line" key={commentItem.commentId}>
-            <p className="ride__comments__line__date">{commentItem.createdAt}</p>
-            <p>{commentItem.userId.pseudo}</p>
-            <p>{commentItem.body}</p>
-          </div>
-        ))}
+        {commentsSection.map((commentItem) => {
+          
+          console.log(commentItem);
+          let commentDate = new Date(commentItem.createdAt);
+          console.log(commentDate);
+
+          let commentFormatedDate = `${addZero(commentDate.getDay())}/${addZero((commentDate.getMonth() + 1))}`;
+
+          let commentFormatedTime = `${addZero(commentDate.getHours())}:${addZero(commentDate.getMinutes())}`;
+
+          return (
+            <div className="ride__comments__line" key={commentItem.commentId}>
+              <p className="ride__comments__line__date">le {commentFormatedDate} à {commentFormatedTime}</p>
+              <p>{commentItem.userId.pseudo}</p>
+              <p>{commentItem.body}</p>
+            </div>
+          );
+        })}
 
       </div>
       <form autoComplete="off" className="login__form" onSubmit={handleSubmit}>
