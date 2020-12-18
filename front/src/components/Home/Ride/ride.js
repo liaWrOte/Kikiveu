@@ -42,12 +42,9 @@ const Ride = ({
     }
     return i;
   }
-  
   const formatedDate = addZero(date.getDate())+'/'+addZero((date.getMonth()+1))+'/'+date.getFullYear();
-  console.log(formatedDate);
-  
+
   const formatedTime = addZero(date.getHours()) + ':' + addZero(date.getMinutes());
-  console.log(formatedTime);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -109,13 +106,22 @@ const Ride = ({
       <p>Commentaires</p>
       <div className="ride__comments">
 
-        {commentsSection.map((commentItem) => (
-          <div className="ride__comments__line" key={commentItem.commentId}>
-            <p className="ride__comments__line__date">{commentItem.createdAt}</p>
-            <p>{commentItem.userId.pseudo}</p>
-            <p>{commentItem.body}</p>
-          </div>
-        ))}
+        {commentsSection.map((commentItem) => {
+          console.log(commentItem);
+          let commentDate = new Date(commentItem.createdAt);
+          console.log(commentDate);
+
+          let commentFormatedDate = `${addZero(commentDate.getDay())}/${addZero((commentDate.getMonth() + 1))}`;
+
+          let commentFormatedTime = `${addZero(commentDate.getHours())}:${addZero(commentDate.getMinutes())}`;
+          return (
+            <div className="ride__comments__line" key={commentItem.commentId}>
+              <p className="ride__comments__line__date">le {commentFormatedDate} à {commentFormatedTime}</p>
+              <p>{commentItem.userId.pseudo}</p>
+              <p>{commentItem.body}</p>
+            </div>
+          );
+        })}
 
       </div>
       <form autoComplete="off" className="login__form" onSubmit={handleSubmit}>

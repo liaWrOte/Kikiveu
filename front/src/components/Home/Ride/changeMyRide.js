@@ -49,6 +49,19 @@ const ChangeMyRide = ({
 
   const newtime = newdatetime.slice(11, 18);
 
+  const string = myRideInfos.eventDatetime;
+  const date = new Date(string);
+
+  function addZero(i) {
+    if (i < 10) {
+      i = `0${i}`;
+    }
+    return i;
+  }
+  const formatedDate = `${addZero(date.getDate())}/${addZero((date.getMonth() + 1))}/${date.getFullYear()}`;
+
+  const formatedTime = `${addZero(date.getHours())}:${addZero(date.getMinutes())}`;
+
   return (
     <div className="ride">
       <MainUserButton className="ride__mainUserButton" />
@@ -95,9 +108,9 @@ const ChangeMyRide = ({
                 type="text"
                 id="date"
                 name="eventDatetime"
-                placeholder="JJ-MM-AAAA"
+                placeholder={formatedDate}
                 onChange={changeField}
-                value={myRideInfos.eventDatetime}
+                value={formatedDate}
                 inputClass="input_small"
               />
             </label>
@@ -111,6 +124,7 @@ const ChangeMyRide = ({
                 name="time"
                 onChange={changeField}
                 inputClass="input_small"
+                value={formatedTime}
               />
             </label>
           </div>
