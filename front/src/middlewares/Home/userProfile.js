@@ -69,21 +69,21 @@ const userProfile = (store) => (next) => (action) => {
       break;
 
     case HANDLE_UPDATE_USER_PROFILE:
-      const { changeUserProfile } = store.getState();
+      //const { changeUserProfile } = store.getState();
       const { userProfile } = store.getState();
       axios.put(`${apiUrl}/user/edit/${auth.userId}`, {
-        pseudo: changeUserProfile.pseudo,
+        pseudo: userProfile.userInfos.pseudo,
         email: auth.email,
         password: auth.password,
-        slug: changeUserProfile.pseudo,
+        slug: userProfile.userInfos.pseudo,
       }, config)
         .then((response) => {
           console.log(response);
           store.dispatch(saveUserProfileInfos(response.data));
           axios.put(`${apiUrl}/dog/edit/${userProfile.userInfos.dogId}`, {
-            mood: changeUserProfile.moodId,
-            state: changeUserProfile.stateId,
-            castrate: changeUserProfile.castrate,
+            mood: userProfile.userInfos.moodId,
+            state: userProfile.userInfos.stateId,
+            castrate: userProfile.userInfos.castrate,
           }, config)
             .then((response2) => {
               console.log(response2);

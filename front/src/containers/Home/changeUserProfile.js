@@ -8,13 +8,7 @@ import {
 } from '../../actions/Home/changeUserProfile';
 
 const mapStateToProps = (state) => ({
-  avatar: state.changeUserProfile.avatar,
-  moodId: state.changeUserProfile.moodId,
-  stateId: state.changeUserProfile.stateId,
-  castrate: state.changeUserProfile.castrate,
-  castrateInitialValue: state.userProfile.userInfos.castrate,
-  pseudo: state.changeUserProfile.pseudo,
-  initialPseudo: state.userProfile.userInfos.pseudo,
+  userInfos: state.userProfile.userInfos,
 });
 
 const mapDispatchToProps = (dispatch) => ({

@@ -25,13 +25,9 @@ import good from '../../../assets/images/shape/good_shape.png';
 import './userProfile.scss';
 
 const ChangeUserProfile = ({
-  avatar,
-  castrate,
-  castrateInitialValue,
-  pseudo,
-  initialPseudo,
-  changeField,
+  userInfos,
   handleUpdateUserProfile,
+  changeField,
 }) => {
   const changeAvatar = 'Cliquez ici pour modifier la photo';
   const saveText = 'Enregistrer';
@@ -48,7 +44,7 @@ const ChangeUserProfile = ({
       <form autoComplete="off" className="userProfile_form" onSubmit={handleSubmit}>
         <MainUserButton className="mainUserButton" />
         <TextButton text={changeAvatar} buttonClass="button_small_green" />
-        <p className="before_button">Comment se sent {initialPseudo} aujourd'hui ?</p>
+        <p className="before_button">Comment se sent {userInfos.pseudo} aujourd'hui ?</p>
         <div className="userProfile__form__emoji">
           <label htmlFor="moodId">
             <Emoji src={calm} />
@@ -111,7 +107,7 @@ const ChangeUserProfile = ({
           </label>
 
         </div>
-        <p className="before_button">L'état de santé de {initialPseudo} a changé ?</p>
+        <p className="before_button">L'état de santé de {userInfos.pseudo} a changé ?</p>
         <div className="userProfile__form__emoji">
           <label htmlFor="stateId">
             <Emoji src={small} />
@@ -153,8 +149,7 @@ const ChangeUserProfile = ({
               onChange={changeField}
               id="castrate"
               name="castrate"
-              value={castrate}
-              checked={castrateInitialValue === 1}
+              value={userInfos.castrate}
             />
             <div id="castrate">Castré</div>
           </label>
@@ -163,7 +158,7 @@ const ChangeUserProfile = ({
           <Input
             type="text"
             onChange={changeField}
-            value={pseudo}
+            value={userInfos.pseudo}
             name="pseudo"
           />
         </label>
@@ -182,8 +177,6 @@ ChangeUserProfile.propTypes = {
   handleUpdateUserProfile: PropTypes.func.isRequired,
   pseudo: PropTypes.string.isRequired,
   castrate: PropTypes.bool.isRequired,
-  castrateInitialValue: PropTypes.number.isRequired,
-  initialPseudo: PropTypes.string.isRequired,
 };
 
 export default ChangeUserProfile;

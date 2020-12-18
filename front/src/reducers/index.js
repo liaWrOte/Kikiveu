@@ -7,7 +7,6 @@ import createARideReducer from './Home/createARide';
 import mapReducer from './Map/map';
 import infoReducer from './Home/info';
 import rideReducer from './Home/ride';
-import changeUserProfileReducer from './Home/changeUserProfile';
 import seeMyRideReducer from './Home/seeMyRide';
 import alertReducer from './Home/alertMessage';
 
@@ -19,7 +18,6 @@ const rootReducer = combineReducers({
   auth: authReducer,
   signin: signinReducer,
   userProfile: userProfileReducer,
-  changeUserProfile: changeUserProfileReducer,
   createARide: createARideReducer,
   map: mapReducer,
   info: infoReducer,

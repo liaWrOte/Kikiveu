@@ -3,6 +3,7 @@ import {
   SAVE_DOG_INFOS,
   SAVE_OTHER_USER_INFO,
   SAVE_OTHER_USER_DOG_INFO,
+  UPDATE_USER_PROFILE_FIELD,
 } from '../../actions/Home/changeUserProfile';
 
 const initialState = {
@@ -41,6 +42,17 @@ const userProfileReducer = (state = initialState, action = {}) => {
         ...state,
         otherUserDogInfo: action.value,
         loadingOtherUserProfile: false,
+      };
+    case UPDATE_USER_PROFILE_FIELD:
+      console.log(`Action reçue, nouvelle valeur ${action.value} pour le champ ${action.name}`);
+      return {
+        ...state,
+        // je veux prendre le contenu de action.name et utiliser ça comme nom
+        // de propriété
+        userInfos: {
+          ...state.userInfos,
+          [action.name]: action.value,
+        },
       };
 
     default: return { ...state };
