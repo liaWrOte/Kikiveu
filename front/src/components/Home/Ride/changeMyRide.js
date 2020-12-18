@@ -103,28 +103,14 @@ const ChangeMyRide = ({
         <div className="twoColumns">
           <div className="ride__item">
             <label htmlFor="eventDatetime">
-              Date:
+              Date et heure (JJ/MM/AAAA HH:MM):
               <Input
                 type="text"
                 id="date"
                 name="eventDatetime"
-                placeholder={formatedDate}
                 onChange={changeField}
-                value={formatedDate}
+                value= {`${formatedDate} ${formatedTime}`}
                 inputClass="input_small"
-              />
-            </label>
-          </div>
-          <div className="createARide__item">
-            <label htmlFor="time">
-              Heure :
-              <Input
-                type="time"
-                id="time"
-                name="time"
-                onChange={changeField}
-                inputClass="input_small"
-                value={formatedTime}
               />
             </label>
           </div>

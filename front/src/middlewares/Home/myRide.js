@@ -100,12 +100,26 @@ const myRide = (store) => (next) => (action) => {
 
     case HANDLE_UPDATE_RIDE:
 
+      const string = myRide.myRideInfos.eventDatetime;
+      const date = new Date(string);
+    
+      function addZero(i) {
+        if (i < 10) {
+          i = "0" + i;
+        }
+        return i;
+      };
+      const formatedDate = addZero(date.getDate())+'/'+addZero((date.getMonth()+1))+'/'+date.getFullYear();
+      const formatedTime = addZero(date.getHours()) + ':' + addZero(date.getMinutes());
+
+        const tagsFormat = [`${myRide.myRideInfos.tagsId}`];
+        
       axios.put(`${apiUrl}/event/edit/${myRide.myRideInfos.eventId}`, {
         eventLat: map.markerLat,
         eventLong: map.markerLng,
         description: myRide.myRideInfos.eventDescription,
-        tags: myRide.myRideInfos.tagsId,
-        datetime: `${myRide.myRideInfos.date} ${myRide.myRideInfos.time}`,
+        tags: tagsFormat,
+        datetime: `${formatedDate} ${formatedTime}`,
         duration: myRide.myRideInfos.eventDuration,
         maxParticipant: myRide.myRideInfos.eventMaxParticipant, // problème ici
         slug: auth.nickname,
