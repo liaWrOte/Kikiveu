@@ -42,41 +42,44 @@ const Login = ({
 
   return (
     <div className="login">
-      <div className="login__img"><img src={logo} alt="logoKikiVeu" /></div>
-      <h2 id="catch_phrase">Les balades canines près de chez vous</h2>
-      <form autoComplete="off" className="login__form" onSubmit={handleSubmit}>
-        <Input
-          name="email"
-          placeholder="Email"
-          onChange={changeField}
-          value={email}
-          inputClass="input"
-        />
-        <Input
-          name="password"
-          type="password"
-          placeholder="Mot de passe"
-          onChange={changeField}
-          value={password}
-          inputClass="input"
-        />
-        <TextButton text={loginText} buttonClass="button">
-          Connexion
-        </TextButton>
-        {alertLoginStatus && (
-          <AlertMessage message="Votre indentifiant/mot de passe est incorrect" />
-        )}
-      </form>
-      <div className="loginSignIn">
-        <p className="login__loginSignIn__text">Première fois sur KikiVeu ?</p>
-        <div className="full_width">
-        <Link to="/inscription">
-          <TextButton text={signInText} buttonClass="button">
-            Inscription
+      <div className="login__img">coucou</div>
+      <div className="login__form">
+        <div className="login__form__img"><img src={logo} alt="logoKikiVeu" /></div>
+        <h2 id="catch_phrase">Les balades canines près de chez vous</h2>
+        <form autoComplete="off" className="login__form__form" onSubmit={handleSubmit}>
+          <Input
+            name="email"
+            placeholder="Email"
+            onChange={changeField}
+            value={email}
+            inputClass="input"
+          />
+          <Input
+            name="password"
+            type="password"
+            placeholder="Mot de passe"
+            onChange={changeField}
+            value={password}
+            inputClass="input"
+          />
+          <TextButton text={loginText} buttonClass="button">
+            Connexion
           </TextButton>
-        </Link>
+          {alertLoginStatus && (
+            <AlertMessage message="Votre indentifiant/mot de passe est incorrect" />
+          )}
+        </form>
+        <div className="login__form__loginSignIn">
+          <p className="login__form__loginSignIn__text">Première fois sur KikiVeu ?</p>
+          <div className="full_width">
+            <Link to="/inscription">
+              <TextButton text={signInText} buttonClass="button">
+                Inscription
+              </TextButton>
+            </Link>
+          </div>
+          <Link to="/"><TextButton text="Map" /></Link>
         </div>
-        <Link to="/"><TextButton text="Map" /></Link>
       </div>
     </div>
   );
