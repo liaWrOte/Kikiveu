@@ -38,6 +38,7 @@ const UserProfile = ({
   const changeText = 'Modifier mon profil';
   const deleteText = "Supprimer mon compte";
 
+
   useEffect(() => {
     getUserProfile();
   }, []);

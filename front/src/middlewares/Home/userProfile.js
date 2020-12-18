@@ -115,6 +115,9 @@ const userProfile = (store) => (next) => (action) => {
         .then((response) => {
           // traitement si réponse est un succès
           console.log(response);
+          if (response.status === 200) {
+            window.location('/connexion');
+          }
         })
         .catch((error) => {
         // traitement si réponse est une erreur
