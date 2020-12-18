@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { useHistory } from 'react-router-dom';
 
 // Import composants
 import PreviousButton from '../../microComponents/PreviousButton';
@@ -43,6 +44,13 @@ const ChangeMyRide = ({
     console.log('update User profile');
     handleUpdateRide();
   };
+
+  const history= useHistory();   
+  useEffect(() => {
+  if (responseOk === true) {
+    history.push('/');
+  }
+}, [responseOk]);
 
   const datetime = myRideInfos.eventDatetime;
   const newdatetime = datetime.replace('T', '  ');

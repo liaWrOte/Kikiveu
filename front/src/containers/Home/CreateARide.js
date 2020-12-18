@@ -21,7 +21,6 @@ const mapStateToProps = (state) => ({
   userId: state.auth.userId,
   canPutRideMarker: state.createARide.canPutRideMarker,
   hasRide: state.myRide.hasRide,
-  responseOk: state.createARide.responseOk,
 });
 
 const mapDispatchToProps = (dispatch) => ({

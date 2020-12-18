@@ -9,7 +9,7 @@ import {
   SAVE_MY_COMMENT,
   LOAD_MY_COMMENTS,
   CHANGE_MY_FIELD,
-
+  DELETE_MY_RIDE,
 } from '../../actions/Home/myRide';
 
 import {
@@ -96,6 +96,14 @@ const seeMyRideReducer = (state = initialState, action = {}) => {
         ...state,
         responseOk: true,
       };
+
+    case DELETE_MY_RIDE:
+      return {
+        ...state,
+        responseOk: false,
+      };
+
+
 
     default: return { ...state };
   }
