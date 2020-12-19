@@ -67,6 +67,7 @@ const map = (store) => (next) => (action) => {
                 config,
               )
                 .then((response3) => {
+                  console.log('MAP load Users');
                   console.log(response3);
                   store.dispatch(showUsersOnMap(response3.data.users));
                 })

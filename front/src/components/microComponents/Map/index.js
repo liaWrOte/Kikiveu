@@ -122,7 +122,7 @@ const Map = ({
     // {`/balade/${rideEvent.eventSlug}`}
     rideEvents.map((rideEvent) => (
       <Marker
-        key={rideEvent.eventId}
+        key={Math.random()}
         position={[rideEvent.eventLat,
           rideEvent.eventLong]}
         icon={new L.Icon({
@@ -138,8 +138,8 @@ const Map = ({
           className: 'leaflet-div-icon',
         })}
       >
-        <Popup>
-          <Link to={`/balade/${rideEvent.eventSlug}`} onClick={() => getRideId(rideEvent.eventId)}>Voir la balade...</Link>
+        <Popup key={Math.random()}>
+          <Link to={`/balade/${rideEvent.eventSlug}`} onClick={() => getRideId(rideEvent.userId)} key={Math.random()}>Voir la balade...</Link>
         </Popup>
       </Marker>
     ))
@@ -172,10 +172,10 @@ const Map = ({
       <div className="map__users">
         {(usersOnMap) && (
           usersOnMap.map((user) => (
-            <div className="map__users__user">
-              <Link to={`/${user.userSlug}`} onClick={() => getOtherUserProfile(getOtherUserProfileId(user.userId))}>
+            <div className="map__users__user" key={Math.random()}>
+              <Link to={`/${user.userSlug}`} onClick={() => getOtherUserProfile(getOtherUserProfileId(user.userId))} key={Math.random()}>
                 <SecondaryUserButton
-                  id={user.userId}
+                  key={Math.random()}
                   profileImage={user.dogAvatar}
                   alt={user.userPseudo}
                 />
