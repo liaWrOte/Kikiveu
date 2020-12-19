@@ -4,7 +4,7 @@
 .createARide {
   position: fixed;
   z-index: 25;
-  height: 550px;
+  height: 400px;
   bottom: 0;
   width: 100%;
   display: flex;
@@ -22,14 +22,26 @@
   &__form {
     padding: vars.$smallGutter;
     width: 100%;
+    height: 250px;
+    overflow-y: auto;
   }
   &__divLabel{
     flex-direction: rows;
-        &__emoji {
-          margin-right: 0.5em;
-          display: flex;
-          flex-direction: column;
-        }
+    /*&__wrapper {
+    height: auto;
+      &__users {
+      overflow-x: auto;
+      flex-wrap: nowrap;
+      display: flex;
+      white-space: nowrap;
+      height: auto;
+      */
+      &__emoji {
+        margin-right: 0.5em;
+        display: flex;
+        flex-direction: column;
+      }
+        
       
     }
  
@@ -52,6 +64,7 @@
 
 .scroll-container {
   display: flex;
+  
 }
 .twoColumns {
   display: flex;

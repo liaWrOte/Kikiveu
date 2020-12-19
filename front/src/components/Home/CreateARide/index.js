@@ -237,11 +237,12 @@ const CreateARide = ({
           </label>
         </ScrollContainer>
 
-        <div className="createARide__bottom">
-          <PreviousButton />
-          <TextButton value="Enregistrer sur la carte" type="submit" buttonClass="button_small" text="Enregistrer" />
-        </div>
+        
       </form>
+      <div className="createARide__bottom">
+          <PreviousButton />
+          <input value="Enregistrer sur la carte" type="submit" buttonClass="button_small" text="Enregistrer" />
+        </div>
     </div>
   );
 };

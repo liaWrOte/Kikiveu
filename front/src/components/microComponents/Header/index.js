@@ -9,7 +9,7 @@ import './index.scss';
 
 const Header = ({ handleLogout }) => (
   <header className="header">
-    <div>
+    <div className="header__empty">
     </div>
     <div className="header__item">
       <Link to="/"><img src={logo} alt="logo KikiVeu" className="header__item__img" /></Link>

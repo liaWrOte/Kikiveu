@@ -4,8 +4,11 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.5rem 1rem;
+  padding: 1rem 1rem 0 1rem;
   width: 100%;
+  &__empty {
+    width: 7%;
+  }
   &__item {
     width: 100%;
     text-align: center;
