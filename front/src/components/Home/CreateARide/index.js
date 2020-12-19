@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
+import ScrollContainer from 'react-indiana-drag-scroll';
 
 // Import composants
 import PreviousButton from '../../microComponents/PreviousButton';
@@ -145,99 +146,96 @@ const CreateARide = ({
           </div>
         </div>
         <p>
-          Je choisis le type de la balade : (plusieurs choix possibles)
+          Je choisis le type de la balade :
+          (plusieurs choix possibles)
         </p>
-        <div className="createARide__divLabel">
-          <div className="createARide__divLabel__wrapper">
-            <div className="createARide__divLabel__wrapper__users">
-              <label htmlFor="tags" className="createARide__divLabel__wrapper__users__emoji">
 
-                <Emoji src={athletic} />
-                <Input
-                  type="checkbox"
-                  onChange={updateTagRide}
-                  value={1}
-                  id="athletic"
-                  name="tags"
+        <ScrollContainer horizontal className="scroll-container">
+          <label htmlFor="tags" className="createARide__divLabel__wrapper__users__emoji">
 
-                />
-                Sportive
-              </label>
-              <label htmlFor="tags" className="createARide__divLabel__wrapper__users__emoji">
+            <Emoji src={athletic} />
+            <Input
+              type="checkbox"
+              onChange={updateTagRide}
+              value={1}
+              id="athletic"
+              name="tags"
+            />
+            Sportive
+          </label>
+          <label htmlFor="tags" className="createARide__divLabel__wrapper__users__emoji">
 
-                <Emoji src={learning} />
-                <Input
-                  type="checkbox"
-                  onChange={updateTagRide}
-                  value={2}
-                  id="learning"
-                  name="tags"
-                />
-                Educative
-              </label>
-              <label htmlFor="tags" className="createARide__divLabel__wrapper__users__emoji">
+            <Emoji src={learning} />
+            <Input
+              type="checkbox"
+              onChange={updateTagRide}
+              value={2}
+              id="learning"
+              name="tags"
+            />
+            Educative
+          </label>
+          <label htmlFor="tags" className="createARide__divLabel__wrapper__users__emoji">
 
-                <Emoji src={nature} />
-                <Input
-                  type="checkbox"
-                  onChange={updateTagRide}
-                  value={3}
-                  id="nature"
-                  name="tags"
-                />
-                Nature
-              </label>
-              <label htmlFor="tags" className="createARide__divLabel__wrapper__users__emoji">
+            <Emoji src={nature} />
+            <Input
+              type="checkbox"
+              onChange={updateTagRide}
+              value={3}
+              id="nature"
+              name="tags"
+            />
+            Nature
+          </label>
+          <label htmlFor="tags" className="createARide__divLabel__wrapper__users__emoji">
 
-                <Emoji src={peaceful} />
-                <Input
-                  type="checkbox"
-                  onChange={updateTagRide}
-                  value={4}
-                  id="peaceful"
-                  name="tags"
-                />
-                Détente
-              </label>
-              <label htmlFor="tags" className="createARide__divLabel__wrapper__users__emoji">
-                
-                <Emoji src={player} />
-                <Input
-                  type="checkbox"
-                  onChange={updateTagRide}
-                  value={5}
-                  id="player"
-                  name="tags"
-                />
-                Joueuse
-              </label>
-              <label htmlFor="tags" className="createARide__divLabel__wrapper__users__emoji">
+            <Emoji src={peaceful} />
+            <Input
+              type="checkbox"
+              onChange={updateTagRide}
+              value={4}
+              id="peaceful"
+              name="tags"
+            />
+            Détente
+          </label>
+          <label htmlFor="tags" className="createARide__divLabel__wrapper__users__emoji">
 
-                <Emoji src={urban} />
-                <Input
-                  type="checkbox"
-                  onChange={updateTagRide}
-                  value={6}
-                  id="urban"
-                  name="tags"
-                />
-                Urbaine
-              </label>
-              <label htmlFor="tags" className="createARide__divLabel__wrapper__users__emoji">
+            <Emoji src={player} />
+            <Input
+              type="checkbox"
+              onChange={updateTagRide}
+              value={5}
+              id="player"
+              name="tags"
+            />
+            Joueuse
+          </label>
+          <label htmlFor="tags" className="createARide__divLabel__wrapper__users__emoji">
 
-                <Emoji src={water} />
-                <Input
-                  type="checkbox"
-                  onChange={updateTagRide}
-                  value={7}
-                  id="water"
-                  name="tags"
-                />
-                Aquatique
-              </label>
-            </div>
-          </div>
-        </div>
+            <Emoji src={urban} />
+            <Input
+              type="checkbox"
+              onChange={updateTagRide}
+              value={6}
+              id="urban"
+              name="tags"
+            />
+            Urbaine
+          </label>
+          <label htmlFor="tags" className="createARide__divLabel__wrapper__users__emoji">
+
+            <Emoji src={water} />
+            <Input
+              type="checkbox"
+              onChange={updateTagRide}
+              value={7}
+              id="water"
+              name="tags"
+            />
+            Aquatique
+          </label>
+        </ScrollContainer>
 
         <div className="createARide__bottom">
           <PreviousButton />

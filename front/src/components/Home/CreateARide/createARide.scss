@@ -2,7 +2,7 @@
 @use '../../../styles/vars';
 
 .createARide {
-  position: absolute;
+  position: fixed;
   z-index: 25;
   height: 550px;
   bottom: 0;
@@ -17,29 +17,22 @@
   font-family: vars.$bodyFont;
   color: vars.$textColor;
   text-align: center;
+  padding: vars.$smallGutter;
 
-  &__divLabel{
-    display: flex;
-    flex-direction: rows;
-    &__wrapper {
-    display: flex;
+  &__form {
+    padding: vars.$smallGutter;
     width: 100%;
-    height: auto;
-      &__users {
-      height: 100%;
-      overflow-x: auto;
-      white-space: nowrap;
-      display: flex;
-      
+  }
+  &__divLabel{
+    flex-direction: rows;
         &__emoji {
-          align-items: center;
           margin-right: 0.5em;
           display: flex;
           flex-direction: column;
         }
-      }
+      
     }
-  }
+ 
 
   &__locate {
     display: flex;
@@ -57,6 +50,9 @@
   }
 }
 
+.scroll-container {
+  display: flex;
+}
 .twoColumns {
   display: flex;
   width: 100%;
