@@ -5,7 +5,7 @@ import { useParams, Link } from 'react-router-dom';
 
 // Import composants
 import PreviousButton from '../../microComponents/PreviousButton';
-import MainUserButton from '../../microComponents/MainUserButton';
+import RideButton from '../../microComponents/RideButton';
 import Emoji from '../../microComponents/Emoji';
 import Input from '../../microComponents/Input';
 import TextButton from '../../microComponents/TextButton';
@@ -85,22 +85,29 @@ const Ride = ({
 
   return (
     <div className="ride">
-      <MainUserButton className="ride__mainUserButton" image={avatar} />
-      <p> Description de la balade :
+      <RideButton />
+      <h2 className="ride__title">Balade de Pseudo</h2>
+      
+      <div className="ride__scroll">
+        <div className="ride__scroll__calendar">
+        <Calendar />
+        <div className="ride__scroll__calendar__text"></div>
+        le {formatedDate} à {formatedTime}
+        , durée {newduration}
+        </div>
+          <div>
+      <p>
+        Max participants : {rideInfos.eventMaxParticipant}
+      </p>
+      <p className="ride__scroll__descriptionText">Description de la balade :</p>
+        <div className="ride__scroll__flexDescription">
+        <p> Description de la balade :
         {rideInfos.eventDescription}
       </p>
-      <p>
-        <Calendar /> Date et heure : {formatedDate} à {formatedTime}
+      <p className="ride__scroll__flexDescription__text">
+        {typesRideText[rideInfos.tagsId]}
       </p>
-      <p>
-        Durée: {rideInfos.eventDuration}
-      </p>
-      <p>
-        Nombre de participants maximum : {rideInfos.eventMaxParticipant}
-      </p>
-      <p>
-        Type de balade : {typesRideText[rideInfos.tagsId]}
-      </p>
+
       <div className="ride__emoji">
         <Emoji src={typesRideUrl[rideInfos.tagsId]} />
       </div>
@@ -121,6 +128,8 @@ const Ride = ({
               <p>{commentItem.userId.pseudo}</p>
               <p>{commentItem.body}</p>
             </div>
+            </div>
+            </div>
           );
         })}
 
@@ -138,9 +147,10 @@ const Ride = ({
           <TextButton text="Envoyer" buttonClass="button_small_green" />
         </p>
       </form>
+      </div>
+      </div>
       <div className="ride__bottom">
         <PreviousButton />
-      </div>
     </div>
   );
 };

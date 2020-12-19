@@ -95,13 +95,12 @@ const SeeMyRide = ({
           <Calendar />
           <div className="ride__scroll__calendar__text">
             le {formatedDate} à {formatedTime}
-          </div>
-          <div>
+          
             , durée {newduration}
           </div>
         </div>
         <p>
-          Max Participants : {myRideInfos.eventMaxParticipant}
+          Max participants : {myRideInfos.eventMaxParticipant}
         </p>
         <p className="ride__scroll__descriptionText">Description de la balade :</p>
         <div className="ride__scroll__flexDescription">

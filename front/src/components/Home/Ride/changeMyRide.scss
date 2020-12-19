@@ -1,0 +1,113 @@
+//@use '/home/etudiant/Bureau/html/projet-kikiveu/front/src/styles/_vars.scss';
+@use '../../../styles/vars';
+
+.changeMyRide {
+  position: fixed;
+  z-index: 25;
+  height: 360px;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  display : flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: vars.$smallGutter;
+  font-family: vars.$bodyFont;
+  color: vars.$textColor;
+  text-align: center;
+  padding: vars.$smallGutter;
+
+  &__form {
+    padding: vars.$smallGutter;
+    width: 100%;
+    height: 250px;
+    overflow-y: auto;
+  }
+  &__divLabel{
+    flex-direction: rows;
+    /*&__wrapper {
+    height: auto;
+      &__users {
+      overflow-x: auto;
+      flex-wrap: nowrap;
+      display: flex;
+      white-space: nowrap;
+      height: auto;
+      */
+      &__emoji {
+        margin-right: 0.5em;
+        display: flex;
+        flex-direction: column;
+      }
+        
+      
+    }
+ 
+
+  &__locate {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__bottom {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+  }
+
+  &__mainUserButton{
+    margin-top: -60px;
+  }
+}
+
+.scroll-container {
+  display: flex;
+  
+}
+.twoColumns {
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.lieu {
+  margin: 0;
+}
+
+@media screen and (min-width: 1300px) {
+  .createARide {
+    display: block;
+    position: absolute;
+    height: 80vh;
+    width: 33%;
+    right: 0;
+    z-index: 2000;
+    background-color: #fff;
+  }
+}
+
+/* HIDE RADIO */
+[type=checkbox] { 
+  position: absolute;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 80px;
+  height: 80px;
+}
+
+//* IMAGE STYLES */
+[type=checkbox] + .emoji__image {
+  cursor: pointer;
+}
+
+/* CHECKED STYLES */
+[type=checkbox]:checked{
+  background-image: url('../../../assets/images/checked.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0.7;
+}
