@@ -19,6 +19,7 @@ import urban from '../../../assets/images/ride/urban_ride.png';
 import water from '../../../assets/images/ride/water_ride.png';
 
 import './ride.scss';
+import MainUserButton from '../../microComponents/MainUserButton';
 
 const Ride = ({
   rideInfos,
@@ -88,8 +89,8 @@ const Ride = ({
 
   return (
     <div className="ride">
-      <RideButton />
-      <h2 className="ride__title">Balade de Pseudo</h2>
+      <MainUserButton image={rideInfos.dogAvatar} />
+      <h2 className="ride__title">Balade de {rideInfos.eventSlug}</h2>
       
       <div className="ride__scroll">
         <div className="ride__scroll__calendar">
