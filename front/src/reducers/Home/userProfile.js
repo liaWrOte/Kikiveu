@@ -13,7 +13,7 @@ const initialState = {
   otherUserInfo: [],
   otherUserDogInfo: [],
   loadingOtherUserProfile: true,
-  responseOk: false,
+  responseOk: true,
 };
 
 const userProfileReducer = (state = initialState, action = {}) => {
