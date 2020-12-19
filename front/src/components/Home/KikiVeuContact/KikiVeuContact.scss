@@ -1,22 +1,48 @@
+@use '../../../styles/vars';
+
 .kikiVeuContact {
-  position: absolute;
-  height: 350px;
+  position: fixed;
+  height: 600px;
   bottom: 0;
   z-index: 25;
   width: 100%;
-  background-color: #FCDEB0;
+  background-color: #FFF;
   display : flex;
   justify-content: space-evenly;
   align-items: center;
    flex-direction: column;
+  &__title {
+    font-family: vars.$titleFont;
+    color: vars.$mainColor;
+    font-size: vars.$bigGutter;
+  }
+   &__team {
+
+    img {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+    }
+   }
   &__wrapper {
     width: 50%;
     height: 200px;
   }
-  &__item {
+  &__team {
     display: flex;
+    flex-direction: column;
     justify-content: space-evenly;
+    align-items: center;
     font-size: 1.2em;
+    margin-top: vars.$bigGutter;
+
+    &__item {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      align-items: center;
+      margin-bottom: vars.$smallGutter;
+    }
   }
 
 }

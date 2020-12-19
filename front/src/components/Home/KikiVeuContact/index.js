@@ -17,15 +17,27 @@ import './KikiVeuContact.scss';
 
 const KikiVeuContact = () => (
     <div className="kikiVeuContact">
+    <h2 className="kikiVeuContact__title">Merci la team KikiVeu</h2>
 
-    <div>
+    <div className="kikiVeuContact__team">
+      <div className="kikiVeuContact__team__item">
       <img src={kevin} />
-      <img image={jordane} />
-      <img image={sandrine} />
-      <img image={julien} />
+      <p>Kevin, Développeur back et Git Master</p>
+      </div>
+      <div className="kikiVeuContact__team__item">
+      <img src={jordane} />
+      <p>Jordane, développeuse front et Scrum Master</p>
+      </div>
+      <div className="kikiVeuContact__team__item">
+      <img src={sandrine} />
+      <p>Sandrine, développeuse front et Product Owner</p>
+      </div>
+      <div className="kikiVeuContact__team__item">
+      <img src={julien} />
+      <p>Julien, Lead développeur back</p>
+      </div>
     </div>
       <div className="kikiVeuContact__wrapper">
-        <h2 className="kikiVeuContact__item"><Mail />Pour contacter la team KikiVeu :</h2>
         <p className="kikiVeuContact__item">kikiveu.contact@gmail.com</p>
       </div>
       <PreviousButton />
