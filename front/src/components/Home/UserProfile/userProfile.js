@@ -78,7 +78,7 @@ const UserProfile = ({
       <MainUserButton image={avatar} className="mainUserButton userProfile__avatar" />
       <h2 className="userProfile__title">Profil de {pseudo}</h2>
       <div className="button_wrapper">
-        <div className="buttonItem"><Link to="/profil/edit"><TextButton text={changeText} buttonClass="button_small"/></Link></div>
+        <div className="buttonItem"><Link to="/profil/edit"><TextButton text={changeText} buttonClass="button_small_green"/></Link></div>
         <div className="buttonItem"><TextButton
           text={deleteText}
           buttonClass="button_small"
@@ -89,15 +89,15 @@ const UserProfile = ({
         </div>
       </div>
       <div className="userProfile__flex">
-      <div className="createARide__divLabel__wrapper__users__emoji">
-        <p>Humeur du jour</p>
+      <div className="userProfile__flex__emoji">
+        <p className="userProfile__flex__emoji__description">Humeur du jour</p>
         <Emoji src={moodUrl[moodId]} />
-        {moodText[moodId]}
+        <p>{moodText[moodId]}</p>
       </div>
-      <div className="createARide__divLabel__wrapper__users__emoji">
-        <p>Etat de santé</p>
+      <div className="userProfile__flex__emoji">
+        <p className="userProfile__flex__emoji__description">Etat de santé</p>
         <Emoji src={stateUrl[stateId]} />
-        {stateText[stateId]}
+        <p>{stateText[stateId]}</p>
       </div>
       </div>
       <div>Castré : {castrateText[castrate]}</div>

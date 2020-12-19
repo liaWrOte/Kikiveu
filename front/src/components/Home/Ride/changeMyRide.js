@@ -1,10 +1,12 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
+import ScrollContainer from 'react-indiana-drag-scroll';
+
 
 // Import composants
 import PreviousButton from '../../microComponents/PreviousButton';
-import MainUserButton from '../../microComponents/MainUserButton';
+import RideButton from '../../microComponents/RideButton';
 import Emoji from '../../microComponents/Emoji';
 import TextArea from '../../microComponents/TextArea';
 import Input from '../../microComponents/Input';
@@ -20,7 +22,7 @@ import player from '../../../assets/images/ride/player_ride.png';
 import urban from '../../../assets/images/ride/urban_ride.png';
 import water from '../../../assets/images/ride/water_ride.png';
 
-import './ride.scss';
+import './changeMyRide.scss';
 
 const ChangeMyRide = ({
   markerLat,
@@ -72,10 +74,10 @@ const ChangeMyRide = ({
   const formatedTime = `${addZero(date.getHours())}:${addZero(date.getMinutes())}`;
 
   return (
-    <div className="ride">
-      <MainUserButton className="ride__mainUserButton" />
+    <div className="changeMyRide">
+      <RideButton />
       <TextButton text={placeCursor} handleClick={putRideMarker} buttonClass="button_small" />
-      <form autoComplete="off" className="ride__form" onSubmit={handleSubmit}>
+      <form autoComplete="off" className="changeMyRide__form" onSubmit={handleSubmit}>
         <div className="twoColumns">
 
           <label htmlFor="eventDescription">
@@ -125,7 +127,7 @@ const ChangeMyRide = ({
           </div>
         </div>
         <div className="twoColumns">
-          <div className="createARide__item">
+          <div className="changeMyRide__item">
             <label htmlFor="eventDuration" className="fullWidth">
               Durée :
               <Input
@@ -139,7 +141,7 @@ const ChangeMyRide = ({
               />
             </label>
           </div>
-          <div className="createARide__item">
+          <div className="changeMyRide__item">
             <label htmlFor="eventMaxParticipant" className="fullWidth">
               Participants:
               <Input
@@ -157,10 +159,8 @@ const ChangeMyRide = ({
         <p>
           Je choisis le type de la balade : (plusieurs choix possibles)
         </p>
-        <div className="createARide__divLabel">
-          <div className="createARide__divLabel__wrapper">
-            <div className="createARide__divLabel__wrapper__users">
-              <label htmlFor="tagsId" className="createARide__divLabel__wrapper__users__emoji">
+        <ScrollContainer horizontal className="scroll-container">
+              <label htmlFor="tagsId" className="changeMyRide__divLabel__wrapper__users__emoji">
                 Sportive
                 <Emoji src={athletic} />
                 <Input
@@ -171,7 +171,7 @@ const ChangeMyRide = ({
                   name="tagsId"
                 />
               </label>
-              <label htmlFor="tagsId" className="createARide__divLabel__wrapper__users__emoji">
+              <label htmlFor="tagsId" className="changeMyRide__divLabel__wrapper__users__emoji">
                 Educative
                 <Emoji src={learning} />
                 <Input
@@ -182,7 +182,7 @@ const ChangeMyRide = ({
                   name="tagsId"
                 />
               </label>
-              <label htmlFor="tagsId" className="createARide__divLabel__wrapper__users__emoji">
+              <label htmlFor="tagsId" className="changeMyRide__divLabel__wrapper__users__emoji">
                 Nature
                 <Emoji src={nature} />
                 <Input
@@ -193,7 +193,7 @@ const ChangeMyRide = ({
                   name="tagsId"
                 />
               </label>
-              <label htmlFor="tagsId" className="createARide__divLabel__wrapper__users__emoji">
+              <label htmlFor="tagsId" className="changeMyRide__divLabel__wrapper__users__emoji">
                 Détente
                 <Emoji src={peaceful} />
                 <Input
@@ -204,7 +204,7 @@ const ChangeMyRide = ({
                   name="tagsId"
                 />
               </label>
-              <label htmlFor="tagsId" className="createARide__divLabel__wrapper__users__emoji">
+              <label htmlFor="tagsId" className="changeMyRide__divLabel__wrapper__users__emoji">
                 Joueuse
                 <Emoji src={player} />
                 <Input
@@ -215,7 +215,7 @@ const ChangeMyRide = ({
                   name="tagsId"
                 />
               </label>
-              <label htmlFor="tagsId" className="createARide__divLabel__wrapper__users__emoji">
+              <label htmlFor="tagsId" className="changeMyRide__divLabel__wrapper__users__emoji">
                 Urbaine
                 <Emoji src={urban} />
                 <Input
@@ -226,7 +226,7 @@ const ChangeMyRide = ({
                   name="tagsId"
                 />
               </label>
-              <label htmlFor="tagsId" className="createARide__divLabel__wrapper__users__emoji">
+              <label htmlFor="tagsId" className="changeMyRide__divLabel__wrapper__users__emoji">
                 Aquatique
                 <Emoji src={water} />
                 <Input
@@ -237,9 +237,7 @@ const ChangeMyRide = ({
                   name="tagsId"
                 />
               </label>
-            </div>
-          </div>
-        </div>
+            </ScrollContainer>
 
         <div className="ride__bottom">
           <PreviousButton />

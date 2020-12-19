@@ -3,10 +3,9 @@ import { Calendar } from 'react-feather';
 import PropTypes from 'prop-types';
 import { useParams, Link } from 'react-router-dom';
 
-
 // Import composants
 import PreviousButton from '../../microComponents/PreviousButton';
-import MainUserButton from '../../microComponents/MainUserButton';
+import RideButton from '../../microComponents/RideButton';
 import Emoji from '../../microComponents/Emoji';
 import Input from '../../microComponents/Input';
 import TextButton from '../../microComponents/TextButton';
@@ -58,8 +57,8 @@ const SeeMyRide = ({
   };
 
   console.log(commentsSection[0]);
-  const changeText = 'Modifier ma balade';
-  const deleteText = 'Supprimer ma balade';
+  const changeText = 'Modifier';
+  const deleteText = 'Supprimer';
 
   const string = myRideInfos.eventDatetime;
   const date = new Date(string);
@@ -75,73 +74,80 @@ const SeeMyRide = ({
   const formatedTime = `${addZero(date.getHours())}:${addZero(date.getMinutes())}`;
 
   const duration = myRideInfos.eventDuration;
-  const newduration = duration.replace('.',':');
+  const newduration = duration.replace('.', ':');
 
   return (
     <div className="ride">
-      <MainUserButton className="ride__mainUserButton" image={avatar} />
-      <Link to="/ma-balade/edit"><TextButton text={changeText} buttonClass="button_small_green" /></Link>
-      <TextButton
-        text={deleteText}
-        buttonClass="button_small"
-        handleClick={() => {
-          if (window.confirm('Je confirme la suppression de ma balade.')) deleteMyRide();
-        }}
-      />
-      <p> Description de la balade :
-        {myRideInfos.eventDescription}
-      </p>
-      <p>
-        <Calendar /> Date et heure : {formatedDate} à {formatedTime}
-      </p>
-      <p>
-        Durée: {newduration}
-      </p>
-      <p>
-        Nombre de participants maximum : {myRideInfos.eventMaxParticipant}
-      </p>
-      <p>
-        Type de balade : {typesRideText[myRideInfos.tagsId]}
-      </p>
-      <div className="ride__emoji">
-        <Emoji src={typesRideUrl[myRideInfos.tagsId]} />
+      <RideButton />
+      <h2 className="ride__title">Ma balade</h2>
+      <div className="ride__flex">
+        <Link to="/ma-balade/edit" className="ride__flex__leftButton"><TextButton text={changeText} buttonClass="button_small_green" /></Link>
+        <TextButton
+          text={deleteText}
+          buttonClass="button_small"
+          handleClick={() => {
+            if (window.confirm('Je confirme la suppression de ma balade.')) deleteMyRide();
+          }}
+        />
       </div>
-      <p>Commentaires</p>
-      <div className="ride__comments">
-
-        {commentsSection.map((commentItem) => {
+      <div className="ride__scroll">
+        <div className="ride__scroll__calendar">
+          <Calendar />
+          <div className="ride__scroll__calendar__text">
+            le {formatedDate} à {formatedTime}
           
-          console.log(commentItem);
-          let commentDate = new Date(commentItem.createdAt);
-          console.log(commentDate);
+            , durée {newduration}
+          </div>
+        </div>
+        <p>
+          Max participants : {myRideInfos.eventMaxParticipant}
+        </p>
+        <p className="ride__scroll__descriptionText">Description de la balade :</p>
+        <div className="ride__scroll__flexDescription">
+          <p className="ride__scroll__flexDescription__text"> 
+            {myRideInfos.eventDescription}
+          </p>
 
-          let commentFormatedDate = `${addZero(commentDate.getDay())}/${addZero((commentDate.getMonth() + 1))}`;
+          <div className="ride__scroll__flexDescription__emoji">
+            <Emoji src={typesRideUrl[myRideInfos.tagsId]} />
+            <p className="ride__scroll__flexDescription__emoji__text">{typesRideText[myRideInfos.tagsId]}</p>
+          </div>
+        </div>
+        
+        <p>Commentaires</p>
+        <div className="ride__scroll__comments">
 
-          let commentFormatedTime = `${addZero(commentDate.getHours())}:${addZero(commentDate.getMinutes())}`;
+          {commentsSection.map((commentItem) => {
+            console.log(commentItem);
+            const commentDate = new Date(commentItem.createdAt);
+            console.log(commentDate);
 
-          return (
-            <div className="ride__comments__line" key={commentItem.commentId}>
-              <p className="ride__comments__line__date">le {commentFormatedDate} à {commentFormatedTime}</p>
-              <p>{commentItem.userId.pseudo}</p>
-              <p>{commentItem.body}</p>
-            </div>
-          );
-        })}
+            const commentFormatedDate = `${addZero(commentDate.getDay())}/${addZero((commentDate.getMonth() + 1))}`;
 
-      </div>
-      <form autoComplete="off" className="login__form" onSubmit={handleSubmit}>
-        <p>Laisser un commentaire :
+            const commentFormatedTime = `${addZero(commentDate.getHours())}:${addZero(commentDate.getMinutes())}`;
+
+            return (
+              <div className="ride__scroll__comments__line" key={commentItem.commentId}>
+                <p className="ride__scroll__comments__line__date">le {commentFormatedTime}</p>
+                <p>{commentItem.userId.pseudo}</p>
+                <p>{commentItem.body}</p>
+              </div>
+            );
+          })}
+
+        </div>
+        <form autoComplete="off" className="ride_commentForm" onSubmit={handleSubmit}>
           <Input
             type="text"
             name="comment"
-            placeholder="Votre commentaire ici"
+            placeholder="Envoyer un commentaire"
             onChange={changeField}
             value={comment}
-            inputClass="input_small"
+            inputClass="input_small_ride"
           />
-          <TextButton text="Envoyer" buttonClass="button_small_green" />
-        </p>
-      </form>
+          <TextButton text="Envoyer" buttonClass="ride_button_small_green" />
+        </form>
+      </div>
       <div className="ride__bottom">
         <PreviousButton />
       </div>

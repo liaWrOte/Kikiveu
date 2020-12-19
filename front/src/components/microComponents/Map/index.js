@@ -174,7 +174,11 @@ const Map = ({
           usersOnMap.map((user) => (
             <div className="map__users__user">
               <Link to={`/${user.userSlug}`} onClick={() => getOtherUserProfile(getOtherUserProfileId(user.userId))}>
-                <SecondaryUserButton profileImage={user.dogAvatar} alt={user.userPseudo} />
+                <SecondaryUserButton
+                  id={user.userId}
+                  profileImage={user.dogAvatar}
+                  alt={user.userPseudo}
+                />
               </Link>
             </div>
           ))

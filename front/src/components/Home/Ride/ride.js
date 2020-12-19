@@ -5,7 +5,7 @@ import { useParams, Link } from 'react-router-dom';
 
 // Import composants
 import PreviousButton from '../../microComponents/PreviousButton';
-import MainUserButton from '../../microComponents/MainUserButton';
+import RideButton from '../../microComponents/RideButton';
 import Emoji from '../../microComponents/Emoji';
 import Input from '../../microComponents/Input';
 import TextButton from '../../microComponents/TextButton';
@@ -85,27 +85,33 @@ const Ride = ({
 
   return (
     <div className="ride">
-      <MainUserButton className="ride__mainUserButton" image={avatar} />
-      <p> Description de la balade :
-        {rideInfos.eventDescription}
-      </p>
+      <RideButton />
+      <h2 className="ride__title">Balade de Pseudo</h2>
+      
+      <div className="ride__scroll">
+        <div className="ride__scroll__calendar">
+
+        <Calendar />
+        <div className="ride__scroll__calendar__text">
+        le {formatedDate} à {formatedTime}
+        , durée {newduration}
+        </div>
+        </div>
       <p>
-        <Calendar /> Date et heure : {formatedDate} à {formatedTime}
+        Max participants : {rideInfos.eventMaxParticipant}
       </p>
-      <p>
-        Durée: {rideInfos.eventDuration}
-      </p>
-      <p>
-        Nombre de participants maximum : {rideInfos.eventMaxParticipant}
-      </p>
-      <p>
-        Type de balade : {typesRideText[rideInfos.tagsId]}
-      </p>
-      <div className="ride__emoji">
+      <p className="ride__scroll__descriptionText">Description de la balade :</p>
+        <div className="ride__scroll__flexDescription">
+        <p className="ride__scroll__flexDescription__text">{rideInfos.eventDescription}</p>
+
+      <div className="ride__scroll__flexDescription__emoji">
         <Emoji src={typesRideUrl[rideInfos.tagsId]} />
+        <p className="ride__scroll__flexDescription__emoji__text">{typesRideText[rideInfos.tagsId]}</p>
       </div>
+      </div>
+
       <p>Commentaires</p>
-      <div className="ride__comments">
+      <div className="ride__scroll__comments">
 
         {commentsSection.map((commentItem) => {
           console.log(commentItem);
@@ -116,8 +122,8 @@ const Ride = ({
 
           let commentFormatedTime = `${addZero(commentDate.getHours())}:${addZero(commentDate.getMinutes())}`;
           return (
-            <div className="ride__comments__line" key={commentItem.commentId}>
-              <p className="ride__comments__line__date">le {commentFormatedDate} à {commentFormatedTime}</p>
+            <div className="ride__scroll__comments__line" key={commentItem.commentId}>
+              <p className="ride__scroll__comments__line__date">le {commentFormatedDate} à {commentFormatedTime}</p>
               <p>{commentItem.userId.pseudo}</p>
               <p>{commentItem.body}</p>
             </div>
@@ -138,9 +144,10 @@ const Ride = ({
           <TextButton text="Envoyer" buttonClass="button_small_green" />
         </p>
       </form>
+      </div>
       <div className="ride__bottom">
         <PreviousButton />
-      </div>
+    </div>
     </div>
   );
 };
