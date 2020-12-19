@@ -90,29 +90,28 @@ const Ride = ({
       
       <div className="ride__scroll">
         <div className="ride__scroll__calendar">
+
         <Calendar />
-        <div className="ride__scroll__calendar__text"></div>
+        <div className="ride__scroll__calendar__text">
         le {formatedDate} à {formatedTime}
         , durée {newduration}
         </div>
-          <div>
+        </div>
       <p>
         Max participants : {rideInfos.eventMaxParticipant}
       </p>
       <p className="ride__scroll__descriptionText">Description de la balade :</p>
         <div className="ride__scroll__flexDescription">
-        <p> Description de la balade :
-        {rideInfos.eventDescription}
-      </p>
-      <p className="ride__scroll__flexDescription__text">
-        {typesRideText[rideInfos.tagsId]}
-      </p>
+        <p className="ride__scroll__flexDescription__text">{rideInfos.eventDescription}</p>
 
-      <div className="ride__emoji">
+      <div className="ride__scroll__flexDescription__emoji">
         <Emoji src={typesRideUrl[rideInfos.tagsId]} />
+        <p className="ride__scroll__flexDescription__emoji__text">{typesRideText[rideInfos.tagsId]}</p>
       </div>
+      </div>
+
       <p>Commentaires</p>
-      <div className="ride__comments">
+      <div className="ride__scroll__comments">
 
         {commentsSection.map((commentItem) => {
           console.log(commentItem);
@@ -123,12 +122,10 @@ const Ride = ({
 
           let commentFormatedTime = `${addZero(commentDate.getHours())}:${addZero(commentDate.getMinutes())}`;
           return (
-            <div className="ride__comments__line" key={commentItem.commentId}>
-              <p className="ride__comments__line__date">le {commentFormatedDate} à {commentFormatedTime}</p>
+            <div className="ride__scroll__comments__line" key={commentItem.commentId}>
+              <p className="ride__scroll__comments__line__date">le {commentFormatedDate} à {commentFormatedTime}</p>
               <p>{commentItem.userId.pseudo}</p>
               <p>{commentItem.body}</p>
-            </div>
-            </div>
             </div>
           );
         })}
@@ -148,9 +145,9 @@ const Ride = ({
         </p>
       </form>
       </div>
-      </div>
       <div className="ride__bottom">
         <PreviousButton />
+    </div>
     </div>
   );
 };
