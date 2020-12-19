@@ -40,13 +40,13 @@ const Ride = ({
 
   function addZero(i) {
     if (i < 10) {
-      i = "0" + i;
+      i = `0${i}`;
     }
     return i;
   }
-  const formatedDate = addZero(date.getDate())+'/'+addZero((date.getMonth()+1))+'/'+date.getFullYear();
+  const formatedDate = `${addZero(date.getDate())}/${addZero((date.getMonth() + 1))}/${date.getFullYear()}`;
 
-  const formatedTime = addZero(date.getHours()) + ':' + addZero(date.getMinutes());
+  const formatedTime = `${addZero(date.getHours())}:${addZero(date.getMinutes())}`;
 
   const duration = rideInfos.eventDuration;
   const newduration = duration.replace('.', ':');
@@ -91,67 +91,71 @@ const Ride = ({
     <div className="ride">
       <MainUserButton image={rideInfos.dogAvatar} />
       <h2 className="ride__title">Balade de {rideInfos.eventSlug}</h2>
-      
+
       <div className="ride__scroll">
         <div className="ride__scroll__calendar">
 
-        <Calendar />
-        <div className="ride__scroll__calendar__text">
-        le {formatedDate} à {formatedTime}
-        , durée {newduration}
+          <Calendar />
+          <div className="ride__scroll__calendar__text">
+            le {formatedDate} à {formatedTime}
+            , durée {newduration}
+          </div>
         </div>
-        </div>
-      <p>
-        Max participants : {rideInfos.eventMaxParticipant}
-      </p>
-      <p className="ride__scroll__descriptionText">Description de la balade :</p>
-        <div className="ride__scroll__flexDescription">
-        <p className="ride__scroll__flexDescription__text">{rideInfos.eventDescription}</p>
-
-      <div className="ride__scroll__flexDescription__emoji">
-        <Emoji src={typesRideUrl[rideInfos.tagsId]} />
-        <p className="ride__scroll__flexDescription__emoji__text">{typesRideText[rideInfos.tagsId]}</p>
-      </div>
-      </div>
-
-      <p>Commentaires</p>
-      <div className="ride__scroll__comments">
-
-        {commentsSection.map((commentItem) => {
-          console.log(commentItem);
-          let commentDate = new Date(commentItem.createdAt);
-          console.log(commentDate);
-
-          let commentFormatedDate = `${addZero(commentDate.getDay())}/${addZero((commentDate.getMonth() + 1))}`;
-
-          let commentFormatedTime = `${addZero(commentDate.getHours())}:${addZero(commentDate.getMinutes())}`;
-          return (
-            <div className="ride__scroll__comments__line" key={commentItem.commentId}>
-              <p className="ride__scroll__comments__line__date">le {commentFormatedDate} à {commentFormatedTime}</p>
-              <p>{commentItem.userId.pseudo}</p>
-              <p>{commentItem.body}</p>
-            </div>
-          );
-        })}
-
-      </div>
-      <form autoComplete="off" className="login__form" onSubmit={handleSubmit}>
-        <p>Laisser un commentaire :
-          <Input
-            type="text"
-            name="comment"
-            placeholder="Votre commentaire ici"
-            onChange={changeField}
-            value={comment}
-            inputClass="input_small"
-          />
-          <TextButton text="Envoyer" buttonClass="button_small_green" />
+        
+        <div className="ride__scroll__flex">
+        <p>
+          Max participants : {rideInfos.eventMaxParticipant}
         </p>
-      </form>
+        <a target="blank" href={`https://www.google.com/maps/place/${rideInfos.eventLat},${rideInfos.eventLong}`}><TextButton buttonClass="button_small_green" text="J'y vais !" /></a>
+        </div>
+        <p className="ride__scroll__descriptionText">Description de la balade :</p>
+        <div className="ride__scroll__flexDescription">
+          <p className="ride__scroll__flexDescription__text">{rideInfos.eventDescription}</p>
+
+          <div className="ride__scroll__flexDescription__emoji">
+            <Emoji src={typesRideUrl[rideInfos.tagsId]} />
+            <p className="ride__scroll__flexDescription__emoji__text">{typesRideText[rideInfos.tagsId]}</p>
+          </div>
+        </div>
+
+        <p>Commentaires</p>
+        <div className="ride__scroll__comments">
+
+          {commentsSection.map((commentItem) => {
+            console.log(commentItem);
+            const commentDate = new Date(commentItem.createdAt);
+            console.log(commentDate);
+
+            const commentFormatedDate = `${addZero(commentDate.getDay())}/${addZero((commentDate.getMonth() + 1))}`;
+
+            const commentFormatedTime = `${addZero(commentDate.getHours())}:${addZero(commentDate.getMinutes())}`;
+            return (
+              <div className="ride__scroll__comments__line" key={commentItem.commentId}>
+                <p className="ride__scroll__comments__line__date">le {commentFormatedDate} à {commentFormatedTime}</p>
+                <p>{commentItem.userId.pseudo}</p>
+                <p>{commentItem.body}</p>
+              </div>
+            );
+          })}
+
+        </div>
+        <form autoComplete="off" className="login__form" onSubmit={handleSubmit}>
+          <p>Laisser un commentaire :
+            <Input
+              type="text"
+              name="comment"
+              placeholder="Votre commentaire ici"
+              onChange={changeField}
+              value={comment}
+              inputClass="input_small"
+            />
+            <TextButton text="Envoyer" buttonClass="button_small_green" />
+          </p>
+        </form>
       </div>
       <div className="ride__bottom">
         <PreviousButton />
-    </div>
+      </div>
     </div>
   );
 };
