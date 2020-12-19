@@ -47,6 +47,9 @@ const Ride = ({
 
   const formatedTime = addZero(date.getHours()) + ':' + addZero(date.getMinutes());
 
+  const duration = rideInfos.eventDuration;
+  const newduration = duration.replace('.', ':');
+
   const handleSubmit = (event) => {
     event.preventDefault();
     handlePostComment();
