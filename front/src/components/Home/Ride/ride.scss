@@ -1,30 +1,98 @@
+@use '../../../styles/vars';
+
 .ride {
   position: fixed;
   z-index: 25;
-  height: 350px;
+  height: 450px;
   bottom: 0;
   width: 100%;
   display: flex;
   flex-direction: column;
   background-color: #fff;
   display : flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
   align-items: center;
-  &__emoji {
+  padding: vars.$smallGutter;
+  &__flex {
     display: flex;
-    justify-content: space-evenly;
-    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: vars.$smallGutter;
+    &__leftButton {
+      margin-right: vars.$smallGutter;
+    }
+  } 
+  &__title {
+    font-family: vars.$titleFont;
+    color: vars.$mainColor;
+    font-size: vars.$bigGutter;
+    margin-bottom: vars.$smallGutter;
   }
-  &__comments {
-    height: 120px;
-    scroll-behavior: auto;
-    &__line {
+    
+  &__scroll {
+    height: 300px;
+    width: 100%;
+    overflow-y: auto;;
+    text-align: center;
+    margin: 0 auto;
+
+    &__calendar {
       display: flex;
-      &__date {
-        font-size: 0.6em;
+    align-items: center;
+    justify-content: center;
+    color: vars.$secondaryColor;
+    font-family: vars.$bodyFont;
+    margin-bottom: vars.$smallGutter;
+    &__text {
+      margin-left: vars.$smallGutter;
+    }
+    }
+
+    &__descriptionText {
+      margin-top : vars.$smallGutter;
+    }
+    
+    &__flexDescription {
+      display: flex;
+      border: 2px solid vars.$secondaryColor;
+      padding: vars.$smallGutter;
+      border-radius: 5px;
+      margin-bottom: vars.$bigGutter;
+      &__text {
+        width: 100%;
+        padding: vars.$smallGutter;
+        text-align: left;
+  
+      }
+      &__emoji {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        flex-wrap: wrap;
+        width: 30%;
+        margin: 0 auto;
+        &__text {
+          text-align: left;
+        }
       }
     }
-  }
+    
+    &__comments {
+      height: 200px;
+      width: 100%;
+      scroll-behavior: auto;
+      border: 2px solid vars.$secondaryColor;
+      border-radius: 5px;
+      padding: vars.$smallGutter;
+      &__line {
+        display: flex;
+        &__date {
+          font-size: 0.6em;
+        }
+      }
+    }
+    }
+
   &__bottom {
     display: flex;
     justify-content: space-evenly;
@@ -34,6 +102,51 @@
     margin-top: -60px;
   }
 }
+
+
+.ride_commentForm{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  margin-top: vars.$smallGutter;
+}
+
+.input_small_ride {
+  border-radius: 5px;
+  border: 2px solid vars.$secondaryColor;
+  padding: 0.5em;
+  display: block;
+  width: 70%;
+  margin: 0 auto;
+  font-family: vars.$bodyFont;
+  font-size: 0.8rem;
+  flex-grow: 1;
+  &:focus {
+    border: 2px solid vars.$accentColor;
+  }
+}
+
+.ride_button_small_green {
+  width: 30%;
+  margin: 0 auto;
+  display: block;
+  background-color: vars.$secondaryColor;
+  font-family: vars.$bodyFont;
+  font-size: 0.8rem;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: (vars.$smallGutter)/3;
+  font-weight: bold;
+  margin-left: vars.$smallGutter;
+}
+
+.button_small:hover {
+  background-color: vars.$secondaryColor;
+}
+
+
+
 
 @media screen and (min-width: 1300px) {
   .ride {
