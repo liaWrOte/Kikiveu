@@ -14,7 +14,7 @@ const RideButton = () => {
     backgroundRepeat: 'no-repeat',
     border: '5px solid white',
     boxSizing: 'border-box',
-    marginTop: '-40px',
+    marginTop: '-70px',
     textAlign: 'center',
     backgroundColor: '#fff',
     borderBox: 'none',

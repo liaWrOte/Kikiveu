@@ -75,8 +75,8 @@ const UserProfile = ({
 
   return (
     <div className="userProfile">
-      <MainUserButton image={avatar} className="mainUserButton" />
-      <h2>Profil de {pseudo}</h2>
+      <MainUserButton image={avatar} className="mainUserButton userProfile__avatar" />
+      <h2 className="userProfile__title">Profil de {pseudo}</h2>
       <div className="button_wrapper">
         <div className="buttonItem"><Link to="/profil/edit"><TextButton text={changeText} buttonClass="button_small"/></Link></div>
         <div className="buttonItem"><TextButton
@@ -88,15 +88,17 @@ const UserProfile = ({
         />
         </div>
       </div>
+      <div className="userProfile__flex">
       <div className="createARide__divLabel__wrapper__users__emoji">
-        Son humeur du jour
+        <p>Humeur du jour</p>
         <Emoji src={moodUrl[moodId]} />
         {moodText[moodId]}
       </div>
       <div className="createARide__divLabel__wrapper__users__emoji">
-        Son état de santé
+        <p>Etat de santé</p>
         <Emoji src={stateUrl[stateId]} />
         {stateText[stateId]}
+      </div>
       </div>
       <div>Castré : {castrateText[castrate]}</div>
       <div className="userProfile__bottom">

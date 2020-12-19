@@ -78,7 +78,6 @@ const Login = ({
               </TextButton>
             </Link>
           </div>
-          <Link to="/"><TextButton text="Map" /></Link>
         </div>
       </div>
     </div>

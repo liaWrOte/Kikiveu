@@ -24,7 +24,7 @@ import small from '../../../assets/images/shape/small_shape.png';
 import medium from '../../../assets/images/shape/medium_shape.png';
 import good from '../../../assets/images/shape/good_shape.png';
 
-import './userProfile.scss';
+import './changeUserProfile.scss';
 
 const ChangeUserProfile = ({
   userInfos,
@@ -51,12 +51,12 @@ const ChangeUserProfile = ({
 }, [responseOk]);
 
   return (
-    <div className="userProfile">
-      <form autoComplete="off" className="userProfile_form" onSubmit={handleSubmit}>
-        <MainUserButton className="mainUserButton" image={avatar} />
-        <TextButton text={changeAvatar} buttonClass="button_small_green" />
+    <div className="changeUserProfile">
+      <form autoComplete="off" className="changeUserProfile__form" onSubmit={handleSubmit}>
+        <MainUserButton className="mainUserButton changeUserProfile__form__avatar" image={avatar} />
+        <TextButton text={changeAvatar} buttonClass="button_small_green changeUserProfile__form__avatarButton" />
         <p className="before_button">Comment se sent {userInfos.pseudo} aujourd'hui ?</p>
-        <div className="userProfile__form__emoji">
+        <div className="changeUserProfile__form__emoji">
           <label htmlFor="moodId" className="createARide__divLabel__wrapper__users__emoji">
             <Emoji src={calm} />
             <Input
@@ -119,7 +119,7 @@ const ChangeUserProfile = ({
 
         </div>
         <p className="before_button">L'état de santé de {userInfos.pseudo} a changé ?</p>
-        <div className="userProfile__form__emoji">
+        <div className="changeUserProfile__form__emoji">
           <label htmlFor="stateId" className="createARide__divLabel__wrapper__users__emoji">
             <Emoji src={small} />
             <Input
@@ -166,7 +166,7 @@ const ChangeUserProfile = ({
           </label>
         </div>
         <label htmlFor="pseudo">
-          Votre nouveau pseudo
+          Mon pseudo :  
           <Input
             type="text"
             onChange={changeField}
@@ -174,9 +174,9 @@ const ChangeUserProfile = ({
             name="pseudo"
           />
         </label>
-        <div className="userProfile__bottom">
+        <div className="changeUserProfile__bottom">
           <PreviousButton />
-          <TextButton text={saveText} buttonClass="button_small" />
+          <TextButton text={saveText} buttonClass="button_small changeUserProfile__bottom__button" />
           <div> </div>
         </div>
       </form>
