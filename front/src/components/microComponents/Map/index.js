@@ -139,7 +139,7 @@ const Map = ({
         })}
       >
         <Popup key={Math.random()}>
-          <Link to={`/balade/${rideEvent.eventSlug}`} onClick={() => getRideId(rideEvent.userId)} key={Math.random()}>Voir la balade...</Link>
+          <Link to={`/balade/${rideEvent.eventSlug}`} onClick={() => getRideId(rideEvent.eventId)} key={Math.random()}>Voir la balade...</Link>
         </Popup>
       </Marker>
     ))
