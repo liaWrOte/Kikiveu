@@ -16,7 +16,7 @@ const Info = ({
   hasRide,
 }) => (
   <div className="info">
-    <Link to="/contact"><HelpCircle className="header__icone" stroke-width={2} width={27} height={27} /></Link>
+    <Link to="/contact"><HelpCircle id="info__header__icon" stroke-width={2} width={27} height={27} /></Link>
     {!hasRide && (
       <Link to="/creer-balade"><RideButton /></Link>
     )}

@@ -19,7 +19,7 @@
       font-weight: bold;
       font-family: vars.$titleFont;
       color: vars.$mainColor;
-      font-size: vars.$bigGutter;
+      font-size: (vars.$bigGutter*1.3);
     }
     &__item {
       display: flex;
