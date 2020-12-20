@@ -52,9 +52,9 @@
     }
   }  
 }
-.cgu__flex {
+.cgu {
   display: block;
-  &__label {
+  &____flex__label {
     display: block;
     font-family: vars.$bodyFont;
     font-size: 1rem;
@@ -62,10 +62,15 @@
   }
 }
 
-.cgu__label {
+.cgu__flex__label {
   font-family: vars.$bodyFont;
   font-size: 1rem;
   color: vars.$secondaryColor;
+}
+
+#accepCGU[type=checkbox] {
+  -webkit-appearance: auto;
+  appearance: auto;
 }
 
 p {
