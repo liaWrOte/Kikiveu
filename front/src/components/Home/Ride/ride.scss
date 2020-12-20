@@ -188,4 +188,44 @@
   }
 }
 
+// scrollbar
+/* width */
+.ride__scroll::-webkit-scrollbar {
+  width: 7px;
+}
+
+/* Track */
+.ride__scroll::-webkit-scrollbar-track {
+  background: rgba(104, 124, 54, 0.28);
+}
+
+/* Handle */
+.ride__scroll::-webkit-scrollbar-thumb {
+  background: rgba(104, 124, 54, 0.28);
+}
+
+/* Handle on hover */
+.ride__scroll::-webkit-scrollbar-thumb:hover {
+  background: rgba(104, 124, 54, 0.37);
+}
+
+/* width */
+.ride__scroll__comments::-webkit-scrollbar {
+  width: 7px;
+}
+
+/* Track */
+.ride__scroll__comments::-webkit-scrollbar-track {
+  background: rgba(104, 124, 54, 0.28);
+}
+
+/* Handle */
+.ride__scroll__comments::-webkit-scrollbar-thumb {
+  background: rgba(104, 124, 54, 0.28);
+}
+
+/* Handle on hover */
+.ride__scroll__comments::-webkit-scrollbar-thumb:hover {
+  background: rgba(104, 124, 54, 0.37);
+}
 

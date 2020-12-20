@@ -241,7 +241,7 @@ const ChangeMyRide = ({
 
         <div className="ride__bottom">
           <PreviousButton />
-          <Input value="Enregistrer sur la carte" type="submit" className="button_small" />
+          <TextButton text="Enregistrer sur la carte" type="submit" buttonClass="button_small changeUserProfile__bottom__button" />
         </div>
       </form>
     </div>
