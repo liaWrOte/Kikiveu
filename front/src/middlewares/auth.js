@@ -26,7 +26,6 @@ const authMiddleware = (store) => (next) => (action) => {
           console.log(response);
           // on envoie les nouvelles infos dans notre state
           store.dispatch(saveAuthInfo(response.data.logged, response.data.pseudo, response.data.id));
-          store.dispatch(handleErrorLogin());
           localStorage.setItem('token', response.data.token);
           // console.log(localStorage.getItem('token'));
         })
