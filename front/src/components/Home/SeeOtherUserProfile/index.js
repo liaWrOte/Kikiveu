@@ -34,9 +34,9 @@ const SeeOtherUserProfile = ({
   const changeText = 'Modifier mon profil';
   console.log(otherUserDogInfo);
   console.log(getOtherUserProfile);
-  /*useEffect(() => {
+  /* useEffect(() => {
     getOtherUserProfile();
-  }, []);*/
+  }, []); */
 
   const moodUrl = {
     1: calm,
@@ -71,26 +71,27 @@ const SeeOtherUserProfile = ({
   return (
     <div className="userProfile">
       <MainUserButton image={otherUserDogInfo.avatar} className="ride_mainUserButton" />
-      <h2>Profil de {otherUserDogInfo.pseudo}</h2>
-      <p>Son humeur du jour </p>
-      <p>{moodText[otherUserDogInfo.mooId]}</p>
-      <div className="userProfile__form__emoji">
-      <p>{moodText[otherUserDogInfo.moodId]}</p>
-        <Emoji src={otherUserDogInfo.avatar} />
-      </div>
+      <h2 className="userProfile__title">Profil de {otherUserDogInfo.pseudo}</h2>
+      <div className="userProfile__flex">
+        <div className="userProfile__flex__emoji">
+          <p className="userProfile__flex__emoji__description">Humeur du jour </p>
+          <Emoji src={otherUserDogInfo.avatar} />
+          <p>{moodText[otherUserDogInfo.mooId]}</p>
+        </div>
 
-      <p>Son état de santé</p>
-      <div className="userProfile__form__emoji">
-      <p>{stateText[otherUserDogInfo.stateId]}</p>
-        <Emoji src={moodUrl[otherUserDogInfo.stateId]} />
+        <div className="userProfile__flex__emoji">
+          <p className="userProfile__flex__emoji__description">Etat de santé</p>
+          <Emoji src={moodUrl[otherUserDogInfo.stateId]} />
+          <p className="userProfile__flex__emoji__description">{moodText[otherUserDogInfo.moodId]}</p>
+
+        </div>
       </div>
-      {stateText[otherUserDogInfo.stateId]}
       <div>Castré : {castrateText[otherUserDogInfo.castrate]} </div>
       <div className="userProfile__bottom">
         <PreviousButton />
       </div>
     </div>
-  
+
   );
 };
 
@@ -101,6 +102,9 @@ SeeOtherUserProfile.propTypes = {
   stateId: PropTypes.number.isRequired,
   pseudo: PropTypes.string.isRequired,
   castrate: PropTypes.number.isRequired,
+  otherUserInfo: PropTypes.string.isRequired,
+  otherUserDogInfo: PropTypes.string.isRequired,
+  getOtherUserProfile: PropTypes.string.isRequired,
 };
 
 export default SeeOtherUserProfile;
