@@ -27,14 +27,15 @@
   &__flex {
     display: flex;
     padding-top: vars.$bigGutter;
+    justify-content: center;
     &__emoji {
       margin-top: -1rem;
-      display: flex;
-      justify-content: space-evenly;
+      display: flex;  
       align-items: center;
       flex-direction: column;
       &__description {
         margin-bottom: -2px;
+        margin-top: 1px;
       }
     }
   }

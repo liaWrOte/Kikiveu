@@ -27,6 +27,7 @@
     color: vars.$mainColor;
     font-size: vars.$bigGutter;
     margin-bottom: vars.$smallGutter;
+    text-align: center;
   }
     
   &__scroll {
@@ -180,10 +181,10 @@
   .ride {
     display: block;
     position: absolute;
-    height: 33.33vh;
+    height: 80vh;
     width: 33%;
     right: 0;
-    z-index: 1000;
+    z-index: 2000;
     background-color: #fff;
   }
 }

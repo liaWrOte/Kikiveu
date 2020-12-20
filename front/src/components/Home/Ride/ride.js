@@ -92,7 +92,6 @@ const Ride = ({
     <div className="ride">
       <MainUserButton image={rideInfos.dogAvatar} />
       <h2 className="ride__title">Balade de {rideInfos.eventSlug}</h2>
-
       <div className="ride__scroll">
         <div className="ride__scroll__calendar">
 

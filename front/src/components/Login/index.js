@@ -7,6 +7,8 @@ import Input from '../microComponents/Input';
 import TextButton from '../microComponents/TextButton';
 import logo from '../../assets/images/logo.png';
 
+import dogWalk from '../../assets/images/dogWalk.jpeg';
+
 import './index.scss';
 import AlertMessage from '../microComponents/AlertMessage';
 
@@ -32,17 +34,23 @@ const Login = ({
     }
   }, [isLogged]);
 
+  const sectionStyle = {
+    backgroundImage: `url(${dogWalk})`,
+    backgroundSize: 'cover',
+    backgroundRepeat: 'no-repeat',
+    backgroundPosition: 'center',
+  };
+
   /*useEffect(() => {
     <AlertMessage message="Votre indentifiant/mot de passe est incorrect" />
   }, [alertloginStatus])*/
 
   const loginText = 'Connexion';
   const signInText = 'Je m\'inscris';
-  const mapText = 'Map';
 
   return (
     <div className="login">
-      <div className="login__img">coucou</div>
+      <div className="login__img" style={sectionStyle} />
       <div className="login__form">
         <div className="login__form__img"><img src={logo} alt="logoKikiVeu" /></div>
         <h2 id="catch_phrase">Les balades canines près de chez vous</h2>
