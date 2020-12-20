@@ -129,11 +129,16 @@ const SeeOtherUserProfile = ({
       <MainUserButton image={otherUserDogInfo.avatar} className="ride_mainUserButton" />
       <h2 className="userProfile__title">Profil de {otherUserDogInfo.dogName} : {otherUserDogInfo.age} ans</h2>
       <div className="userProfile__flex">
-      <div className="userProfile__flex__emoji">
-        <p className="userProfile__flex__emoji__description">Sexe</p>
-        <Emoji src={sexUrl[otherUserDogInfo.sex]} />
-        <p>{sexText[otherUserDogInfo.sex]}</p>
-      </div>
+        <div className="userProfile__flex__emoji">
+          <p className="userProfile__flex__emoji__description">Sexe</p>
+          <Emoji src={sexUrl[otherUserDogInfo.sex]} />
+          <p>{sexText[otherUserDogInfo.sex]}</p>
+        </div>
+        <div className="userProfile__flex__emoji">
+          <p className="userProfile__flex__emoji__description">Tempérament</p>
+          <Emoji src={temperamentUrl[otherUserDogInfo.temperamentId]} />
+          <p>{temperamentText[otherUserDogInfo.temperamentId]}</p>
+        </div>
       </div>
       <div className="userProfile__flex">
         <div className="userProfile__flex__emoji">
