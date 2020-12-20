@@ -31,7 +31,7 @@ const UserProfile = ({
   moodId,
   stateId,
   castrate,
-  pseudo,
+  dogName,
   getUserProfile,
   deleteUserProfile,
 }) => {
@@ -76,7 +76,7 @@ const UserProfile = ({
   return (
     <div className="userProfile">
       <MainUserButton image={avatar} className="mainUserButton userProfile__avatar" />
-      <h2 className="userProfile__title">Profil de {pseudo}</h2>
+      <h2 className="userProfile__title">Profil de {dogName}</h2>
       <div className="button_wrapper">
         <div className="buttonItem"><Link to="/profil/edit"><TextButton text={changeText} buttonClass="button_small_green"/></Link></div>
         <div className="buttonItem"><TextButton
@@ -118,7 +118,7 @@ UserProfile.propTypes = {
   getUserProfile: PropTypes.func.isRequired,
   moodId: PropTypes.number,
   stateId: PropTypes.number.isRequired,
-  pseudo: PropTypes.string.isRequired,
+  dogName: PropTypes.string.isRequired,
   castrate: PropTypes.number.isRequired,
   deleteUserProfile: PropTypes.func.isRequired,
 };

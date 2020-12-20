@@ -55,7 +55,7 @@ const ChangeUserProfile = ({
       <form autoComplete="off" className="changeUserProfile__form" onSubmit={handleSubmit}>
         <MainUserButton className="mainUserButton changeUserProfile__form__avatar" image={avatar} />
         <TextButton text={changeAvatar} buttonClass="button_small_green changeUserProfile__form__avatarButton" />
-        <p className="before_button">Comment se sent {userInfos.pseudo} aujourd'hui ?</p>
+        <p className="before_button">Comment se sent {userInfos.dogName} aujourd'hui ?</p>
         <div className="changeUserProfile__form__emoji">
           <label htmlFor="moodId" className="changeUserProfile__divLabel__wrapper__users__emoji">
             <Emoji src={calm} />
@@ -118,7 +118,7 @@ const ChangeUserProfile = ({
           </label>
 
         </div>
-        <p className="before_button">L'état de santé de {userInfos.pseudo} a changé ?</p>
+        <p className="before_button">L'état de santé de {userInfos.dogName} a changé ?</p>
         <div className="changeUserProfile__form__emoji">
           <label htmlFor="stateId" className="changeUserProfile__divLabel__wrapper__users__emoji">
             <Emoji src={small} />
