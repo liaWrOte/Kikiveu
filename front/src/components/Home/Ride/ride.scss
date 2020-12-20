@@ -229,3 +229,25 @@
   background: rgba(104, 124, 54, 0.37);
 }
 
+/* width */
+.changeMyRide__form::-webkit-scrollbar {
+  width: 7px;
+}
+
+/* Track */
+.changeMyRide__form::-webkit-scrollbar-track {
+  background: rgba(104, 124, 54, 0.28);
+}
+
+/* Handle */
+.changeMyRide__form::-webkit-scrollbar-thumb {
+  background: rgba(104, 124, 54, 0.28);
+}
+
+/* Handle on hover */
+.changeMyRide__form::-webkit-scrollbar-thumb:hover {
+  background: rgba(104, 124, 54, 0.37);
+}
+
+
+
