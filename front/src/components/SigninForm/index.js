@@ -76,7 +76,7 @@ const SigninForm = ({
 
   const [activeClass, setActiveClass] = useState(false);
 
-  useEffect (() => {
+  useEffect(() => {
     setActiveClass(true);
   }, [acceptCGU]);
 
@@ -187,8 +187,8 @@ const SigninForm = ({
           <label htmlFor="dogShape">
             5. Comment décrirez-vous son état de santé général ?
             <div className="signin__form__item__label">
-              <label htmlFor="dogCondition" className="signin__form__item__label__emoji" >
-              
+              <label htmlFor="dogCondition" className="signin__form__item__label__emoji">
+
                 <Emoji src={smallShape} />
                 <Input
                   type="radio"
@@ -197,9 +197,9 @@ const SigninForm = ({
                   id="smallShape"
                   value={3}
 
-                /> 
+                />
                 Mauvais
-                
+
               </label>
               <label htmlFor="dogCondition" className="signin__form__item__label__emoji">
                 <Emoji src={mediumShape} />
@@ -210,7 +210,7 @@ const SigninForm = ({
                   id="mediumShape"
                   value={2}
                 />
-                
+
                 Moyen
               </label>
               <label htmlFor="dogCondition" className="signin__form__item__label__emoji">
@@ -365,16 +365,16 @@ const SigninForm = ({
 
           <Cgu className="cgu" />
           <label htmlFor="acceptCGU" className="cgu__flex__label">
-            <button
-              type="button"
+            
+            <input
+              type="checkbox"
               name="acceptCGU"
               id="acceptCGU"
               onClick={changeCheckboxField}
               checked={acceptCGU}
-              
-            >
-            J'ai lu et j'accepte les CGU
-            </button>
+            />
+            <p id="textCGU">J'ai lu et j'accepte les CGU</p>
+
           </label>
           {(!acceptCGU && alertStatus) && (
           <AlertMessage message="Veuillez accepter les conditions générales d'utilisation" />

@@ -38,6 +38,7 @@ const signinReducer = (state = initialState, action = {}) => {
       };
 
     case CHANGE_CHECKBOX_FIELD:
+      console.log('acceptCGU');
       return {
         ...state,
         acceptCGU: !state.acceptCGU,
