@@ -18,6 +18,7 @@ import Ride from '../../containers/Home/ride';
 import ChangeMyRide from '../../containers/Home/changeMyRide';
 import SeeMyRide from '../../containers/Home/seeMyRide';
 import PreviousButton from '../microComponents/PreviousButton';
+import Error404 from '../Home/Error404';
 
 import './index.scss';
 
@@ -149,6 +150,7 @@ const Home = ({
                   <KikiVeuContact />
                 </div>
               </Route>
+              <Route component={Error404} />
             </Switch>
           </div>
         )}
