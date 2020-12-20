@@ -2,7 +2,7 @@
 @use '../../../styles/vars';
 
 .changeUserProfile {
-  position: absolute;
+  position: fixed;
   z-index: 25;
   height: 480px;
   bottom: 0;
