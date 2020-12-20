@@ -14,7 +14,7 @@ const Emoji = ({ src }) => (
 
 Emoji.defaultProps = {
   src: '',
-}
+};
 
 // Validation des props
 Emoji.propTypes = {
