@@ -39,7 +39,8 @@ import sociable from '../../assets/images/character/sociable_character.png';
 
 import './index.scss';
 
-import screenshot from '../../assets/images/dog_profile.jpg';
+import screenshot from '../../assets/images/dogFrisbee.jpeg';
+import { AlignRight } from 'react-feather';
 
 const SigninForm = ({
   dogsNumber,
@@ -72,6 +73,8 @@ const SigninForm = ({
   const sectionStyle = {
     backgroundImage: `url(${screenshot})`,
     backgroundSize: 'cover',
+    backgroundRepeat: 'no-repeat',
+    backgroundPosition: 'center',
   };
 
   const [activeClass, setActiveClass] = useState(false);
