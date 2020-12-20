@@ -63,6 +63,7 @@
 
 .button_wrapper {
   display: flex;
+  justify-content: center;
 }
 
 .buttonItem {
@@ -79,7 +80,6 @@
 
 @media screen and (min-width: 1300px) {
   .userProfile {
-    display: block;
     position: absolute;
     height: 80vh;
     width: 33%;

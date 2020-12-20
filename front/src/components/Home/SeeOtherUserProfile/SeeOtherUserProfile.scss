@@ -4,14 +4,14 @@
 .userProfile {
   position: absolute;
   z-index: 25;
-  height: 380px;
+  height: 450px;
   bottom: 0;
   width: 100%;
   display: flex;
   flex-direction: column;
   background-color: #fff;
   display : flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
   align-items: center;
   padding: vars.$smallGutter;
   font-family: vars.$bodyFont;
@@ -25,14 +25,13 @@
     color: vars.$secondaryColor;
   }
   &__flex {
-    display: flex;
     padding-top: vars.$bigGutter;
     justify-content: center;
     &__emoji {
       margin-top: -1rem;
-      display: flex;  
       align-items: center;
       flex-direction: column;
+      margin-right: 1rem;
       &__description {
         margin-bottom: -2px;
         margin-top: 1px;
@@ -49,9 +48,6 @@
     }
     &__emoji {
       margin-top: -1rem;
-      display: flex;
-      justify-content: space-evenly;
-      align-items: center;
     }
   }
   &__bottom {
@@ -80,7 +76,6 @@
 
 @media screen and (min-width: 1300px) {
   .userProfile {
-    display: block;
     position: absolute;
     height: 80vh;
     width: 33%;

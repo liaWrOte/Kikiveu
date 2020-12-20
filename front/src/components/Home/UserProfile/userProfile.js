@@ -31,7 +31,7 @@ const UserProfile = ({
   moodId,
   stateId,
   castrate,
-  pseudo,
+  dogName,
   getUserProfile,
   deleteUserProfile,
 }) => {
@@ -64,9 +64,9 @@ const UserProfile = ({
     3: small,
   };
   const stateText = {
-    1: 'Excellente forme',
-    2: 'Forme moyenne',
-    3: 'Petite forme',
+    1: 'Bon',
+    2: 'Moyen',
+    3: 'Fragile',
   };
   const castrateText = {
     0: 'Non',
@@ -76,12 +76,12 @@ const UserProfile = ({
   return (
     <div className="userProfile">
       <MainUserButton image={avatar} className="mainUserButton userProfile__avatar" />
-      <h2 className="userProfile__title">Profil de {pseudo}</h2>
+      <h2 className="userProfile__title">Profil de {dogName}</h2>
       <div className="button_wrapper">
         <div className="buttonItem"><Link to="/profil/edit"><TextButton text={changeText} buttonClass="button_small_green"/></Link></div>
         <div className="buttonItem"><TextButton
           text={deleteText}
-          buttonClass="button_small"
+          buttonClass="button_small_green"
           handleClick={() => {
             if (window.confirm('Je confirme la suppression de mon compte KikiVeu.')) deleteUserProfile();
           }}
@@ -118,7 +118,7 @@ UserProfile.propTypes = {
   getUserProfile: PropTypes.func.isRequired,
   moodId: PropTypes.number,
   stateId: PropTypes.number.isRequired,
-  pseudo: PropTypes.string.isRequired,
+  dogName: PropTypes.string.isRequired,
   castrate: PropTypes.number.isRequired,
   deleteUserProfile: PropTypes.func.isRequired,
 };

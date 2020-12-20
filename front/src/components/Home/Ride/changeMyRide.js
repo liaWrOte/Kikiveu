@@ -75,7 +75,6 @@ const ChangeMyRide = ({
 
   return (
     <div className="changeMyRide">
-      <RideButton />
       <TextButton text={placeCursor} handleClick={putRideMarker} buttonClass="button_small" />
       <form autoComplete="off" className="changeMyRide__form" onSubmit={handleSubmit}>
         <div className="twoColumns">

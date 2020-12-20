@@ -42,7 +42,7 @@ import small from '../../../assets/images/shape/small_shape.png';
 import medium from '../../../assets/images/shape/medium_shape.png';
 import good from '../../../assets/images/shape/good_shape.png';
 
-import '../UserProfile/userProfile.scss';
+import './SeeOtherUserProfile.scss';
 
 const SeeOtherUserProfile = ({
   otherUserInfo,
@@ -72,14 +72,14 @@ const SeeOtherUserProfile = ({
   };
 
   const stateUrl = {
-    1: small,
+    1: good,
     2: medium,
-    3: good,
+    3: small,
   };
   const stateText = {
-    1: 'Petite forme',
-    2: 'Forme moyenne',
-    3: 'Excellente forme',
+    1: 'Bon',
+    2: 'Moyen',
+    3: 'Fragile',
   };
   const castrateText = {
     0: 'Non',
@@ -127,7 +127,7 @@ const SeeOtherUserProfile = ({
   return (
     <div className="userProfile">
       <MainUserButton image={otherUserDogInfo.avatar} className="ride_mainUserButton" />
-      <h2 className="userProfile__title">Profil de {otherUserDogInfo.dogName} : {otherUserDogInfo.age} ans</h2>
+      <h2 className="userProfile__title">Profil de {otherUserDogInfo.dogName} ({otherUserDogInfo.age} ans)</h2>
       <div className="userProfile__flex">
         <div className="userProfile__flex__emoji">
           <p className="userProfile__flex__emoji__description">Sexe</p>
@@ -142,21 +142,14 @@ const SeeOtherUserProfile = ({
       </div>
       <div className="userProfile__flex">
         <div className="userProfile__flex__emoji">
-          <p className="userProfile__flex__emoji__description">Tempérament</p>
-          <Emoji src={temperamentUrl[otherUserDogInfo.temperamentId]} />
-          <p>{temperamentText[otherUserDogInfo.temperamentId]}</p>
-        </div>
-        <div className="userProfile__flex__emoji">
-          <p className="userProfile__flex__emoji__description">Humeur du jour </p>
+          <p className="userProfile__flex__emoji__description">Humeur</p>
           <Emoji src={moodUrl[otherUserDogInfo.moodId]} />
           <p>{moodText[otherUserDogInfo.moodId]}</p>
         </div>
-
         <div className="userProfile__flex__emoji">
           <p className="userProfile__flex__emoji__description">Etat de santé</p>
           <Emoji src={stateUrl[otherUserDogInfo.stateId]} />
           <p className="userProfile__flex__emoji__description">{stateText[otherUserDogInfo.stateId]}</p>
-
         </div>
       </div>
       <div>Castré : {castrateText[otherUserDogInfo.castrate]} </div>
@@ -164,7 +157,6 @@ const SeeOtherUserProfile = ({
         <PreviousButton />
       </div>
     </div>
-
   );
 };
 

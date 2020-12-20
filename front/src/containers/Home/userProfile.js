@@ -10,7 +10,7 @@ const mapStateToProps = (state) => ({
   moodId: state.userProfile.userInfos.moodId,
   stateId: state.userProfile.userInfos.stateId,
   castrate: state.userProfile.userInfos.castrate,
-  pseudo: state.userProfile.userInfos.pseudo,
+  dogName: state.userProfile.userInfos.dogName,
 });
 
 const mapDispatchToProps = (dispatch) => ({

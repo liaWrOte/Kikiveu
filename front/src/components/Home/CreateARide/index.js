@@ -223,7 +223,6 @@ const CreateARide = ({
             Urbaine
           </label>
           <label htmlFor="tags" className="createARide__divLabel__wrapper__users__emoji">
-
             <Emoji src={water} />
             <Input
               type="checkbox"
@@ -237,11 +236,9 @@ const CreateARide = ({
         </ScrollContainer>
         <div className="createARide__bottom">
           <PreviousButton />
-          <Input value="Enregistrer sur la carte" type="submit" buttonClass="button_small" text="Enregistrer" />
+          <TextButton text="Enregistrer sur la carte" type="submit" buttonClass="button_small" text="Enregistrer" />
         </div>
-        
       </form>
-      
     </div>
   );
 };
