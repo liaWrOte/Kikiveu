@@ -22,7 +22,7 @@
   &__form {
     padding: vars.$smallGutter;
     width: 100%;
-    height: 250px;
+    height: 75%;
     overflow-y: auto;
   }
   &__divLabel{
@@ -78,8 +78,7 @@
 }
 
 @media screen and (min-width: 1300px) {
-  .createARide {
-    display: block;
+  .changeMyRide {
     position: absolute;
     height: 80vh;
     width: 33%;
@@ -88,6 +87,7 @@
     background-color: #fff;
   }
 }
+
 
 /* HIDE RADIO */
 [type=checkbox] { 

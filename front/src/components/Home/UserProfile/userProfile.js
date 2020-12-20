@@ -64,9 +64,9 @@ const UserProfile = ({
     3: small,
   };
   const stateText = {
-    1: 'Excellente forme',
-    2: 'Forme moyenne',
-    3: 'Petite forme',
+    1: 'Bon',
+    2: 'Moyen',
+    3: 'Fragile',
   };
   const castrateText = {
     0: 'Non',
@@ -81,7 +81,7 @@ const UserProfile = ({
         <div className="buttonItem"><Link to="/profil/edit"><TextButton text={changeText} buttonClass="button_small_green"/></Link></div>
         <div className="buttonItem"><TextButton
           text={deleteText}
-          buttonClass="button_small"
+          buttonClass="button_small_green"
           handleClick={() => {
             if (window.confirm('Je confirme la suppression de mon compte KikiVeu.')) deleteUserProfile();
           }}

@@ -32,6 +32,11 @@
   .home {
     position: relative;
     width: 100%;
+    align-items: center;
+  }
+
+  .info {
+    flex-direction: column;
   }
 
   .item1 {

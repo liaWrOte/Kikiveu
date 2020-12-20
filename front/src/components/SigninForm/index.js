@@ -201,7 +201,7 @@ const SigninForm = ({
                   value={3}
 
                 />
-                Mauvais
+                Fragile
 
               </label>
               <label htmlFor="dogCondition" className="signin__form__item__label__emoji">

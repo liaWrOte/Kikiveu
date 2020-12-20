@@ -79,17 +79,18 @@ const SeeMyRide = ({
 
   return (
     <div className="ride">
-      <RideButton />
       <h2 className="ride__title">Ma balade</h2>
       <div className="ride__flex">
         <Link to="/ma-balade/edit" className="ride__flex__leftButton"><TextButton text={changeText} buttonClass="button_small_green" /></Link>
-        <TextButton
-          text={deleteText}
-          buttonClass="button_small"
-          handleClick={() => {
-            if (window.confirm('Je confirme la suppression de ma balade.')) deleteMyRide();
-          }}
-        />
+        <div>
+          <TextButton
+            text={deleteText}
+            buttonClass="button_small_green"
+            handleClick={() => {
+              if (window.confirm('Je confirme la suppression de ma balade.')) deleteMyRide();
+            }}
+          />
+        </div>
       </div>
       <div className="ride__scroll">
         <div className="ride__scroll__calendar">
