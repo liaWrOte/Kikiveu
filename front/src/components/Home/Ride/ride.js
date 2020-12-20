@@ -9,6 +9,7 @@ import RideButton from '../../microComponents/RideButton';
 import Emoji from '../../microComponents/Emoji';
 import Input from '../../microComponents/Input';
 import TextButton from '../../microComponents/TextButton';
+import CommentAvatar from '../../microComponents/CommentAvatar';
 
 import athletic from '../../../assets/images/ride/athletic_ride.png';
 import learning from '../../../assets/images/ride/learning_ride.png';
@@ -101,12 +102,12 @@ const Ride = ({
             , durée {newduration}
           </div>
         </div>
-        
+
         <div className="ride__scroll__flex">
-        <p>
-          Max participants : {rideInfos.eventMaxParticipant}
-        </p>
-        <a target="blank" href={`https://www.google.com/maps/place/${rideInfos.eventLat},${rideInfos.eventLong}`}><TextButton buttonClass="button_small_green" text="J'y vais !" /></a>
+          <p>
+            Max participants : {rideInfos.eventMaxParticipant}
+          </p>
+          <a target="blank" href={`https://www.google.com/maps/place/${rideInfos.eventLat},${rideInfos.eventLong}`}><TextButton buttonClass="button_small_green" text="J'y vais !" /></a>
         </div>
         <p className="ride__scroll__descriptionText">Description de la balade :</p>
         <div className="ride__scroll__flexDescription">
@@ -131,26 +132,28 @@ const Ride = ({
             const commentFormatedTime = `${addZero(commentDate.getHours())}:${addZero(commentDate.getMinutes())}`;
             return (
               <div className="ride__scroll__comments__line" key={commentItem.commentId}>
-                <p className="ride__scroll__comments__line__date">le {commentFormatedDate} à {commentFormatedTime}</p>
-                <p>{commentItem.userId.pseudo}</p>
-                <p>{commentItem.body}</p>
+                <div className="ride__scroll__comments__line__column">
+                  <CommentAvatar profileImage={commentItem.dogsAvatar} />
+                  <p className="ride__scroll__comments__line__column__date">{commentFormatedTime}</p>
+
+                </div>
+
+                <p className="ride__scroll__comments__line__comment">{commentItem.body}</p>
               </div>
             );
           })}
 
         </div>
-        <form autoComplete="off" className="login__form" onSubmit={handleSubmit}>
-          <p>Laisser un commentaire :
-            <Input
-              type="text"
-              name="comment"
-              placeholder="Votre commentaire ici"
-              onChange={changeField}
-              value={comment}
-              inputClass="input_small"
-            />
-            <TextButton text="Envoyer" buttonClass="button_small_green" />
-          </p>
+        <form autoComplete="off" className="ride_commentForm" onSubmit={handleSubmit}>
+          <Input
+            type="text"
+            name="comment"
+            placeholder="Votre commentaire ici"
+            onChange={changeField}
+            value={comment}
+            inputClass="input_small_ride"
+          />
+          <TextButton text="Envoyer" buttonClass="ride_button_small_green" />
         </form>
       </div>
       <div className="ride__bottom">

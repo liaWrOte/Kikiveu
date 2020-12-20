@@ -9,6 +9,7 @@ import RideButton from '../../microComponents/RideButton';
 import Emoji from '../../microComponents/Emoji';
 import Input from '../../microComponents/Input';
 import TextButton from '../../microComponents/TextButton';
+import CommentAvatar from '../../microComponents/CommentAvatar';
 
 import athletic from '../../../assets/images/ride/athletic_ride.png';
 import learning from '../../../assets/images/ride/learning_ride.png';
@@ -95,7 +96,7 @@ const SeeMyRide = ({
           <Calendar />
           <div className="ride__scroll__calendar__text">
             le {formatedDate} à {formatedTime}
-          
+
             , durée {newduration}
           </div>
         </div>
@@ -104,7 +105,7 @@ const SeeMyRide = ({
         </p>
         <p className="ride__scroll__descriptionText">Description de la balade :</p>
         <div className="ride__scroll__flexDescription">
-          <p className="ride__scroll__flexDescription__text"> 
+          <p className="ride__scroll__flexDescription__text">
             {myRideInfos.eventDescription}
           </p>
 
@@ -113,7 +114,7 @@ const SeeMyRide = ({
             <p className="ride__scroll__flexDescription__emoji__text">{typesRideText[myRideInfos.tagsId]}</p>
           </div>
         </div>
-        
+
         <p>Commentaires</p>
         <div className="ride__scroll__comments">
 
@@ -128,9 +129,11 @@ const SeeMyRide = ({
 
             return (
               <div className="ride__scroll__comments__line" key={commentItem.commentId}>
-                <p className="ride__scroll__comments__line__date">le {commentFormatedTime}</p>
-                <p>{commentItem.userId.pseudo}</p>
-                <p>{commentItem.body}</p>
+                <div className="ride__scroll__comments__line__column">
+                  <CommentAvatar profileImage={commentItem.dogsAvatar} />
+                  <p className="ride__scroll__comments__line__column__date">le {commentFormatedTime}</p>
+                </div>
+                <p className="ride__scroll__comments__line__comment">{commentItem.body}</p>
               </div>
             );
           })}
@@ -140,7 +143,7 @@ const SeeMyRide = ({
           <Input
             type="text"
             name="comment"
-            placeholder="Envoyer un commentaire"
+            placeholder="Votre commentaire ici"
             onChange={changeField}
             value={comment}
             inputClass="input_small_ride"
