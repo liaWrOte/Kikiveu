@@ -157,7 +157,7 @@ const ChangeMyRide = ({
           </div>
         </div>
         <p>
-          Je choisis le type de la balade : (plusieurs choix possibles)
+          Je choisis le type de la balade :
         </p>
         <ScrollContainer horizontal className="scroll-container">
               <label htmlFor="tagsId" className="changeMyRide__divLabel__wrapper__users__emoji">

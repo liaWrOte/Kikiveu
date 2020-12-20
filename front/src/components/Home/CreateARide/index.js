@@ -147,7 +147,6 @@ const CreateARide = ({
         </div>
         <p>
           Je choisis le type de la balade :
-          (plusieurs choix possibles)
         </p>
 
         <ScrollContainer horizontal className="scroll-container">
