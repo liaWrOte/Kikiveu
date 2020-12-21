@@ -55,6 +55,11 @@
   }
 }
 
+.changeUserProfile__divLabel__wrapper__users__emoji {
+  display: flex;
+  flex-direction: column;
+}
+
 .changeUserProfile__flex {
   display: flex;
   margin-top: vars.$bigGutter;

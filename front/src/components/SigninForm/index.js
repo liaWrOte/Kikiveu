@@ -158,7 +158,7 @@ const SigninForm = ({
           </label>
         </div>
         <div className="signin__form__item">
-          4. Est-il castré ?
+          4. Est-il stérilisé/castré ?
           <div className="signin__form__item__label">
             <label htmlFor="castrate" className="text_select">
               <Input
@@ -257,7 +257,7 @@ const SigninForm = ({
                 id="sensitive"
                 value={11}
               />
-              Timide/Sensible
+              Timide
             </label>
             <label htmlFor="character" className="signin__form__item__label__emoji">
               <Emoji src={fearful} />

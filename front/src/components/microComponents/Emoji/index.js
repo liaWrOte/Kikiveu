@@ -2,6 +2,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import defaultEmoji from '../../../assets/images/mood/calm_mood.png';
+
 // == Import SCSS
 
 import './index.scss';
@@ -13,7 +15,7 @@ const Emoji = ({ src }) => (
 );
 
 Emoji.defaultProps = {
-  src: '',
+  src: defaultEmoji,
 };
 
 // Validation des props

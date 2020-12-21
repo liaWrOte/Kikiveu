@@ -46,7 +46,7 @@ const ChangeUserProfile = ({
   const history= useHistory();   
   useEffect(() => {
   if (responseOk === true) {
-    history.push('/');
+    history.push('/profil');
   }
 }, [responseOk]);
 
