@@ -36,8 +36,7 @@ const UserProfile = ({
   deleteUserProfile,
 }) => {
   const changeText = 'Modifier mon profil';
-  const deleteText = "Supprimer mon compte";
-
+  const deleteText = 'Supprimer mon compte';
 
   useEffect(() => {
     getUserProfile();
@@ -78,7 +77,7 @@ const UserProfile = ({
       <MainUserButton image={avatar} className="mainUserButton userProfile__avatar" />
       <h2 className="userProfile__title">Profil de {dogName}</h2>
       <div className="button_wrapper">
-        <div className="buttonItem"><Link to="/profil/edit"><TextButton text={changeText} buttonClass="button_small_green"/></Link></div>
+        <div className="buttonItem"><Link to="/profil/edit"><TextButton text={changeText} buttonClass="button_small_green" /></Link></div>
         <div className="buttonItem"><TextButton
           text={deleteText}
           buttonClass="button_small_green"
@@ -89,23 +88,28 @@ const UserProfile = ({
         </div>
       </div>
       <div className="userProfile__flex">
-      <div className="userProfile__flex__emoji">
-        <p className="userProfile__flex__emoji__description">Humeur du jour</p>
-        <Emoji src={moodUrl[moodId]} />
-        <p>{moodText[moodId]}</p>
-      </div>
-      <div className="userProfile__flex__emoji">
-        <p className="userProfile__flex__emoji__description">Etat de santé</p>
-        <Emoji src={stateUrl[stateId]} />
-        <p>{stateText[stateId]}</p>
-      </div>
+        <div className="userProfile__flex__emoji">
+          <p className="userProfile__flex__emoji__description">Humeur du jour</p>
+          <Emoji src={moodUrl[moodId]} />
+          {(moodText[moodId]) && (
+          <p>{moodText[moodId]}</p>
+          )}
+          {(!moodText[moodId]) && (
+          <p>Calme</p>
+          )}
+        </div>
+        <div className="userProfile__flex__emoji">
+          <p className="userProfile__flex__emoji__description">Etat de santé</p>
+          <Emoji src={stateUrl[stateId]} />
+          <p>{stateText[stateId]}</p>
+        </div>
       </div>
       <div>Castré : {castrateText[castrate]}</div>
       <div className="userProfile__bottom">
         <PreviousButton />
       </div>
     </div>
-  
+
   );
 };
 

@@ -165,7 +165,7 @@ const SigninForm = ({
                 type="radio"
                 onChange={changeField}
                 name="castrate"
-                value={1}
+                value={0}
                 checked
               />
               <p className="text_select">Non</p>
@@ -175,7 +175,7 @@ const SigninForm = ({
                 type="radio"
                 onChange={changeField}
                 name="castrate"
-                value={0}
+                value={1}
                 key="noCastrate"
               />
               <p className="text_select">Oui</p>
