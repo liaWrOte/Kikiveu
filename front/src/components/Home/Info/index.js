@@ -1,11 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 // Import composants
 import { HelpCircle } from 'react-feather';
-import Toggle from '../../microComponents/Toggle';
-import MainUserButton from '../../microComponents/MainUserButton';
 import RideButton from '../../microComponents/RideButton';
 import SecondaryUserButton from '../../microComponents/SecondaryUserButton';
 
@@ -21,7 +19,7 @@ const Info = ({
       <Link to="/creer-balade"><RideButton /></Link>
     )}
     {hasRide && (
-      <Link to="/ma-balade"><RideButton/></Link>
+      <Link to="/ma-balade"><RideButton /></Link>
     )}
     <Link to="/profil"><SecondaryUserButton profileImage={avatar} /></Link>
   </div>
@@ -29,7 +27,6 @@ const Info = ({
 
 Info.propTypes = {
   avatar: PropTypes.string.isRequired,
-  changeStatus: PropTypes.func.isRequired,
   hasRide: PropTypes.bool.isRequired,
 };
 

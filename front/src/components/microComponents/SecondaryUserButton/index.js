@@ -5,7 +5,7 @@ import './index.scss';
 
 const SecondaryUserButton = ({ profileImage }) => {
   const sectionStyle = {
-    backgroundImage: `url(http://www.kikiveu.me/back/avatar/${profileImage})`,
+    backgroundImage: `url(http://www.kikiveuapp.me/back/avatar/${profileImage})`,
   };
   return (
 
