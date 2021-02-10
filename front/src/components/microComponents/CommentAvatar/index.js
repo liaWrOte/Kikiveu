@@ -4,7 +4,7 @@ import './index.scss';
 
 const CommentAvatar = ({ profileImage }) => {
   const sectionStyle = {
-    backgroundImage: `url(https://www.kikiveuapp.me/back/avatar/${profileImage})`,
+    backgroundImage: `url(https://kikiveuapp.me/back/avatar/${profileImage})`,
   };
   return (
 

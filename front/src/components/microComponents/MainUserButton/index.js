@@ -9,7 +9,7 @@ const MainUserButton = ({
   image,
 }) => {
   const sectionStyle = {
-    backgroundImage: `url(https://www.kikiveuapp.me/back/avatar/${image})`,
+    backgroundImage: `url(https://kikiveuapp.me/back/avatar/${image})`,
   };
   return (
 
